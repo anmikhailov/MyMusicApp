@@ -68,9 +68,9 @@ extension SignInUpViewController: SignInUpViewDelegate {
             if !username.isEmpty && !email.isEmpty && !password.isEmpty {
                 FirebaseManager.shared.createAccount(email: email, password: password, username: username) { err in
                     if err == nil {
-                        //                            let categoriesVC = CategoriesViewController(isFirstEnter: true)
-                        //                            categoriesVC.modalPresentationStyle = .fullScreen
-                        //                            self.present(categoriesVC, animated: true)
+                        let tabBarController = TabBarController()
+                        tabBarController.modalPresentationStyle = .fullScreen
+                        self.present(tabBarController, animated: true)
                         print("Registration ok")
                     } else {
                         guard let error = err else {return}
