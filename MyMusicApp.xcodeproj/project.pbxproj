@@ -11,13 +11,15 @@
 		84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */; };
 		84AE2F662A35F2CA006E87F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AE2F652A35F2CA006E87F1 /* Assets.xcassets */; };
 		84AE2F692A35F2CA006E87F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84AE2F672A35F2CA006E87F1 /* LaunchScreen.storyboard */; };
-		84AE2F7A2A35F5C0006E87F1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F792A35F5C0006E87F1 /* TabBarController.swift */; };
 		84AE2F7C2A35F679006E87F1 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F7B2A35F679006E87F1 /* UIColorExtension.swift */; };
 		84AE2F7E2A35F687006E87F1 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F7D2A35F687006E87F1 /* Resources.swift */; };
-		84AE2F892A35F996006E87F1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F882A35F996006E87F1 /* HomeViewController.swift */; };
-		84AE2F8B2A35F9F1006E87F1 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F8A2A35F9F1006E87F1 /* ExploreViewController.swift */; };
-		84AE2F8D2A35FA4A006E87F1 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F8C2A35FA4A006E87F1 /* FavoritesViewController.swift */; };
-		84AE2F8F2A35FA55006E87F1 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F8E2A35FA55006E87F1 /* AccountViewController.swift */; };
+		84C4209A2A37505E00727691 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4208E2A37505E00727691 /* HomeViewController.swift */; };
+		84C4209B2A37505E00727691 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420902A37505E00727691 /* FavoritesViewController.swift */; };
+		84C4209C2A37505E00727691 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420922A37505E00727691 /* ExploreViewController.swift */; };
+		84C4209D2A37505E00727691 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420942A37505E00727691 /* TabBarController.swift */; };
+		84C4209E2A37505E00727691 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420972A37505E00727691 /* AccountViewController.swift */; };
+		84C420A02A37509D00727691 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4209F2A37509D00727691 /* UserModel.swift */; };
+		84C420A22A3750B800727691 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420A12A3750B800727691 /* FirebaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,13 +29,15 @@
 		84AE2F652A35F2CA006E87F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84AE2F682A35F2CA006E87F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84AE2F6A2A35F2CA006E87F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84AE2F792A35F5C0006E87F1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		84AE2F7B2A35F679006E87F1 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		84AE2F7D2A35F687006E87F1 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
-		84AE2F882A35F996006E87F1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		84AE2F8A2A35F9F1006E87F1 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
-		84AE2F8C2A35FA4A006E87F1 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		84AE2F8E2A35FA55006E87F1 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		84C4208E2A37505E00727691 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		84C420902A37505E00727691 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		84C420922A37505E00727691 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		84C420942A37505E00727691 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		84C420972A37505E00727691 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		84C4209F2A37509D00727691 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		84C420A12A3750B800727691 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				84AE2F752A35F3AB006E87F1 /* App */,
-				84AE2F732A35F375006E87F1 /* Controllers */,
+				84C4208C2A37505E00727691 /* Controllers */,
 				84AE2F702A35F34B006E87F1 /* Model */,
 				84AE2F742A35F384006E87F1 /* Resources */,
 				84AE2F722A35F35E006E87F1 /* Services */,
@@ -79,6 +83,7 @@
 		84AE2F702A35F34B006E87F1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				84C4209F2A37509D00727691 /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -86,24 +91,9 @@
 		84AE2F722A35F35E006E87F1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				84C420A12A3750B800727691 /* FirebaseManager.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		84AE2F732A35F375006E87F1 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				84AE2F842A35F909006E87F1 /* CustomVC */,
-				84AE2F852A35F923006E87F1 /* PlayVC */,
-				84AE2F832A35F900006E87F1 /* OnboardingVC */,
-				84AE2F822A35F8F6006E87F1 /* AccountVC */,
-				84AE2F812A35F8ED006E87F1 /* FavoritesVC */,
-				84AE2F802A35F8E2006E87F1 /* ExploreVC */,
-				84AE2F7F2A35F8CD006E87F1 /* HomeVC */,
-				84AE2F782A35F5B1006E87F1 /* TabBar */,
-			);
-			name = Controllers;
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		84AE2F742A35F384006E87F1 /* Resources */ = {
@@ -126,65 +116,81 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		84AE2F782A35F5B1006E87F1 /* TabBar */ = {
+		84C4208C2A37505E00727691 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				84AE2F792A35F5C0006E87F1 /* TabBarController.swift */,
+				84C4208D2A37505E00727691 /* HomeVC */,
+				84C4208F2A37505E00727691 /* FavoritesVC */,
+				84C420912A37505E00727691 /* ExploreVC */,
+				84C420932A37505E00727691 /* TabBar */,
+				84C420952A37505E00727691 /* OnboardingVC */,
+				84C420962A37505E00727691 /* AccountVC */,
+				84C420982A37505E00727691 /* PlayVC */,
+				84C420992A37505E00727691 /* CustomVC */,
 			);
-			path = TabBar;
-			sourceTree = "<group>";
+			name = Controllers;
+			path = MyMusicApp/Controllers;
+			sourceTree = SOURCE_ROOT;
 		};
-		84AE2F7F2A35F8CD006E87F1 /* HomeVC */ = {
+		84C4208D2A37505E00727691 /* HomeVC */ = {
 			isa = PBXGroup;
 			children = (
-				84AE2F882A35F996006E87F1 /* HomeViewController.swift */,
+				84C4208E2A37505E00727691 /* HomeViewController.swift */,
 			);
 			path = HomeVC;
 			sourceTree = "<group>";
 		};
-		84AE2F802A35F8E2006E87F1 /* ExploreVC */ = {
+		84C4208F2A37505E00727691 /* FavoritesVC */ = {
 			isa = PBXGroup;
 			children = (
-				84AE2F8A2A35F9F1006E87F1 /* ExploreViewController.swift */,
-			);
-			path = ExploreVC;
-			sourceTree = "<group>";
-		};
-		84AE2F812A35F8ED006E87F1 /* FavoritesVC */ = {
-			isa = PBXGroup;
-			children = (
-				84AE2F8C2A35FA4A006E87F1 /* FavoritesViewController.swift */,
+				84C420902A37505E00727691 /* FavoritesViewController.swift */,
 			);
 			path = FavoritesVC;
 			sourceTree = "<group>";
 		};
-		84AE2F822A35F8F6006E87F1 /* AccountVC */ = {
+		84C420912A37505E00727691 /* ExploreVC */ = {
 			isa = PBXGroup;
 			children = (
-				84AE2F8E2A35FA55006E87F1 /* AccountViewController.swift */,
+				84C420922A37505E00727691 /* ExploreViewController.swift */,
 			);
-			path = AccountVC;
+			path = ExploreVC;
 			sourceTree = "<group>";
 		};
-		84AE2F832A35F900006E87F1 /* OnboardingVC */ = {
+		84C420932A37505E00727691 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				84C420942A37505E00727691 /* TabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		84C420952A37505E00727691 /* OnboardingVC */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = OnboardingVC;
 			sourceTree = "<group>";
 		};
-		84AE2F842A35F909006E87F1 /* CustomVC */ = {
+		84C420962A37505E00727691 /* AccountVC */ = {
 			isa = PBXGroup;
 			children = (
+				84C420972A37505E00727691 /* AccountViewController.swift */,
 			);
-			path = CustomVC;
+			path = AccountVC;
 			sourceTree = "<group>";
 		};
-		84AE2F852A35F923006E87F1 /* PlayVC */ = {
+		84C420982A37505E00727691 /* PlayVC */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = PlayVC;
+			sourceTree = "<group>";
+		};
+		84C420992A37505E00727691 /* CustomVC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,15 +263,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C4209A2A37505E00727691 /* HomeViewController.swift in Sources */,
+				84C4209D2A37505E00727691 /* TabBarController.swift in Sources */,
 				84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */,
-				84AE2F7A2A35F5C0006E87F1 /* TabBarController.swift in Sources */,
-				84AE2F8D2A35FA4A006E87F1 /* FavoritesViewController.swift in Sources */,
 				84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */,
+				84C420A22A3750B800727691 /* FirebaseManager.swift in Sources */,
 				84AE2F7E2A35F687006E87F1 /* Resources.swift in Sources */,
+				84C4209B2A37505E00727691 /* FavoritesViewController.swift in Sources */,
+				84C4209C2A37505E00727691 /* ExploreViewController.swift in Sources */,
 				84AE2F7C2A35F679006E87F1 /* UIColorExtension.swift in Sources */,
-				84AE2F8B2A35F9F1006E87F1 /* ExploreViewController.swift in Sources */,
-				84AE2F892A35F996006E87F1 /* HomeViewController.swift in Sources */,
-				84AE2F8F2A35FA55006E87F1 /* AccountViewController.swift in Sources */,
+				84C420A02A37509D00727691 /* UserModel.swift in Sources */,
+				84C4209E2A37505E00727691 /* AccountViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
