@@ -42,6 +42,14 @@ class SignInUpViewController: CustomViewController<SignInUpView> {
         
     }
    
+    func showAlert(title: String, message: String?) {
+        
+        let alertController = UIAlertController(title: title,
+                                                message: message,
+                                                preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
+        present(alertController, animated: true)
+    }
 }
 
 //MARK: - SignInUpViewDelegate
@@ -52,7 +60,45 @@ extension SignInUpViewController: SignInUpViewDelegate {
     }
     
     func signInUpView(_ view: SignInUpView, didTapauthRequestButton button: UIButton) {
-        print("AuthRequest button tapped")
+        guard let username = customView.userNameTextField.text else { return }
+        guard let email = customView.emailTextField.text else { return }
+        guard let password = customView.passwordTextField.text else { return }
+        
+        if signUp {
+            if !username.isEmpty && !email.isEmpty && !password.isEmpty {
+                FirebaseManager.shared.createAccount(email: email, password: password, username: username) { err in
+                    if err == nil {
+                        //                            let categoriesVC = CategoriesViewController(isFirstEnter: true)
+                        //                            categoriesVC.modalPresentationStyle = .fullScreen
+                        //                            self.present(categoriesVC, animated: true)
+                        print("Registration ok")
+                    } else {
+                        guard let error = err else {return}
+                        let errString = String(error.localizedDescription)
+                        self.showAlert(title: "Ooops...", message: errString)
+                    }
+                }
+            } else {
+                showAlert(title: "Please fill out all fields", message: nil)
+            }
+        } else {
+            if !email.isEmpty && !password.isEmpty {
+                FirebaseManager.shared.signIn(email: email, password: password) { error in
+                    if error == nil {
+//                        let tabBarController = TabBarController()
+//                        tabBarController.modalPresentationStyle = .fullScreen
+//                        self.present(tabBarController, animated: true)
+                        print("Auth ok")
+                    } else {
+                        guard let error = error else {return}
+                        let errString = String(error.localizedDescription)
+                        self.showAlert(title: "Ooops...", message: errString)
+                    }
+                }
+            } else {
+                showAlert(title: "Please fill out all fields", message: nil)
+            }
+        }
     }
     
     func signInUpView(_ view: SignInUpView, didTapGoogleAuthButton button: UIButton) {
