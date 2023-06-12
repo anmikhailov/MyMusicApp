@@ -102,7 +102,18 @@ extension SignInUpViewController: SignInUpViewDelegate {
     }
     
     func signInUpView(_ view: SignInUpView, didTapGoogleAuthButton button: UIButton) {
-        print("GoogleAuth button tapped")
+        FirebaseManager.shared.googleAuth(withPresenting: self) { err in
+            if err == nil {
+//                let tabBarController = TabBarController()
+//                tabBarController.modalPresentationStyle = .fullScreen
+//                self.present(tabBarController, animated: true)
+                print("Google auth ok")
+            } else {
+                guard let error = err else {return}
+                let errString = String(error.localizedDescription)
+                self.showAlert(title: "Ooops...", message: errString)
+            }
+        }
     }
     
     func signInUpView(_ view: SignInUpView, didTapCreateAccountButton button: UIButton) {

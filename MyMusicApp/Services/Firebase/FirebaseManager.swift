@@ -75,6 +75,39 @@ final class FirebaseManager {
         }
     }
     
+    func googleAuth(withPresenting: UIViewController, completion: @escaping (Error?) -> ()) {
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        
+        // Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.configuration = config
+        
+        // Start the sign in flow!
+        GIDSignIn.sharedInstance.signIn(withPresenting: withPresenting) { result, error in
+            guard error == nil else { completion(error); return }
+            
+            guard let user = result?.user,
+                  let idToken = user.idToken?.tokenString
+            else { completion(error); return }
+            
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                           accessToken: user.accessToken.tokenString)
+            
+            Auth.auth().signIn(with: credential) { [weak self] result, err in
+                if err == nil {
+                    if let result = result {
+                        self?.userUid = result.user.uid
+                        let info = UserInfo(name: result.user.displayName, email: result.user.email)
+                        self?.saveInUserDefaults(userInfo: info)
+                        completion(nil)
+                    }
+                } else {
+                    completion(err)
+                }
+            }
+        }
+    }
+    
     func resetPassword(email: String,
                        completion: @escaping (Error?) -> ()) {
         Auth.auth().sendPasswordReset(withEmail: email) {error in
