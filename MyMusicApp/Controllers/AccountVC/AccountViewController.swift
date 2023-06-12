@@ -15,6 +15,7 @@ class AccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SetBacgroundColors()
+        setProfileLabel()
 
     }
     
@@ -23,8 +24,25 @@ class AccountViewController: UIViewController {
     }
     
     func setProfileLabel(){
+        view.addSubview(accountLabel)
         accountLabel.text = "Account"
+        accountLabel.font = setFont(nameFont: "Roboto-Bold", sizeFont: 48)
+        accountLabel.textColor = .white
         
+        accountLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(64) // Отступ от верха на 64 пункта
+            make.left.equalToSuperview().offset(24)
+        }
+    }
+    
+    func setFont(nameFont:String, sizeFont:CGFloat) -> UIFont {
+        if let customFont = UIFont(name: nameFont, size: sizeFont){
+            return customFont
+        }
+        else{
+            print("Eror Font")
+            return UIFont.systemFont(ofSize: sizeFont, weight: .bold)
+        }
     }
     
 }
@@ -40,9 +58,9 @@ struct AccountViewControllerRepresentable: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewControllerType {
         AccountViewController(nibName: nil, bundle: nil)
     }
-    
+
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        
+
     }
 }
 
