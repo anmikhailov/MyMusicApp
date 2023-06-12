@@ -40,6 +40,10 @@ enum Resources {
             static var showPassword = UIImage(named: "eye-17.svg")
             static var googleIcon = UIImage(named: "google-plus.svg")
         }
+        
+        enum Common {
+            static var back = UIImage(systemName: "arrowshape.backward.fill")
+        }
     }
     
     enum Images {

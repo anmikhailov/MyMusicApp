@@ -31,6 +31,8 @@
 		84C420BF2A3795B600727691 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 84C420BE2A3795B600727691 /* GoogleSignInSwift */; };
 		84C420C12A37979E00727691 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 84C420C02A37979E00727691 /* FirebaseDatabaseSwift */; };
 		84C420C32A379AB800727691 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420C22A379AB800727691 /* UserInfo.swift */; };
+		84C420C52A37AAB000727691 /* ForgetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420C42A37AAB000727691 /* ForgetPasswordView.swift */; };
+		84C420C72A37AAC500727691 /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420C62A37AAC500727691 /* ForgetPasswordViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,8 @@
 		84C420AA2A37570400727691 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		84C420B22A37911000727691 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84C420C22A379AB800727691 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		84C420C42A37AAB000727691 /* ForgetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordView.swift; sourceTree = "<group>"; };
+		84C420C62A37AAC500727691 /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +229,8 @@
 			children = (
 				84C420A42A3756B700727691 /* SignInUpViewController.swift */,
 				84C420A62A3756CC00727691 /* SignInUpView.swift */,
+				84C420C42A37AAB000727691 /* ForgetPasswordView.swift */,
+				84C420C62A37AAC500727691 /* ForgetPasswordViewController.swift */,
 			);
 			path = AuthorizationVC;
 			sourceTree = "<group>";
@@ -331,6 +337,7 @@
 				84C4209A2A37505E00727691 /* HomeViewController.swift in Sources */,
 				84C420A92A3756FA00727691 /* CustomViewController.swift in Sources */,
 				84C4209D2A37505E00727691 /* TabBarController.swift in Sources */,
+				84C420C72A37AAC500727691 /* ForgetPasswordViewController.swift in Sources */,
 				84C420C32A379AB800727691 /* UserInfo.swift in Sources */,
 				84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */,
 				84C420A52A3756B700727691 /* SignInUpViewController.swift in Sources */,
@@ -341,6 +348,7 @@
 				84C4209C2A37505E00727691 /* ExploreViewController.swift in Sources */,
 				84AE2F7C2A35F679006E87F1 /* UIColorExtension.swift in Sources */,
 				84C420A02A37509D00727691 /* UserModel.swift in Sources */,
+				84C420C52A37AAB000727691 /* ForgetPasswordView.swift in Sources */,
 				84C4209E2A37505E00727691 /* AccountViewController.swift in Sources */,
 				84C420A72A3756CC00727691 /* SignInUpView.swift in Sources */,
 			);

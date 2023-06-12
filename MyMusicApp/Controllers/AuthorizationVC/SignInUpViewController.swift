@@ -56,7 +56,9 @@ class SignInUpViewController: CustomViewController<SignInUpView> {
 extension SignInUpViewController: SignInUpViewDelegate {
    
     func signInUpView(_ view: SignInUpView, didTapForgotPasswordButton button: UIButton) {
-        print("Forgot password button tapped")
+        let forgetPasswordVC = ForgetPasswordViewController()
+        forgetPasswordVC.modalPresentationStyle = .fullScreen
+        self.present(forgetPasswordVC, animated: true)
     }
     
     func signInUpView(_ view: SignInUpView, didTapauthRequestButton button: UIButton) {
