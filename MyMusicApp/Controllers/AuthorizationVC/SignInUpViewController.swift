@@ -85,9 +85,9 @@ extension SignInUpViewController: SignInUpViewDelegate {
             if !email.isEmpty && !password.isEmpty {
                 FirebaseManager.shared.signIn(email: email, password: password) { error in
                     if error == nil {
-//                        let tabBarController = TabBarController()
-//                        tabBarController.modalPresentationStyle = .fullScreen
-//                        self.present(tabBarController, animated: true)
+                        let tabBarController = TabBarController()
+                        tabBarController.modalPresentationStyle = .fullScreen
+                        self.present(tabBarController, animated: true)
                         print("Auth ok")
                     } else {
                         guard let error = error else {return}
@@ -104,9 +104,9 @@ extension SignInUpViewController: SignInUpViewDelegate {
     func signInUpView(_ view: SignInUpView, didTapGoogleAuthButton button: UIButton) {
         FirebaseManager.shared.googleAuth(withPresenting: self) { err in
             if err == nil {
-//                let tabBarController = TabBarController()
-//                tabBarController.modalPresentationStyle = .fullScreen
-//                self.present(tabBarController, animated: true)
+                let tabBarController = TabBarController()
+                tabBarController.modalPresentationStyle = .fullScreen
+                self.present(tabBarController, animated: true)
                 print("Google auth ok")
             } else {
                 guard let error = err else {return}
