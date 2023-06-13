@@ -33,7 +33,15 @@ extension ChangePasswordViewController: ChangePasswordViewDelegate {
         if !password.isEmpty && !repeatPassword.isEmpty {
             if password == repeatPassword {
                 print("Change Password ...")
-                // Firebase method
+                FirebaseManager.shared.changePassword(password: password) { error in
+                    if error == nil {
+                        print("Password changed successfully")
+                    } else {
+                        guard let error = error else {return}
+                        let errString = String(error.localizedDescription)
+                        self.showAlert(title: "Ooops...", message: errString)
+                    }
+                }
             }
         } else {
             showAlert(title: "Please fill all fields", message: nil)

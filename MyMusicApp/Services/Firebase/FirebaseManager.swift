@@ -115,6 +115,13 @@ final class FirebaseManager {
         }
     }
     
+    func changePassword(password: String,
+                        completion: @escaping (Error?) -> ()) {
+        Auth.auth().currentUser?.updatePassword(to: password) { error in
+            completion(error)
+        }
+    }
+    
     func signOut(completion: @escaping () -> ()) {
         do {
             try Auth.auth().signOut()
