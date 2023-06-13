@@ -12,14 +12,8 @@ class AccountViewController: UIViewController {
     
     var accountLabel = UILabel()
     var setingsButton = UIButton(type: .system)
-    var profileImageView: UIImageView {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 40
-        imageView.image = UIImage(systemName: "person") // фотография по умолчанию
-        return imageView
-    }
+    var profileImageView: UIImageView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,8 +53,15 @@ class AccountViewController: UIViewController {
     }
     
     func setProfileImage(){
-        view.addSubview(profileImageView)
+        profileImageView = UIImageView()
+        profileImageView.contentMode = .scaleAspectFill
+        profileImageView.clipsToBounds = true
+//        profileImageView.layer.borderWidth = 2
+//        profileImageView.layer.borderColor = UIColor.white.cgColor
+        profileImageView.image = UIImage(systemName: "person")
+        profileImageView.tintColor = .white
         
+        view.addSubview(profileImageView)
         profileImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(137)
             make.left.equalToSuperview().offset(24)
