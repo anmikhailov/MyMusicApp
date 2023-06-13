@@ -173,9 +173,9 @@ class SignInUpView: CustomView {
         return element
     }()
     
-    private lazy var googleAuthButton: GIDSignInButton = {
-        let element = GIDSignInButton()
-        element.style = .iconOnly
+    private lazy var googleAuthButton: UIButton = {
+        let element = UIButton()
+        element.setBackgroundImage(Resources.Icons.SignInUp.googleIcon, for: .normal)
         element.translatesAutoresizingMaskIntoConstraints = false
         element.addTarget(self, action: #selector(didTapGoogleAuthButton(_:)), for: .touchUpInside)
         return element
