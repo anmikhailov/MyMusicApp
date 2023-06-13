@@ -42,6 +42,7 @@
 		84D78D7D2A37A9F300D3B464 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84D78D762A37A9F300D3B464 /* Roboto-Regular.ttf */; };
 		84D78D7E2A37A9F300D3B464 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84D78D772A37A9F300D3B464 /* Montserrat-Medium.ttf */; };
 		84D78D7F2A37A9F300D3B464 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84D78D782A37A9F300D3B464 /* Roboto-Medium.ttf */; };
+		84F026962A38F51E001DCEFE /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 84F026952A38F51E001DCEFE /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +88,7 @@
 				84C420C12A37979E00727691 /* FirebaseDatabaseSwift in Frameworks */,
 				84C420BD2A3795B600727691 /* GoogleSignIn in Frameworks */,
 				84C420B62A37920B00727691 /* FirebaseDatabase in Frameworks */,
+				84F026962A38F51E001DCEFE /* SnapKit in Frameworks */,
 				84C420B12A378BCE00727691 /* FirebaseAuth in Frameworks */,
 				84C420BF2A3795B600727691 /* GoogleSignInSwift in Frameworks */,
 			);
@@ -243,7 +245,6 @@
 			path = CustomVC;
 			sourceTree = "<group>";
 		};
-
 		84C420A32A37567700727691 /* AuthorizationVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +310,7 @@
 				84C420BC2A3795B600727691 /* GoogleSignIn */,
 				84C420BE2A3795B600727691 /* GoogleSignInSwift */,
 				84C420C02A37979E00727691 /* FirebaseDatabaseSwift */,
+				84F026952A38F51E001DCEFE /* SnapKit */,
 			);
 			productName = MyMusicApp;
 			productReference = 84AE2F592A35F2C7006E87F1 /* MyMusicApp.app */;
@@ -341,6 +343,7 @@
 			packageReferences = (
 				84C420AF2A378BCE00727691 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				84C420BB2A37952900727691 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				84F026942A38F51E001DCEFE /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 84AE2F5A2A35F2C7006E87F1 /* Products */;
 			projectDirPath = "";
@@ -629,6 +632,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		84F026942A38F51E001DCEFE /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = exactVersion;
+				version = 5.6.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -656,6 +667,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 84C420AF2A378BCE00727691 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabaseSwift;
+		};
+		84F026952A38F51E001DCEFE /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84F026942A38F51E001DCEFE /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
