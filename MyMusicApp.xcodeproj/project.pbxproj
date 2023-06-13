@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32C0A3A82A3848E400CEF61C /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C0A3A72A3848E400CEF61C /* PlayViewController.swift */; };
 		84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */; };
 		84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */; };
 		84AE2F662A35F2CA006E87F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AE2F652A35F2CA006E87F1 /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32C0A3A72A3848E400CEF61C /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = SOURCE_ROOT; };
 		84AE2F592A35F2C7006E87F1 /* MyMusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 		84C420982A37505E00727691 /* PlayVC */ = {
 			isa = PBXGroup;
 			children = (
+				32C0A3A72A3848E400CEF61C /* PlayViewController.swift */,
 			);
 			path = PlayVC;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				84C4209D2A37505E00727691 /* TabBarController.swift in Sources */,
 				84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */,
 				84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */,
+				32C0A3A82A3848E400CEF61C /* PlayViewController.swift in Sources */,
 				84C420A22A3750B800727691 /* FirebaseManager.swift in Sources */,
 				84AE2F7E2A35F687006E87F1 /* Resources.swift in Sources */,
 				84C4209B2A37505E00727691 /* FavoritesViewController.swift in Sources */,
@@ -448,7 +452,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M4F6PT832U;
+				DEVELOPMENT_TEAM = MU6RTL5NN9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyMusicApp/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -461,7 +465,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.anmik.MyMusicApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anmik1.MyMusicApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -479,7 +483,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M4F6PT832U;
+				DEVELOPMENT_TEAM = MU6RTL5NN9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyMusicApp/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -492,7 +496,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.anmik.MyMusicApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anmik1.MyMusicApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
