@@ -10,15 +10,18 @@ import SnapKit
 
 class AccountUIButton: UIButton {
     
-    let buttonImageView = UIImageView()
+    let buttonAfteTextImageView = UIImageView()
+    let buttonBeforTextImageView = UIImageView()
     let nameBattonLabel = UILabel()
     
-    init (labelText: String, image: UIImage?) {
+    init (labelText: String, imageAfterText: UIImage?, imageBeforeText:UIImage?) {
         super.init(frame: .zero)
         self.nameBattonLabel.text = labelText
         self.nameBattonLabel.textColor = .white
-        self.buttonImageView.image = image
-        self.buttonImageView.tintColor = .white
+        self.buttonAfteTextImageView.image = imageAfterText
+        self.buttonAfteTextImageView.tintColor = .white
+        self.buttonBeforTextImageView.image = imageBeforeText
+        self.buttonBeforTextImageView.tintColor = .white
         setupViews()
         addSubviewsToButton()
     }
@@ -35,7 +38,8 @@ class AccountUIButton: UIButton {
     private func setupButton() {
         self.layer.cornerRadius = 12
         self.backgroundColor = Resources.Colors.TabBarColors.background
-        buttonImageView.contentMode = .scaleAspectFit
+        buttonAfteTextImageView.contentMode = .scaleAspectFit
+        buttonBeforTextImageView.contentMode = .scaleAspectFit
     }
     
     private func setupLabel() {
@@ -45,22 +49,30 @@ class AccountUIButton: UIButton {
     //MARK: - Layout
     
     private func addSubviewsToButton() {
-        let views: [UIView] = [buttonImageView, nameBattonLabel]
+        let views: [UIView] = [buttonAfteTextImageView, buttonBeforTextImageView, nameBattonLabel]
         views.forEach { self.addSubview($0) }
         makeConstraints()
     }
     
     private func makeConstraints() {
-        buttonImageView.snp.makeConstraints { make in
+        buttonAfteTextImageView.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview().inset(18)
             make.trailing.equalToSuperview().inset(14)
             make.width.equalTo(20)
             make.height.equalTo(12)
         }
+        
+        buttonBeforTextImageView.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview().inset(18)
+            make.leading.equalToSuperview().inset(14)
+            make.width.equalTo(20)
+            make.height.equalTo(20)
+        }
+        
         nameBattonLabel.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(16)
-            make.leading.equalToSuperview().inset(16)
-            make.trailing.equalTo(buttonImageView.snp.leading).offset(-8)
+            make.leading.equalToSuperview().inset(68)
+            make.trailing.equalTo(buttonAfteTextImageView.snp.leading).offset(-8)
             make.width.height.equalTo(24)
         }
     }

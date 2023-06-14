@@ -14,7 +14,8 @@ class AccountViewController: UIViewController {
     var libraryLabel = UILabel()
     var setingsButton = UIButton(type: .system)
     var profileImageView: UIImageView!
-    let myPlayListButton = AccountUIButton(labelText: "My playlist", image: UIImage(systemName: "chevron.right"))
+    let myPlayListButton = AccountUIButton(labelText: "My playlist", imageAfterText: UIImage(systemName: "chevron.right"), imageBeforeText: UIImage(systemName: "music.note"))
+    let notificationButton = AccountUIButton(labelText: "Notification", imageAfterText: nil, imageBeforeText: UIImage(systemName: "bell"))
     
 
     override func viewDidLoad() {
@@ -25,6 +26,7 @@ class AccountViewController: UIViewController {
         setProfileImage()
         setLibraryLabel()
         setMyPlatListButton()
+        setNotification()
 
     }
     
@@ -95,6 +97,17 @@ class AccountViewController: UIViewController {
         myPlayListButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(300)
+            make.height.equalTo(56)
+            
+        }
+    }
+    
+    func setNotification(){
+        view.addSubview(notificationButton)
+        
+        notificationButton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(350)
             make.height.equalTo(56)
             
         }
