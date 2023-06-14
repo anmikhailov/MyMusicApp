@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		043700E52A385D8F004603C5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043700E42A385D8F004603C5 /* HomeView.swift */; };
+		043700E82A388873004603C5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 043700E72A388873004603C5 /* SnapKit */; };
+		043700EC2A38AF81004603C5 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043700EB2A38AF81004603C5 /* Section.swift */; };
+		043700EF2A38B10E004603C5 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043700EE2A38B10E004603C5 /* CollectionView.swift */; };
+		043700F22A39BB88004603C5 /* NewSongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043700F12A39BB88004603C5 /* NewSongCell.swift */; };
+		043700F52A39BE97004603C5 /* PopularAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043700F42A39BE97004603C5 /* PopularAlbumCell.swift */; };
+		043700F72A39BEAA004603C5 /* RecentlyMusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043700F62A39BEAA004603C5 /* RecentlyMusicCell.swift */; };
 		84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */; };
 		84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */; };
 		84AE2F662A35F2CA006E87F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AE2F652A35F2CA006E87F1 /* Assets.xcassets */; };
@@ -30,6 +37,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		043700E42A385D8F004603C5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		043700EB2A38AF81004603C5 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		043700EE2A38B10E004603C5 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		043700F12A39BB88004603C5 /* NewSongCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSongCell.swift; sourceTree = "<group>"; };
+		043700F42A39BE97004603C5 /* PopularAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularAlbumCell.swift; sourceTree = "<group>"; };
+		043700F62A39BEAA004603C5 /* RecentlyMusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyMusicCell.swift; sourceTree = "<group>"; };
 		84AE2F592A35F2C7006E87F1 /* MyMusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,12 +72,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				043700E82A388873004603C5 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		043700ED2A38B0DE004603C5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				043700EB2A38AF81004603C5 /* Section.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		043700F02A39A62D004603C5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				043700EE2A38B10E004603C5 /* CollectionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		043700F32A39BB8C004603C5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				043700F12A39BB88004603C5 /* NewSongCell.swift */,
+				043700F42A39BE97004603C5 /* PopularAlbumCell.swift */,
+				043700F62A39BEAA004603C5 /* RecentlyMusicCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		84AE2F502A35F2C7006E87F1 = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +191,10 @@
 			isa = PBXGroup;
 			children = (
 				84C4208E2A37505E00727691 /* HomeViewController.swift */,
+				043700E42A385D8F004603C5 /* HomeView.swift */,
+				043700F32A39BB8C004603C5 /* Cells */,
+				043700F02A39A62D004603C5 /* View */,
+				043700ED2A38B0DE004603C5 /* Model */,
 			);
 			path = HomeVC;
 			sourceTree = "<group>";
@@ -238,6 +282,9 @@
 			dependencies = (
 			);
 			name = MyMusicApp;
+			packageProductDependencies = (
+				043700E72A388873004603C5 /* SnapKit */,
+			);
 			productName = MyMusicApp;
 			productReference = 84AE2F592A35F2C7006E87F1 /* MyMusicApp.app */;
 			productType = "com.apple.product-type.application";
@@ -266,6 +313,9 @@
 				Base,
 			);
 			mainGroup = 84AE2F502A35F2C7006E87F1;
+			packageReferences = (
+				043700E62A388873004603C5 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 84AE2F5A2A35F2C7006E87F1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -299,15 +349,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				043700F22A39BB88004603C5 /* NewSongCell.swift in Sources */,
 				84C4209A2A37505E00727691 /* HomeViewController.swift in Sources */,
 				84C4209D2A37505E00727691 /* TabBarController.swift in Sources */,
+				043700EF2A38B10E004603C5 /* CollectionView.swift in Sources */,
 				84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */,
+				043700F52A39BE97004603C5 /* PopularAlbumCell.swift in Sources */,
 				84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */,
 				84C420A22A3750B800727691 /* FirebaseManager.swift in Sources */,
 				84AE2F7E2A35F687006E87F1 /* Resources.swift in Sources */,
 				84C4209B2A37505E00727691 /* FavoritesViewController.swift in Sources */,
+				043700F72A39BEAA004603C5 /* RecentlyMusicCell.swift in Sources */,
+				043700EC2A38AF81004603C5 /* Section.swift in Sources */,
 				84C4209C2A37505E00727691 /* ExploreViewController.swift in Sources */,
 				84AE2F7C2A35F679006E87F1 /* UIColorExtension.swift in Sources */,
+				043700E52A385D8F004603C5 /* HomeView.swift in Sources */,
 				84C420A02A37509D00727691 /* UserModel.swift in Sources */,
 				84C4209E2A37505E00727691 /* AccountViewController.swift in Sources */,
 			);
@@ -525,6 +581,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		043700E62A388873004603C5 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		043700E72A388873004603C5 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 043700E62A388873004603C5 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 84AE2F512A35F2C7006E87F1 /* Project object */;
 }
