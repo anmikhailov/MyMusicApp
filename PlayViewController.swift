@@ -146,12 +146,73 @@ class PlayViewController: UIViewController {
         
         return label
     }()
+    // MARK: - shuffleButton
+    private lazy var shuffleButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "shuffle"), for: .normal)
+        button.addTarget(self, action: #selector(shuffleButtonTapped), for: .touchUpInside)
+        button.tintColor = .white
+        
+        return button
+    }()
+    // MARK: - previousButton
+    private lazy var previousButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "previous"), for: .normal)
+        button.addTarget(self, action: #selector(previousButtonTapped), for: .touchUpInside)
+        button.tintColor = .white
+        
+        return button
+    }()
+    // MARK: - circleView
+    private lazy var circleView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(named: "green")
+        view.layer.cornerRadius = view.frame.width / 2
+        
+        return view
+    }()
+    // MARK: - playButton
+    private lazy var playButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "play"), for: .normal)
+        button.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
+        
+        return button
+    }()
+    // MARK: - nextButton
+    private lazy var nextButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "next"), for: .normal)
+        button.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
+        button.tintColor = .white
+        
+        return button
+    }()
+    // MARK: - repeatButton
+    private lazy var repeatButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "loop"), for: .normal)
+        button.addTarget(self, action: #selector(repeatButtonTapped), for: .touchUpInside)
+        button.tintColor = .white
+        
+        return button
+    }()
     // MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupViews()
         setConstrains()
+    }
+    override func viewDidLayoutSubviews() {
+        circleView.layer.cornerRadius = circleView.frame.width / 2
     }
     // MARK: - sharedButtonTapped
     @objc private func sharedButtonTapped() {
@@ -177,6 +238,26 @@ class PlayViewController: UIViewController {
     @objc private func songTimeSliderTapped() {
         print("songTimeSliderTapped")
     }
+    // MARK: - shuffleButtonTapped
+    @objc private func shuffleButtonTapped() {
+        print("shuffleButtonTapped")
+    }
+    // MARK: - previousButtonTapped
+    @objc private func previousButtonTapped() {
+        print("previousButtonTapped")
+    }
+    // MARK: - playingButtonTapped
+    @objc private func playButtonTapped() {
+        print("playButtonTapped")
+    }
+    // MARK: - nextButtonTapped
+    @objc private func nextButtonTapped() {
+        print("nextButtonTapped")
+    }
+    // MARK: - repeatButtonTapped
+    @objc private func repeatButtonTapped() {
+        print("repeatButtonTapped")
+    }
     // MARK: - setupViews
     private func setupViews() {
         view.backgroundColor = .black
@@ -196,7 +277,15 @@ class PlayViewController: UIViewController {
         view.addSubview(songTimeSlider)
         view.addSubview(songStartLabel)
         view.addSubview(songEndLabel)
-                
+        view.addSubview(shuffleButton)
+        view.addSubview(previousButton)
+        view.addSubview(circleView)
+        
+        circleView.addSubview(playButton)
+        
+        view.addSubview(nextButton)
+        view.addSubview(repeatButton)
+                    
     }
     // MARK: - setConstrains
     private func setConstrains() {
@@ -228,7 +317,7 @@ class PlayViewController: UIViewController {
         NSLayoutConstraint.activate([
             songTimeSlider.topAnchor.constraint(equalTo: mainStackView.bottomAnchor, constant: 46),
             songTimeSlider.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 23),
-            songTimeSlider.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -23)
+            songTimeSlider.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -23),
         ])
         NSLayoutConstraint.activate([
             songStartLabel.topAnchor.constraint(equalTo: songTimeSlider.bottomAnchor, constant: 13),
@@ -238,6 +327,31 @@ class PlayViewController: UIViewController {
             songEndLabel.topAnchor.constraint(equalTo: songTimeSlider.bottomAnchor, constant: 13),
             songEndLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -23)
         ])
-
+        NSLayoutConstraint.activate([
+            shuffleButton.topAnchor.constraint(equalTo: songStartLabel.bottomAnchor, constant: 47),
+            shuffleButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24)
+        ])
+        NSLayoutConstraint.activate([
+            previousButton.topAnchor.constraint(equalTo: songStartLabel.bottomAnchor, constant: 47),
+            previousButton.leadingAnchor.constraint(equalTo: shuffleButton.trailingAnchor, constant: 50)
+        ])
+        NSLayoutConstraint.activate([
+            circleView.topAnchor.constraint(equalTo: songStartLabel.bottomAnchor, constant: 22),
+            circleView.leadingAnchor.constraint(equalTo: previousButton.trailingAnchor, constant: 45),
+            circleView.widthAnchor.constraint(equalToConstant: 73),
+            circleView.heightAnchor.constraint(equalToConstant: 73),
+        ])
+        NSLayoutConstraint.activate([
+            playButton.topAnchor.constraint(equalTo: circleView.topAnchor, constant: 20),
+            playButton.leadingAnchor.constraint(equalTo: circleView.leadingAnchor, constant: 22),
+        ])
+        NSLayoutConstraint.activate([
+            nextButton.topAnchor.constraint(equalTo: songStartLabel.bottomAnchor, constant: 46),
+            nextButton.leadingAnchor.constraint(equalTo: circleView.trailingAnchor, constant: 39)
+        ])
+        NSLayoutConstraint.activate([
+            repeatButton.topAnchor.constraint(equalTo: songStartLabel.bottomAnchor, constant: 47),
+            repeatButton.leadingAnchor.constraint(equalTo: nextButton.trailingAnchor, constant: 46)
+        ])
     }
 }

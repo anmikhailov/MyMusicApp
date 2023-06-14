@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		324894552A39D1770031A7AD /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324894542A39D1770031A7AD /* AlbumViewController.swift */; };
+		324894582A39E3960031A7AD /* SongCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324894572A39E3960031A7AD /* SongCollectionViewCell.swift */; };
 		32C0A3A82A3848E400CEF61C /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C0A3A72A3848E400CEF61C /* PlayViewController.swift */; };
 		84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */; };
 		84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */; };
@@ -31,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		324894542A39D1770031A7AD /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = SOURCE_ROOT; };
+		324894572A39E3960031A7AD /* SongCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCollectionViewCell.swift; sourceTree = "<group>"; };
 		32C0A3A72A3848E400CEF61C /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = SOURCE_ROOT; };
 		84AE2F592A35F2C7006E87F1 /* MyMusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +71,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		324894562A39E34F0031A7AD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				324894572A39E3960031A7AD /* SongCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		84AE2F502A35F2C7006E87F1 = {
 			isa = PBXGroup;
 			children = (
@@ -199,7 +211,9 @@
 		84C420982A37505E00727691 /* PlayVC */ = {
 			isa = PBXGroup;
 			children = (
+				324894562A39E34F0031A7AD /* Cell */,
 				32C0A3A72A3848E400CEF61C /* PlayViewController.swift */,
+				324894542A39D1770031A7AD /* AlbumViewController.swift */,
 			);
 			path = PlayVC;
 			sourceTree = "<group>";
@@ -304,8 +318,10 @@
 			files = (
 				84C4209A2A37505E00727691 /* HomeViewController.swift in Sources */,
 				84C4209D2A37505E00727691 /* TabBarController.swift in Sources */,
+				324894552A39D1770031A7AD /* AlbumViewController.swift in Sources */,
 				84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */,
 				84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */,
+				324894582A39E3960031A7AD /* SongCollectionViewCell.swift in Sources */,
 				32C0A3A82A3848E400CEF61C /* PlayViewController.swift in Sources */,
 				84C420A22A3750B800727691 /* FirebaseManager.swift in Sources */,
 				84AE2F7E2A35F687006E87F1 /* Resources.swift in Sources */,
