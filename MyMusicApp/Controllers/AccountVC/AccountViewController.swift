@@ -11,8 +11,10 @@ import SnapKit
 class AccountViewController: UIViewController {
     
     var accountLabel = UILabel()
+    var libraryLabel = UILabel()
     var setingsButton = UIButton(type: .system)
     var profileImageView: UIImageView!
+    let myPlayListButton = AccountUIButton(labelText: "My playlist", image: UIImage(systemName: "chevron.right"))
     
 
     override func viewDidLoad() {
@@ -21,8 +23,11 @@ class AccountViewController: UIViewController {
         setProfileLabel()
         setSetingsButton()
         setProfileImage()
+        setLibraryLabel()
+        setMyPlatListButton()
 
     }
+    
     
     func SetBacgroundColors(){
         view.backgroundColor = Resources.Colors.TabBarColors.background
@@ -69,6 +74,30 @@ class AccountViewController: UIViewController {
             make.height.equalTo(80)
         }
         
+    }
+    
+    func setLibraryLabel(){
+        view.addSubview(libraryLabel)
+        
+        libraryLabel.text = "Library"
+        libraryLabel.font = setFont(nameFont: "Roboto-Medium", sizeFont: 22)
+        libraryLabel.textColor = .white
+        
+        libraryLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(268)
+            make.left.equalToSuperview().offset(24)
+        }
+    }
+    
+    func setMyPlatListButton(){
+        view.addSubview(myPlayListButton)
+        
+        myPlayListButton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(300)
+            make.height.equalTo(56)
+            
+        }
     }
     
     func setFont(nameFont:String, sizeFont:CGFloat) -> UIFont {

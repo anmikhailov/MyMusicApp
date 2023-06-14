@@ -27,6 +27,8 @@
 		84D78D7D2A37A9F300D3B464 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84D78D762A37A9F300D3B464 /* Roboto-Regular.ttf */; };
 		84D78D7E2A37A9F300D3B464 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84D78D772A37A9F300D3B464 /* Montserrat-Medium.ttf */; };
 		84D78D7F2A37A9F300D3B464 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84D78D782A37A9F300D3B464 /* Roboto-Medium.ttf */; };
+		84D78D812A38C7DA00D3B464 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 84D78D602A37916000D3B464 /* SnapKit */; };
+		84D78D832A38F35600D3B464 /* AccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D78D822A38F35600D3B464 /* AccountButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,7 @@
 		84D78D762A37A9F300D3B464 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		84D78D772A37A9F300D3B464 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		84D78D782A37A9F300D3B464 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		84D78D822A38F35600D3B464 /* AccountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84D78D612A37916000D3B464 /* SnapKit in Frameworks */,
+				84D78D812A38C7DA00D3B464 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				84C420972A37505E00727691 /* AccountViewController.swift */,
+				84D78D822A38F35600D3B464 /* AccountButton.swift */,
 			);
 			path = AccountVC;
 			sourceTree = "<group>";
@@ -317,6 +321,7 @@
 				84AE2F7C2A35F679006E87F1 /* UIColorExtension.swift in Sources */,
 				84C420A02A37509D00727691 /* UserModel.swift in Sources */,
 				84C4209E2A37505E00727691 /* AccountViewController.swift in Sources */,
+				84D78D832A38F35600D3B464 /* AccountButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
