@@ -36,7 +36,6 @@ class AccountUIButton: UIButton {
     }
     
     private func setupButton() {
-        self.layer.cornerRadius = 12
         self.backgroundColor = Resources.Colors.TabBarColors.background
         buttonAfteTextImageView.contentMode = .scaleAspectFit
         buttonBeforTextImageView.contentMode = .scaleAspectFit

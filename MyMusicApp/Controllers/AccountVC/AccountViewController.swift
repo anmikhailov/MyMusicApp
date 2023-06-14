@@ -16,6 +16,8 @@ class AccountViewController: UIViewController {
     var profileImageView: UIImageView!
     let myPlayListButton = AccountUIButton(labelText: "My playlist", imageAfterText: UIImage(systemName: "chevron.right"), imageBeforeText: UIImage(systemName: "music.note"))
     let notificationButton = AccountUIButton(labelText: "Notification", imageAfterText: nil, imageBeforeText: UIImage(systemName: "bell"))
+    let downloadButton = AccountUIButton(labelText: "Download", imageAfterText: UIImage(systemName: "chevron.right"), imageBeforeText: UIImage(systemName: "square.and.arrow.down"))
+    let singOutButton = UIButton(type: .system)
     
 
     override func viewDidLoad() {
@@ -26,7 +28,9 @@ class AccountViewController: UIViewController {
         setProfileImage()
         setLibraryLabel()
         setMyPlatListButton()
-        setNotification()
+        setNotificationButton()
+        setDownloadButton()
+        setSignOutButton()
 
     }
     
@@ -102,7 +106,7 @@ class AccountViewController: UIViewController {
         }
     }
     
-    func setNotification(){
+    func setNotificationButton(){
         view.addSubview(notificationButton)
         
         notificationButton.snp.makeConstraints { make in
@@ -113,13 +117,42 @@ class AccountViewController: UIViewController {
         }
     }
     
+    func setDownloadButton(){
+        view.addSubview(downloadButton)
+        
+        downloadButton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(400)
+            make.height.equalTo(56)
+        }
+    }
+    
+    func setSignOutButton(){
+        view.addSubview(singOutButton)
+        singOutButton.backgroundColor = Resources.Colors.TabBarColors.background
+        singOutButton.layer.borderColor = Resources.Colors.brand1.cgColor
+        singOutButton.layer.borderWidth = 2.0
+        singOutButton.layer.cornerRadius = 5.0
+                
+        singOutButton.setTitleColor(Resources.Colors.brand1, for: .normal)
+        singOutButton.setTitle("SIGN OUT", for: .normal)
+        singOutButton.titleLabel?.font = setFont(nameFont: "Roboto-Bold", sizeFont: 16)
+                
+        singOutButton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(40)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(38)
+            make.width.equalTo(195)
+            make.height.equalTo(46)
+        }
+    }
+    
     func setFont(nameFont:String, sizeFont:CGFloat) -> UIFont {
         if let customFont = UIFont(name: nameFont, size: sizeFont){
             return customFont
         }
         else{
             print("Eror Font")
-            return UIFont.systemFont(ofSize: sizeFont, weight: .bold)
+            fatalError("Eror Font")
         }
     }
     
