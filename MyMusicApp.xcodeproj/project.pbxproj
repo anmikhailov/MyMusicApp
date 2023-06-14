@@ -35,6 +35,8 @@
 		84C420C72A37AAC500727691 /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420C62A37AAC500727691 /* ForgetPasswordViewController.swift */; };
 		84C420C92A37B2DC00727691 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420C82A37B2DC00727691 /* ChangePasswordView.swift */; };
 		84C420CB2A37B2F800727691 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420CA2A37B2F800727691 /* ChangePasswordViewController.swift */; };
+		84D306462A3A46200068288A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D306452A3A46200068288A /* SearchView.swift */; };
+		84D306482A3A462D0068288A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D306472A3A462D0068288A /* SearchViewController.swift */; };
 		84D78D792A37A9F300D3B464 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84D78D722A37A9F300D3B464 /* Montserrat-Regular.ttf */; };
 		84D78D7A2A37A9F300D3B464 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84D78D732A37A9F300D3B464 /* Roboto-Black.ttf */; };
 		84D78D7B2A37A9F300D3B464 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84D78D742A37A9F300D3B464 /* Roboto-Bold.ttf */; };
@@ -75,6 +77,8 @@
 		84C420C62A37AAC500727691 /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
 		84C420C82A37B2DC00727691 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		84C420CA2A37B2F800727691 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		84D306452A3A46200068288A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		84D306472A3A462D0068288A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		84D78D722A37A9F300D3B464 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		84D78D732A37A9F300D3B464 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		84D78D742A37A9F300D3B464 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -178,6 +182,7 @@
 			children = (
 				84C420A32A37567700727691 /* AuthorizationVC */,
 				84C4208D2A37505E00727691 /* HomeVC */,
+				84D306442A3A46060068288A /* SeachVC */,
 				84C4208F2A37505E00727691 /* FavoritesVC */,
 				84C420912A37505E00727691 /* ExploreVC */,
 				84C420932A37505E00727691 /* TabBar */,
@@ -284,6 +289,15 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84D306442A3A46060068288A /* SeachVC */ = {
+			isa = PBXGroup;
+			children = (
+				84D306452A3A46200068288A /* SearchView.swift */,
+				84D306472A3A462D0068288A /* SearchViewController.swift */,
+			);
+			path = SeachVC;
 			sourceTree = "<group>";
 		};
 		84D78D712A37A99700D3B464 /* Fonts */ = {
@@ -399,6 +413,7 @@
 				A293067B2A3A123200C83C89 /* FourthScreenOnboardingVC.swift in Sources */,
 				84C420C32A379AB800727691 /* UserInfo.swift in Sources */,
 				84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */,
+				84D306482A3A462D0068288A /* SearchViewController.swift in Sources */,
 				84C420A52A3756B700727691 /* SignInUpViewController.swift in Sources */,
 				84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */,
 				A29306772A3A121B00C83C89 /* SecondScreenOnboardingVC.swift in Sources */,
@@ -406,6 +421,7 @@
 				84C420A22A3750B800727691 /* FirebaseManager.swift in Sources */,
 				84AE2F7E2A35F687006E87F1 /* Resources.swift in Sources */,
 				84C4209B2A37505E00727691 /* FavoritesViewController.swift in Sources */,
+				84D306462A3A46200068288A /* SearchView.swift in Sources */,
 				84C4209C2A37505E00727691 /* ExploreViewController.swift in Sources */,
 				84C420CB2A37B2F800727691 /* ChangePasswordViewController.swift in Sources */,
 				84AE2F7C2A35F679006E87F1 /* UIColorExtension.swift in Sources */,
