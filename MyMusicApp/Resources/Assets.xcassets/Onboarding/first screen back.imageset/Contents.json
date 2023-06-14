@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "first screen back.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

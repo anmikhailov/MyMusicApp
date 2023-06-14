@@ -43,6 +43,10 @@
 		84D78D7E2A37A9F300D3B464 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84D78D772A37A9F300D3B464 /* Montserrat-Medium.ttf */; };
 		84D78D7F2A37A9F300D3B464 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84D78D782A37A9F300D3B464 /* Roboto-Medium.ttf */; };
 		84F026962A38F51E001DCEFE /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 84F026952A38F51E001DCEFE /* SnapKit */; };
+		A29306752A3A120F00C83C89 /* FirstScreenOnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29306742A3A120F00C83C89 /* FirstScreenOnboardingVC.swift */; };
+		A29306772A3A121B00C83C89 /* SecondScreenOnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29306762A3A121B00C83C89 /* SecondScreenOnboardingVC.swift */; };
+		A29306792A3A122400C83C89 /* ThirdScreenOnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29306782A3A122400C83C89 /* ThirdScreenOnboardingVC.swift */; };
+		A293067B2A3A123200C83C89 /* FourthScreenOnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293067A2A3A123200C83C89 /* FourthScreenOnboardingVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +82,10 @@
 		84D78D762A37A9F300D3B464 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		84D78D772A37A9F300D3B464 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		84D78D782A37A9F300D3B464 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		A29306742A3A120F00C83C89 /* FirstScreenOnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenOnboardingVC.swift; sourceTree = SOURCE_ROOT; };
+		A29306762A3A121B00C83C89 /* SecondScreenOnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreenOnboardingVC.swift; sourceTree = SOURCE_ROOT; };
+		A29306782A3A122400C83C89 /* ThirdScreenOnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdScreenOnboardingVC.swift; sourceTree = SOURCE_ROOT; };
+		A293067A2A3A123200C83C89 /* FourthScreenOnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthScreenOnboardingVC.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +225,10 @@
 		84C420952A37505E00727691 /* OnboardingVC */ = {
 			isa = PBXGroup;
 			children = (
+				A29306742A3A120F00C83C89 /* FirstScreenOnboardingVC.swift */,
+				A29306762A3A121B00C83C89 /* SecondScreenOnboardingVC.swift */,
+				A29306782A3A122400C83C89 /* ThirdScreenOnboardingVC.swift */,
+				A293067A2A3A123200C83C89 /* FourthScreenOnboardingVC.swift */,
 			);
 			path = OnboardingVC;
 			sourceTree = "<group>";
@@ -384,10 +396,13 @@
 				84C420A92A3756FA00727691 /* CustomViewController.swift in Sources */,
 				84C4209D2A37505E00727691 /* TabBarController.swift in Sources */,
 				84C420C72A37AAC500727691 /* ForgetPasswordViewController.swift in Sources */,
+				A293067B2A3A123200C83C89 /* FourthScreenOnboardingVC.swift in Sources */,
 				84C420C32A379AB800727691 /* UserInfo.swift in Sources */,
 				84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */,
 				84C420A52A3756B700727691 /* SignInUpViewController.swift in Sources */,
 				84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */,
+				A29306772A3A121B00C83C89 /* SecondScreenOnboardingVC.swift in Sources */,
+				A29306792A3A122400C83C89 /* ThirdScreenOnboardingVC.swift in Sources */,
 				84C420A22A3750B800727691 /* FirebaseManager.swift in Sources */,
 				84AE2F7E2A35F687006E87F1 /* Resources.swift in Sources */,
 				84C4209B2A37505E00727691 /* FavoritesViewController.swift in Sources */,
@@ -397,6 +412,7 @@
 				84C420A02A37509D00727691 /* UserModel.swift in Sources */,
 				84C420C52A37AAB000727691 /* ForgetPasswordView.swift in Sources */,
 				84C4209E2A37505E00727691 /* AccountViewController.swift in Sources */,
+				A29306752A3A120F00C83C89 /* FirstScreenOnboardingVC.swift in Sources */,
 				84C420A72A3756CC00727691 /* SignInUpView.swift in Sources */,
 				84C420C92A37B2DC00727691 /* ChangePasswordView.swift in Sources */,
 			);
