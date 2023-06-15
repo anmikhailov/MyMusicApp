@@ -9,7 +9,21 @@ import UIKit
 
 class PlayViewController: UIViewController {
     // MARK: - let/var
-
+    var currentPage = 1
+    // MARK: - pageController
+    private lazy var pageControl: UIPageControl = {
+        let pageControl = UIPageControl()
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        pageControl.pageIndicatorTintColor = .lightGray
+        pageControl.currentPageIndicatorTintColor = .white
+        pageControl.tintColor = .red
+        pageControl.numberOfPages = 2
+        pageControl.currentPage = 0
+        pageControl.isUserInteractionEnabled = false
+        pageControl.addTarget(self, action: #selector(pageControlValueChanged), for: .valueChanged)
+        
+        return pageControl
+    }()
     // MARK: - backButton
     private lazy var backButton: UIButton = {
         let button = UIButton(type: .system)
@@ -258,6 +272,13 @@ class PlayViewController: UIViewController {
     @objc private func repeatButtonTapped() {
         print("repeatButtonTapped")
     }
+    // MARK: - <#Section Heading#>
+    @objc func pageControlValueChanged() {
+        currentPage = pageControl.currentPage
+        
+        let albumVC = AlbumViewController()
+        present(albumVC, animated: true)
+    }
 }
 extension PlayViewController {
     // MARK: - setupViews
@@ -265,6 +286,7 @@ extension PlayViewController {
         view.backgroundColor = .black
                 
         view.addSubview(backButton)
+        view.addSubview(pageControl)
         view.addSubview(albumImageView)
         view.addSubview(songNameLabel)
         view.addSubview(groupNameLabel)
@@ -294,6 +316,10 @@ extension PlayViewController {
         NSLayoutConstraint.activate([
             backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
             backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 28),
+        ])
+        NSLayoutConstraint.activate([
+            pageControl.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 32),
+            pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
         NSLayoutConstraint.activate([
             albumImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 145),
