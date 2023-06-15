@@ -31,6 +31,7 @@ class AccountViewController: UIViewController {
         setNotificationButton()
         setDownloadButton()
         setSignOutButton()
+        setTargetForButton()
 
     }
     
@@ -155,6 +156,15 @@ class AccountViewController: UIViewController {
             fatalError("Eror Font")
         }
     }
+    
+    func setTargetForButton(){
+        setingsButton.addTarget(self, action: #selector(settingsButtonTupped), for: .touchUpInside)
+    }
+    
+    @objc func settingsButtonTupped() {
+        let settingsViewController = SettingsViewController()
+        navigationController?.pushViewController(settingsViewController, animated: true)
+        }
     
 }
 

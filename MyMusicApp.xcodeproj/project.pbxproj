@@ -29,6 +29,7 @@
 		84D78D7F2A37A9F300D3B464 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84D78D782A37A9F300D3B464 /* Roboto-Medium.ttf */; };
 		84D78D812A38C7DA00D3B464 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 84D78D602A37916000D3B464 /* SnapKit */; };
 		84D78D832A38F35600D3B464 /* AccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D78D822A38F35600D3B464 /* AccountButton.swift */; };
+		84D78D862A3B6A3000D3B464 /* SettingsAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D78D852A3B6A3000D3B464 /* SettingsAccountViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		84D78D772A37A9F300D3B464 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		84D78D782A37A9F300D3B464 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		84D78D822A38F35600D3B464 /* AccountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountButton.swift; sourceTree = "<group>"; };
+		84D78D852A3B6A3000D3B464 /* SettingsAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAccountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				84C420932A37505E00727691 /* TabBar */,
 				84C420952A37505E00727691 /* OnboardingVC */,
 				84C420962A37505E00727691 /* AccountVC */,
+				84D78D842A3B69AF00D3B464 /* SettingsAccountVC */,
 				84C420982A37505E00727691 /* PlayVC */,
 				84C420992A37505E00727691 /* CustomVC */,
 			);
@@ -225,6 +228,14 @@
 				84D78D762A37A9F300D3B464 /* Roboto-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		84D78D842A3B69AF00D3B464 /* SettingsAccountVC */ = {
+			isa = PBXGroup;
+			children = (
+				84D78D852A3B6A3000D3B464 /* SettingsAccountViewController.swift */,
+			);
+			path = SettingsAccountVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,6 +332,7 @@
 				84AE2F7C2A35F679006E87F1 /* UIColorExtension.swift in Sources */,
 				84C420A02A37509D00727691 /* UserModel.swift in Sources */,
 				84C4209E2A37505E00727691 /* AccountViewController.swift in Sources */,
+				84D78D862A3B6A3000D3B464 /* SettingsAccountViewController.swift in Sources */,
 				84D78D832A38F35600D3B464 /* AccountButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
