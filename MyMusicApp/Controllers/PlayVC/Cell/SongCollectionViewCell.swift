@@ -24,6 +24,7 @@ class SongCollectionViewCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "singerPhoto")
         imageView.contentMode = .scaleAspectFit
+        imageView.layer.masksToBounds = true
         
         return imageView
     }()
@@ -53,6 +54,7 @@ class SongCollectionViewCell: UICollectionViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "ellipsis"), for: .normal)
         button.addTarget(self, action: #selector(ellipsisButtonTapped), for: .touchUpInside)
+        button.tintColor = .white
         
         return button
     }()
@@ -81,8 +83,26 @@ class SongCollectionViewCell: UICollectionViewCell {
     // MARK: - setConstrains
     private func setConstrains() {
         NSLayoutConstraint.activate([
+            numberSongLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             numberSongLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            
+        ])
+        NSLayoutConstraint.activate([
+            photoImageView.topAnchor.constraint(equalTo: topAnchor),
+            photoImageView.leadingAnchor.constraint(equalTo: numberSongLabel.trailingAnchor, constant: 21),
+            photoImageView.widthAnchor.constraint(equalToConstant: 37),
+            photoImageView.heightAnchor.constraint(equalToConstant: 37)
+        ])
+        NSLayoutConstraint.activate([
+            nameSongLabel.topAnchor.constraint(equalTo: topAnchor),
+            nameSongLabel.leadingAnchor.constraint(equalTo: photoImageView.trailingAnchor, constant: 20)
+        ])
+        NSLayoutConstraint.activate([
+            singerNameLabel.topAnchor.constraint(equalTo: nameSongLabel.bottomAnchor, constant: 3),
+            singerNameLabel.leadingAnchor.constraint(equalTo: photoImageView.trailingAnchor, constant: 20)
+        ])
+        NSLayoutConstraint.activate([
+            ellipsisButton.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            ellipsisButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24)
         ])
     }
 }

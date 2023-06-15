@@ -8,6 +8,8 @@
 import UIKit
 
 class AlbumViewController: UIViewController {
+    // MARK: - let/var
+private let idSongCell = "idSongCell"
     // MARK: - backgroundImageView
     private let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
@@ -83,7 +85,7 @@ class AlbumViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .none
+        collectionView.backgroundColor = .clear
         
         return collectionView
     }()
@@ -93,6 +95,38 @@ class AlbumViewController: UIViewController {
 
         setupViews()
         setConstrains()
+        setDelegates()
+        songCollectionView.register(SongCollectionViewCell.self, forCellWithReuseIdentifier: idSongCell)
+    }
+    
+    // MARK: - backButtonTapped
+    @objc private func backButtonTapped() {
+        print("backButtonTapped")
+    }
+}
+// MARK: - UICollectionViewDelegateFlowLayout
+extension AlbumViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: collectionView.bounds.width, height: 60)
+    }
+}
+// MARK: - UICollectionViewDataSource & UICollectionViewDelegate
+extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: idSongCell, for: indexPath) as! SongCollectionViewCell
+        
+        return cell
+    }
+}
+extension AlbumViewController {
+    // MARK: - setDelegates
+    private func setDelegates() {
+        songCollectionView.delegate = self
+        songCollectionView.dataSource = self
     }
     // MARK: - setupViews
     private func setupViews() {
@@ -104,10 +138,6 @@ class AlbumViewController: UIViewController {
         view.addSubview(separatorLine)
         view.addSubview(suggestionLabel)
         view.addSubview(songCollectionView)
-    }
-    // MARK: - backButtonTapped
-    @objc private func backButtonTapped() {
-        print("backButtonTapped")
     }
     // MARK: - setConstrains
     private func setConstrains() {

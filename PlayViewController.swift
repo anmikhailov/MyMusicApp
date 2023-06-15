@@ -9,7 +9,6 @@ import UIKit
 
 class PlayViewController: UIViewController {
     // MARK: - let/var
-    
 
     // MARK: - backButton
     private lazy var backButton: UIButton = {
@@ -27,6 +26,7 @@ class PlayViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "Album")
         imageView.contentMode = .scaleAspectFit
+        imageView.layer.masksToBounds = true
         
         return imageView
     }()
@@ -258,10 +258,12 @@ class PlayViewController: UIViewController {
     @objc private func repeatButtonTapped() {
         print("repeatButtonTapped")
     }
+}
+extension PlayViewController {
     // MARK: - setupViews
     private func setupViews() {
         view.backgroundColor = .black
-        
+                
         view.addSubview(backButton)
         view.addSubview(albumImageView)
         view.addSubview(songNameLabel)
