@@ -8,6 +8,12 @@
 import Foundation
 import UIKit
 
+enum Web {
+    static let clientID = "bf130a2999604796a93c9fca3f16cc1f"
+    static let secretID = "38ad284a59114f8997ec8e254e68641e"
+    static let tokenApiURL = "https://accounts.spotify.com/api/token"
+}
+
 enum Resources {
     enum Colors {
         enum TabBarColors{
