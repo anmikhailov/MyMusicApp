@@ -10,15 +10,23 @@ import UIKit
 
 class HorizontalCollectionViewCell: UICollectionViewCell {
     
-//    static let identifier = "cell"
+    static let menuFont = UIFont.systemFont(ofSize: 18, weight: .bold)
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = Resources.Colors.neutral2
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        label.font = menuFont
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    override var isSelected: Bool {
+        didSet {
+            titleLabel.font = self.isSelected ? UIFont.systemFont(ofSize: 24, weight: .bold) : UIFont.systemFont(ofSize: 18, weight: .bold)
+            titleLabel.textColor = self.isSelected ? .white : Resources.Colors.neutral2
+        }
+    }
     
     // MARK: - init
     override init(frame: CGRect) {
@@ -34,14 +42,13 @@ class HorizontalCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Methods
     
-    private func setupViews() {
-        backgroundColor = .white
-        layer.cornerRadius = 10
+    func setupViews() {
+        backgroundColor = .none
         
         addSubview(titleLabel)
     }
     
-    private func setupConstraints() {
+    func setupConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
