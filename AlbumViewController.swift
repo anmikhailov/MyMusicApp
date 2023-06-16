@@ -29,6 +29,20 @@ private let idSongCell = "idSongCell"
         
         return button
     }()
+    // MARK: - pageController
+    private lazy var pageControl: UIPageControl = {
+        let pageControl = UIPageControl()
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        pageControl.pageIndicatorTintColor = .lightGray
+        pageControl.currentPageIndicatorTintColor = .white
+        pageControl.tintColor = .red
+        pageControl.numberOfPages = 2
+        pageControl.currentPage = 0
+        pageControl.isUserInteractionEnabled = false
+        pageControl.addTarget(self, action: #selector(pageControlValueChanged), for: .valueChanged)
+        
+        return pageControl
+    }()
     // MARK: - titleLabel
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -89,6 +103,14 @@ private let idSongCell = "idSongCell"
         
         return collectionView
     }()
+    // MARK: - leftSwipe
+    private lazy var leftSwipe: UISwipeGestureRecognizer = {
+        let swipe = UISwipeGestureRecognizer()
+        swipe.direction = .left
+        swipe.addTarget(self, action: #selector(goToPlayVC))
+        
+        return swipe
+    }()
     // MARK: - lifecicle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,7 +123,18 @@ private let idSongCell = "idSongCell"
     
     // MARK: - backButtonTapped
     @objc private func backButtonTapped() {
-        print("backButtonTapped")
+        dismiss(animated: true)
+    }
+    // MARK: - pageControlValueChanged
+    @objc private func pageControlValueChanged() {
+        print("pageControlValueChanged")
+    }
+    // MARK: - goToPlayVC
+    @objc private func goToPlayVC() {
+        let playVC = PlayViewController()
+        playVC.modalPresentationStyle = .fullScreen
+        playVC.modalTransitionStyle = .crossDissolve
+        present(playVC, animated: true)
     }
 }
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -138,6 +171,8 @@ extension AlbumViewController {
         view.addSubview(separatorLine)
         view.addSubview(suggestionLabel)
         view.addSubview(songCollectionView)
+        view.addSubview(pageControl)
+        view.addGestureRecognizer(leftSwipe)
     }
     // MARK: - setConstrains
     private func setConstrains() {
@@ -150,6 +185,10 @@ extension AlbumViewController {
         NSLayoutConstraint.activate([
             backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
             backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 28),
+        ])
+        NSLayoutConstraint.activate([
+            pageControl.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 32),
+            pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 242),

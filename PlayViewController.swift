@@ -9,7 +9,8 @@ import UIKit
 
 class PlayViewController: UIViewController {
     // MARK: - let/var
-    var currentPage = 1
+    private var isFavorite = true
+    private var isDownload = true
     // MARK: - pageController
     private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
@@ -18,7 +19,7 @@ class PlayViewController: UIViewController {
         pageControl.currentPageIndicatorTintColor = .white
         pageControl.tintColor = .red
         pageControl.numberOfPages = 2
-        pageControl.currentPage = 0
+        pageControl.currentPage = 1
         pageControl.isUserInteractionEnabled = false
         pageControl.addTarget(self, action: #selector(pageControlValueChanged), for: .valueChanged)
         
@@ -101,7 +102,7 @@ class PlayViewController: UIViewController {
     private lazy var favoriteButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "favorite2"), for: .normal)
+        button.setImage(UIImage(systemName: "heart"), for: .normal)
         button.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
         button.tintColor = .white
         
@@ -218,6 +219,14 @@ class PlayViewController: UIViewController {
         
         return button
     }()
+    // MARK: - rightSwipe
+    private lazy var rightSwipe: UISwipeGestureRecognizer = {
+        let swipe = UISwipeGestureRecognizer()
+        swipe.direction = .right
+        swipe.addTarget(self, action: #selector(goToAlbumVC))
+        
+        return swipe
+    }()
     // MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -234,7 +243,7 @@ class PlayViewController: UIViewController {
     }
     // MARK: - backButtonTapped
     @objc private func backButtonTapped() {
-        print("backButtonTapped")
+        dismiss(animated: true)
     }
     // MARK: - playlistAddButtonTapped
     @objc private func playlistAddButtonTapped() {
@@ -242,11 +251,25 @@ class PlayViewController: UIViewController {
     }
     // MARK: - favoriteButtonTapped
     @objc private func favoriteButtonTapped() {
-        print("favoriteButtonTapped")
+        if isFavorite {
+            favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            favoriteButton.tintColor = UIColor(named: "green")
+            isFavorite = false
+        } else {
+            favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            favoriteButton.tintColor = .white
+            isFavorite = true
+        }
     }
     // MARK: - downloadButtonTapped
     @objc private func downloadButtonTapped() {
-        print("downloadButtonTapped")
+        if isDownload {
+            downloadButton.tintColor = UIColor(named: "green")
+            isDownload = false
+        } else {
+            downloadButton.tintColor = .white
+            isDownload = true
+        }
     }
     // MARK: - songTimeSliderTapped
     @objc private func songTimeSliderTapped() {
@@ -272,11 +295,19 @@ class PlayViewController: UIViewController {
     @objc private func repeatButtonTapped() {
         print("repeatButtonTapped")
     }
-    // MARK: - <#Section Heading#>
+    // MARK: - pageControlValueChanged
     @objc func pageControlValueChanged() {
-        currentPage = pageControl.currentPage
-        
+//        let currentPage = pageControl.currentPage
+//
+//        let albumVC = AlbumViewController()
+//        present(albumVC, animated: true)
+        print("pageControlValueChanged")
+    }
+    // MARK: - rightSwipeDoing
+    @objc private func goToAlbumVC() {
         let albumVC = AlbumViewController()
+        albumVC.modalPresentationStyle = .fullScreen
+        albumVC.modalTransitionStyle = .crossDissolve
         present(albumVC, animated: true)
     }
 }
@@ -309,6 +340,7 @@ extension PlayViewController {
         
         view.addSubview(nextButton)
         view.addSubview(repeatButton)
+        view.addGestureRecognizer(rightSwipe)
                     
     }
     // MARK: - setConstrains
@@ -322,7 +354,7 @@ extension PlayViewController {
             pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
         NSLayoutConstraint.activate([
-            albumImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 145),
+            albumImageView.topAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: 52),
             albumImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             albumImageView.heightAnchor.constraint(equalToConstant: 207),
         ])
