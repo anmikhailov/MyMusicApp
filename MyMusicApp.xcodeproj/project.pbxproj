@@ -19,7 +19,6 @@
 		84BEB1152A3C534A0033DAA0 /* HeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BEB1092A3C53480033DAA0 /* HeaderReusableView.swift */; };
 		84BEB1162A3C534A0033DAA0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BEB10A2A3C53490033DAA0 /* HomeViewController.swift */; };
 		84BEB1172A3C534A0033DAA0 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BEB10C2A3C53490033DAA0 /* Section.swift */; };
-		84BEB1182A3C534A0033DAA0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BEB10D2A3C53490033DAA0 /* HomeView.swift */; };
 		84BEB1192A3C534A0033DAA0 /* PopularAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BEB10F2A3C534A0033DAA0 /* PopularAlbumCell.swift */; };
 		84BEB11A2A3C534A0033DAA0 /* NewSongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BEB1102A3C534A0033DAA0 /* NewSongCell.swift */; };
 		84BEB11B2A3C534A0033DAA0 /* RecentlyMusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BEB1112A3C534A0033DAA0 /* RecentlyMusicCell.swift */; };
@@ -73,7 +72,6 @@
 		84BEB1092A3C53480033DAA0 /* HeaderReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderReusableView.swift; sourceTree = "<group>"; };
 		84BEB10A2A3C53490033DAA0 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		84BEB10C2A3C53490033DAA0 /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
-		84BEB10D2A3C53490033DAA0 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		84BEB10F2A3C534A0033DAA0 /* PopularAlbumCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularAlbumCell.swift; sourceTree = "<group>"; };
 		84BEB1102A3C534A0033DAA0 /* NewSongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSongCell.swift; sourceTree = "<group>"; };
 		84BEB1112A3C534A0033DAA0 /* RecentlyMusicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentlyMusicCell.swift; sourceTree = "<group>"; };
@@ -123,6 +121,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		049E23C32A3C581A00F632CE /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				84BEB1092A3C53480033DAA0 /* HeaderReusableView.swift */,
+				84BEB1062A3C53480033DAA0 /* HeaderSeeAllView.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
 		84AE2F502A35F2C7006E87F1 = {
 			isa = PBXGroup;
 			children = (
@@ -194,10 +201,9 @@
 		84BEB1052A3C53480033DAA0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				84BEB1062A3C53480033DAA0 /* HeaderSeeAllView.swift */,
-				84BEB1072A3C53480033DAA0 /* ExtentionCollectonView.swift */,
 				84BEB1082A3C53480033DAA0 /* CustomeCollectionView.swift */,
-				84BEB1092A3C53480033DAA0 /* HeaderReusableView.swift */,
+				84BEB1072A3C53480033DAA0 /* ExtentionCollectonView.swift */,
+				049E23C32A3C581A00F632CE /* Header */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -240,9 +246,8 @@
 		84C4208D2A37505E00727691 /* HomeVC */ = {
 			isa = PBXGroup;
 			children = (
-				84BEB10E2A3C534A0033DAA0 /* Cells */,
-				84BEB10D2A3C53490033DAA0 /* HomeView.swift */,
 				84BEB10A2A3C53490033DAA0 /* HomeViewController.swift */,
+				84BEB10E2A3C534A0033DAA0 /* Cells */,
 				84BEB10B2A3C53490033DAA0 /* Model */,
 				84BEB1052A3C53480033DAA0 /* View */,
 			);
@@ -459,7 +464,6 @@
 				84BEB11A2A3C534A0033DAA0 /* NewSongCell.swift in Sources */,
 				84BEB1122A3C534A0033DAA0 /* HeaderSeeAllView.swift in Sources */,
 				84BEB1172A3C534A0033DAA0 /* Section.swift in Sources */,
-				84BEB1182A3C534A0033DAA0 /* HomeView.swift in Sources */,
 				84C420A22A3750B800727691 /* FirebaseManager.swift in Sources */,
 				84AE2F7E2A35F687006E87F1 /* Resources.swift in Sources */,
 				84C4209B2A37505E00727691 /* FavoritesViewController.swift in Sources */,

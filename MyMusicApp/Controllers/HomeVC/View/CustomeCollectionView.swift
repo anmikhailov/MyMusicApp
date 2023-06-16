@@ -26,7 +26,6 @@ class CustomeCollectionView: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        //collectionView.backgroundColor = .clear
         
        createCompositionLayout()
     }
@@ -145,18 +144,31 @@ extension CustomeCollectionView: UICollectionViewDelegateFlowLayout {
             fatalError("Invalid supplementary view type")
         }
         
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as? HeaderReusableView else { return UICollectionReusableView() }
+        let headerView: UICollectionReusableView
+        
+        if indexPath.section == 0 {
+            headerView = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: "headerSeeAll",
+                for: indexPath) as! HeaderSeeAllView
+            
+        } else {
+            headerView = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: "Header",
+                for: indexPath) as! HeaderReusableView
+        }
         
         let section = sections[indexPath.section]
         
-        headerView.configure(title: section.title)
-        /*
-        guard let headerSeeAll = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: <#T##String#>, for: <#T##IndexPath#>)
-        
-        if indexPath.section == 0 {
-            
+        if let headerSeeAllView = headerView as? HeaderSeeAllView {
+            headerSeeAllView.configure(title: section.title, delegate: self)
+        } else if let headerReusebleView = headerView as? HeaderReusableView {
+            headerReusebleView.configure(title: section.title)
         }
-        */
+        
         return headerView
+        
     }
+    
 }
