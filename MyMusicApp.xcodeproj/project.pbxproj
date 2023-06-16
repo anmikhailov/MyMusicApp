@@ -17,6 +17,9 @@
 		841386562A3BA3C400735C3E /* HorizontalMenuCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841386552A3BA3C400735C3E /* HorizontalMenuCollectionView.swift */; };
 		841386582A3BA53200735C3E /* HorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841386572A3BA53200735C3E /* HorizontalCollectionViewCell.swift */; };
 		84833AD22A3B26F100737C57 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84833AD12A3B26F100737C57 /* SearchCell.swift */; };
+		324894552A39D1770031A7AD /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324894542A39D1770031A7AD /* AlbumViewController.swift */; };
+		324894582A39E3960031A7AD /* SongCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324894572A39E3960031A7AD /* SongCollectionViewCell.swift */; };
+		32C0A3A82A3848E400CEF61C /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C0A3A72A3848E400CEF61C /* PlayViewController.swift */; };
 		84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */; };
 		84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */; };
 		84AE2F662A35F2CA006E87F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AE2F652A35F2CA006E87F1 /* Assets.xcassets */; };
@@ -179,6 +182,14 @@
 				04CF9D782A3C7E0F00FE839B /* TopicCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		324894562A39E34F0031A7AD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				324894572A39E3960031A7AD /* SongCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		84AE2F502A35F2C7006E87F1 = {
@@ -356,6 +367,9 @@
 		84C420982A37505E00727691 /* PlayVC */ = {
 			isa = PBXGroup;
 			children = (
+				324894562A39E34F0031A7AD /* Cell */,
+				32C0A3A72A3848E400CEF61C /* PlayViewController.swift */,
+				324894542A39D1770031A7AD /* AlbumViewController.swift */,
 			);
 			path = PlayVC;
 			sourceTree = "<group>";
@@ -529,6 +543,7 @@
 				04CF9D6F2A3C719A00FE839B /* ExploreCollectionView.swift in Sources */,
 				04CF9D792A3C7E0F00FE839B /* TopicCell.swift in Sources */,
 				84C420C32A379AB800727691 /* UserInfo.swift in Sources */,
+				324894552A39D1770031A7AD /* AlbumViewController.swift in Sources */,
 				84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */,
 				84D306482A3A462D0068288A /* SearchViewController.swift in Sources */,
 				84C420A52A3756B700727691 /* SignInUpViewController.swift in Sources */,
@@ -539,6 +554,8 @@
 				84BEB11A2A3C534A0033DAA0 /* NewSongCell.swift in Sources */,
 				84BEB1122A3C534A0033DAA0 /* HeaderSeeAllView.swift in Sources */,
 				84BEB1172A3C534A0033DAA0 /* Section.swift in Sources */,
+				324894582A39E3960031A7AD /* SongCollectionViewCell.swift in Sources */,
+				32C0A3A82A3848E400CEF61C /* PlayViewController.swift in Sources */,
 				84C420A22A3750B800727691 /* FirebaseManager.swift in Sources */,
 				84AE2F7E2A35F687006E87F1 /* Resources.swift in Sources */,
 				84C4209B2A37505E00727691 /* FavoritesViewController.swift in Sources */,
@@ -697,7 +714,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M4F6PT832U;
+				DEVELOPMENT_TEAM = MU6RTL5NN9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyMusicApp/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -710,7 +727,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.anmik.MyMusicApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anmik1.MyMusicApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -728,7 +745,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M4F6PT832U;
+				DEVELOPMENT_TEAM = MU6RTL5NN9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyMusicApp/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -741,7 +758,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.anmik.MyMusicApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anmik1.MyMusicApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
