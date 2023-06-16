@@ -30,8 +30,13 @@ class SearchView: CustomView, UISearchResultsUpdating {
         let element = UISearchBar()
         element.searchBarStyle = .minimal
         element.placeholder = "Search"
-        element.backgroundColor = Resources.Colors.neutral1.withAlphaComponent(0.7)
+        element.backgroundColor = UIColor(hex: 0x292D39, alpha: 1)
+        if let textField = element.value(forKey: "searchField") as? UITextField {
+            textField.tintColor = UIColor.white
+        }
         element.layer.cornerRadius = 10
+        element.layer.borderColor = UIColor(hex: 0x363942, alpha: 1).cgColor
+        element.layer.borderWidth = 1
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
@@ -40,7 +45,7 @@ class SearchView: CustomView, UISearchResultsUpdating {
         let element = UIButton()
         element.setTitle("Cancel", for: .normal)
         element.setTitleColor(Resources.Colors.brand1, for: .normal)
-        element.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        element.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         element.translatesAutoresizingMaskIntoConstraints = false
         element.addTarget(self, action: #selector(didTapCloseButton(_:)), for: .touchUpInside)
         return element
@@ -90,9 +95,9 @@ class SearchView: CustomView, UISearchResultsUpdating {
             searchItemsCollectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             searchItemsCollectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             searchItemsCollectionView.topAnchor.constraint(equalTo: topHStackView.bottomAnchor, constant: 20),
-            searchItemsCollectionView.heightAnchor.constraint(equalToConstant: 40),
+            searchItemsCollectionView.heightAnchor.constraint(equalToConstant: 45),
             
-            mainTableView.topAnchor.constraint(equalTo: searchItemsCollectionView.bottomAnchor, constant: 20),
+            mainTableView.topAnchor.constraint(equalTo: searchItemsCollectionView.bottomAnchor, constant: 15),
             mainTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             mainTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
             mainTableView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -10),

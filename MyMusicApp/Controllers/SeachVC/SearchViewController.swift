@@ -10,11 +10,14 @@ import UIKit
 class SearchViewController: CustomViewController<SearchView> {
     
     let sectionsTitles = ["Top Searching", "Artist", "Album", "Song", "Playlist"]
+    var numberOfSection = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         customView.delegate = self
+        
+        customView.searchItemsCollectionView.cellDelegate = self
         
         customView.mainTableView.dataSource = self
         customView.mainTableView.delegate = self
@@ -39,7 +42,7 @@ extension SearchViewController: UISearchResultsUpdating {
 //MARK: - UITableViewDataSource, UITableViewDelegate
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sectionsTitles.count
+        return numberOfSection
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -84,4 +87,38 @@ extension SearchViewController: SearchCellDelegate {
     }
     
     
+}
+
+//MARK: - SelectCollectionViewItemProtocol
+extension SearchViewController: SelectCollectionViewItemProtocol {
+    func selectItem(index: IndexPath) {
+        switch index.item {
+        case 0:
+            numberOfSection = 5
+            customView.mainTableView.insertSections(IndexSet(integersIn: 1...4), with: .fade)
+        case 1:
+            if numberOfSection == 5 {
+                numberOfSection = 1
+                customView.mainTableView.deleteSections(IndexSet(integersIn: 1...4), with: .fade)
+            }
+        case 2:
+            if numberOfSection == 5 {
+                numberOfSection = 1
+                customView.mainTableView.deleteSections(IndexSet(integersIn: 1...4), with: .fade)
+            }
+        case 3:
+            if numberOfSection == 5 {
+                numberOfSection = 1
+                customView.mainTableView.deleteSections(IndexSet(integersIn: 1...4), with: .fade)
+            }
+        case 4:
+            if numberOfSection == 5 {
+                numberOfSection = 1
+                customView.mainTableView.deleteSections(IndexSet(integersIn: 1...4), with: .fade)
+            }
+            
+        default:
+            return
+        }
+    }
 }

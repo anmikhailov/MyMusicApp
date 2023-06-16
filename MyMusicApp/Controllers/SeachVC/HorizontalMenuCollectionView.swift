@@ -8,10 +8,16 @@
 import Foundation
 import UIKit
 
+protocol SelectCollectionViewItemProtocol: AnyObject {
+    func selectItem(index: IndexPath)
+}
+
 class HorizontalMenuCollectionView: UICollectionView {
     
     private let categoryLayout = UICollectionViewFlowLayout()
     let menuTitlesArray = ["All", "Artist", "Album", "Song", "Playlist"]
+    
+    weak var cellDelegate: SelectCollectionViewItemProtocol?
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: .zero, collectionViewLayout: categoryLayout)
@@ -59,6 +65,7 @@ extension HorizontalMenuCollectionView: UICollectionViewDataSource {
 extension HorizontalMenuCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        cellDelegate?.selectItem(index: indexPath)
     }
 }
 
