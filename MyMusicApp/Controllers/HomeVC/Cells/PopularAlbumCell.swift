@@ -18,12 +18,14 @@ class PopularAlbumCell: UICollectionViewCell {
         let image = UIImageView()
         image.layer.cornerRadius = 15
         image.clipsToBounds = false
+        image.contentMode = .scaleAspectFill
         return image
     }()
     
     private let buttonExploreNow: UIButton = {
         let button = UIButton()
         button.setTitle("Explore Now", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         button.backgroundColor = .clear
         button.layer.borderWidth = 1.0
         button.layer.borderColor = UIColor.white.cgColor
@@ -32,6 +34,8 @@ class PopularAlbumCell: UICollectionViewCell {
         button.layer.cornerRadius = 4
         return button
     }()
+    
+    // MARK: - init
  
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,13 +47,16 @@ class PopularAlbumCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Methods
+    
     func configureCell() {
-        //albumImage.image = image
-        backgroundColor = .red
+        albumImage.image = image
         layer.cornerRadius = 15
     }
     
 }
+
+// MARK: - constraints
 
 extension PopularAlbumCell {
     private func setupConstraints() {
@@ -57,13 +64,16 @@ extension PopularAlbumCell {
         albumImage.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
+            make.width.equalTo(350)
+            make.height.equalTo(195)
         }
         
         addSubview(buttonExploreNow)
         buttonExploreNow.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(30)
-            make.trailing.equalToSuperview().offset(-150)
-            make.bottom.equalToSuperview().offset(-30)
+            make.leading.equalToSuperview().offset(25)
+            make.bottom.equalToSuperview().offset(-10)
+            make.width.equalTo(138)
+            make.height.equalTo(24)
         }
     }
 }

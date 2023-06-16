@@ -10,7 +10,7 @@ import SnapKit
 
 class NewSongCell: UICollectionViewCell {
     
-    let image1 = UIImage(named: "music1")
+    let image1 = UIImage(named: "music2")
     
     // MARK: - Properties
     
@@ -18,7 +18,7 @@ class NewSongCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = .white
         label.textAlignment = .left
-        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.font = UIFont.systemFont(ofSize: 12)
         label.text = "The Weekend"
         return label
     }()
@@ -27,19 +27,22 @@ class NewSongCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = .white
         label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 15)
+        label.font = UIFont.boldSystemFont(ofSize: 14)
         label.text = "Save Your Tears"
         return label
     }()
     
     private let songImage: UIImageView = {
         let image = UIImageView()
+        image.contentMode = .scaleAspectFill
+        image.clipsToBounds = true
         return image
     }()
     
+    // MARK: - init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .black
         setupConstraints()
     }
     
@@ -47,31 +50,39 @@ class NewSongCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure() {
-        //songImage.image = image1
-        backgroundColor = .blue
-    }
+    // MARK: - Methods
     
-    func setupConstraints() {
+    func configure() {
+        songImage.image = image1
+        backgroundColor = .clear
+    }
+}
+
+// MARK: - Constraints
+
+extension NewSongCell {
+    
+    private func setupConstraints() {
         addSubview(songImage)
         addSubview(songNamelabel)
         addSubview(artistNamelabel)
         
         songImage.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(songNamelabel.snp.top).offset(10)
+            make.bottom.equalTo(songNamelabel.snp.top).offset(-10)
+            make.width.height.equalTo(150)
         }
-            
+        
         songNamelabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(10)
-            make.bottom.equalTo(artistNamelabel.snp.top).offset(5)
+            make.bottom.equalTo(artistNamelabel.snp.top).offset(-5)
         }
-                
+        
         artistNamelabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(10)
-            make.bottom.equalToSuperview().offset(5)
+            make.bottom.equalToSuperview().offset(-5)
         }
-            
+        
     }
     
 }

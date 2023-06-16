@@ -12,11 +12,3 @@ protocol HomeViewProtocol: AnyObject {
     func showSections(_ sections: [Section])
 }
 
-
-final class HomeView: UIView {
-    
-    public weak var homeViewProtocol: HomeViewProtocol?
-    
-    
-    
-}

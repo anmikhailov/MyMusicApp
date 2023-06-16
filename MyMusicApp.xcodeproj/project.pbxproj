@@ -10,10 +10,13 @@
 		043700E52A385D8F004603C5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043700E42A385D8F004603C5 /* HomeView.swift */; };
 		043700E82A388873004603C5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 043700E72A388873004603C5 /* SnapKit */; };
 		043700EC2A38AF81004603C5 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043700EB2A38AF81004603C5 /* Section.swift */; };
-		043700EF2A38B10E004603C5 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043700EE2A38B10E004603C5 /* CollectionView.swift */; };
+		043700EF2A38B10E004603C5 /* CustomeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043700EE2A38B10E004603C5 /* CustomeCollectionView.swift */; };
 		043700F22A39BB88004603C5 /* NewSongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043700F12A39BB88004603C5 /* NewSongCell.swift */; };
 		043700F52A39BE97004603C5 /* PopularAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043700F42A39BE97004603C5 /* PopularAlbumCell.swift */; };
 		043700F72A39BEAA004603C5 /* RecentlyMusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043700F62A39BEAA004603C5 /* RecentlyMusicCell.swift */; };
+		043700F92A39E96F004603C5 /* HeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043700F82A39E96F004603C5 /* HeaderReusableView.swift */; };
+		043700FB2A39FC73004603C5 /* ExtentionCollectonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043700FA2A39FC73004603C5 /* ExtentionCollectonView.swift */; };
+		043700FD2A3B174A004603C5 /* HeaderSeeAllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043700FC2A3B174A004603C5 /* HeaderSeeAllView.swift */; };
 		84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */; };
 		84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */; };
 		84AE2F662A35F2CA006E87F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AE2F652A35F2CA006E87F1 /* Assets.xcassets */; };
@@ -39,10 +42,13 @@
 /* Begin PBXFileReference section */
 		043700E42A385D8F004603C5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		043700EB2A38AF81004603C5 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
-		043700EE2A38B10E004603C5 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		043700EE2A38B10E004603C5 /* CustomeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomeCollectionView.swift; sourceTree = "<group>"; };
 		043700F12A39BB88004603C5 /* NewSongCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSongCell.swift; sourceTree = "<group>"; };
 		043700F42A39BE97004603C5 /* PopularAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularAlbumCell.swift; sourceTree = "<group>"; };
 		043700F62A39BEAA004603C5 /* RecentlyMusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyMusicCell.swift; sourceTree = "<group>"; };
+		043700F82A39E96F004603C5 /* HeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderReusableView.swift; sourceTree = "<group>"; };
+		043700FA2A39FC73004603C5 /* ExtentionCollectonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtentionCollectonView.swift; sourceTree = "<group>"; };
+		043700FC2A3B174A004603C5 /* HeaderSeeAllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSeeAllView.swift; sourceTree = "<group>"; };
 		84AE2F592A35F2C7006E87F1 /* MyMusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,7 +96,10 @@
 		043700F02A39A62D004603C5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				043700EE2A38B10E004603C5 /* CollectionView.swift */,
+				043700EE2A38B10E004603C5 /* CustomeCollectionView.swift */,
+				043700FA2A39FC73004603C5 /* ExtentionCollectonView.swift */,
+				043700F82A39E96F004603C5 /* HeaderReusableView.swift */,
+				043700FC2A3B174A004603C5 /* HeaderSeeAllView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -352,9 +361,11 @@
 				043700F22A39BB88004603C5 /* NewSongCell.swift in Sources */,
 				84C4209A2A37505E00727691 /* HomeViewController.swift in Sources */,
 				84C4209D2A37505E00727691 /* TabBarController.swift in Sources */,
-				043700EF2A38B10E004603C5 /* CollectionView.swift in Sources */,
+				043700EF2A38B10E004603C5 /* CustomeCollectionView.swift in Sources */,
 				84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */,
+				043700FB2A39FC73004603C5 /* ExtentionCollectonView.swift in Sources */,
 				043700F52A39BE97004603C5 /* PopularAlbumCell.swift in Sources */,
+				043700FD2A3B174A004603C5 /* HeaderSeeAllView.swift in Sources */,
 				84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */,
 				84C420A22A3750B800727691 /* FirebaseManager.swift in Sources */,
 				84AE2F7E2A35F687006E87F1 /* Resources.swift in Sources */,
@@ -363,6 +374,7 @@
 				043700EC2A38AF81004603C5 /* Section.swift in Sources */,
 				84C4209C2A37505E00727691 /* ExploreViewController.swift in Sources */,
 				84AE2F7C2A35F679006E87F1 /* UIColorExtension.swift in Sources */,
+				043700F92A39E96F004603C5 /* HeaderReusableView.swift in Sources */,
 				043700E52A385D8F004603C5 /* HomeView.swift in Sources */,
 				84C420A02A37509D00727691 /* UserModel.swift in Sources */,
 				84C4209E2A37505E00727691 /* AccountViewController.swift in Sources */,
