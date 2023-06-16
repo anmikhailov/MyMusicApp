@@ -18,13 +18,6 @@ class SearchViewController: CustomViewController<SearchView> {
         
         customView.mainTableView.dataSource = self
         customView.mainTableView.delegate = self
-        
-        customView.searchItemsCollectionView.dataSource = self
-        customView.searchItemsCollectionView.delegate = self
-    }
-    
-    @objc func addTapped() {
-        
     }
 }
 
@@ -41,18 +34,6 @@ extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         
     }
-}
-
-extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //
-    }
-    
-    
 }
 
 //MARK: - UITableViewDataSource, UITableViewDelegate

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		841386562A3BA3C400735C3E /* HorizontalMenuCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841386552A3BA3C400735C3E /* HorizontalMenuCollectionView.swift */; };
+		841386582A3BA53200735C3E /* HorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841386572A3BA53200735C3E /* HorizontalCollectionViewCell.swift */; };
 		84833AD22A3B26F100737C57 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84833AD12A3B26F100737C57 /* SearchCell.swift */; };
 		84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */; };
 		84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */; };
@@ -53,6 +55,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		841386552A3BA3C400735C3E /* HorizontalMenuCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalMenuCollectionView.swift; sourceTree = "<group>"; };
+		841386572A3BA53200735C3E /* HorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionViewCell.swift; sourceTree = "<group>"; };
 		84833AD12A3B26F100737C57 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		84AE2F592A35F2C7006E87F1 /* MyMusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -299,6 +303,8 @@
 				84D306452A3A46200068288A /* SearchView.swift */,
 				84D306472A3A462D0068288A /* SearchViewController.swift */,
 				84833AD12A3B26F100737C57 /* SearchCell.swift */,
+				841386552A3BA3C400735C3E /* HorizontalMenuCollectionView.swift */,
+				841386572A3BA53200735C3E /* HorizontalCollectionViewCell.swift */,
 			);
 			path = SeachVC;
 			sourceTree = "<group>";
@@ -424,6 +430,7 @@
 				84C420A22A3750B800727691 /* FirebaseManager.swift in Sources */,
 				84AE2F7E2A35F687006E87F1 /* Resources.swift in Sources */,
 				84C4209B2A37505E00727691 /* FavoritesViewController.swift in Sources */,
+				841386582A3BA53200735C3E /* HorizontalCollectionViewCell.swift in Sources */,
 				84833AD22A3B26F100737C57 /* SearchCell.swift in Sources */,
 				84D306462A3A46200068288A /* SearchView.swift in Sources */,
 				84C4209C2A37505E00727691 /* ExploreViewController.swift in Sources */,
@@ -431,6 +438,7 @@
 				84AE2F7C2A35F679006E87F1 /* UIColorExtension.swift in Sources */,
 				84C420A02A37509D00727691 /* UserModel.swift in Sources */,
 				84C420C52A37AAB000727691 /* ForgetPasswordView.swift in Sources */,
+				841386562A3BA3C400735C3E /* HorizontalMenuCollectionView.swift in Sources */,
 				84C4209E2A37505E00727691 /* AccountViewController.swift in Sources */,
 				A29306752A3A120F00C83C89 /* FirstScreenOnboardingVC.swift in Sources */,
 				84C420A72A3756CC00727691 /* SignInUpView.swift in Sources */,

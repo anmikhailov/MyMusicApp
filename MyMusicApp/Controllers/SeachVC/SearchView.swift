@@ -46,18 +46,9 @@ class SearchView: CustomView, UISearchResultsUpdating {
         return element
     }()
     
-//    private lazy var topSegmentControl: CustomSegmentedControl = {
-//        let element = CustomSegmentedControl(frame: CGRect(x: 0, y: 100, width: 380, height: 50), buttonTitle: ["All", "Artist", "Album", "Song", "Playlist"])
-//        element.selectorViewColor = .white
-//        element.selectorTextColor = .white
-//        element.backgroundColor = .clear
-//        element.translatesAutoresizingMaskIntoConstraints = false
-//        return element
-//    }()
-    
-    lazy var searchItemsCollectionView: UICollectionView = {
-        let element = UICollectionView()
-        
+    lazy var searchItemsCollectionView: HorizontalMenuCollectionView = {
+        let element = HorizontalMenuCollectionView()
+        element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
     
@@ -80,7 +71,7 @@ class SearchView: CustomView, UISearchResultsUpdating {
         topHStackView.addArrangedSubview(searchView)
         topHStackView.addArrangedSubview(closeWindowButton)
         
-//        self.addSubview(topSegmentControl)
+        self.addSubview(searchItemsCollectionView)
         self.addSubview(mainTableView)
     }
     
@@ -89,11 +80,6 @@ class SearchView: CustomView, UISearchResultsUpdating {
         super.layoutViews()
         
         NSLayoutConstraint.activate([
-//            topSegmentControl.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10),
-//            topSegmentControl.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-//            topSegmentControl.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-//            topSegmentControl.heightAnchor.constraint(equalToConstant: 60),
-            
             topHStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
             topHStackView.heightAnchor.constraint(equalToConstant: 40),
             topHStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 30),
@@ -101,7 +87,12 @@ class SearchView: CustomView, UISearchResultsUpdating {
             
             searchView.widthAnchor.constraint(greaterThanOrEqualToConstant: 300),
             
-            mainTableView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 100),
+            searchItemsCollectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            searchItemsCollectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            searchItemsCollectionView.topAnchor.constraint(equalTo: topHStackView.bottomAnchor, constant: 20),
+            searchItemsCollectionView.heightAnchor.constraint(equalToConstant: 40),
+            
+            mainTableView.topAnchor.constraint(equalTo: searchItemsCollectionView.bottomAnchor, constant: 20),
             mainTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             mainTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
             mainTableView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -10),
