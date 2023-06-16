@@ -50,7 +50,7 @@ class HeaderSeeAllView: UICollectionReusableView {
         delegate?.goToSeeAll()
     }
     
-    private func configure(title: String,delegate: UIViewController) {
+    func configure(title: String,delegate: CustomeCollectionView) {
         headerLabel.text = title
         self.delegate = delegate as? GoToSeeAllProtocol
     }
@@ -71,7 +71,8 @@ extension HeaderSeeAllView {
         
         seeAllButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-30)
-            make.centerY.equalToSuperview()
+            make.top.equalToSuperview().offset(50)
+            make.bottom.equalToSuperview().offset(-5)
         }
     }
 }

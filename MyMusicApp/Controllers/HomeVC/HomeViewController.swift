@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-protocol GoToSeeAllProtocol {
+protocol GoToSeeAllProtocol: AnyObject {
     func goToSeeAll()
 }
 
@@ -58,3 +58,12 @@ extension HomeViewController {
     }
     
 }
+
+extension HomeViewController: GoToSeeAllProtocol {
+    func goToSeeAll() {
+        let tableViewController = TableNewSongViewController()
+        
+        navigationController?.pushViewController(tableViewController, animated: true)
+    }
+}
+
