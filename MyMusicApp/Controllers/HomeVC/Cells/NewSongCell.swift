@@ -35,7 +35,8 @@ class NewSongCell: UICollectionViewCell {
     private let songImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
-        image.clipsToBounds = true
+        image.layer.masksToBounds = true
+        image.layer.cornerRadius = 15
         return image
     }()
     
