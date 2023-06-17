@@ -19,6 +19,7 @@
 		32C0A3A82A3848E400CEF61C /* (null) in Sources */ = {isa = PBXBuildFile; };
 		841386562A3BA3C400735C3E /* HorizontalMenuCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841386552A3BA3C400735C3E /* HorizontalMenuCollectionView.swift */; };
 		841386582A3BA53200735C3E /* HorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841386572A3BA53200735C3E /* HorizontalCollectionViewCell.swift */; };
+		8436B4D22A3D9FC70093B82E /* UIViewController + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8436B4D12A3D9FC70093B82E /* UIViewController + ext.swift */; };
 		84833AD22A3B26F100737C57 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84833AD12A3B26F100737C57 /* SearchCell.swift */; };
 		84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */; };
 		84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */; };
@@ -86,6 +87,7 @@
 		04CF9D7C2A3C954C00FE839B /* ExploreCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCollectionReusableView.swift; sourceTree = "<group>"; };
 		841386552A3BA3C400735C3E /* HorizontalMenuCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalMenuCollectionView.swift; sourceTree = "<group>"; };
 		841386572A3BA53200735C3E /* HorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionViewCell.swift; sourceTree = "<group>"; };
+		8436B4D12A3D9FC70093B82E /* UIViewController + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + ext.swift"; sourceTree = "<group>"; };
 		84833AD12A3B26F100737C57 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		84AE2F592A35F2C7006E87F1 /* MyMusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +202,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		8436B4D02A3D9FB70093B82E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				8436B4D12A3D9FC70093B82E /* UIViewController + ext.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		84AE2F502A35F2C7006E87F1 = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +309,7 @@
 		84C4208C2A37505E00727691 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8436B4D02A3D9FB70093B82E /* Common */,
 				84C420A32A37567700727691 /* AuthorizationVC */,
 				84C4208D2A37505E00727691 /* HomeVC */,
 				84D306442A3A46060068288A /* SeachVC */,
@@ -582,6 +593,7 @@
 				84BEB11B2A3C534A0033DAA0 /* RecentlyMusicCell.swift in Sources */,
 				84C420A02A37509D00727691 /* UserModel.swift in Sources */,
 				84BEB1232A3CA35E0033DAA0 /* PlayViewController.swift in Sources */,
+				8436B4D22A3D9FC70093B82E /* UIViewController + ext.swift in Sources */,
 				84C420C52A37AAB000727691 /* ForgetPasswordView.swift in Sources */,
 				841386562A3BA3C400735C3E /* HorizontalMenuCollectionView.swift in Sources */,
 				84C4209E2A37505E00727691 /* AccountViewController.swift in Sources */,
@@ -727,7 +739,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MU6RTL5NN9;
+				DEVELOPMENT_TEAM = M4F6PT832U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyMusicApp/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -740,7 +752,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.anmik1.MyMusicApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anmik.MyMusicApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -758,7 +770,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MU6RTL5NN9;
+				DEVELOPMENT_TEAM = M4F6PT832U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyMusicApp/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -771,7 +783,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.anmik1.MyMusicApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anmik.MyMusicApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
