@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E6C55992A3C5FA60039E66C /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6C55982A3C5FA60039E66C /* AuthResponse.swift */; };
+		4E6C559B2A3C5FB00039E66C /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6C559A2A3C5FB00039E66C /* AuthManager.swift */; };
+		4E6C559D2A3C5FF10039E66C /* Welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6C559C2A3C5FF10039E66C /* Welcome.swift */; };
+		4E6C55A02A3C60090039E66C /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6C559F2A3C60090039E66C /* AuthViewController.swift */; };
 		84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */; };
 		84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */; };
 		84AE2F662A35F2CA006E87F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AE2F652A35F2CA006E87F1 /* Assets.xcassets */; };
@@ -59,6 +63,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E6C55982A3C5FA60039E66C /* AuthResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
+		4E6C559A2A3C5FB00039E66C /* AuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		4E6C559C2A3C5FF10039E66C /* Welcome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Welcome.swift; sourceTree = "<group>"; };
+		4E6C559F2A3C60090039E66C /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		84AE2F592A35F2C7006E87F1 /* MyMusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +131,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E6C559E2A3C60090039E66C /* AuthVC */ = {
+			isa = PBXGroup;
+			children = (
+				4E6C559F2A3C60090039E66C /* AuthViewController.swift */,
+			);
+			path = AuthVC;
+			sourceTree = "<group>";
+		};
 		84AE2F502A35F2C7006E87F1 = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +161,7 @@
 			children = (
 				84AE2F752A35F3AB006E87F1 /* App */,
 				84C4208C2A37505E00727691 /* Controllers */,
+				4E6C559C2A3C5FF10039E66C /* Welcome.swift */,
 				84AE2F702A35F34B006E87F1 /* Model */,
 				84AE2F742A35F384006E87F1 /* Resources */,
 				84AE2F722A35F35E006E87F1 /* Services */,
@@ -156,6 +173,7 @@
 		84AE2F702A35F34B006E87F1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4E6C55982A3C5FA60039E66C /* AuthResponse.swift */,
 				84C4209F2A37509D00727691 /* UserModel.swift */,
 				84C420C22A379AB800727691 /* UserInfo.swift */,
 			);
@@ -165,6 +183,7 @@
 		84AE2F722A35F35E006E87F1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4E6C559A2A3C5FB00039E66C /* AuthManager.swift */,
 				84C420AC2A378AA700727691 /* Firebase */,
 			);
 			path = Services;
@@ -223,6 +242,7 @@
 		84C4208C2A37505E00727691 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4E6C559E2A3C60090039E66C /* AuthVC */,
 				84C420A32A37567700727691 /* AuthorizationVC */,
 				84C4208D2A37505E00727691 /* HomeVC */,
 				84C4208F2A37505E00727691 /* FavoritesVC */,
@@ -454,10 +474,12 @@
 				84C420A52A3756B700727691 /* SignInUpViewController.swift in Sources */,
 				84BEB1152A3C534A0033DAA0 /* HeaderReusableView.swift in Sources */,
 				84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */,
+				4E6C55A02A3C60090039E66C /* AuthViewController.swift in Sources */,
 				A29306772A3A121B00C83C89 /* SecondScreenOnboardingVC.swift in Sources */,
 				A29306792A3A122400C83C89 /* ThirdScreenOnboardingVC.swift in Sources */,
 				84BEB11A2A3C534A0033DAA0 /* NewSongCell.swift in Sources */,
 				84BEB1122A3C534A0033DAA0 /* HeaderSeeAllView.swift in Sources */,
+				4E6C55992A3C5FA60039E66C /* AuthResponse.swift in Sources */,
 				84BEB1172A3C534A0033DAA0 /* Section.swift in Sources */,
 				84BEB1182A3C534A0033DAA0 /* HomeView.swift in Sources */,
 				84C420A22A3750B800727691 /* FirebaseManager.swift in Sources */,
@@ -469,7 +491,9 @@
 				84AE2F7C2A35F679006E87F1 /* UIColorExtension.swift in Sources */,
 				84BEB1132A3C534A0033DAA0 /* ExtentionCollectonView.swift in Sources */,
 				84BEB11B2A3C534A0033DAA0 /* RecentlyMusicCell.swift in Sources */,
+				4E6C559D2A3C5FF10039E66C /* Welcome.swift in Sources */,
 				84C420A02A37509D00727691 /* UserModel.swift in Sources */,
+				4E6C559B2A3C5FB00039E66C /* AuthManager.swift in Sources */,
 				84C420C52A37AAB000727691 /* ForgetPasswordView.swift in Sources */,
 				84C4209E2A37505E00727691 /* AccountViewController.swift in Sources */,
 				A29306752A3A120F00C83C89 /* FirstScreenOnboardingVC.swift in Sources */,
