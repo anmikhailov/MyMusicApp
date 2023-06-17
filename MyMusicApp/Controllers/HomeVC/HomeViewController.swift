@@ -17,6 +17,7 @@ final class HomeViewController: UIViewController {
     // MARK: - Properties
     
     private var collectionView: CustomeCollectionView!
+    private let helperView = UIView()
     
     // MARK: - Lifecycle
 
@@ -25,10 +26,14 @@ final class HomeViewController: UIViewController {
         view.backgroundColor = Resources.Colors.TabBarColors.background
         setupCollectionView()
         setupConstraints()
+        configureNavBar(with: "Music", backgroundColor: .clear, rightButtonImage: Resources.Icons.Common.search)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
     }
     
     // MARK: - Private methods
-    
     private func setupCollectionView() {
         let sectionNewSong = Section(title: "New Song", items: [""], style: .newSong)
         let sectionPopularAlbum = Section(title: "Popular Album", items: [""], style: .popularAlbum)
@@ -40,6 +45,10 @@ final class HomeViewController: UIViewController {
         collectionView.setSections(sections)
     
     }
+    
+    override func barButtonTapped() {
+        navigationController?.pushViewController(SearchViewController(), animated: true)
+    }
 }
 
 // MARK: - Constraints
@@ -48,9 +57,18 @@ extension HomeViewController {
     
     private func setupConstraints() {
         
+        view.addSubview(helperView)
+        helperView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            helperView.topAnchor.constraint(equalTo: view.topAnchor),
+            helperView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            helperView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            helperView.heightAnchor.constraint(equalToConstant: 1),
+        ])
+        
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(90)
+            make.top.equalTo(helperView.snp.bottom)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview()

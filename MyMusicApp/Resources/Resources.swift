@@ -43,6 +43,7 @@ enum Resources {
         
         enum Common {
             static var back = UIImage(systemName: "arrowshape.backward.fill")
+            static var search = UIImage(systemName: "magnifyingglass")
         }
     }
     
@@ -59,6 +60,15 @@ enum Resources {
             static var explore = "Explore"
             static var favorites = "Favorites"
             static var account = "Account"
+        }
+    }
+    
+    enum Fonts {
+        static func RobotoRegular(with size: CGFloat) -> UIFont {
+            UIFont(name: "Roboto", size: size) ?? UIFont()
+        }
+        static func RobotoBold(with size: CGFloat) -> UIFont {
+            UIFont(name: "Roboto-Bold", size: size) ?? UIFont()
         }
     }
 }

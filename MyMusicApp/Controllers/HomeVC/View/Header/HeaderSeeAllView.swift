@@ -66,7 +66,7 @@ extension HeaderSeeAllView {
             make.leading.equalToSuperview()
             make.top.equalToSuperview().offset(50)
             make.bottom.equalToSuperview().offset(-5)
-            make.trailing.equalTo(seeAllButton.snp.leading).offset(-150)
+            make.width.greaterThanOrEqualTo(100)
         }
         
         seeAllButton.snp.makeConstraints { make in
