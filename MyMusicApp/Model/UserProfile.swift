@@ -8,7 +8,8 @@
 import Foundation
 
 struct UserProfile {
-    
+    let display_name: String
+    let email: String
 }
 
 /*

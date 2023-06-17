@@ -16,6 +16,7 @@ final class APICaller {
         static let baseAPIURL = "https://api.spotify.com/v1"
     }
     
+    /// User Profile Information
     public func getCurrentUserProfile(completion: @escaping (Result<UserProfile, Error>) -> Void) {
         createRequest(with: URL(string: Constants.baseAPIURL + "/me"),
                       type: .GET) { baseRequest in
@@ -26,7 +27,8 @@ final class APICaller {
                 }
                 
                 do {
-                    let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                    let result = try JSONSerialization.jsonObject(with: data,
+                                                                  options: .allowFragments)
                     print(result)
                 } catch {
                     completion(.failure(error))
