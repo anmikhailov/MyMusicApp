@@ -31,7 +31,7 @@
 		84C4209C2A37505E00727691 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420922A37505E00727691 /* ExploreViewController.swift */; };
 		84C4209D2A37505E00727691 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420942A37505E00727691 /* TabBarController.swift */; };
 		84C4209E2A37505E00727691 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420972A37505E00727691 /* AccountViewController.swift */; };
-		84C420A02A37509D00727691 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4209F2A37509D00727691 /* UserModel.swift */; };
+		84C420A02A37509D00727691 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4209F2A37509D00727691 /* UserProfile.swift */; };
 		84C420A22A3750B800727691 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420A12A3750B800727691 /* FirebaseManager.swift */; };
 		84C420A52A3756B700727691 /* SignInUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420A42A3756B700727691 /* SignInUpViewController.swift */; };
 		84C420A72A3756CC00727691 /* SignInUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420A62A3756CC00727691 /* SignInUpView.swift */; };
@@ -89,7 +89,7 @@
 		84C420922A37505E00727691 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		84C420942A37505E00727691 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		84C420972A37505E00727691 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
-		84C4209F2A37509D00727691 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		84C4209F2A37509D00727691 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		84C420A12A3750B800727691 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		84C420A42A3756B700727691 /* SignInUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUpViewController.swift; sourceTree = "<group>"; };
 		84C420A62A3756CC00727691 /* SignInUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUpView.swift; sourceTree = "<group>"; };
@@ -463,6 +463,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C420AB2A37570400727691 /* CustomView.swift in Sources */,
+				8436B4E42A3E07CC0093B82E /* RecentlyTracks.swift in Sources */,
 				84C420A92A3756FA00727691 /* CustomViewController.swift in Sources */,
 				84C4209D2A37505E00727691 /* TabBarController.swift in Sources */,
 				84C420C72A37AAC500727691 /* ForgetPasswordViewController.swift in Sources */,
@@ -472,6 +473,7 @@
 				84C420C32A379AB800727691 /* UserInfo.swift in Sources */,
 				84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */,
 				84C420A52A3756B700727691 /* SignInUpViewController.swift in Sources */,
+				8436B4DD2A3DB41B0093B82E /* AuthViewController.swift in Sources */,
 				84BEB1152A3C534A0033DAA0 /* HeaderReusableView.swift in Sources */,
 				84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */,
 				4E6C55A02A3C60090039E66C /* AuthViewController.swift in Sources */,
@@ -484,6 +486,8 @@
 				84BEB1182A3C534A0033DAA0 /* HomeView.swift in Sources */,
 				84C420A22A3750B800727691 /* FirebaseManager.swift in Sources */,
 				84AE2F7E2A35F687006E87F1 /* Resources.swift in Sources */,
+				8436B4DA2A3DB3FC0093B82E /* AuthResponse.swift in Sources */,
+				8436B4DF2A3DE03C0093B82E /* APICaller.swift in Sources */,
 				84C4209B2A37505E00727691 /* FavoritesViewController.swift in Sources */,
 				84C4209C2A37505E00727691 /* ExploreViewController.swift in Sources */,
 				84BEB1162A3C534A0033DAA0 /* HomeViewController.swift in Sources */,
@@ -495,6 +499,7 @@
 				84C420A02A37509D00727691 /* UserModel.swift in Sources */,
 				4E6C559B2A3C5FB00039E66C /* AuthManager.swift in Sources */,
 				84C420C52A37AAB000727691 /* ForgetPasswordView.swift in Sources */,
+				8436B4E22A3DE0750093B82E /* AuthManager.swift in Sources */,
 				84C4209E2A37505E00727691 /* AccountViewController.swift in Sources */,
 				A29306752A3A120F00C83C89 /* FirstScreenOnboardingVC.swift in Sources */,
 				84C420A72A3756CC00727691 /* SignInUpView.swift in Sources */,
