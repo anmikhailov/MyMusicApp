@@ -20,12 +20,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let tabBarController = TabBarController()
             window?.rootViewController = tabBarController
         } else {
-            let welcome = Welcome()
+            let welcome = SignInUpViewController()
             let navView = UINavigationController(rootViewController: welcome)
             window?.rootViewController = navView
         }
         
+        window?.overrideUserInterfaceStyle = .dark
         window?.makeKeyAndVisible()
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

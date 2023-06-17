@@ -17,18 +17,15 @@ final class AuthManager {
     
     // MARK: - URL
     public var signInURL: URL? {
-        let scopes = "user-read-private"
-        let redirectURI = "https://google.com"
         let base = "https://accounts.spotify.com/authorize?"
-        let string = "\(base)response_type=code&client_id=\(Web.clientID)&scope=\(scopes)&redirect_uri=\(redirectURI)&show_dialog=TRUE"
+        let string = "\(base)response_type=code&client_id=\(Web.clientID)&scope=\(Web.scopes)&redirect_uri=\(Web.redirectURI)&show_dialog=TRUE"
         
         return URL(string: string)
     }
     
     // MARK: - Properties
     var isSignedIn: Bool {
-        print(accessToken ?? refreshToken != nil)
-        return accessToken ?? refreshToken != nil
+        return accessToken != nil
     }
     
     private var accessToken: String? {
@@ -58,7 +55,7 @@ final class AuthManager {
         components.queryItems = [
             URLQueryItem(name: "grant_type", value: "authorization_code"),
             URLQueryItem(name: "code", value: code),
-            URLQueryItem(name: "redirect_uri", value: "https://google.com")
+            URLQueryItem(name: "redirect_uri", value: Web.redirectURI)
         ]
         
         // request
@@ -88,8 +85,6 @@ final class AuthManager {
             }
             
             do {
-//                let json = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
-//                print(json)
                 let result = try JSONDecoder().decode(AuthResponse.self, from: data)
                 self.cacheToken(result: result)
                 completion(true)
@@ -101,13 +96,68 @@ final class AuthManager {
         task.resume()
     }
     
-    public func refreshAccessToken() {
+    public func refreshIfNeeded(completion: @escaping (Bool) -> Void) {
+       
+        guard let refreshToken = self.refreshToken else {
+            return
+        }
         
+        //Refresh token
+        guard let url = URL(string: Web.tokenApiURL) else { return }
+        
+        // components
+        var components = URLComponents()
+        components.queryItems = [
+            URLQueryItem(name: "grant_type",
+                         value: "refresh_token"),
+            URLQueryItem(name: "refresh_token",
+                         value: refreshToken),
+        ]
+        
+        // request
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/x-www-form-urlencoded ", forHTTPHeaderField: "Content-Type")
+        request.httpBody = components.query?.data(using: .utf8)
+        
+        // token
+        let basicToken = Web.clientID + ":" + Web.secretID
+        let data = basicToken.data(using: .utf8)
+        
+        guard let base64String = data?.base64EncodedString() else {
+            print("Failure to get base64")
+            completion(false)
+            return
+        }
+        request.setValue("Basic \(base64String)", forHTTPHeaderField: "Authorization")
+        
+        // task
+        let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, error in
+            guard let self = self else { return }
+            
+            guard let data = data, error == nil else {
+                completion(false)
+                return
+            }
+            
+            do {
+                let result = try JSONDecoder().decode(AuthResponse.self, from: data)
+                print("Successfully refreshed")
+                self.cacheToken(result: result)
+                completion(true)
+            } catch {
+                print(error.localizedDescription)
+                completion(false)
+            }
+        }
+        task.resume()
     }
     
     private func cacheToken(result: AuthResponse) {
         standard.setValue(result.access_token, forKey: "access_token")
-        standard.setValue(result.refresh_token, forKey: "refresh_token")
+        if let refreshToken = result.refresh_token {
+            standard.setValue(result.refresh_token, forKey: "refresh_token")
+        }
         standard.setValue(Date().addingTimeInterval(TimeInterval(result.expires_in)), forKey: "expirationDate")
     }
 }

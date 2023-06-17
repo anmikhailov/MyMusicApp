@@ -12,6 +12,8 @@ enum Web {
     static let clientID = "bf130a2999604796a93c9fca3f16cc1f"
     static let secretID = "38ad284a59114f8997ec8e254e68641e"
     static let tokenApiURL = "https://accounts.spotify.com/api/token"
+    static let redirectURI = "https://google.com"
+    static let scopes = "user-read-private%20user-read-playback-state%20app-remote-control%20streaming%20playlist-read-private%20user-read-recently-played%20user-read-email"
 }
 
 enum Resources {
