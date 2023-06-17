@@ -135,10 +135,10 @@
 		84D78D762A37A9F300D3B464 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		84D78D772A37A9F300D3B464 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		84D78D782A37A9F300D3B464 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
-		A29306742A3A120F00C83C89 /* FirstScreenOnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenOnboardingVC.swift; sourceTree = SOURCE_ROOT; };
-		A29306762A3A121B00C83C89 /* SecondScreenOnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreenOnboardingVC.swift; sourceTree = SOURCE_ROOT; };
-		A29306782A3A122400C83C89 /* ThirdScreenOnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdScreenOnboardingVC.swift; sourceTree = SOURCE_ROOT; };
-		A293067A2A3A123200C83C89 /* FourthScreenOnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthScreenOnboardingVC.swift; sourceTree = SOURCE_ROOT; };
+		A29306742A3A120F00C83C89 /* FirstScreenOnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirstScreenOnboardingVC.swift; path = MyMusicApp/Controllers/OnboardingVC/FirstScreenOnboardingVC.swift; sourceTree = SOURCE_ROOT; };
+		A29306762A3A121B00C83C89 /* SecondScreenOnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecondScreenOnboardingVC.swift; path = MyMusicApp/Controllers/OnboardingVC/SecondScreenOnboardingVC.swift; sourceTree = SOURCE_ROOT; };
+		A29306782A3A122400C83C89 /* ThirdScreenOnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ThirdScreenOnboardingVC.swift; path = MyMusicApp/Controllers/OnboardingVC/ThirdScreenOnboardingVC.swift; sourceTree = SOURCE_ROOT; };
+		A293067A2A3A123200C83C89 /* FourthScreenOnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FourthScreenOnboardingVC.swift; path = MyMusicApp/Controllers/OnboardingVC/FourthScreenOnboardingVC.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
