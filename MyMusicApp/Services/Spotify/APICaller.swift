@@ -16,6 +16,27 @@ final class APICaller {
         static let baseAPIURL = "https://api.spotify.com/v1"
     }
     
+    public func getRecentlyPlaedTracks(completion: @escaping (Result<UserProfile, Error>) -> Void) {
+        createRequest(with: URL(string: Constants.baseAPIURL + "/me/player/recently-played"),
+                      type: .GET) { baseRequest in
+            let task = URLSession.shared.dataTask(with: baseRequest) { data, _, error in
+                guard let data = data, error == nil else {
+                    completion(.failure(APIError.failedToGetData))
+                    return
+                }
+                
+                do {
+                    let result = try JSONDecoder().decode(RecentlyTracks.self, from: data)
+                    print(result)
+                } catch {
+                    completion(.failure(error))
+                }
+            }
+            
+            task.resume()
+        }
+    }
+    
     /// User Profile Information
     public func getCurrentUserProfile(completion: @escaping (Result<UserProfile, Error>) -> Void) {
         createRequest(with: URL(string: Constants.baseAPIURL + "/me"),
@@ -27,10 +48,10 @@ final class APICaller {
                 }
                 
                 do {
-                    let result = try JSONSerialization.jsonObject(with: data,
-                                                                  options: .allowFragments)
+                    let result = try JSONDecoder().decode(UserProfile.self, from: data)
                     print(result)
                 } catch {
+                    print(error.localizedDescription)
                     completion(.failure(error))
                 }
             }
