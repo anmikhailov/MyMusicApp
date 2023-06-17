@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8436B4D62A3DB3AC0093B82E /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8436B4D52A3DB3AB0093B82E /* AuthManager.swift */; };
 		8436B4DA2A3DB3FC0093B82E /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8436B4D92A3DB3FB0093B82E /* AuthResponse.swift */; };
 		8436B4DD2A3DB41B0093B82E /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8436B4DC2A3DB41A0093B82E /* AuthViewController.swift */; };
+		8436B4DF2A3DE03C0093B82E /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8436B4DE2A3DE03C0093B82E /* APICaller.swift */; };
+		8436B4E22A3DE0750093B82E /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8436B4E12A3DE0740093B82E /* AuthManager.swift */; };
 		84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */; };
 		84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */; };
 		84AE2F662A35F2CA006E87F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AE2F652A35F2CA006E87F1 /* Assets.xcassets */; };
@@ -30,7 +31,7 @@
 		84C4209C2A37505E00727691 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420922A37505E00727691 /* ExploreViewController.swift */; };
 		84C4209D2A37505E00727691 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420942A37505E00727691 /* TabBarController.swift */; };
 		84C4209E2A37505E00727691 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420972A37505E00727691 /* AccountViewController.swift */; };
-		84C420A02A37509D00727691 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4209F2A37509D00727691 /* UserModel.swift */; };
+		84C420A02A37509D00727691 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4209F2A37509D00727691 /* UserProfile.swift */; };
 		84C420A22A3750B800727691 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420A12A3750B800727691 /* FirebaseManager.swift */; };
 		84C420A52A3756B700727691 /* SignInUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420A42A3756B700727691 /* SignInUpViewController.swift */; };
 		84C420A72A3756CC00727691 /* SignInUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420A62A3756CC00727691 /* SignInUpView.swift */; };
@@ -62,9 +63,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8436B4D52A3DB3AB0093B82E /* AuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthManager.swift; path = MyMusicApp/Services/AuthManager.swift; sourceTree = SOURCE_ROOT; };
 		8436B4D92A3DB3FB0093B82E /* AuthResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		8436B4DC2A3DB41A0093B82E /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		8436B4DE2A3DE03C0093B82E /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		8436B4E12A3DE0740093B82E /* AuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		84AE2F592A35F2C7006E87F1 /* MyMusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,7 +89,7 @@
 		84C420922A37505E00727691 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		84C420942A37505E00727691 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		84C420972A37505E00727691 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
-		84C4209F2A37509D00727691 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		84C4209F2A37509D00727691 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		84C420A12A3750B800727691 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		84C420A42A3756B700727691 /* SignInUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUpViewController.swift; sourceTree = "<group>"; };
 		84C420A62A3756CC00727691 /* SignInUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUpView.swift; sourceTree = "<group>"; };
@@ -137,6 +139,15 @@
 			path = AuthVC;
 			sourceTree = "<group>";
 		};
+		8436B4E02A3DE0480093B82E /* Spotify */ = {
+			isa = PBXGroup;
+			children = (
+				8436B4E12A3DE0740093B82E /* AuthManager.swift */,
+				8436B4DE2A3DE03C0093B82E /* APICaller.swift */,
+			);
+			path = Spotify;
+			sourceTree = "<group>";
+		};
 		84AE2F502A35F2C7006E87F1 = {
 			isa = PBXGroup;
 			children = (
@@ -171,7 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				8436B4D92A3DB3FB0093B82E /* AuthResponse.swift */,
-				84C4209F2A37509D00727691 /* UserModel.swift */,
+				84C4209F2A37509D00727691 /* UserProfile.swift */,
 				84C420C22A379AB800727691 /* UserInfo.swift */,
 			);
 			path = Model;
@@ -180,7 +191,7 @@
 		84AE2F722A35F35E006E87F1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				8436B4D52A3DB3AB0093B82E /* AuthManager.swift */,
+				8436B4E02A3DE0480093B82E /* Spotify */,
 				84C420AC2A378AA700727691 /* Firebase */,
 			);
 			path = Services;
@@ -466,7 +477,6 @@
 				84BEB1192A3C534A0033DAA0 /* PopularAlbumCell.swift in Sources */,
 				84BEB1142A3C534A0033DAA0 /* CustomeCollectionView.swift in Sources */,
 				A293067B2A3A123200C83C89 /* FourthScreenOnboardingVC.swift in Sources */,
-				8436B4D62A3DB3AC0093B82E /* AuthManager.swift in Sources */,
 				84C420C32A379AB800727691 /* UserInfo.swift in Sources */,
 				84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */,
 				84C420A52A3756B700727691 /* SignInUpViewController.swift in Sources */,
@@ -482,6 +492,7 @@
 				84C420A22A3750B800727691 /* FirebaseManager.swift in Sources */,
 				84AE2F7E2A35F687006E87F1 /* Resources.swift in Sources */,
 				8436B4DA2A3DB3FC0093B82E /* AuthResponse.swift in Sources */,
+				8436B4DF2A3DE03C0093B82E /* APICaller.swift in Sources */,
 				84C4209B2A37505E00727691 /* FavoritesViewController.swift in Sources */,
 				84C4209C2A37505E00727691 /* ExploreViewController.swift in Sources */,
 				84BEB1162A3C534A0033DAA0 /* HomeViewController.swift in Sources */,
@@ -489,8 +500,9 @@
 				84AE2F7C2A35F679006E87F1 /* UIColorExtension.swift in Sources */,
 				84BEB1132A3C534A0033DAA0 /* ExtentionCollectonView.swift in Sources */,
 				84BEB11B2A3C534A0033DAA0 /* RecentlyMusicCell.swift in Sources */,
-				84C420A02A37509D00727691 /* UserModel.swift in Sources */,
+				84C420A02A37509D00727691 /* UserProfile.swift in Sources */,
 				84C420C52A37AAB000727691 /* ForgetPasswordView.swift in Sources */,
+				8436B4E22A3DE0750093B82E /* AuthManager.swift in Sources */,
 				84C4209E2A37505E00727691 /* AccountViewController.swift in Sources */,
 				A29306752A3A120F00C83C89 /* FirstScreenOnboardingVC.swift in Sources */,
 				84C420A72A3756CC00727691 /* SignInUpView.swift in Sources */,
