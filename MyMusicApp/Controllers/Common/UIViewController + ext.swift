@@ -12,7 +12,7 @@ extension UIViewController {
         let labelItem = UILabel()
         labelItem.textColor = .white
         labelItem.text = title
-        labelItem.font = Resources.Fonts.RobotoRegular(with: 48)
+        labelItem.font = Resources.Fonts.RobotoBold(with: 48)
         labelItem.textAlignment = .center
         
         let button = UIBarButtonItem(image: rightButtonImage,

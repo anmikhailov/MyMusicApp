@@ -67,5 +67,8 @@ enum Resources {
         static func RobotoRegular(with size: CGFloat) -> UIFont {
             UIFont(name: "Roboto", size: size) ?? UIFont()
         }
+        static func RobotoBold(with size: CGFloat) -> UIFont {
+            UIFont(name: "Roboto-Bold", size: size) ?? UIFont()
+        }
     }
 }
