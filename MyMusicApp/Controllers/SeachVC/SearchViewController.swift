@@ -21,6 +21,8 @@ class SearchViewController: CustomViewController<SearchView> {
         
         customView.mainTableView.dataSource = self
         customView.mainTableView.delegate = self
+        
+        navigationController?.navigationBar.isHidden = true
     }
 }
 
@@ -28,7 +30,7 @@ class SearchViewController: CustomViewController<SearchView> {
 extension SearchViewController: SearchViewDelegate {
     func searchView(_ view: SearchView, didTapCloseButton button: UIButton) {
         //Close SearchViewController
-        print("Close button tapped")
+        navigationController?.popViewController(animated: true)
     }
 }
 

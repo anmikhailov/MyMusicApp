@@ -12,21 +12,22 @@ protocol SeeAllProtocol: AnyObject {
     func goToSeeAll()
 }
 
- class ExploreViewController: UIViewController {
+class ExploreViewController: UIViewController {
     
     // MARK: - Properties
+    private let helperView = UIView()
     
     var exploreCollectionView: ExploreCollectionView!
     
     // MARK: - Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupCollectionView()
         setupConstraints()
+        configureNavBar(with: "Explore", backgroundColor: .clear, rightButtonImage: Resources.Icons.Common.search)
         
-
     }
     
     // MARK: - Private methods
@@ -40,7 +41,7 @@ protocol SeeAllProtocol: AnyObject {
         
         exploreCollectionView = ExploreCollectionView(frame: view.bounds)
         exploreCollectionView.setSections(sectionsE)
-    
+        
     }
     
 }
@@ -49,10 +50,19 @@ extension ExploreViewController {
     
     func setupConstraints() {
         
+        view.addSubview(helperView)
+        helperView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            helperView.topAnchor.constraint(equalTo: view.topAnchor),
+            helperView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            helperView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            helperView.heightAnchor.constraint(equalToConstant: 1),
+        ])
+        
         view.addSubview(exploreCollectionView)
         
         exploreCollectionView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(90)
+            make.top.equalTo(helperView.snp.bottom)
             make.leading.equalToSuperview().offset(10)
             make.trailing.equalToSuperview().offset(-10)
             make.bottom.equalToSuperview()
