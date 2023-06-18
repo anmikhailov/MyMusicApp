@@ -34,6 +34,14 @@ struct SpotifyCopyright: Codable {
     let type: String // The type of copyright: C = the copyright, P = the sound recording (performance) copyright.
 }
 
+struct SpotifyLinkedFrom: Codable {
+    let external_urls: SpotifyExternalUrl
+    let href: String
+    let id: String
+    let type: String // allowed: "track"
+    let uri: String
+}
+
 struct SpotifyExternalIds: Codable {
     let isrc: String
     let ean: String
@@ -47,4 +55,33 @@ struct SpotifySimplifiedArtist: Codable {
     let name: String
     let type: String // Allowed values: "artist"
     let uri: String
+}
+
+struct SpotifyTrack: Codable {
+    let href: String
+    let limit: Int
+    let next: String?
+    let offset: Int // default 0
+    let previous: String? // Example value: "https://api.spotify.com/v1/me/shows?offset=1&limit=1"
+    let total: Int
+    let items: [SpotifySimplifiedTrackObject]
+}
+
+struct SpotifySimplifiedTrackObject: Codable {
+    let artists: [SpotifySimplifiedArtist]
+    let available_markets: [String]
+    let disc_number: Int
+    let explicit: Bool
+    let duration_ms: Int
+    let href: String
+    let id: String
+    let is_playable: Bool
+    let linked_from: SpotifyLinkedFrom?
+    let restrictions: SpotifyRestrictions?
+    let name: String
+    let preview_url: String?
+    let track_number: Int
+    let type: String // "track"
+    let uri: String
+    let is_local: Bool
 }

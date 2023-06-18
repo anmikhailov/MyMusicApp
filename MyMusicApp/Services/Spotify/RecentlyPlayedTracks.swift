@@ -36,10 +36,6 @@ struct RecentlyPlayedTracksRequest: DataRequest {
         return baseUrl + path
     }
     
-    var headers: [String : String] {
-        [:]
-    }
-    
     var queryItems: [String : String] {
         [
             "limit": String(limit)

@@ -48,7 +48,7 @@ struct RPTrack: Codable {
     let is_playable: Bool // https://developer.spotify.com/documentation/web-api/concepts/track-relinking
     // If true, the track is playable in the given market. Otherwise false.
     
-    let linked_from: RPLinkedFrom?
+    let linked_from: SpotifyLinkedFrom?
     // Part of the response when Track Relinking is applied, and the requested track has been replaced with different track. The track in the linked_from object contains information about the originally requested track.
     
     let restrictions: SpotifyRestrictions
@@ -105,14 +105,6 @@ struct ArtictObject: Codable {
     let name: String
     let popularity: Int
     let type: String // Allowed values: "artist"
-    let uri: String
-}
-
-struct RPLinkedFrom: Codable {
-    let external_urls: SpotifyExternalUrl
-    let href: String
-    let id: String
-    let type: String // allowed: "track"
     let uri: String
 }
 

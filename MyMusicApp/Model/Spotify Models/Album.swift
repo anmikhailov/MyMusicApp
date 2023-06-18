@@ -7,28 +7,38 @@
 
 import Foundation
 
-//struct Album: Codable {
-//    let albumType: String?
-//    let total_tracks: Int?
-//    let available_markets: [String]?
-//    let external_urls: [String: String]?
-//    let href: String?
-//    let id: String?
-//    let images: [[String: Any]]?
-//    let name: String?
-//    let release_date: String?
-//    let release_date_precision: String?
-//    let restrictions: [String: String]?
-//    let type: String?
-//    let uri: String?
-//    let copyrights: [[String: String]]?
-//    let external_ids: [String: String]?
-//    let genres: [String]?
-//    let label: String?
-//    let popularity: Int?
-//    let artists: [[String: Any]]?
-//    let tracks: [String: Any]?
-//}
+struct Album: Codable {
+    let albumType: String // "album", "single", "compilation"
+    let total_tracks: Int
+    let available_markets: [String]
+    let external_urls: SpotifyExternalUrl
+    let href: String
+    let id: String
+    let images: SpotifyImage
+    let name: String
+    let release_date: String
+    let release_date_precision: String
+    let restrictions: SpotifyRestrictions
+    let type: String
+    let uri: String
+    let copyrights: SpotifyCopyright
+    let external_ids: SpotifyExternalIds
+    let genres: [String]
+    let label: String
+    let popularity: Int
+    let artists: [ArtictObject]
+    let tracks: AlbumTrackObject
+}
+
+struct AlbumTrackObject: Codable {
+    let href: String
+    let limit: Int
+    let next: String?
+    let offset: Int
+    let previous: String?
+    let total: Int
+    let items: [SpotifyTrack]
+}
 
 struct NewAlbum: Codable {
     let album_type: String // Allowed values: "album", "single", "compilation"
