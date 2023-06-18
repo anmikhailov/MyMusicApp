@@ -8,7 +8,7 @@
 import Foundation
 
 //TODO: вставить функцию ниже в VC
-// также добавить в vc: var newAlbums: [NewAlbum]
+// также добавить в vc: var newAlbums: [NewAlbum] = []
 
 // MARK: - New releases albums
 //func fetchNewReleasesAlbums() {

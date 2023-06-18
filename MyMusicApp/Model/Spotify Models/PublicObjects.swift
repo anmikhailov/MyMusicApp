@@ -11,7 +11,6 @@ struct SpotifyImage: Codable {
     let url: String // Example value: "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228"
     let height: Int?
     let width: Int?
-    
 }
 
 struct SpotifyExternalUrl: Codable {

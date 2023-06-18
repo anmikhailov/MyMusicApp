@@ -17,52 +17,53 @@ final class APICaller {
     }
     
     // MARK: - Recently played tracks
-    public func getFiveRecentlyPlayedTracks(completion: @escaping (Result<RecentlyTracks, Error>) -> Void) {
-        createRequest(with: URL(string: Constants.baseAPIURL + "/me/player/recently-played?limit=5"),
-                      type: .GET) { baseRequest in
-            let task = URLSession.shared.dataTask(with: baseRequest) { data, _, error in
-                guard let data = data, error == nil else {
-                    completion(.failure(APIError.failedToGetData))
-                    return
-                }
-                
-                do {
-                    let result = try JSONDecoder().decode(RecentlyTracks.self, from: data)
-
-                    print(result)
-                    completion(.success(result))
-                    
-                } catch {
-                    completion(.failure(error))
-                }
-            }
-            
-            task.resume()
-        }
-    }
+//    public func getFiveRecentlyPlayedTracks(completion: @escaping (Result<RecentlyTracks, Error>) -> Void) {
+//        createRequest(with: URL(string: Constants.baseAPIURL + "/me/player/recently-played?limit=5"),
+//                      type: .GET) { baseRequest in
+//            let task = URLSession.shared.dataTask(with: baseRequest) { data, _, error in
+//                guard let data = data, error == nil else {
+//                    completion(.failure(APIError.failedToGetData))
+//                    return
+//                }
+//
+//                do {
+//                    let result = try JSONDecoder().decode(RecentlyTracks.self, from: data)
+//
+//                    print(result)
+//                    completion(.success(result))
+//
+//                } catch {
+//                    completion(.failure(error))
+//                }
+//            }
+//
+//            task.resume()
+//        }
+//    }
     
-    public func getNewReleasesAlbums(completion: @escaping (Result<AlbumsResponse, Error>) -> Void) {
-        createRequest(with: URL(string: Constants.baseAPIURL + "/browse/new-releases"), type: .GET) { baseRequest in
-            let task = URLSession.shared.dataTask(with: baseRequest) { data, _, error in
-                guard let data = data, error == nil else {
-                    completion(.failure(APIError.failedToGetData))
-                    return
-                }
-                
-                do {
-                    let result = try JSONDecoder().decode(AlbumsResponse.self, from: data)
-
-                    print(result)
-                    completion(.success(result))
-                    
-                } catch {
-                    completion(.failure(error))
-                }
-            }
-            
-            task.resume()
-        }
-    }
+    // MARK: - New releases
+//    public func getNewReleasesAlbums(completion: @escaping (Result<AlbumsResponse, Error>) -> Void) {
+//        createRequest(with: URL(string: Constants.baseAPIURL + "/browse/new-releases"), type: .GET) { baseRequest in
+//            let task = URLSession.shared.dataTask(with: baseRequest) { data, _, error in
+//                guard let data = data, error == nil else {
+//                    completion(.failure(APIError.failedToGetData))
+//                    return
+//                }
+//
+//                do {
+//                    let result = try JSONDecoder().decode(AlbumsResponse.self, from: data)
+//
+//                    print(result)
+//                    completion(.success(result))
+//
+//                } catch {
+//                    completion(.failure(error))
+//                }
+//            }
+//
+//            task.resume()
+//        }
+//    }
     
     //MARK: - User Profile Information
     public func getCurrentUserProfile(completion: @escaping (Result<UserProfile, Error>) -> Void) {
