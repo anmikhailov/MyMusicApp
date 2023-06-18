@@ -14,6 +14,11 @@
 		4E615DEB2A3E44C700B9F793 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E615DEA2A3E44C700B9F793 /* Album.swift */; };
 		4E6C55992A3C5FA60039E66C /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6C55982A3C5FA60039E66C /* AuthResponse.swift */; };
 		4E6C55A02A3C60090039E66C /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6C559F2A3C60090039E66C /* AuthViewController.swift */; };
+		4ED59D752A3F0C9C002F3632 /* PublicObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED59D742A3F0C9C002F3632 /* PublicObjects.swift */; };
+		4ED59D772A3F10BC002F3632 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED59D762A3F10BC002F3632 /* DataRequest.swift */; };
+		4ED59D792A3F158E002F3632 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED59D782A3F158E002F3632 /* NetworkService.swift */; };
+		4ED59D7B2A3F15E4002F3632 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED59D7A2A3F15E4002F3632 /* ErrorResponse.swift */; };
+		4ED59D7E2A3F17A7002F3632 /* NewReleasesAlbums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED59D7D2A3F17A7002F3632 /* NewReleasesAlbums.swift */; };
 		84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */; };
 		84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */; };
 		84AE2F662A35F2CA006E87F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AE2F652A35F2CA006E87F1 /* Assets.xcassets */; };
@@ -72,6 +77,11 @@
 		4E615DEA2A3E44C700B9F793 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		4E6C55982A3C5FA60039E66C /* AuthResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		4E6C559F2A3C60090039E66C /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		4ED59D742A3F0C9C002F3632 /* PublicObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicObjects.swift; sourceTree = "<group>"; };
+		4ED59D762A3F10BC002F3632 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
+		4ED59D782A3F158E002F3632 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		4ED59D7A2A3F15E4002F3632 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		4ED59D7D2A3F17A7002F3632 /* NewReleasesAlbums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReleasesAlbums.swift; sourceTree = "<group>"; };
 		84AE2F592A35F2C7006E87F1 /* MyMusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +151,7 @@
 				4E615DE12A3E2A3C00B9F793 /* RecentlyTracks.swift */,
 				4E615DE22A3E2A3C00B9F793 /* UserProfile.swift */,
 				4E615DEA2A3E44C700B9F793 /* Album.swift */,
+				4ED59D742A3F0C9C002F3632 /* PublicObjects.swift */,
 			);
 			path = "Spotify Models";
 			sourceTree = "<group>";
@@ -150,6 +161,7 @@
 			children = (
 				4E615DE62A3E2A4D00B9F793 /* APICaller.swift */,
 				4E615DE72A3E2A4D00B9F793 /* AuthManager.swift */,
+				4ED59D7D2A3F17A7002F3632 /* NewReleasesAlbums.swift */,
 			);
 			path = Spotify;
 			sourceTree = "<group>";
@@ -160,6 +172,16 @@
 				4E6C559F2A3C60090039E66C /* AuthViewController.swift */,
 			);
 			path = AuthVC;
+			sourceTree = "<group>";
+		};
+		4ED59D7C2A3F1614002F3632 /* Network  */ = {
+			isa = PBXGroup;
+			children = (
+				4ED59D782A3F158E002F3632 /* NetworkService.swift */,
+				4ED59D762A3F10BC002F3632 /* DataRequest.swift */,
+				4ED59D7A2A3F15E4002F3632 /* ErrorResponse.swift */,
+			);
+			path = "Network ";
 			sourceTree = "<group>";
 		};
 		84AE2F502A35F2C7006E87F1 = {
@@ -207,6 +229,7 @@
 			children = (
 				4E615DE52A3E2A4D00B9F793 /* Spotify */,
 				84C420AC2A378AA700727691 /* Firebase */,
+				4ED59D7C2A3F1614002F3632 /* Network  */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -492,13 +515,17 @@
 				84BEB1142A3C534A0033DAA0 /* CustomeCollectionView.swift in Sources */,
 				A293067B2A3A123200C83C89 /* FourthScreenOnboardingVC.swift in Sources */,
 				4E615DE82A3E2A4D00B9F793 /* APICaller.swift in Sources */,
+				4ED59D7E2A3F17A7002F3632 /* NewReleasesAlbums.swift in Sources */,
 				84C420C32A379AB800727691 /* UserInfo.swift in Sources */,
+				4ED59D7B2A3F15E4002F3632 /* ErrorResponse.swift in Sources */,
 				84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */,
 				84C420A52A3756B700727691 /* SignInUpViewController.swift in Sources */,
 				84BEB1152A3C534A0033DAA0 /* HeaderReusableView.swift in Sources */,
 				4E615DE32A3E2A3C00B9F793 /* RecentlyTracks.swift in Sources */,
 				84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */,
 				4E6C55A02A3C60090039E66C /* AuthViewController.swift in Sources */,
+				4ED59D752A3F0C9C002F3632 /* PublicObjects.swift in Sources */,
+				4ED59D772A3F10BC002F3632 /* DataRequest.swift in Sources */,
 				4E615DE42A3E2A3C00B9F793 /* UserProfile.swift in Sources */,
 				4E615DE92A3E2A4D00B9F793 /* AuthManager.swift in Sources */,
 				A29306772A3A121B00C83C89 /* SecondScreenOnboardingVC.swift in Sources */,
@@ -516,6 +543,7 @@
 				84BEB1162A3C534A0033DAA0 /* HomeViewController.swift in Sources */,
 				84C420CB2A37B2F800727691 /* ChangePasswordViewController.swift in Sources */,
 				84AE2F7C2A35F679006E87F1 /* UIColorExtension.swift in Sources */,
+				4ED59D792A3F158E002F3632 /* NetworkService.swift in Sources */,
 				84BEB1132A3C534A0033DAA0 /* ExtentionCollectonView.swift in Sources */,
 				84BEB11B2A3C534A0033DAA0 /* RecentlyMusicCell.swift in Sources */,
 				84C420C52A37AAB000727691 /* ForgetPasswordView.swift in Sources */,

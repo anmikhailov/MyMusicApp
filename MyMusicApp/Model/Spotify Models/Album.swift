@@ -7,25 +7,63 @@
 
 import Foundation
 
-struct Album: Codable {
-    let albumType: String?
-    let total_tracks: Int?
-    let available_markets: [String]?
-    let external_urls: [String: String]?
-    let href: String?
-    let id: String?
-    let images: [[String: Any]]?
-    let name: String?
-    let release_date: String?
-    let release_date_precision: String?
-    let restrictions: [String: String]?
-    let type: String?
-    let uri: String?
-    let copyrights: [[String: String]]?
-    let external_ids: [String: String]?
+//struct Album: Codable {
+//    let albumType: String?
+//    let total_tracks: Int?
+//    let available_markets: [String]?
+//    let external_urls: [String: String]?
+//    let href: String?
+//    let id: String?
+//    let images: [[String: Any]]?
+//    let name: String?
+//    let release_date: String?
+//    let release_date_precision: String?
+//    let restrictions: [String: String]?
+//    let type: String?
+//    let uri: String?
+//    let copyrights: [[String: String]]?
+//    let external_ids: [String: String]?
+//    let genres: [String]?
+//    let label: String?
+//    let popularity: Int?
+//    let artists: [[String: Any]]?
+//    let tracks: [String: Any]?
+//}
+
+struct NewAlbum: Codable {
+    let album_type: String // Allowed values: "album", "single", "compilation"
+    let total_tracks: Int
+    let available_markets: [String]
+    let external_urls: SpotifyExternalUrl
+    let href: String
+    let id: String
+    let images: [SpotifyImage]
+    let name: String
+    let release_date: String
+    let release_date_precision: String
+    let restrictions: SpotifyRestrictions?
+    let type: String
+    let uri: String
+    let copyrights: [SpotifyCopyright]
+    let external_ids: SpotifyExternalIds?
     let genres: [String]?
-    let label: String?
-    let popularity: Int?
-    let artists: [[String: Any]]?
-    let tracks: [String: Any]?
+    let label: String
+    let popularity: Int
+    let album_group: String
+    let artists: [SpotifySimplifiedArtist]
+}
+
+struct AlbumsResponse: Codable {
+    let albums: AlbumPage
+    
+    struct AlbumPage: Codable {
+        let href: String // Example value: "https://api.spotify.com/v1/me/shows?offset=0&limit=20"
+        let limit: Int?
+        let next: String? // URL to the next page of items. ( null if none)
+        // Example value: "https://api.spotify.com/v1/me/shows?offset=1&limit=1"
+        let offset: Int
+        let previous: String? // Example value: "https://api.spotify.com/v1/me/shows?offset=1&limit=1"
+        let total: Int
+        let items: [NewAlbum]
+    }
 }
