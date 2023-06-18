@@ -9,7 +9,22 @@ import Foundation
 
 //TODO: вставить функцию ниже в VC
 // также добавить в vc: var recentlyPlayedTracks: [PlayHistoryObject] = []
-//TODO: чистить и заново запрашивать треки?
+
+//func fetchRecentlyPlayedTracks() {
+//    var networkService = DefaultNetworkService()
+//    let request = RecentlyPlayedTracksRequest(limit: 5)
+//    networkService.request(request) { [weak self] result in
+//        guard let self = self else { return }
+//        switch result {
+//        case .success(let tracks):
+//            guard let tracks = tracks else { return }
+//            self.recentlyPlayedTracks.removeAll()
+//            self.recentlyPlayedTracks = tracks
+//        case .failure(let error):
+//            fatalError(error)
+//        }
+//    }
+//}
 
 struct RecentlyPlayedTracksRequest: DataRequest {
     
