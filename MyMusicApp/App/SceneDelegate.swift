@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -13,14 +14,41 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        setupWindow(with: scene)
+        checkAuthentication()
         
 //        let tabBarController = TabBarController()
-        
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = FirstScreenOnboardingVC()
+//        guard let windowScene = (scene as? UIWindowScene) else { return }
+//        window = UIWindow(windowScene: windowScene)
+//        window?.rootViewController = tabBarController
+//          window?.rootViewController = UINavigationController(rootViewController: FirstScreenOnboardingVC())
 //        window?.overrideUserInterfaceStyle = .dark
-        window?.makeKeyAndVisible()
+//        window?.makeKeyAndVisible()
+    }
+    
+    private func setupWindow(with scene: UIScene) {
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        let window = UIWindow(windowScene: windowScene)
+        self.window = window
+        self.window?.makeKeyAndVisible()
+    }
+    
+    public func checkAuthentication() {
+        if Auth.auth().currentUser == nil {
+            let vc = SignInUpViewController()
+            vc.modalPresentationStyle = .fullScreen
+            self.window?.rootViewController = vc
+        } else {
+            if UserDefaults.standard.value(forKey: "onboarding") as? String == "ok" {
+                let vc = TabBarController()
+                vc.modalPresentationStyle = .fullScreen
+                self.window?.rootViewController = vc
+            } else {
+                let vc = FirstScreenOnboardingVC()
+                vc.modalPresentationStyle = .fullScreen
+                self.window?.rootViewController = UINavigationController(rootViewController: vc)
+            }
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
