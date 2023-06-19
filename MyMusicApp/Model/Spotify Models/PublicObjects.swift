@@ -57,6 +57,58 @@ struct SpotifySimplifiedArtist: Codable {
     let uri: String
 }
 
+struct SpotifySimplifiedAlbum: Codable {
+    let album_type: String
+    let total_tracks: Int
+    let available_markets: [String]
+    let external_urls: SpotifyExternalUrl
+    let href: String
+    let id: String
+    let images: [SpotifyImage]
+    let name: String
+    let release_date: String
+    let release_date_precision: String
+    let type: String
+    let uri: String
+    let artists: [SpotifySimplifiedArtist]
+}
+
+struct SpotifySimplifiedPlaylist: Codable {
+    let description: String
+    let external_urls: SpotifyExternalUrl
+    let href: String
+    let id: String
+    let images: [SpotifyImage]
+    let name: String
+    let tracks: SpotifyTracksInPlaylist
+    let type: String
+    let uri: String
+}
+
+struct SpotifyTracksInPlaylist: Codable {
+    let href: String
+    let total: Int
+}
+
+struct SpotifySimplifiedTrack: Codable {
+    let album: SpotifySimplifiedAlbum
+    let artists: [SpotifySimplifiedArtist]
+    let available_markets: [String]
+    let disc_number: Int
+    let duration_ms: Int
+    let explicit: Bool
+    let external_urls: SpotifyExternalUrl
+    let href: String
+    let id: String
+    let name: String
+    let popularity: Int // from 0 to 100
+    let preview_url: String? // 30 sec preview: can be nil
+    let track_number: Int
+    let type: String // allowed value: "track"
+    let uri: String
+    let is_local: Bool // Whether or not the track is from a local file.
+}
+
 struct SpotifyTrack: Codable {
     let href: String
     let limit: Int
