@@ -52,6 +52,8 @@ class RecentlyMusicCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = Resources.Colors.TabBarColors.background
+        layer.cornerRadius = 15
+        layer.masksToBounds = true
         setupConstraints()
     }
     

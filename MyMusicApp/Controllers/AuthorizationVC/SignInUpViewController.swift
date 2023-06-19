@@ -71,6 +71,8 @@ extension SignInUpViewController: SignInUpViewDelegate {
                 FirebaseManager.shared.createAccount(email: email, password: password, username: username) { err in
                     if err == nil {
                         print("Registration ok")
+                        
+                        UserDefaults.standard.set("ok", forKey: "onboarding")
                         let vc = AuthViewController()
                         vc.completionHandler = { [weak self] success in
                             guard let self = self else { return }
@@ -94,6 +96,8 @@ extension SignInUpViewController: SignInUpViewDelegate {
                 FirebaseManager.shared.signIn(email: email, password: password) { error in
                     if error == nil {
                         print("Auth ok")
+                        
+                        UserDefaults.standard.set("ok", forKey: "onboarding")
                         let vc = AuthViewController()
                         vc.completionHandler = { [weak self] success in
                             guard let self = self else { return }
@@ -119,6 +123,8 @@ extension SignInUpViewController: SignInUpViewDelegate {
         FirebaseManager.shared.googleAuth(withPresenting: self) { err in
             if err == nil {
                 print("Google auth ok")
+                
+                UserDefaults.standard.set("ok", forKey: "onboarding")
                 let vc = AuthViewController()
                 vc.completionHandler = { [weak self] success in
                     guard let self = self else { return }

@@ -17,7 +17,7 @@ class PopularAlbumCell: UICollectionViewCell {
     private let albumImage: UIImageView = {
         let image = UIImageView()
         image.layer.cornerRadius = 15
-        image.clipsToBounds = false
+        image.layer.masksToBounds = true
         image.contentMode = .scaleAspectFill
         return image
     }()
@@ -39,7 +39,6 @@ class PopularAlbumCell: UICollectionViewCell {
  
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureCell()
         setupConstraints()
     }
     
@@ -51,7 +50,6 @@ class PopularAlbumCell: UICollectionViewCell {
     
     func configureCell() {
         albumImage.image = image
-        layer.cornerRadius = 15
     }
     
 }
