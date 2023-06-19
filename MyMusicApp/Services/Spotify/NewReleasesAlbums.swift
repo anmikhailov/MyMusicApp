@@ -40,14 +40,16 @@ struct NewReleasesAlbumRequest: DataRequest {
     }
     
     var headers: [String : String] {
-        [:]
+        [
+            "Bearer AQCSq6JMkjpeZdztUFB6RVxhXk_xjqZjp3gp6OF4OGW41LbW11PVEm_zf7-1uAeqOKx0IKG4Oo0NGU_PzpZWqEHmAxqe_ftK7WKzEKDYpBmiqGXrmR_DnomjKq0Xv0p5eiXufKNO_9_7qD-uTd3rmLwb5bhrPBviJK1TYwjX2dG6sOteL7B7fStb_7yf_coGPDZ0fgvn-z1T05NPZpU_3W9CkjS9_Ns3Bt4bZ2DngAv-6MxWR1pjwc0RxuR5B77v88ytXQ8yfeVofHwZypFv73Mu8L9f7646_iGe9sU3WNTQtAZhFhIbUU7IbniNQuGJ4ngp61cLE1YS9ISn2xhAh9X5jSg6": "Authorization"
+        ]
     }
     
     var queryItems: [String : String] {
         [
             "country": country,
-            "limit": String(limit),
-            "offset": String(offset)
+            "offset": String(offset),
+            "limit": String(limit)
         ]
     }
     

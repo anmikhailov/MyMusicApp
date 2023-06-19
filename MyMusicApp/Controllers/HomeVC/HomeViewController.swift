@@ -17,6 +17,7 @@ final class HomeViewController: UIViewController {
     // MARK: - Properties
     
     private var collectionView: CustomeCollectionView!
+//    var newAlbums: [NewAlbum] = []
     
     // MARK: - Lifecycle
 
@@ -25,7 +26,33 @@ final class HomeViewController: UIViewController {
         view.backgroundColor = Resources.Colors.TabBarColors.background
         setupCollectionView()
         setupConstraints()
+        
+        // fetchNewReleasesAlbums()
+        APICaller.shared.getNewReleasesAlbums(country: "US", limit: 10) { result in
+            switch result {
+            case .success(let albums):
+                print(albums)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
+    
+//    func fetchNewReleasesAlbums() {
+//        let networkService = DefaultNetworkService()
+//        let request = NewReleasesAlbumRequest(country: "DE", limit: 50, offset: 0)
+//        networkService.request(request) { [weak self] result in
+//            guard let self = self else { return }
+//            switch result {
+//            case .success(let albums):
+//                guard let albums = albums else { return }
+//                self.newAlbums = albums
+//            case .failure(let error):
+//                fatalError("\(error)")
+//            }
+//        }
+//
+//    }
     
     // MARK: - Private methods
     

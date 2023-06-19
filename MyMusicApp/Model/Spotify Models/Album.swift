@@ -54,13 +54,13 @@ struct NewAlbum: Codable {
     let restrictions: SpotifyRestrictions?
     let type: String
     let uri: String
-    let copyrights: [SpotifyCopyright]
+    let copyrights: [SpotifyCopyright]?
     let external_ids: SpotifyExternalIds?
     let genres: [String]?
-    let label: String
-    let popularity: Int
-    let album_group: String
-    let artists: [SpotifySimplifiedArtist]
+    let label: String?
+    let popularity: Int?
+    let album_group: String?
+    let artists: [SpotifySimplifiedArtist]?
 }
 
 struct AlbumsResponse: Codable {

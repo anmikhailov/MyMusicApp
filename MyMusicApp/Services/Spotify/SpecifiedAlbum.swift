@@ -16,16 +16,16 @@ import Foundation
 struct SpecifiedAlbumByID: DataRequest {
     
     var id: String!
-    var market: String
+    var market: String!
     
     var url: String {
         let baseUrl = Web.baseURL
         let path = "/albums/"
-        return baseUrl + path
+        return baseUrl + path + market
     }
     
     var headers: [String : String] {
-        [:] // ???
+        [:]
     }
     
     var queryItems: [String : String] {

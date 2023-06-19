@@ -29,7 +29,7 @@ final class AuthManager {
         return accessToken != nil
     }
     
-    private var accessToken: String? {
+    var accessToken: String? {
         return standard.string(forKey: "access_token")
     }
     
@@ -88,6 +88,7 @@ final class AuthManager {
             do {
                 let result = try JSONDecoder().decode(AuthResponse.self, from: data)
                 self.cacheToken(result: result)
+                print("Result: \(result)")
                 completion(true)
             } catch {
                 print(error.localizedDescription)
@@ -189,7 +190,7 @@ final class AuthManager {
     private func cacheToken(result: AuthResponse) {
         standard.setValue(result.access_token, forKey: "access_token")
         if let refreshToken = result.refresh_token {
-            standard.setValue(result.refresh_token, forKey: "refresh_token")
+            standard.setValue(refreshToken, forKey: "refresh_token")
         }
         standard.setValue(Date().addingTimeInterval(TimeInterval(result.expires_in)), forKey: "expirationDate")
     }
