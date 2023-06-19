@@ -14,41 +14,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        setupWindow(with: scene)
-        checkAuthentication()
-        
-//        let tabBarController = TabBarController()
-//        guard let windowScene = (scene as? UIWindowScene) else { return }
-//        window = UIWindow(windowScene: windowScene)
-//        window?.rootViewController = tabBarController
-//          window?.rootViewController = UINavigationController(rootViewController: FirstScreenOnboardingVC())
-//        window?.overrideUserInterfaceStyle = .dark
-//        window?.makeKeyAndVisible()
-    }
-    
-    private func setupWindow(with scene: UIScene) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let window = UIWindow(windowScene: windowScene)
-        self.window = window
-        self.window?.makeKeyAndVisible()
-    }
-    
-    public func checkAuthentication() {
-        if Auth.auth().currentUser == nil {
-            let vc = SignInUpViewController()
-            vc.modalPresentationStyle = .fullScreen
-            self.window?.rootViewController = vc
+        window = UIWindow(windowScene: windowScene)
+        
+        if AuthManager.shared.isSignedIn {
+            let tabBarController = TabBarController()
+//            let tabBarController = SearchViewController()
+            window?.rootViewController = tabBarController
         } else {
-            if UserDefaults.standard.value(forKey: "onboarding") as? String == "ok" {
-                let vc = TabBarController()
-                vc.modalPresentationStyle = .fullScreen
-                self.window?.rootViewController = vc
-            } else {
-                let vc = FirstScreenOnboardingVC()
-                vc.modalPresentationStyle = .fullScreen
-                self.window?.rootViewController = UINavigationController(rootViewController: vc)
-            }
+            let welcome = SignInUpViewController()
+            let navView = UINavigationController(rootViewController: welcome)
+            window?.rootViewController = navView
         }
+        
+        window?.overrideUserInterfaceStyle = .dark
+        window?.makeKeyAndVisible()
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

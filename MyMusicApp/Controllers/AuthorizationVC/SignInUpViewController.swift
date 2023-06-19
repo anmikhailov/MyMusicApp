@@ -70,12 +70,18 @@ extension SignInUpViewController: SignInUpViewDelegate {
             if !username.isEmpty && !email.isEmpty && !password.isEmpty {
                 FirebaseManager.shared.createAccount(email: email, password: password, username: username) { err in
                     if err == nil {
-                        let tabBarController = TabBarController()
-                        tabBarController.modalPresentationStyle = .fullScreen
-                        self.present(tabBarController, animated: true)
                         print("Registration ok")
                         
                         UserDefaults.standard.set("ok", forKey: "onboarding")
+                        let vc = AuthViewController()
+                        vc.completionHandler = { [weak self] success in
+                            guard let self = self else { return }
+                            DispatchQueue.main.async {
+                                self.handleSignIn(success: success)
+                            }
+                        }
+                        vc.navigationItem.largeTitleDisplayMode = .never
+                        self.navigationController?.pushViewController(vc, animated: true)
                     } else {
                         guard let error = err else {return}
                         let errString = String(error.localizedDescription)
@@ -89,12 +95,18 @@ extension SignInUpViewController: SignInUpViewDelegate {
             if !email.isEmpty && !password.isEmpty {
                 FirebaseManager.shared.signIn(email: email, password: password) { error in
                     if error == nil {
-                        let tabBarController = TabBarController()
-                        tabBarController.modalPresentationStyle = .fullScreen
-                        self.present(tabBarController, animated: true)
                         print("Auth ok")
                         
                         UserDefaults.standard.set("ok", forKey: "onboarding")
+                        let vc = AuthViewController()
+                        vc.completionHandler = { [weak self] success in
+                            guard let self = self else { return }
+                            DispatchQueue.main.async {
+                                self.handleSignIn(success: success)
+                            }
+                        }
+                        vc.navigationItem.largeTitleDisplayMode = .never
+                        self.navigationController?.pushViewController(vc, animated: true)
                     } else {
                         guard let error = error else {return}
                         let errString = String(error.localizedDescription)
@@ -110,12 +122,18 @@ extension SignInUpViewController: SignInUpViewDelegate {
     func signInUpView(_ view: SignInUpView, didTapGoogleAuthButton button: UIButton) {
         FirebaseManager.shared.googleAuth(withPresenting: self) { err in
             if err == nil {
-                let tabBarController = TabBarController()
-                tabBarController.modalPresentationStyle = .fullScreen
-                self.present(tabBarController, animated: true)
                 print("Google auth ok")
                 
                 UserDefaults.standard.set("ok", forKey: "onboarding")
+                let vc = AuthViewController()
+                vc.completionHandler = { [weak self] success in
+                    guard let self = self else { return }
+                    DispatchQueue.main.async {
+                        self.handleSignIn(success: success)
+                    }
+                }
+                vc.navigationItem.largeTitleDisplayMode = .never
+                self.navigationController?.pushViewController(vc, animated: true)
             } else {
                 guard let error = err else {return}
                 let errString = String(error.localizedDescription)
@@ -128,5 +146,19 @@ extension SignInUpViewController: SignInUpViewDelegate {
         UIView.transition(with: customView.backgroundImageView, duration: 0.5, options: .transitionCrossDissolve, animations: {
             self.signUp.toggle()
         }, completion: nil)
+    }
+    
+    private func handleSignIn(success: Bool) {
+        // Log user in or show error
+        guard success else {
+            let alert = UIAlertController(title: "Oops", message: "Something wrong hen signing in..", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
+            present(alert, animated: true)
+            return
+        }
+        
+        let loggedAppWithTabBar = TabBarController()
+        loggedAppWithTabBar.modalPresentationStyle = .fullScreen
+        present(loggedAppWithTabBar, animated: true)
     }
 }
