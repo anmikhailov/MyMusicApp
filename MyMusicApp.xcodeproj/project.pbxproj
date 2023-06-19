@@ -49,16 +49,15 @@
 		84563F472A40E9AE0088FD35 /* ExploreSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84563F402A40E9AE0088FD35 /* ExploreSection.swift */; };
 		84563F482A40E9AE0088FD35 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84563F412A40E9AE0088FD35 /* ExploreViewController.swift */; };
 		84563F4B2A40E9E30088FD35 /* UIViewController + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84563F4A2A40E9E20088FD35 /* UIViewController + ext.swift */; };
+		84563F4E2A40F4680088FD35 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84563F4C2A40F4680088FD35 /* PlayViewController.swift */; };
+		84563F4F2A40F4680088FD35 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84563F4D2A40F4680088FD35 /* AlbumViewController.swift */; };
 		84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */; };
 		84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */; };
 		84AE2F662A35F2CA006E87F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AE2F652A35F2CA006E87F1 /* Assets.xcassets */; };
 		84AE2F692A35F2CA006E87F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84AE2F672A35F2CA006E87F1 /* LaunchScreen.storyboard */; };
 		84AE2F7C2A35F679006E87F1 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F7B2A35F679006E87F1 /* UIColorExtension.swift */; };
 		84AE2F7E2A35F687006E87F1 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F7D2A35F687006E87F1 /* Resources.swift */; };
-		84BEB11D2A3CA31B0033DAA0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BEB11C2A3CA31A0033DAA0 /* ViewController.swift */; };
 		84BEB11F2A3CA3270033DAA0 /* SongCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BEB11E2A3CA3270033DAA0 /* SongCollectionViewCell.swift */; };
-		84BEB1222A3CA35E0033DAA0 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BEB1202A3CA35D0033DAA0 /* AlbumViewController.swift */; };
-		84BEB1232A3CA35E0033DAA0 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BEB1212A3CA35E0033DAA0 /* PlayViewController.swift */; };
 		84C4209B2A37505E00727691 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420902A37505E00727691 /* FavoritesViewController.swift */; };
 		84C4209D2A37505E00727691 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420942A37505E00727691 /* TabBarController.swift */; };
 		84C4209E2A37505E00727691 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C420972A37505E00727691 /* AccountViewController.swift */; };
@@ -135,6 +134,8 @@
 		84563F402A40E9AE0088FD35 /* ExploreSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreSection.swift; sourceTree = "<group>"; };
 		84563F412A40E9AE0088FD35 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		84563F4A2A40E9E20088FD35 /* UIViewController + ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + ext.swift"; sourceTree = "<group>"; };
+		84563F4C2A40F4680088FD35 /* PlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
+		84563F4D2A40F4680088FD35 /* AlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		84AE2F592A35F2C7006E87F1 /* MyMusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,10 +144,7 @@
 		84AE2F6A2A35F2CA006E87F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84AE2F7B2A35F679006E87F1 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		84AE2F7D2A35F687006E87F1 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
-		84BEB11C2A3CA31A0033DAA0 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		84BEB11E2A3CA3270033DAA0 /* SongCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCollectionViewCell.swift; sourceTree = "<group>"; };
-		84BEB1202A3CA35D0033DAA0 /* AlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = SOURCE_ROOT; };
-		84BEB1212A3CA35E0033DAA0 /* PlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = SOURCE_ROOT; };
 		84C420902A37505E00727691 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		84C420942A37505E00727691 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		84C420972A37505E00727691 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -481,9 +479,8 @@
 		84C420982A37505E00727691 /* PlayVC */ = {
 			isa = PBXGroup;
 			children = (
-				84BEB11C2A3CA31A0033DAA0 /* ViewController.swift */,
-				84BEB1202A3CA35D0033DAA0 /* AlbumViewController.swift */,
-				84BEB1212A3CA35E0033DAA0 /* PlayViewController.swift */,
+				84563F4D2A40F4680088FD35 /* AlbumViewController.swift */,
+				84563F4C2A40F4680088FD35 /* PlayViewController.swift */,
 				324894562A39E34F0031A7AD /* Cell */,
 			);
 			path = PlayVC;
@@ -637,7 +634,6 @@
 				84C420A92A3756FA00727691 /* CustomViewController.swift in Sources */,
 				84C4209D2A37505E00727691 /* TabBarController.swift in Sources */,
 				84C420C72A37AAC500727691 /* ForgetPasswordViewController.swift in Sources */,
-				84BEB1222A3CA35E0033DAA0 /* AlbumViewController.swift in Sources */,
 				84563F1E2A40E9790088FD35 /* HorizontalCollectionViewCell.swift in Sources */,
 				4ED59D842A3F600C002F3632 /* ImageRequest.swift in Sources */,
 				84563F422A40E9AE0088FD35 /* ExploreCollectionView.swift in Sources */,
@@ -674,8 +670,8 @@
 				84C420A22A3750B800727691 /* FirebaseManager.swift in Sources */,
 				84AE2F7E2A35F687006E87F1 /* Resources.swift in Sources */,
 				4E615DEB2A3E44C700B9F793 /* Album.swift in Sources */,
+				84563F4E2A40F4680088FD35 /* PlayViewController.swift in Sources */,
 				84C4209B2A37505E00727691 /* FavoritesViewController.swift in Sources */,
-				84BEB11D2A3CA31B0033DAA0 /* ViewController.swift in Sources */,
 				8429C9CC2A3F46AD00BAE4D4 /* SearchResultsResponse.swift in Sources */,
 				84563F1C2A40E9790088FD35 /* SearchView.swift in Sources */,
 				84C420CB2A37B2F800727691 /* ChangePasswordViewController.swift in Sources */,
@@ -683,11 +679,11 @@
 				84563F432A40E9AE0088FD35 /* ExtentionExploreCollectonView.swift in Sources */,
 				4ED59D792A3F158E002F3632 /* NetworkService.swift in Sources */,
 				84563F1B2A40E9790088FD35 /* HorizontalMenuCollectionView.swift in Sources */,
-				84BEB1232A3CA35E0033DAA0 /* PlayViewController.swift in Sources */,
 				84563F312A40E99C0088FD35 /* PopularAlbumCell.swift in Sources */,
 				84C420C52A37AAB000727691 /* ForgetPasswordView.swift in Sources */,
 				8429C9CE2A3F52E100BAE4D4 /* SearchResult.swift in Sources */,
 				84C4209E2A37505E00727691 /* AccountViewController.swift in Sources */,
+				84563F4F2A40F4680088FD35 /* AlbumViewController.swift in Sources */,
 				A29306752A3A120F00C83C89 /* FirstScreenOnboardingVC.swift in Sources */,
 				84563F1F2A40E9790088FD35 /* SearchViewController.swift in Sources */,
 				84C420A72A3756CC00727691 /* SignInUpView.swift in Sources */,
