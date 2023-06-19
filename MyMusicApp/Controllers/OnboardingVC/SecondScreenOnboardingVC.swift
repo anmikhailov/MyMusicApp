@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SecondScreenOnboardingVC: UIViewController {
+class SecondScreenOnboardingVC: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: - UI Components
     /// mock image
@@ -101,14 +101,15 @@ class SecondScreenOnboardingVC: UIViewController {
         view.backgroundColor = .clear
         
         setupUI()
+        
+        navigationItem.hidesBackButton = true
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     // MARK: - Methods
     @objc func nextScreen(_ sender: UIButton) {
-        let vc = ThirdScreenOnboardingVC()
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
-//        self.navigationController?.pushViewController(ThirdScreenOnboardingVC(), animated: true)
+        self.navigationController?.pushViewController(ThirdScreenOnboardingVC(), animated: true)
     }
 }
 

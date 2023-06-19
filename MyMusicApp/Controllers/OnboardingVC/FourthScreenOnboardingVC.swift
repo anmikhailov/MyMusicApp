@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FourthScreenOnboardingVC: UIViewController {
+class FourthScreenOnboardingVC: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: - UI Components
     /// mock image
@@ -84,11 +84,15 @@ class FourthScreenOnboardingVC: UIViewController {
         view.backgroundColor = .clear
         
         setupUI()
+        
+        navigationItem.hidesBackButton = true
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     // MARK: - Methods
     @objc func nextScreen(_ sender: UIButton) {
-        let vc = TabBarController()
+        let vc = SignInUpViewController()
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }
