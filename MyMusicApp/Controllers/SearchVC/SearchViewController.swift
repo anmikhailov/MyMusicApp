@@ -209,6 +209,8 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         case .album(let model):
             break
         case .track(let model):
+            let track = model
+            PlaybackManager.shared.startPlayback(from: self, track: track)
             break
         case .playlist(let model):
             break
