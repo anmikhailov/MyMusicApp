@@ -48,7 +48,7 @@ class AuthViewController: UIViewController, WKNavigationDelegate {
         AuthManager.shared.exchangeCodeForToken(code: code) { [weak self] success in
             guard let self = self else { return }
             DispatchQueue.main.async {
-                self.navigationController?.popToRootViewController(animated: true)
+                self.dismiss(animated: true)
                 self.completionHandler?(success)
             }
         }

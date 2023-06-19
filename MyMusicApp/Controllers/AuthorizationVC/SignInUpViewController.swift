@@ -80,8 +80,9 @@ extension SignInUpViewController: SignInUpViewDelegate {
                                 self.handleSignIn(success: success)
                             }
                         }
-                        vc.navigationItem.largeTitleDisplayMode = .never
-                        self.navigationController?.pushViewController(vc, animated: true)
+                        
+                        vc.modalPresentationStyle = .fullScreen
+                        self.present(vc, animated: true)
                     } else {
                         guard let error = err else {return}
                         let errString = String(error.localizedDescription)
@@ -96,8 +97,8 @@ extension SignInUpViewController: SignInUpViewDelegate {
                 FirebaseManager.shared.signIn(email: email, password: password) { error in
                     if error == nil {
                         print("Auth ok")
-                        
                         UserDefaults.standard.set("ok", forKey: "onboarding")
+                        
                         let vc = AuthViewController()
                         vc.completionHandler = { [weak self] success in
                             guard let self = self else { return }
@@ -105,8 +106,9 @@ extension SignInUpViewController: SignInUpViewDelegate {
                                 self.handleSignIn(success: success)
                             }
                         }
-                        vc.navigationItem.largeTitleDisplayMode = .never
-                        self.navigationController?.pushViewController(vc, animated: true)
+                        
+                        vc.modalPresentationStyle = .fullScreen
+                        self.present(vc, animated: true)
                     } else {
                         guard let error = error else {return}
                         let errString = String(error.localizedDescription)
@@ -132,8 +134,9 @@ extension SignInUpViewController: SignInUpViewDelegate {
                         self.handleSignIn(success: success)
                     }
                 }
-                vc.navigationItem.largeTitleDisplayMode = .never
-                self.navigationController?.pushViewController(vc, animated: true)
+                
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true)
             } else {
                 guard let error = err else {return}
                 let errString = String(error.localizedDescription)

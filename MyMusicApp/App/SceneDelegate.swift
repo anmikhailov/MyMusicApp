@@ -17,19 +17,37 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         
-        if AuthManager.shared.isSignedIn {
-            let tabBarController = TabBarController()
-//            let tabBarController = SearchViewController()
-            window?.rootViewController = tabBarController
+        setupWindow(with: scene)
+        checkAuthentication()
+    }
+    
+    private func setupWindow(with scene: UIScene) {
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        let window = UIWindow(windowScene: windowScene)
+        self.window = window
+        self.window?.overrideUserInterfaceStyle = .dark
+        self.window?.makeKeyAndVisible()
+    }
+    
+    public func checkAuthentication() {
+        if Auth.auth().currentUser == nil {
+            let vc = TabBarController()
+            self.window?.rootViewController = vc
         } else {
-            let welcome = SignInUpViewController()
-            let navView = UINavigationController(rootViewController: welcome)
-            window?.rootViewController = navView
+            if UserDefaults.standard.value(forKey: "onboarding") as? String == "ok" {
+                if AuthManager.shared.isSignedIn {
+                    let tabBarController = TabBarController()
+                    window?.rootViewController = tabBarController
+                } else {
+                    let welcome = SignInUpViewController()
+                    let navView = UINavigationController(rootViewController: welcome)
+                    window?.rootViewController = navView
+                }
+            } else {
+                let vc = FirstScreenOnboardingVC()
+                self.window?.rootViewController = UINavigationController(rootViewController: vc)
+            }
         }
-        
-        window?.overrideUserInterfaceStyle = .dark
-        window?.makeKeyAndVisible()
-        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
