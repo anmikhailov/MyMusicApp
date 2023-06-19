@@ -74,6 +74,8 @@ extension SignInUpViewController: SignInUpViewDelegate {
                         tabBarController.modalPresentationStyle = .fullScreen
                         self.present(tabBarController, animated: true)
                         print("Registration ok")
+                        
+                        UserDefaults.standard.set("ok", forKey: "onboarding")
                     } else {
                         guard let error = err else {return}
                         let errString = String(error.localizedDescription)
@@ -91,6 +93,8 @@ extension SignInUpViewController: SignInUpViewDelegate {
                         tabBarController.modalPresentationStyle = .fullScreen
                         self.present(tabBarController, animated: true)
                         print("Auth ok")
+                        
+                        UserDefaults.standard.set("ok", forKey: "onboarding")
                     } else {
                         guard let error = error else {return}
                         let errString = String(error.localizedDescription)
@@ -110,6 +114,8 @@ extension SignInUpViewController: SignInUpViewDelegate {
                 tabBarController.modalPresentationStyle = .fullScreen
                 self.present(tabBarController, animated: true)
                 print("Google auth ok")
+                
+                UserDefaults.standard.set("ok", forKey: "onboarding")
             } else {
                 guard let error = err else {return}
                 let errString = String(error.localizedDescription)

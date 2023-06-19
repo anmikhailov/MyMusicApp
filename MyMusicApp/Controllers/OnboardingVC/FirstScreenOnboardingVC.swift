@@ -106,8 +106,6 @@ class FirstScreenOnboardingVC: UIViewController {
     // MARK: - Methods
     @objc private func nextScreen(_ sender: UIButton) {
         self.navigationController?.pushViewController(SecondScreenOnboardingVC(), animated: true)
-        
-        UserDefaults.standard.set("ok", forKey: "onboarding")
     }
 }
 
