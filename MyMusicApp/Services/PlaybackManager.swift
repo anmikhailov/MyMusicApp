@@ -42,10 +42,10 @@ class PlaybackManager {
         self.tracks = []
         
 //        let vc = PlayViewController()
-        vc.modalPresentationStyle = .fullScreen
-        viewController.present(vc, animated: true) { [weak self] in
-            self?.player?.play()
-        }
+//        vc.modalPresentationStyle = .fullScreen
+//        viewController.present(vc, animated: true) { [weak self] in
+//            self?.player?.play()
+//        }
     }
     
     func startPlayback(
@@ -55,8 +55,8 @@ class PlaybackManager {
         self.tracks = tracks
         self.track = nil
 //        let vc = PlayViewController()
-        vc.modalPresentationStyle = .fullScreen
-        viewController.present(vc, animated: true)
+//        vc.modalPresentationStyle = .fullScreen
+//        viewController.present(vc, animated: true)
     }
     
     func playPausePlayback() {
