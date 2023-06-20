@@ -113,7 +113,7 @@ class AccountViewController: UIViewController {
         notificationButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(350)
-            make.height.equalTo(56)
+            make.height.width.equalTo(56)
             
         }
     }
@@ -163,7 +163,10 @@ class AccountViewController: UIViewController {
     
     @objc func settingsButtonTupped() {
         let settingsViewController = SettingsViewController()
-        navigationController?.pushViewController(settingsViewController, animated: true)
+        print("tupped")
+//        navigationController?.pushViewController(settingsViewController, animated: true)
+        settingsViewController.modalPresentationStyle = .fullScreen
+        self.present(settingsViewController, animated: true)
         }
     
 }

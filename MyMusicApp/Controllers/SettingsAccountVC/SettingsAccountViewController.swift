@@ -11,16 +11,26 @@ import SnapKit
 class SettingsViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate{
     var editTitle = UILabel()
     var bacgroundForSettingsView = UIView()
+    var cameraImageView = UIImageView()
+    var usernanameLabel = UILabel()
+    var emailLabel = UILabel()
+    var genderLabel = UILabel()
+    var dateOfBirthLabel = UILabel()
+    var userNameTextField = UITextField()
+    var emailTextField = UITextField()
+    var dateOfBirthDatePicker = UIDatePicker()
+    var changePasswordButton = UIButton(type: .system)
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "person.fill")
         imageView.tintColor = .systemGray
         imageView.contentMode = .scaleAspectFit
-        imageView.layer.cornerRadius = 36
-        imageView.layer.borderWidth = 1
+        imageView.layer.cornerRadius = 70
+        imageView.layer.borderWidth = 3
         imageView.layer.borderColor = Resources.Colors.brand1.cgColor
         imageView.layer.masksToBounds = true
         imageView.isUserInteractionEnabled = true
+        imageView.backgroundColor = .white
         return imageView
     }()
     
@@ -30,7 +40,10 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         setEditTitle()
         setBackgroundForSettingsView()
         setProfileImage()
-        
+        setCameraImageViev()
+        setLabel()
+        setChangePasswordButton()
+        setUserNameTextField()
     }
     
     func setBacground(){
@@ -70,10 +83,136 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
             make.bottom.equalTo(bacgroundForSettingsView.snp.bottom).inset(421)
             make.left.equalTo(bacgroundForSettingsView.snp.left).offset(93)
         }
-                
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(changeProfileImage))
         profileImageView.addGestureRecognizer(tapGesture)
-}
+    }
+    
+    func setCameraImageViev(){
+        view.addSubview(cameraImageView)
+        var cameraView = UIView()
+        view.addSubview(cameraView)
+        cameraView.backgroundColor = Resources.Colors.brand1
+        cameraView.layer.cornerRadius = 70
+        cameraView.contentMode = .scaleAspectFit
+        
+        cameraImageView.image = UIImage(systemName: "camera.fill")
+        cameraImageView.tintColor = .black
+        cameraImageView.contentMode = .scaleAspectFit
+        cameraImageView.layer.cornerRadius = 70
+        cameraImageView.backgroundColor = Resources.Colors.brand1
+        
+        cameraImageView.snp.makeConstraints { make in
+            make.top.equalTo(profileImageView.snp.top).inset(102)
+            make.leading.equalTo(profileImageView.snp.leading).inset(102)
+        }
+        cameraView.snp.makeConstraints { make in
+            make.top.equalTo(profileImageView.snp.top).inset(102)
+            make.leading.equalTo(profileImageView.snp.leading).inset(102)
+        }
+    }
+    
+    func setLabel(){
+        view.addSubview(usernanameLabel)
+        view.addSubview(emailLabel)
+        view.addSubview(genderLabel)
+        view.addSubview(dateOfBirthLabel)
+        
+        usernanameLabel.text = "Username"
+        emailLabel.text = "Email"
+        genderLabel.text = "Gender"
+        dateOfBirthLabel.text = "Date of birth"
+        
+        usernanameLabel.font = setFont(nameFont: "Roboto-Medium", sizeFont: 14)
+        emailLabel.font = setFont(nameFont: "Roboto-Medium", sizeFont: 14)
+        genderLabel.font = setFont(nameFont: "Roboto-Medium", sizeFont: 14)
+        dateOfBirthLabel.font = setFont(nameFont: "Roboto-Medium", sizeFont: 14)
+        
+        usernanameLabel.textColor = Resources.Colors.TabBarColors.inactive
+        emailLabel.textColor = Resources.Colors.TabBarColors.inactive
+        genderLabel.textColor = Resources.Colors.TabBarColors.inactive
+        dateOfBirthLabel.textColor = Resources.Colors.TabBarColors.inactive
+        
+        usernanameLabel.snp.makeConstraints { make in
+            make.top.equalTo(bacgroundForSettingsView.snp.top).inset(165)
+            make.leading.equalTo(bacgroundForSettingsView.snp.leading).inset(16)
+        }
+        
+        emailLabel.snp.makeConstraints { make in
+            make.top.equalTo(usernanameLabel.snp.bottom).offset(52)
+            make.leading.equalTo(bacgroundForSettingsView.snp.leading).inset(16)
+        }
+        
+        genderLabel.snp.makeConstraints { make in
+            make.top.equalTo(emailLabel.snp.bottom).offset(52)
+            make.leading.equalTo(bacgroundForSettingsView.snp.leading).inset(16)
+        }
+        
+        dateOfBirthLabel.snp.makeConstraints { make in
+            make.top.equalTo(genderLabel.snp.bottom).offset(52)
+            make.leading.equalTo(bacgroundForSettingsView.snp.leading).inset(16)
+        }
+    }
+    
+    func setChangePasswordButton(){
+        view.addSubview(changePasswordButton)
+        changePasswordButton.setTitle("Change password", for: .normal)
+        changePasswordButton.tintColor = Resources.Colors.brand1
+        
+        changePasswordButton.snp.makeConstraints { make in
+            make.top.equalTo(bacgroundForSettingsView.snp.bottom).offset(45)
+            make.leading.equalTo(view.safeAreaLayoutGuide).inset(131)
+        }
+        
+    }
+    
+    func setUserNameTextField(){
+        view.addSubview(userNameTextField)
+        userNameTextField.returnKeyType = .done
+        userNameTextField.autocapitalizationType = .words
+        userNameTextField.autocorrectionType = .no
+        userNameTextField.resignFirstResponder()
+        userNameTextField.font = setFont(nameFont: "Roboto-Medium", sizeFont: 15)
+        
+        userNameTextField.snp.makeConstraints { make in
+            make.top.equalTo(bacgroundForSettingsView.snp.top).inset(165)
+            make.leading.equalTo(userNameTextField.snp.trailing).offset(162)
+            make.trailing.equalTo(bacgroundForSettingsView.snp.trailing).inset(16)
+            make.width.equalToSuperview().inset(162)
+            make.height.equalToSuperview().inset(16)
+        }
+    }
+    
+    func setEmailTextField(){
+        view.addSubview(emailTextField)
+        emailTextField.returnKeyType = .done
+        emailTextField.autocapitalizationType = .words
+        emailTextField.autocorrectionType = .no
+        emailTextField.resignFirstResponder()
+        emailTextField.font = setFont(nameFont: "Roboto-Medium", sizeFont: 15)
+        
+        emailTextField.snp.makeConstraints { make in
+            make.top.equalTo(emailLabel.snp.top)
+            make.leading.equalTo(userNameTextField.snp.trailing).offset(98)
+            make.trailing.equalTo(bacgroundForSettingsView.snp.trailing).inset(16)
+            make.width.equalToSuperview().inset(162)
+            make.height.equalToSuperview().inset(16)
+        }
+    }
+    
+    func setDateOfBirthDatePicker(){
+        view.addSubview(dateOfBirthDatePicker)
+        dateOfBirthDatePicker.datePickerMode = .date
+        dateOfBirthDatePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
+        
+        dateOfBirthDatePicker.snp.makeConstraints { make in
+            make.top.equalTo(dateOfBirthLabel.snp.top)
+            make.leading.equalTo(dateOfBirthLabel.snp.leading).offset(131)
+            make.trailing.equalTo(bacgroundForSettingsView.snp.trailing).inset(16)
+            make.width.equalToSuperview().inset(86)
+            make.height.equalToSuperview().inset(19)
+        }
+    }
     
     func setFont(nameFont:String, sizeFont:CGFloat) -> UIFont {
         if let customFont = UIFont(name: nameFont, size: sizeFont){
@@ -91,6 +230,12 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         imagePickerController.sourceType = .photoLibrary
         present(imagePickerController, animated: true, completion: nil)
     }
+    
+    @objc func dateChanged() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let selectedDate = dateFormatter.string(from: dateOfBirthDatePicker.date)
+    }
 }
 
 
@@ -106,9 +251,9 @@ struct SettingsViewControllerRepresentable: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewControllerType {
         SettingsViewController(nibName: nil, bundle: nil)
     }
-    
+
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        
+
     }
 }
 
