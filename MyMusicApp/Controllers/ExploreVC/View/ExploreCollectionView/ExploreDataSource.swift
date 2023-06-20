@@ -1,48 +1,56 @@
 //
-//  ExtentionExploreCollectonView.swift
+//  ExploreDataSource.swift
 //  MyMusicApp
 //
-//  Created by mac on 6/16/23.
+//  Created by mac on 6/20/23.
 //
 
 import UIKit
 
-extension ExploreCollectionView: UICollectionViewDataSource {
+extension ExploreViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return explore.count
+        return sections.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return explore[section].items.count
+        switch sections[section] {
+            
+        case .recentlyMusic:
+            return 5
+        case .topTrending:
+            return 3
+        case .topic:
+            return 6
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let explore = explore[indexPath.section].style
+        let section = sections[indexPath.section]
         
-        switch explore {
+        switch section {
             
         case .recentlyMusic:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell3", for: indexPath) as? RecentlyMusicCell else {
                 return UICollectionViewCell()
             }
             cell.configure()
+            cell.backgroundColor = Resources.Colors.TabBarColors.backgraundCell
             return cell
             
         case .topTrending:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell4", for: indexPath) as? TopTrendingCell else {
                 return UICollectionViewCell()
             }
-            
             cell.configureCell()
-            
             return cell
             
         case .topic:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell5", for: indexPath) as? TopicCell else {
                 return UICollectionViewCell()
             }
+    
             cell.configureCell()
             return cell
         }

@@ -41,7 +41,7 @@ class PlaybackManager {
         self.track = track
         self.tracks = []
         
-//        let vc = PlayViewController()
+        let vc = PlayViewController()
         vc.modalPresentationStyle = .fullScreen
         viewController.present(vc, animated: true) { [weak self] in
             self?.player?.play()
@@ -54,7 +54,7 @@ class PlaybackManager {
     ) {
         self.tracks = tracks
         self.track = nil
-//        let vc = PlayViewController()
+        let vc = PlayViewController()
         vc.modalPresentationStyle = .fullScreen
         viewController.present(vc, animated: true)
     }

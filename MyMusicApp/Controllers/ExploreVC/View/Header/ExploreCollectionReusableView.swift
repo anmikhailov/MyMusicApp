@@ -49,7 +49,7 @@ class ExploreCollectionReusableView: UICollectionReusableView {
             delegate?.goToSeeAll()
         }
         
-        func configure(title: String,delegate: ExploreCollectionView) {
+        func configure(title: String,delegate: ExploreViewController) {
             headerLabel.text = title
             self.delegate = delegate as? SeeAllProtocol
         }

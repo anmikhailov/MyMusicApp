@@ -51,7 +51,7 @@ class RecentlyMusicCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = Resources.Colors.TabBarColors.background
+        //backgroundColor = Resources.Colors.TabBarColors.background
         layer.cornerRadius = 15
         layer.masksToBounds = true
         setupConstraints()
@@ -76,10 +76,10 @@ extension RecentlyMusicCell {
         
         addSubview(songImage)
         songImage.snp.makeConstraints { make in
-            make.bottom.equalToSuperview()
-            make.leading.equalToSuperview()
-            make.top.equalToSuperview()
-            make.width.height.equalTo(80)
+            make.bottom.equalToSuperview().offset(-10)
+            make.leading.equalToSuperview().offset(10)
+            make.top.equalToSuperview().offset(10)
+            make.width.height.equalTo(60)
         }
         
         addSubview(songNamelabel)

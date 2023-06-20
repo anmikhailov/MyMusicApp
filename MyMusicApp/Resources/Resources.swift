@@ -24,6 +24,7 @@ enum Resources {
             static var active = UIColor(hex: 0xCBFB5E)
             static var inactive = UIColor(hex: 0x71737B)
             static var background = UIColor(hex: 0x0E0B1F)
+            static var backgraundCell = UIColor(hex: 0x1D1839)
         }
         
         static var resetPasswordBG = UIColor(hex: 0x0E0B1F)
