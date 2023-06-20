@@ -117,7 +117,7 @@ class AlbumOnlyViewController: UIViewController {
     
     // MARK: - backButtonTapped
     @objc private func backButtonTapped() {
-        navigationController?.popToRootViewController(animated: true)
+        navigationController?.popViewController(animated: true)
 //        dismiss(animated: true)
     }
     // MARK: - pageControlValueChanged
