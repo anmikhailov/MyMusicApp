@@ -27,41 +27,65 @@ class PlaybackManager {
     }
     
     var player: AVPlayer?
+    var playerViewController = PlayViewController()
     
+    /// For single track
     func startPlayback(
         from viewController: UIViewController,
         track: SpotifySimplifiedTrack
     ) {
+        playerViewController.modalPresentationStyle = .fullScreen
+        
         guard let url = URL(string: track.preview_url ?? "") else {
             return
         }
         player = AVPlayer(url: url)
+        player?.volume = 0.5
         
+        // Calculate and set Track's duration
         let playerItem: AVPlayerItem = AVPlayerItem(url: url)
         let duration : CMTime = playerItem.asset.duration
         let seconds : Float64 = CMTimeGetSeconds(duration)
+//        playerViewController.songEndLabel.text = self.stringFromTimeInterval(interval: seconds)
         
-        player?.volume = 0.5
+        // Set up slider maximum value
+//        playerViewController.songTimeSlider.maximumValue = Float(seconds)
+//        playerViewController.songTimeSlider.isContinuous = true
+        
+        // Calculate and set current time
+        let currentDuration : CMTime = playerItem.currentTime()
+        let currentSeconds : Float64 = CMTimeGetSeconds(currentDuration)
+//        playerViewController.songStartLabel.text = self.stringFromTimeInterval(interval: currentSeconds)
+           
+        // Add observer for update slider in realtime
+        player!.addPeriodicTimeObserver(
+            forInterval: CMTimeMakeWithSeconds(1, preferredTimescale: 1),
+            queue: DispatchQueue.main
+        ) { (CMTime) -> Void in
+            if self.player!.currentItem?.status == .readyToPlay {
+                let time : Float64 = CMTimeGetSeconds(self.player!.currentTime());
+//                self.playerViewController.songTimeSlider.value = Float ( time );
+//                self.playerViewController.songStartLabel.text = self.stringFromTimeInterval(interval: time)
+            }
+        }
         
         self.track = track
         self.tracks = []
-        
-        let vc = PlayViewController()
-        vc.modalPresentationStyle = .fullScreen
-        viewController.present(vc, animated: true) { [weak self] in
+
+        viewController.present(playerViewController, animated: true) { [weak self] in
             self?.player?.play()
         }
     }
     
+    /// For playlist
     func startPlayback(
         from viewController: UIViewController,
         tracks: [SpotifySimplifiedTrack]
     ) {
         self.tracks = tracks
         self.track = nil
-        let vc = PlayViewController()
-        vc.modalPresentationStyle = .fullScreen
-        viewController.present(vc, animated: true)
+        playerViewController.modalPresentationStyle = .fullScreen
+        viewController.present(playerViewController, animated: true)
     }
     
     func playPausePlayback() {
@@ -96,12 +120,23 @@ class PlaybackManager {
         }
     }
     
+    func seekTrack(to time: Int64) {
+        let seconds : Int64 = time
+        let targetTime:CMTime = CMTimeMake(value: seconds, timescale: 1)
+        player!.seek(to: targetTime)
+        if player!.rate == 0 {
+            player?.play()
+        }
+    }
+}
+
+//MARK: - Helper functions
+extension PlaybackManager {
     func stringFromTimeInterval(interval: TimeInterval) -> String {
         let interval = Int(interval)
         let seconds = interval % 60
         let minutes = (interval / 60) % 60
-        let hours = (interval / 3600)
-        return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+        return String(format: "%02d:%02d", minutes, seconds)
     }
 }
 
