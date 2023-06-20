@@ -211,6 +211,11 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
             APICaller.shared.getAlbum(with: albumId) { result in
                 switch result {
                 case .success(let album):
+                    DispatchQueue.main.async {
+                        let targetVC = AlbumOnlyViewController(album: album)
+                        targetVC.modalPresentationStyle = .fullScreen
+                        self.navigationController?.pushViewController(targetVC, animated: true)
+                    }
 //                    print(album)
                     break
                 case .failure(let error):

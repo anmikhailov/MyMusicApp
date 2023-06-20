@@ -37,6 +37,7 @@ class PlaybackManager {
         playerViewController.modalPresentationStyle = .fullScreen
         
         guard let url = URL(string: track.preview_url ?? "") else {
+            print("Track without preview")
             return
         }
         player = AVPlayer(url: url)

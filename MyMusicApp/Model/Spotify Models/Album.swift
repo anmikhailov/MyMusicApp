@@ -26,7 +26,7 @@ struct Album: Codable {
 //    let genres: [String]
 //    let label: String
 //    let popularity: Int
-//    let artists: [ArtictObject]
+    let artists: [ArtictObject]
     let tracks: AlbumTrackObject
 }
 
@@ -37,7 +37,8 @@ struct AlbumTrackObject: Codable {
     let offset: Int
     let previous: String?
     let total: Int
-    let items: [SpotifySimplifiedTrackObject]
+//    let items: [SpotifySimplifiedTrackObject]
+    let items: [SpotifySimplifiedTrack]
 }
 
 struct NewAlbum: Codable {
