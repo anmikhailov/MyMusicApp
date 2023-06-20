@@ -51,6 +51,7 @@ extension HomeViewController: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             cell.configure()
+            cell.backgroundColor = Resources.Colors.TabBarColors.background
             return cell
         }
         

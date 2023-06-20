@@ -55,13 +55,13 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
             interGroupSpacing: 16,
             supplementaryItems: [supplementaryHeaderItem()],
             contentInsets: false)
-        section.contentInsets = .init(top: 5, leading: 16, bottom: 20, trailing: 0)
+        section.contentInsets = .init(top: 8, leading: 10, bottom: 10, trailing: 0)
         return section
     }
     
     func createPopularAlbumSection() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-        item.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 5)
+        item.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
         
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: .init(widthDimension: .absolute(340), heightDimension: .absolute(193)),
@@ -73,7 +73,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
             interGroupSpacing: 16,
             supplementaryItems: [supplementaryHeaderItem()],
             contentInsets: false)
-        section.contentInsets = .init(top: 5, leading: 16, bottom: 20, trailing: 0)
+        section.contentInsets = .init(top: 5, leading: 20, bottom: 10, trailing: 0)
         return section
     }
 
