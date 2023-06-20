@@ -32,7 +32,7 @@ class ThirdScreenOnboardingVC: UIViewController, UIGestureRecognizerDelegate {
     // welcome label
     private let welcomeLabel: UILabel = {
         let label = UILabel()
-        label.text = "WELCOME TO \nMUSIC APP"
+        label.text = "DISCOVER NEW MUSICAL HORIZONS"
         label.numberOfLines = 0
         label.font = UIFont(name: "Roboto-Bold", size: 28)
         label.textAlignment = .left
@@ -44,9 +44,9 @@ class ThirdScreenOnboardingVC: UIViewController, UIGestureRecognizerDelegate {
     // comment label
     private let commentLabel: UILabel = {
         let label = UILabel()
-        label.text = "Make your design workflow easier and \nsave your time"
+        label.text = "Ready to expand your musical horizons? Explore new genres, artists, and albums that were once unknown to you. Enjoy the diversity of music and embark on an incredible musical journey"
         label.numberOfLines = 0
-        label.font = UIFont(name: "Montserrat-Regular", size: 14)
+        label.font = UIFont(name: "Montserrat-Regular", size: 16)
         label.textAlignment = .left
         label.backgroundColor = .clear
         label.textColor = Resources.Colors.neutral1
@@ -70,7 +70,7 @@ class ThirdScreenOnboardingVC: UIViewController, UIGestureRecognizerDelegate {
     /// square dot view #3
     private let dotView3 : UIView = {
         let view = UIView()
-        view.backgroundColor = Resources.Colors.neutral2
+        view.backgroundColor = Resources.Colors.brand1
         return view
     }()
     
@@ -156,13 +156,13 @@ extension ThirdScreenOnboardingVC {
             
             welcomeLabel.topAnchor.constraint(equalTo: appNameLabel.bottomAnchor, constant: 10),
             welcomeLabel.leadingAnchor.constraint(equalTo: appNameLabel.leadingAnchor),
-            welcomeLabel.widthAnchor.constraint(equalToConstant: 200),
+            welcomeLabel.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, multiplier: 0.75),
             welcomeLabel.heightAnchor.constraint(equalToConstant: 70),
             
             commentLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 10),
             commentLabel.leadingAnchor.constraint(equalTo: welcomeLabel.leadingAnchor),
-            commentLabel.widthAnchor.constraint(equalToConstant: 280),
-            commentLabel.heightAnchor.constraint(equalToConstant: 50),
+            commentLabel.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, multiplier: 0.75),
+            commentLabel.heightAnchor.constraint(equalToConstant: 120),
             
             dotView1.topAnchor.constraint(equalTo: commentLabel.bottomAnchor, constant: 25),
             dotView1.leadingAnchor.constraint(equalTo: commentLabel.leadingAnchor),
