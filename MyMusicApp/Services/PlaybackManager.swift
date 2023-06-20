@@ -36,6 +36,11 @@ class PlaybackManager {
             return
         }
         player = AVPlayer(url: url)
+        
+        let playerItem: AVPlayerItem = AVPlayerItem(url: url)
+        let duration : CMTime = playerItem.asset.duration
+        let seconds : Float64 = CMTimeGetSeconds(duration)
+        
         player?.volume = 0.5
         
         self.track = track
@@ -89,6 +94,14 @@ class PlaybackManager {
                 // Pervious track in playlist
             }
         }
+    }
+    
+    func stringFromTimeInterval(interval: TimeInterval) -> String {
+        let interval = Int(interval)
+        let seconds = interval % 60
+        let minutes = (interval / 60) % 60
+        let hours = (interval / 3600)
+        return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
     }
 }
 
