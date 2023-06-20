@@ -96,15 +96,15 @@ struct RPAlbum: Codable {
 }
 
 struct ArtictObject: Codable {
-    let external_urls: SpotifyExternalUrl
-    let followers: Followers?
-    let genres: [String]? // If not yet classified, the array is empty.
+//    let external_urls: SpotifyExternalUrl
+//    let followers: Followers?
+//    let genres: [String]? // If not yet classified, the array is empty.
     let href: String
-    let id: String
-    let images: [SpotifyImage]
+//    let id: String
+//    let images: [SpotifyImage]
     let name: String
-    let popularity: Int
-    let type: String // Allowed values: "artist"
+//    let popularity: Int
+//    let type: String // Allowed values: "artist"
     let uri: String
 }
 
