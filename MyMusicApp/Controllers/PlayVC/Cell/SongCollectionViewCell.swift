@@ -9,7 +9,7 @@ import UIKit
 
 class SongCollectionViewCell: UICollectionViewCell {
     // MARK: - numberSongLabel
-    private let numberSongLabel: UILabel = {
+     let numberSongLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "01"
@@ -19,7 +19,7 @@ class SongCollectionViewCell: UICollectionViewCell {
         return label
     }()
     // MARK: - photoImageView
-    private let photoImageView: UIImageView = {
+     let photoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "singerPhoto")
@@ -29,7 +29,7 @@ class SongCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     // MARK: - nameSongLabel
-    private let nameSongLabel: UILabel = {
+     let nameSongLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Nice For What"
@@ -39,7 +39,7 @@ class SongCollectionViewCell: UICollectionViewCell {
         return label
     }()
     // MARK: - singerNameLabel
-    private let singerNameLabel: UILabel = {
+     let singerNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Avinci John"
@@ -49,7 +49,7 @@ class SongCollectionViewCell: UICollectionViewCell {
         return label
     }()
     // MARK: - ellipsisButton
-    private lazy var ellipsisButton: UIButton = {
+     lazy var ellipsisButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "ellipsis"), for: .normal)
@@ -73,7 +73,7 @@ class SongCollectionViewCell: UICollectionViewCell {
         print("ellipsisButtonTapped")
     }
     // MARK: - setupViews
-    private func setupViews() {
+     func setupViews() {
         addSubview(numberSongLabel)
         addSubview(photoImageView)
         addSubview(nameSongLabel)
@@ -81,7 +81,7 @@ class SongCollectionViewCell: UICollectionViewCell {
         addSubview(ellipsisButton)
     }
     // MARK: - setConstrains
-    private func setConstrains() {
+     func setConstrains() {
         NSLayoutConstraint.activate([
             numberSongLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             numberSongLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
