@@ -28,7 +28,6 @@ final class TabBarController: UITabBarController {
     
     private func configure() {
         tabBar.tintColor = Resources.Colors.TabBarColors.active
-        tabBar.barTintColor = Resources.Colors.TabBarColors.inactive
         tabBar.backgroundColor = Resources.Colors.TabBarColors.background
         
         UITabBarItem.appearance().setTitleTextAttributes(
