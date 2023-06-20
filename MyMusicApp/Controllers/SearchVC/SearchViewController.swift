@@ -207,6 +207,21 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         case .artist(let model):
             break
         case .album(let model):
+            let albumId = model.id
+            APICaller.shared.getAlbum(with: albumId) { result in
+                switch result {
+                case .success(let album):
+                    DispatchQueue.main.async {
+                        let targetVC = AlbumOnlyViewController(album: album)
+                        targetVC.modalPresentationStyle = .fullScreen
+                        self.navigationController?.pushViewController(targetVC, animated: true)
+                    }
+//                    print(album)
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
             break
         case .track(let model):
             let track = model
