@@ -17,9 +17,9 @@ class SearchCell: UITableViewCell {
     static let identifier = "SearchCell"
     
     // MARK: - UI Properties
-    private lazy var titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Just For What"
+        label.text = ""
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.textAlignment = .left
@@ -27,9 +27,9 @@ class SearchCell: UITableViewCell {
         return label
     }()
     
-    private lazy var subTitleLabel: UILabel = {
+    lazy var subTitleLabel: UILabel = {
        let label = UILabel()
-        label.text = "Avinci John"
+        label.text = ""
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 12)
         label.textAlignment = .left
@@ -98,11 +98,14 @@ class SearchCell: UITableViewCell {
             
             titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
             titleLabel.leadingAnchor.constraint(equalTo: albumImageView.trailingAnchor, constant: 15),
+            titleLabel.trailingAnchor.constraint(equalTo: moreActionsButton.leadingAnchor, constant: -10),
             
             subTitleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
             subTitleLabel.leadingAnchor.constraint(equalTo: albumImageView.trailingAnchor, constant: 15),
+            subTitleLabel.trailingAnchor.constraint(equalTo: moreActionsButton.leadingAnchor, constant: -10),
             
             moreActionsButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            moreActionsButton.widthAnchor.constraint(equalToConstant: 20),
             moreActionsButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
             
             bottomSeparator.heightAnchor.constraint(equalToConstant: 1),
@@ -115,19 +118,5 @@ class SearchCell: UITableViewCell {
     @objc private func buttonMoreActionIsPressed(_ sender: UIButton) {
         delegate?.moreActionsButtonTapped(self)
     }
-    
-    // MARK: - Method for cell
-//    func configureCell(article: Article, isTintedBookmark: Bool) {
-//        titleLabel.text = article.title
-//        if let creator = article.creator {
-//            categoryLabel.text = creator[0]
-//        }
-//        networkManadger.fetchImage(url: article.urlToImage ?? "", imageView: imageView)
-//        if isTintedBookmark {
-//            buttonBookmark.setBackgroundImage(UIImage(systemName: "bookmark.fill"), for: .normal)
-//        } else {
-//            buttonBookmark.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
-//        }
-//    }
     
 }

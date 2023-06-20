@@ -25,7 +25,9 @@ final class HomeViewController: UIViewController {
     }()
     
     lazy var sections: [Section] = [.newSong, .popularAlbum, .recentlyMusic]
-
+    private var collectionView: CustomeCollectionView!
+    private let helperView = UIView()
+//    var newAlbums: [NewAlbum] = []
     
     // MARK: - Lifecycle
 
@@ -33,6 +35,15 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = Resources.Colors.TabBarColors.background
         
+        // fetchNewReleasesAlbums()
+        APICaller.shared.getNewReleasesAlbums(country: "US", limit: 10) { result in
+            switch result {
+            case .success(let albums):
+                print(albums)
+            case .failure(let error):
+                print(error)
+            }
+        }
         configureNavBar(with: "Music", backgroundColor: .clear, rightButtonImage: Resources.Icons.Common.search)
         
         constraints()
@@ -42,6 +53,22 @@ final class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
     }
+    
+//    func fetchNewReleasesAlbums() {
+//        let networkService = DefaultNetworkService()
+//        let request = NewReleasesAlbumRequest(country: "DE", limit: 50, offset: 0)
+//        networkService.request(request) { [weak self] result in
+//            guard let self = self else { return }
+//            switch result {
+//            case .success(let albums):
+//                guard let albums = albums else { return }
+//                self.newAlbums = albums
+//            case .failure(let error):
+//                fatalError("\(error)")
+//            }
+//        }
+//
+//    }
     
     // MARK: - Private methods
     private func setupCollectionView() {

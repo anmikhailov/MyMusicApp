@@ -105,10 +105,7 @@ class FirstScreenOnboardingVC: UIViewController {
     
     // MARK: - Methods
     @objc private func nextScreen(_ sender: UIButton) {
-        let vc = SecondScreenOnboardingVC()
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
-//        self.navigationController?.pushViewController(TabBarController(), animated: true)
+        self.navigationController?.pushViewController(SecondScreenOnboardingVC(), animated: true)
     }
 }
 
@@ -173,12 +170,12 @@ extension FirstScreenOnboardingVC {
             appNameLabel.heightAnchor.constraint(equalToConstant: 20),
             
             welcomeLabel.topAnchor.constraint(equalTo: appNameLabel.bottomAnchor, constant: 10),
-            welcomeLabel.leadingAnchor.constraint(equalTo: appNameLabel.leadingAnchor),
+            welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             welcomeLabel.widthAnchor.constraint(equalToConstant: 200),
             welcomeLabel.heightAnchor.constraint(equalToConstant: 70),
             
             commentLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 10),
-            commentLabel.leadingAnchor.constraint(equalTo: welcomeLabel.leadingAnchor),
+            commentLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             commentLabel.widthAnchor.constraint(equalToConstant: 280),
             commentLabel.heightAnchor.constraint(equalToConstant: 50),
             
