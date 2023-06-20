@@ -28,7 +28,7 @@ class FirstScreenOnboardingVC: UIViewController {
     /// square dot view #2
     private let dotView2 : UIView = {
         let view = UIView()
-        view.backgroundColor = Resources.Colors.brand1
+        view.backgroundColor = Resources.Colors.neutral2
         return view
     }()
     
@@ -60,7 +60,7 @@ class FirstScreenOnboardingVC: UIViewController {
     // welcome label
     private let welcomeLabel: UILabel = {
         let label = UILabel()
-        label.text = "WELCOME TO \nMUSIC APP"
+        label.text = "WELCOME TO \nTHE MUSIC JOURNEY!"
         label.numberOfLines = 0
         label.font = UIFont(name: "Roboto-Bold", size: 28)
         label.textAlignment = .left
@@ -72,9 +72,9 @@ class FirstScreenOnboardingVC: UIViewController {
     // comment label
     private let commentLabel: UILabel = {
         let label = UILabel()
-        label.text = "Make your design workflow easier and \nsave your time"
+        label.text = "Open the doors to an infinite world of sounds and get ready for an unforgettable musical journey with our app. Immerse yourself in music that inspires and brings joy"
         label.numberOfLines = 0
-        label.font = UIFont(name: "Montserrat-Regular", size: 14)
+        label.font = UIFont(name: "Montserrat-Regular", size: 16)
         label.textAlignment = .left
         label.backgroundColor = .clear
         label.textColor = Resources.Colors.neutral1
@@ -164,20 +164,20 @@ extension FirstScreenOnboardingVC {
             dotView4.widthAnchor.constraint(equalToConstant: 5),
             dotView4.heightAnchor.constraint(equalToConstant: 5),
             
-            appNameLabel.topAnchor.constraint(equalTo: dotView1.bottomAnchor, constant: 60),
+            appNameLabel.topAnchor.constraint(equalTo: dotView1.bottomAnchor, constant: 50),
             appNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             appNameLabel.widthAnchor.constraint(equalToConstant: 150),
             appNameLabel.heightAnchor.constraint(equalToConstant: 20),
             
             welcomeLabel.topAnchor.constraint(equalTo: appNameLabel.bottomAnchor, constant: 10),
             welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            welcomeLabel.widthAnchor.constraint(equalToConstant: 200),
+            welcomeLabel.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, multiplier: 0.75),
             welcomeLabel.heightAnchor.constraint(equalToConstant: 70),
             
-            commentLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 10),
+            commentLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 5),
             commentLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            commentLabel.widthAnchor.constraint(equalToConstant: 280),
-            commentLabel.heightAnchor.constraint(equalToConstant: 50),
+            commentLabel.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, multiplier: 0.75),
+            commentLabel.heightAnchor.constraint(equalToConstant: 100),
             
             getStartedButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
             getStartedButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
