@@ -185,6 +185,14 @@ struct AccountViewControllerRepresentable: UIViewControllerRepresentable {
 
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
 
+        APICaller.shared.getCurrentUserProfile { result in
+            switch result {
+            case .success(let model):
+                break
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 

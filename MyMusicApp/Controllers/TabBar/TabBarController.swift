@@ -39,27 +39,30 @@ final class TabBarController: UITabBarController {
         let favoritesController = FavoritesViewController()
         let accountController = AccountViewController()
 
-        let homeNavigation = UINavigationController(rootViewController: homeController)
+        let homeNavigationController = UINavigationController(rootViewController: homeController)
+        let exploreNavigationController = UINavigationController(rootViewController: exploreController)
+        let favoritesNavigationController = UINavigationController(rootViewController: favoritesController)
+        let accountNavigationController = UINavigationController(rootViewController: accountController)
 
 
-        homeNavigation.tabBarItem = UITabBarItem(title: Resources.Strings.TabBar.home,
+        homeNavigationController.tabBarItem = UITabBarItem(title: Resources.Strings.TabBar.home,
                                                  image: Resources.Icons.TabBar.home,
                                                  tag: Tabs.home.rawValue)
-        exploreController.tabBarItem = UITabBarItem(title: Resources.Strings.TabBar.explore,
+        exploreNavigationController.tabBarItem = UITabBarItem(title: Resources.Strings.TabBar.explore,
                                                  image: Resources.Icons.TabBar.explore,
                                                  tag: Tabs.explore.rawValue)
-        favoritesController.tabBarItem = UITabBarItem(title: Resources.Strings.TabBar.favorites,
+        favoritesNavigationController.tabBarItem = UITabBarItem(title: Resources.Strings.TabBar.favorites,
                                                  image: Resources.Icons.TabBar.favorites,
                                                  tag: Tabs.favorites.rawValue)
-        accountController.tabBarItem = UITabBarItem(title: Resources.Strings.TabBar.account,
+        accountNavigationController.tabBarItem = UITabBarItem(title: Resources.Strings.TabBar.account,
                                                  image: Resources.Icons.TabBar.account,
                                                  tag: Tabs.account.rawValue)
 
         setViewControllers([
-            homeNavigation,
-            exploreController,
-            favoritesController,
-            accountController,
+            homeNavigationController,
+            exploreNavigationController,
+            favoritesNavigationController,
+            accountNavigationController,
         ], animated: false)
 
 
