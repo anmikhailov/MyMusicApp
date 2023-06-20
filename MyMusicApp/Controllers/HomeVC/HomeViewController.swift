@@ -25,9 +25,6 @@ final class HomeViewController: UIViewController {
     }()
     
     lazy var sections: [Section] = [.newSong, .popularAlbum, .recentlyMusic]
-    private var collectionView: CustomeCollectionView!
-    private let helperView = UIView()
-//    var newAlbums: [NewAlbum] = []
     
     // MARK: - Lifecycle
 
