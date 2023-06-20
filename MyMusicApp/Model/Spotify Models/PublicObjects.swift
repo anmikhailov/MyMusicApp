@@ -121,19 +121,19 @@ struct SpotifyTrack: Codable {
 
 struct SpotifySimplifiedTrackObject: Codable {
     let artists: [SpotifySimplifiedArtist]
-    let available_markets: [String]
-    let disc_number: Int
-    let explicit: Bool
+//    let available_markets: [String]
+//    let disc_number: Int
+//    let explicit: Bool
     let duration_ms: Int
     let href: String
     let id: String
-    let is_playable: Bool
-    let linked_from: SpotifyLinkedFrom?
-    let restrictions: SpotifyRestrictions?
+//    let is_playable: Bool
+//    let linked_from: SpotifyLinkedFrom?
+//    let restrictions: SpotifyRestrictions?
     let name: String
     let preview_url: String?
-    let track_number: Int
-    let type: String // "track"
+//    let track_number: Int
+//    let type: String // "track"
     let uri: String
-    let is_local: Bool
+//    let is_local: Bool
 }
