@@ -1,26 +1,34 @@
 //
-//  ExtentionCollectonView.swift
+//  Extention+DataSource.swift
 //  MyMusicApp
 //
-//  Created by mac on 6/14/23.
+//  Created by mac on 6/19/23.
 //
 
 import UIKit
 import SnapKit
 
-extension CustomeCollectionView: UICollectionViewDataSource {
+extension HomeViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return sections.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sections[section].items.count
+        switch sections[section] {
+            
+        case .newSong:
+            return 5
+        case .popularAlbum:
+            return 1
+        case .recentlyMusic:
+            return 10
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let section = sections[indexPath.section].style
+        let section = sections[indexPath.section]
         
         switch section {
             

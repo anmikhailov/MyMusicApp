@@ -50,9 +50,9 @@ class HeaderSeeAllView: UICollectionReusableView {
         delegate?.goToSeeAll()
     }
     
-    func configure(title: String,delegate: CustomeCollectionView) {
+    func configure(title: String,delegate: HomeViewController) {
         headerLabel.text = title
-        self.delegate = delegate as? GoToSeeAllProtocol
+        self.delegate = delegate //as? GoToSeeAllProtocol
     }
     
 }
