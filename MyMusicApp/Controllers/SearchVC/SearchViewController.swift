@@ -101,9 +101,6 @@ class SearchViewController: CustomViewController<SearchView> {
                 SearchSection(title: "Playlists", results: playlists),
             ]
             break
-
-        default:
-            break
         }
         
         customView.mainTableView.isHidden = results.isEmpty
@@ -114,7 +111,6 @@ class SearchViewController: CustomViewController<SearchView> {
 //MARK: - SearchViewDelegate
 extension SearchViewController: SearchViewDelegate {
     func searchView(_ view: SearchView, didTapCloseButton button: UIButton) {
-        //Close SearchViewController
         navigationController?.popViewController(animated: true)
     }
 }
@@ -251,7 +247,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
                         targetVC.modalPresentationStyle = .fullScreen
                         self.navigationController?.pushViewController(targetVC, animated: true)
                     }
-//                    print(album)
                     break
                 case .failure(let error):
                     print(error.localizedDescription)
@@ -266,7 +261,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
             break
         }
     }
-    
 }
 
 //MARK: - SearchCellDelegate
@@ -274,15 +268,11 @@ extension SearchViewController: SearchCellDelegate {
     func moreActionsButtonTapped(_ cell: SearchCell) {
         print("More actions")
     }
-    
-    
 }
 
 //MARK: - SelectCollectionViewItemProtocol
 extension SearchViewController: SelectCollectionViewItemProtocol {
     func selectItem(index: IndexPath) {
-//        let title =
-        
         switch index.item {
         case 0:
             currentSection = .all
