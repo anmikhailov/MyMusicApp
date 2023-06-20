@@ -7,14 +7,20 @@
 
 import Foundation
 
-struct Section {
-    let title: String
-    let items: [String]
-    let style: SectionStyle
-}
-
-enum SectionStyle {
+enum Section {
     case newSong
     case popularAlbum
     case recentlyMusic
+    
+    var title: String {
+        switch self {
+            
+        case .newSong:
+            return "New Song"
+        case .popularAlbum:
+            return "Popular Album"
+        case .recentlyMusic:
+            return "Recently Music"
+        }
+    }
 }

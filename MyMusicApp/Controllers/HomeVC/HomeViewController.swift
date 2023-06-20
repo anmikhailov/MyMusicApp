@@ -15,7 +15,16 @@ protocol GoToSeeAllProtocol: AnyObject {
 final class HomeViewController: UIViewController {
     
     // MARK: - Properties
+
+    private var collectionView: UICollectionView = {
+        let collectionViewLayout = UICollectionViewLayout()
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+        collection.backgroundColor = nil
+        collection.bounces = false
+        return collection
+    }()
     
+    lazy var sections: [Section] = [.newSong, .popularAlbum, .recentlyMusic]
     private var collectionView: CustomeCollectionView!
     private let helperView = UIView()
 //    var newAlbums: [NewAlbum] = []
@@ -25,8 +34,6 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Resources.Colors.TabBarColors.background
-        setupCollectionView()
-        setupConstraints()
         
         // fetchNewReleasesAlbums()
         APICaller.shared.getNewReleasesAlbums(country: "US", limit: 10) { result in
@@ -38,6 +45,9 @@ final class HomeViewController: UIViewController {
             }
         }
         configureNavBar(with: "Music", backgroundColor: .clear, rightButtonImage: Resources.Icons.Common.search)
+        
+        constraints()
+        setupCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,43 +72,55 @@ final class HomeViewController: UIViewController {
     
     // MARK: - Private methods
     private func setupCollectionView() {
-        let sectionNewSong = Section(title: "New Song", items: [""], style: .newSong)
-        let sectionPopularAlbum = Section(title: "Popular Album", items: [""], style: .popularAlbum)
-        let sectionRecentlyMusic = Section(title: "Recently Music", items: [""], style: .recentlyMusic)
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        setupCells()
+        collectionView.collectionViewLayout = createCompositionLayout()
         
-        let sections = [sectionNewSong, sectionPopularAlbum, sectionRecentlyMusic]
-        
-        collectionView = CustomeCollectionView(frame: view.bounds)
-        collectionView.setSections(sections)
+    }
     
+    private func setupCells() {
+        collectionView.register(NewSongCell.self, forCellWithReuseIdentifier: "cell1")
+        collectionView.register(PopularAlbumCell.self, forCellWithReuseIdentifier: "cell2")
+        collectionView.register(RecentlyMusicCell.self, forCellWithReuseIdentifier: "cell3")
+        
+        collectionView.register(HeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Header")
+        collectionView.register(HeaderSeeAllView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderSeeAllView.identifier)
     }
     
     override func barButtonTapped() {
         navigationController?.pushViewController(SearchViewController(), animated: true)
     }
+    
+    private var isNavigationBarHidden = false
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        
+        if offsetY > 0 && !isNavigationBarHidden {
+            // Scroll down, hide the navigation bar
+            isNavigationBarHidden = true
+            navigationController?.setNavigationBarHidden(true, animated: true)
+        } else if offsetY <= 0 && isNavigationBarHidden {
+            // Scroll to top, show the navigation bar
+            isNavigationBarHidden = false
+            navigationController?.setNavigationBarHidden(false, animated: true)
+        }
+    }
+
+
+    
 }
 
 // MARK: - Constraints
 
 extension HomeViewController {
     
-    private func setupConstraints() {
-        
-        view.addSubview(helperView)
-        helperView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            helperView.topAnchor.constraint(equalTo: view.topAnchor),
-            helperView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            helperView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            helperView.heightAnchor.constraint(equalToConstant: 1),
-        ])
-        
+    private func constraints() {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(helperView.snp.bottom)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
     
