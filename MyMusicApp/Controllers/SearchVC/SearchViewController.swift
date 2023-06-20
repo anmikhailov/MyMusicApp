@@ -12,7 +12,7 @@ struct SearchSection {
     let results: [SearchResult]
 }
 
-enum CurrentSection {
+enum Sections {
     case artist
     case album
     case track
@@ -22,8 +22,9 @@ enum CurrentSection {
 
 class SearchViewController: CustomViewController<SearchView> {
     
-    var currentSection: CurrentSection = .all
+    var currentSection: Sections = .all
     private var sections: [SearchSection] = []
+    private var searchResults: [SearchResult] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,7 @@ class SearchViewController: CustomViewController<SearchView> {
         navigationController?.navigationBar.isHidden = true
     }
     
-    func fetchSearchResults(with results: [SearchResult]) {
+    func fetchSearchResults(for section: Sections, with results: [SearchResult]) {
         let artists = results.filter({
             switch $0 {
             case .artist: return true
@@ -67,12 +68,44 @@ class SearchViewController: CustomViewController<SearchView> {
             }
         })
         
-        self.sections = [
-            SearchSection(title: "Artists", results: artists),
-            SearchSection(title: "Albums", results: albums),
-            SearchSection(title: "Tracks", results: tracks),
-            SearchSection(title: "Playlists", results: playlists),
-        ]
+        switch section {
+        case .artist:
+            self.sections = [
+                SearchSection(title: "Artists", results: artists),
+            ]
+            break
+            
+        case .album:
+            self.sections = [
+                SearchSection(title: "Albums", results: albums),
+            ]
+            break
+            
+        case .track:
+            self.sections = [
+                SearchSection(title: "Tracks", results: tracks),
+            ]
+            break
+            
+        case .playlist:
+            self.sections = [
+                SearchSection(title: "Playlists", results: playlists),
+            ]
+            break
+
+        case .all:
+            self.sections = [
+                SearchSection(title: "Artists", results: artists),
+                SearchSection(title: "Albums", results: albums),
+                SearchSection(title: "Tracks", results: tracks),
+                SearchSection(title: "Playlists", results: playlists),
+            ]
+            break
+
+        default:
+            break
+        }
+        
         customView.mainTableView.isHidden = results.isEmpty
         customView.mainTableView.reloadData()
     }
@@ -95,7 +128,8 @@ extension SearchViewController: UISearchBarDelegate {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let results):
-                    self.fetchSearchResults(with: results)
+                    self.searchResults = results
+                    self.fetchSearchResults(for: .all, with: results)
                     break
                 case .failure(let error):
                     print(error.localizedDescription)
@@ -152,6 +186,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
             if currentSection == .all || currentSection == .artist {
                 if model.name != "" {
                     cell.titleLabel.text = model.name
+                    cell.subTitleLabel.text = ""
                 } else {
                     cell.titleLabel.text = "No title"
                 }
@@ -251,19 +286,19 @@ extension SearchViewController: SelectCollectionViewItemProtocol {
         switch index.item {
         case 0:
             currentSection = .all
-//            customView.mainTableView.insertSections(IndexSet(integersIn: 1...3), with: .fade)
+            fetchSearchResults(for: currentSection, with: searchResults)
         case 1:
             currentSection = .artist
-//            customView.mainTableView.deleteSections(IndexSet(integersIn: 1...3), with: .fade)
+            fetchSearchResults(for: currentSection, with: searchResults)
         case 2:
             currentSection = .album
-//            customView.mainTableView.deleteSections(IndexSet(integersIn: 1...3), with: .fade)
+            fetchSearchResults(for: currentSection, with: searchResults)
         case 3:
             currentSection = .track
-//            customView.mainTableView.deleteSections(IndexSet(integersIn: 1...3), with: .fade)
+            fetchSearchResults(for: currentSection, with: searchResults)
         case 4:
             currentSection = .playlist
-//            customView.mainTableView.deleteSections(IndexSet(integersIn: 1...3), with: .fade)
+            fetchSearchResults(for: currentSection, with: searchResults)
         default:
             return
         }
