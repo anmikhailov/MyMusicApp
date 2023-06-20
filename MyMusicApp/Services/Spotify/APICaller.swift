@@ -43,7 +43,7 @@ final class APICaller {
     
     // MARK: - New releases
     public func getNewReleasesAlbums(country: String, limit: Int, completion: @escaping (Result<AlbumsResponse, Error>) -> Void) {
-        createRequest(with: URL(string: Constants.baseAPIURL + "/browse/new-releases?country=SE&limit=10&offset=5"), type: .GET) { baseRequest in
+        createRequest(with: URL(string: Constants.baseAPIURL + "/browse/new-releases?country=\(country)&limit=\(limit)&offset=0"), type: .GET) { baseRequest in
             print(baseRequest.url?.absoluteString ?? "none")
             let task = URLSession.shared.dataTask(with: baseRequest) { data, _, error in
                 guard let data = data, error == nil else {
@@ -63,6 +63,21 @@ final class APICaller {
             }
 
             task.resume()
+        }
+    }
+    
+    public func getSpecifiedAlbum(id: String, market: String) {
+        let networkService = DefaultNetworkService()
+        let request = SpecifiedAlbumByID(market: market, id: id)
+        networkService.request(request) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let album):
+                print(album)
+                // album here..
+            case.failure(let error):
+                print(error)
+            }
         }
     }
     
