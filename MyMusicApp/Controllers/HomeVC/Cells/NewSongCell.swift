@@ -9,8 +9,9 @@ import UIKit
 import SnapKit
 
 class NewSongCell: UICollectionViewCell {
-    
+
     let image1 = UIImage(named: "music2")
+    private var loadingActivityIndicator = UIActivityIndicatorView(style: .medium)
     
     // MARK: - Properties
     
@@ -19,7 +20,7 @@ class NewSongCell: UICollectionViewCell {
         label.textColor = .white
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 12)
-        label.text = "The Weekend"
+       // label.text = "The Weekend"
         return label
     }()
     
@@ -28,7 +29,9 @@ class NewSongCell: UICollectionViewCell {
         label.textColor = .white
         label.textAlignment = .left
         label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.text = "Save Your Tears"
+        label.numberOfLines = 2
+        label.lineBreakMode = .byWordWrapping
+        //label.text = "Save Your Tears"
         return label
     }()
     
@@ -45,6 +48,7 @@ class NewSongCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupConstraints()
+        loadingActivityIndicator.startAnimating()
     }
     
     required init?(coder: NSCoder) {
@@ -53,10 +57,38 @@ class NewSongCell: UICollectionViewCell {
     
     // MARK: - Methods
     
-    func configure() {
-        songImage.image = image1
+    func configure(newAlbum: NewAlbum) {
         backgroundColor = .clear
+        songNamelabel.text = newAlbum.name
+        artistNamelabel.text = newAlbum.artists?.first?.name
     }
+    
+    func setupImage(imageAlbum: SpotifyImage) {
+        guard let urlToImage = imageAlbum.url else {
+            songImage.image = image1
+            songImage.contentMode = .scaleAspectFill
+            loadingActivityIndicator.stopAnimating()
+            return
+        }
+        
+        ImageClient.shared.setImage(
+            from: urlToImage,
+            placeholderImage: image1) { [weak self] image in
+                guard let self = self else { return }
+                
+                guard let image else {
+                    self.songImage.image = image
+                    self.songImage.contentMode = .scaleAspectFill
+                    self.loadingActivityIndicator.stopAnimating()
+                    return
+                }
+                
+                self.songImage.image = image
+                self.songImage.contentMode = .scaleAspectFill
+                self.loadingActivityIndicator.stopAnimating()
+            }
+    }
+    
 }
 
 // MARK: - Constraints
@@ -67,8 +99,10 @@ extension NewSongCell {
         addSubview(songImage)
         addSubview(songNamelabel)
         addSubview(artistNamelabel)
+        addSubview(loadingActivityIndicator)
         
         songImage.snp.makeConstraints { make in
+            make.top.equalToSuperview()
             make.centerX.equalToSuperview()
             make.bottom.equalTo(songNamelabel.snp.top).offset(-10)
             make.width.height.equalTo(150)
@@ -76,12 +110,17 @@ extension NewSongCell {
         
         songNamelabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(10)
+            make.trailing.equalToSuperview().offset(-5)
             make.bottom.equalTo(artistNamelabel.snp.top).offset(-5)
         }
         
         artistNamelabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(10)
             make.bottom.equalToSuperview().offset(-5)
+        }
+        
+        loadingActivityIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
         }
         
     }

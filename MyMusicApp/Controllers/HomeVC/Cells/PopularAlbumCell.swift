@@ -8,9 +8,16 @@
 import UIKit
 import SnapKit
 
+protocol ButtonTapDelegate: AnyObject {
+    func didTapButton(at indexPath: IndexPath)
+}
+
 class PopularAlbumCell: UICollectionViewCell {
     
     let image = UIImage(named: "album1")
+    
+    weak var delegate: ButtonTapDelegate?
+    var indexPath: IndexPath!
     
     // MARK: - Properties
     
@@ -40,6 +47,7 @@ class PopularAlbumCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupConstraints()
+        buttonTapped()
     }
     
     required init?(coder: NSCoder) {
@@ -50,6 +58,14 @@ class PopularAlbumCell: UICollectionViewCell {
     
     func configureCell() {
         albumImage.image = image
+    }
+
+    private func buttonTapped() {
+        buttonExploreNow.addTarget(self, action: #selector(exploreScreen), for: .touchUpInside)
+    }
+    
+    @objc private func exploreScreen() {
+        delegate?.didTapButton(at: indexPath)
     }
     
 }

@@ -15,13 +15,16 @@ protocol SeeAllProtocol: AnyObject {
 class ExploreViewController: UIViewController {
     
     // MARK: - Properties
+    
+    var recentlyTracks: [PlayHistoryObject] = []
+    
     private let helperView = UIView()
     
     private var collectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collection.backgroundColor = nil
-        collection.bounces = false
+        collection.bounces = true
         return collection
     }()
     
@@ -35,8 +38,23 @@ class ExploreViewController: UIViewController {
         
         setupCollectionView()
         setupConstraints()
+        fetchrecentlyTrack()
         configureNavBar(with: "Explore", backgroundColor: .clear, rightButtonImage: Resources.Icons.Common.search)
         
+    }
+    
+    func fetchrecentlyTrack() {
+        APICaller.shared.getFiveRecentlyPlayedTracks { [weak self] result in
+            switch result {
+            case .success(let track):
+                self?.recentlyTracks = track.items
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadSections(IndexSet(integer: 2))
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     // MARK: - Private methods

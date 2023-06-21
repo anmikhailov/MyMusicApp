@@ -16,7 +16,7 @@ enum Section {
         switch self {
             
         case .newSong:
-            return "New Song"
+            return "New Songs"
         case .popularAlbum:
             return "Popular Album"
         case .recentlyMusic:
