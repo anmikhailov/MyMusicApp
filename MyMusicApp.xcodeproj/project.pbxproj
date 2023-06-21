@@ -12,6 +12,8 @@
 		04EF352D2A4312CE00B76943 /* PlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF352C2A4312CE00B76943 /* PlayView.swift */; };
 		04EF352F2A431D4E00B76943 /* ViewAllCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF352E2A431D4E00B76943 /* ViewAllCategoryViewController.swift */; };
 		324894552A39D1770031A7AD /* (null) in Sources */ = {isa = PBXBuildFile; };
+		4E03A6E32A423672006BD5DB /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E03A6E22A423672006BD5DB /* PersistenceManager.swift */; };
+		4E03A6E72A423D3C006BD5DB /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E03A6E62A423D3C006BD5DB /* Track.swift */; };
 		4E615DE32A3E2A3C00B9F793 /* RecentlyTracks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E615DE12A3E2A3C00B9F793 /* RecentlyTracks.swift */; };
 		4E615DE42A3E2A3C00B9F793 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E615DE22A3E2A3C00B9F793 /* UserProfile.swift */; };
 		4E615DE82A3E2A4D00B9F793 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E615DE62A3E2A4D00B9F793 /* APICaller.swift */; };
@@ -100,6 +102,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E03A6E22A423672006BD5DB /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		4E03A6E62A423D3C006BD5DB /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		04BB25F82A42D56000B4FD64 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
 		04BB25FD2A43025100B4FD64 /* AlbumInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumInfo.swift; sourceTree = "<group>"; };
 		04EF352C2A4312CE00B76943 /* PlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayView.swift; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 				4E615DE12A3E2A3C00B9F793 /* RecentlyTracks.swift */,
 				4E615DE22A3E2A3C00B9F793 /* UserProfile.swift */,
 				4E615DEA2A3E44C700B9F793 /* Album.swift */,
+				4E03A6E62A423D3C006BD5DB /* Track.swift */,
 				4ED59D742A3F0C9C002F3632 /* PublicObjects.swift */,
 				8429C9CB2A3F46AD00BAE4D4 /* SearchResultsResponse.swift */,
 				8429C9CD2A3F52E100BAE4D4 /* SearchResult.swift */,
@@ -536,6 +541,7 @@
 		84AE2F722A35F35E006E87F1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4E03A6E22A423672006BD5DB /* PersistenceManager.swift */,
 				8429C9D12A401D9D00BAE4D4 /* PlaybackManager.swift */,
 				4E615DE52A3E2A4D00B9F793 /* Spotify */,
 				84C420AC2A378AA700727691 /* Firebase */,
@@ -753,6 +759,7 @@
 				4E615DE42A3E2A3C00B9F793 /* UserProfile.swift in Sources */,
 				841725532A41B46D00B42B51 /* TopicViewController.swift in Sources */,
 				4E615DE92A3E2A4D00B9F793 /* AuthManager.swift in Sources */,
+				4E03A6E32A423672006BD5DB /* PersistenceManager.swift in Sources */,
 				841725482A41B46D00B42B51 /* SearchCell.swift in Sources */,
 				4E6C55992A3C5FA60039E66C /* AuthResponse.swift in Sources */,
 				841725562A41B46D00B42B51 /* ExploreCompositionLayout.swift in Sources */,
@@ -766,6 +773,7 @@
 				841725502A41B46D00B42B51 /* CustomViewController.swift in Sources */,
 				84AE2F7E2A35F687006E87F1 /* Resources.swift in Sources */,
 				841725522A41B46D00B42B51 /* TopTrendingCell.swift in Sources */,
+				4E03A6E72A423D3C006BD5DB /* Track.swift in Sources */,
 				4E615DEB2A3E44C700B9F793 /* Album.swift in Sources */,
 				841725612A41B46D00B42B51 /* FavoritesViewController.swift in Sources */,
 				841725572A41B46D00B42B51 /* ExtentionDelegate.swift in Sources */,
@@ -921,7 +929,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M4F6PT832U;
+				DEVELOPMENT_TEAM = 5PVHGUKPAW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyMusicApp/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -952,7 +960,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M4F6PT832U;
+				DEVELOPMENT_TEAM = 5PVHGUKPAW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyMusicApp/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

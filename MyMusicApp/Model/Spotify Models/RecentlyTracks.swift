@@ -28,6 +28,12 @@ struct Cursors: Codable {
 }
 
 struct PlayHistoryObject: Codable {
+    let track: Track
+    let played_at: String
+    let context: RPContext
+}
+
+struct RPAlbum: Codable, Hashable {
     let track: RPTrack
 //    let played_at: String
    // let context: RPContext
@@ -95,7 +101,7 @@ struct RPAlbum: Codable {
     let artists: [SpotifySimplifiedArtist]
 }
 
-struct ArtictObject: Codable {
+struct ArtistObject: Codable, Hashable {
 //    let external_urls: SpotifyExternalUrl
 //    let followers: Followers?
 //    let genres: [String]? // If not yet classified, the array is empty.

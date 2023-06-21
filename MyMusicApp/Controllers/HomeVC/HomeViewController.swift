@@ -23,7 +23,7 @@ final class HomeViewController: UIViewController {
         let collectionViewLayout = UICollectionViewLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collection.backgroundColor = nil
-        collection.bounces = false
+        collection.bounces = true
         return collection
     }()
     
@@ -76,7 +76,6 @@ final class HomeViewController: UIViewController {
             }
         }
     }
-
     
     // MARK: - Private methods
     private func setupCollectionView() {

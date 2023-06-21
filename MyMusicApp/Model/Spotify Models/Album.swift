@@ -26,7 +26,7 @@ struct Album: Codable {
 //    let genres: [String]
 //    let label: String
 //    let popularity: Int
-    let artists: [ArtictObject]
+    let artists: [ArtistObject]
     let tracks: AlbumTrackObject
 }
 

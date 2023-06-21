@@ -105,9 +105,8 @@ extension RecentlyMusicCell {
         
         addSubview(songImage)
         songImage.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-10)
+            make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(10)
-            make.top.equalToSuperview().offset(10)
             make.width.height.equalTo(60)
         }
         
