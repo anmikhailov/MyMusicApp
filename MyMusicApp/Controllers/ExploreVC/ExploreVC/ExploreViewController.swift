@@ -8,13 +8,16 @@
 import UIKit
 import SnapKit
 
-protocol SeeAllProtocol: AnyObject {
+protocol ViewAllProtocol: AnyObject {
     func goToSeeAll()
 }
 
 class ExploreViewController: UIViewController {
     
     // MARK: - Properties
+    
+    var recentlyTracks: [PlayHistoryObject] = []
+    
     private let helperView = UIView()
     
     private var collectionView: UICollectionView = {
@@ -36,8 +39,24 @@ class ExploreViewController: UIViewController {
         setupCollectionView()
         setupConstraints()
         configureNavBar(with: "Explore", backgroundColor: .clear, rightButtonImage: Resources.Icons.Common.search)
-        
+        fetchRecentlyTrack()
     }
+    
+    func fetchRecentlyTrack() {
+        APICaller.shared.getFiveRecentlyPlayedTracks { [weak self] result in
+            switch result {
+            case .success(let track):
+                self?.recentlyTracks = track.items
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    
     
     // MARK: - Private methods
     
@@ -81,5 +100,14 @@ extension ExploreViewController {
         }
     }
     
+}
+
+extension ExploreViewController: ViewAllProtocol {
+    func goToSeeAll() {
+        let viewAllVC = ViewAllCategoryViewController()
+        
+        
+        navigationController?.pushViewController(viewAllVC, animated: true)
+    }
 }
 

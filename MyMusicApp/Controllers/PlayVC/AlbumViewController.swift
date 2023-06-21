@@ -9,7 +9,7 @@ import UIKit
 
 class AlbumViewController: UIViewController {
     // MARK: - let/var
-private let idSongCell = "idSongCell"
+ static let idSongCell = "idSongCell"
     // MARK: - backgroundImageView
     private let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
@@ -95,7 +95,7 @@ private let idSongCell = "idSongCell"
         return label
     }()
     // MARK: - songCollectionView
-    private let songCollectionView: UICollectionView = {
+     let songCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -118,7 +118,7 @@ private let idSongCell = "idSongCell"
         setupViews()
         setConstrains()
         setDelegates()
-        songCollectionView.register(SongCollectionViewCell.self, forCellWithReuseIdentifier: idSongCell)
+        songCollectionView.register(SongCollectionViewCell.self, forCellWithReuseIdentifier: AlbumViewController.idSongCell)
     }
     
     // MARK: - backButtonTapped
@@ -150,19 +150,19 @@ extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: idSongCell, for: indexPath) as! SongCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AlbumViewController.idSongCell, for: indexPath) as! SongCollectionViewCell
         
         return cell
     }
 }
 extension AlbumViewController {
     // MARK: - setDelegates
-    private func setDelegates() {
+     func setDelegates() {
         songCollectionView.delegate = self
         songCollectionView.dataSource = self
     }
     // MARK: - setupViews
-    private func setupViews() {
+     func setupViews() {
         view.addSubview(backgroundImageView)
         view.addSubview(backButton)
         view.addSubview(titleLabel)
@@ -175,7 +175,7 @@ extension AlbumViewController {
         view.addGestureRecognizer(leftSwipe)
     }
     // MARK: - setConstrains
-    private func setConstrains() {
+     func setConstrains() {
         NSLayoutConstraint.activate([
             backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

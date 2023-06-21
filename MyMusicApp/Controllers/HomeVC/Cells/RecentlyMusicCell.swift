@@ -10,7 +10,8 @@ import SnapKit
 
 class RecentlyMusicCell: UICollectionViewCell {
     
-    var imageRecently = UIImage(named: "music3")
+    var imageRecently = UIImage(named: "AppIcon")
+    private var loadingActivityIndicator = UIActivityIndicatorView(style: .medium)
     
     // MARK: - Properties
     
@@ -19,7 +20,7 @@ class RecentlyMusicCell: UICollectionViewCell {
         label.textColor = .white
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 12)
-        label.text = "Taylor Swift"
+        //label.text = "Taylor Swift"
         return label
     }()
     
@@ -28,7 +29,7 @@ class RecentlyMusicCell: UICollectionViewCell {
         label.textColor = .white
         label.textAlignment = .left
         label.font = UIFont.boldSystemFont(ofSize: 16)
-        label.text = "Love Story"
+        //label.text = "Love Story"
         return label
     }()
     
@@ -51,10 +52,10 @@ class RecentlyMusicCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        //backgroundColor = Resources.Colors.TabBarColors.background
         layer.cornerRadius = 15
         layer.masksToBounds = true
         setupConstraints()
+        //loadingActivityIndicator.startAnimating()
     }
     
     required init?(coder: NSCoder) {
@@ -63,9 +64,37 @@ class RecentlyMusicCell: UICollectionViewCell {
     
     // MARK: - Methods
     
-    func configure() {
+    func configure(recentlyMusic: PlayHistoryObject) {
+        songNamelabel.text = recentlyMusic.track.name
+        artistNamelabel.text = recentlyMusic.track.artists.first?.name
         songImage.image = imageRecently
     }
+    
+//    func setupImage(imageAlbum: SpotifyImage) {
+//        guard let urlToImage = imageAlbum.url else {
+//            songImage.image = imageRecently
+//            songImage.contentMode = .scaleAspectFill
+//            loadingActivityIndicator.stopAnimating()
+//            return
+//        }
+        //
+        //        ImageClient.shared.setImage(
+        //            from: urlToImage,
+        //            placeholderImage: imageRecently) { [weak self] image in
+        //                guard let self = self else { return }
+        //
+        //                guard let image else {
+        //                    self.songImage.image = image
+        //                    self.songImage.contentMode = .scaleAspectFill
+        //                    self.loadingActivityIndicator.stopAnimating()
+        //                    return
+        //                }
+        //
+        //                self.songImage.image = image
+        //                self.songImage.contentMode = .scaleAspectFill
+        //                self.loadingActivityIndicator.stopAnimating()
+        //            }
+
     
 }
 
@@ -100,6 +129,10 @@ extension RecentlyMusicCell {
             make.width.height.equalTo(20)
         }
         
+        addSubview(loadingActivityIndicator)
+        loadingActivityIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
         
         
     }

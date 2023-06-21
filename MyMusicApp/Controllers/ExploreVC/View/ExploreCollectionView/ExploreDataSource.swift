@@ -17,7 +17,7 @@ extension ExploreViewController: UICollectionViewDataSource {
         switch sections[section] {
             
         case .recentlyMusic:
-            return 5
+            return recentlyTracks.count
         case .topTrending:
             return 3
         case .topic:
@@ -35,7 +35,9 @@ extension ExploreViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell3", for: indexPath) as? RecentlyMusicCell else {
                 return UICollectionViewCell()
             }
-            cell.configure()
+            
+            let track = recentlyTracks[indexPath.item]
+            cell.configure(recentlyMusic: track)
             cell.backgroundColor = Resources.Colors.TabBarColors.backgraundCell
             return cell
             
