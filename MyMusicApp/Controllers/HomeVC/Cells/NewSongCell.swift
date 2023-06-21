@@ -10,7 +10,7 @@ import SnapKit
 
 class NewSongCell: UICollectionViewCell {
 
-    let image1 = UIImage(named: "music2")
+    let image1 = UIImage(named: "AppIcon")
     private var loadingActivityIndicator = UIActivityIndicatorView(style: .medium)
     
     // MARK: - Properties
@@ -48,7 +48,7 @@ class NewSongCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupConstraints()
-        loadingActivityIndicator.startAnimating()
+       // loadingActivityIndicator.startAnimating()
     }
     
     required init?(coder: NSCoder) {
@@ -61,6 +61,7 @@ class NewSongCell: UICollectionViewCell {
         backgroundColor = .clear
         songNamelabel.text = newAlbum.name
         artistNamelabel.text = newAlbum.artists?.first?.name
+       
     }
     
     func setupImage(imageAlbum: SpotifyImage) {
@@ -70,19 +71,19 @@ class NewSongCell: UICollectionViewCell {
             loadingActivityIndicator.stopAnimating()
             return
         }
-        
+
         ImageClient.shared.setImage(
             from: urlToImage,
             placeholderImage: image1) { [weak self] image in
                 guard let self = self else { return }
-                
+
                 guard let image else {
                     self.songImage.image = image
                     self.songImage.contentMode = .scaleAspectFill
                     self.loadingActivityIndicator.stopAnimating()
                     return
                 }
-                
+
                 self.songImage.image = image
                 self.songImage.contentMode = .scaleAspectFill
                 self.loadingActivityIndicator.stopAnimating()

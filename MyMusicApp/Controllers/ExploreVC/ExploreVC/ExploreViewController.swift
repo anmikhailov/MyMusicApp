@@ -38,24 +38,25 @@ class ExploreViewController: UIViewController {
         
         setupCollectionView()
         setupConstraints()
-        fetchrecentlyTrack()
         configureNavBar(with: "Explore", backgroundColor: .clear, rightButtonImage: Resources.Icons.Common.search)
-        
+        fetchRecentlyTrack()
     }
     
-    func fetchrecentlyTrack() {
+    func fetchRecentlyTrack() {
         APICaller.shared.getFiveRecentlyPlayedTracks { [weak self] result in
             switch result {
             case .success(let track):
                 self?.recentlyTracks = track.items
                 DispatchQueue.main.async {
-                    self?.collectionView.reloadSections(IndexSet(integer: 2))
+                    self?.collectionView.reloadData()
                 }
             case .failure(let error):
                 print(error)
             }
         }
     }
+    
+    
     
     // MARK: - Private methods
     
