@@ -131,7 +131,7 @@ class PlaybackManager {
         let targetTime:CMTime = CMTimeMake(value: seconds, timescale: 1)
         player!.seek(to: targetTime)
         if player!.rate == 0 {
-            player?.play()
+//            player?.play()
         }
     }
 }

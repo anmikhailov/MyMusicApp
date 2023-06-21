@@ -131,10 +131,11 @@ class AlbumViewController: UIViewController {
     }
     // MARK: - goToPlayVC
     @objc private func goToPlayVC() {
-        let playVC = PlayViewController()
-        playVC.modalPresentationStyle = .fullScreen
-        playVC.modalTransitionStyle = .crossDissolve
-        present(playVC, animated: true)
+//        let playVC = PlayViewController()
+//        playVC.modalPresentationStyle = .fullScreen
+//        playVC.modalTransitionStyle = .crossDissolve
+//        present(playVC, animated: true)
+        dismiss(animated: true)
     }
 }
 // MARK: - UICollectionViewDelegateFlowLayout
