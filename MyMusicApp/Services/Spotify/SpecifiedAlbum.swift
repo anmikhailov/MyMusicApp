@@ -21,7 +21,7 @@ struct SpecifiedAlbumByID: DataRequest {
     var url: String {
         let baseUrl = Web.baseURL
         let path = "/albums/"
-        return baseUrl + path + market
+        return baseUrl + path + id
     }
     
     var headers: [String : String] {
@@ -38,8 +38,9 @@ struct SpecifiedAlbumByID: DataRequest {
         .get
     }
     
-    init(market: String) {
+    init(market: String, id: String) {
         self.market = market
+        self.id = id
     }
     
     func decode(_ data: Data) throws -> Album? {

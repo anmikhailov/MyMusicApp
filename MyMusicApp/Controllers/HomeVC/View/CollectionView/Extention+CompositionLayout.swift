@@ -46,7 +46,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         item.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 5)
         
         let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: .init(widthDimension: .absolute(150), heightDimension: .absolute(195)),
+            layoutSize: .init(widthDimension: .absolute(150), heightDimension: .absolute(200)),
             subitems: [item])
         
         let section = createSection(

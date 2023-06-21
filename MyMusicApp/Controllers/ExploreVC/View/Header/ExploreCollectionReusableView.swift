@@ -11,7 +11,7 @@ class ExploreCollectionReusableView: UICollectionReusableView {
         
         // MARK: - Properties
         
-        var delegate: SeeAllProtocol?
+        var delegate: ViewAllProtocol?
             
         static var identifier = "HeaderSeeAll"
         
@@ -25,7 +25,7 @@ class ExploreCollectionReusableView: UICollectionReusableView {
         
         lazy var seeAllButton: UIButton = {
             let button = UIButton(type: .system)
-            button.setTitle("See All", for: .normal)
+            button.setTitle("View All", for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
             button.setTitleColor(.white, for: .normal)
             button.addTarget(self, action: #selector(seeAllTapped), for: .touchUpInside)
@@ -51,7 +51,7 @@ class ExploreCollectionReusableView: UICollectionReusableView {
         
         func configure(title: String,delegate: ExploreViewController) {
             headerLabel.text = title
-            self.delegate = delegate as? SeeAllProtocol
+            self.delegate = delegate
         }
         
     }
