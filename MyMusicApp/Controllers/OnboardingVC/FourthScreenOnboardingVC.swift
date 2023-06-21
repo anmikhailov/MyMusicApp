@@ -15,17 +15,31 @@ class FourthScreenOnboardingVC: UIViewController, UIGestureRecognizerDelegate {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
         image.image = UIImage(named: "fourth screen back")
+        image.alpha = 0.5
         return image
     }()
     
-    /// app name Label
-    let appNameLabel: UILabel = {
+    /// welcome Label
+    let welcomeLabel: UILabel = {
         let label = UILabel()
-        label.text = "MUSIC"
+        label.text = "YOUR MUSIC, YOUR STYLE"
         label.textColor = .white
+        label.numberOfLines = 0
         label.backgroundColor = .clear
-        label.font = UIFont(name: "Roboto-Bold", size: 64)
+        label.font = UIFont(name: "Roboto-Bold", size: 28)
         label.textAlignment = .center
+        return label
+    }()
+    
+    // comment label
+    private let commentLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Our app allows you to create your own playlists, share your favorite tracks with friends, and explore music recommendations tailored to your unique style. Here, you are the DJ of your life! So let's get started!"
+        label.numberOfLines = 0
+        label.font = UIFont(name: "Montserrat-Regular", size: 16)
+        label.textAlignment = .center
+        label.backgroundColor = .clear
+        label.textColor = Resources.Colors.neutral1
         return label
     }()
     
@@ -105,7 +119,8 @@ extension FourthScreenOnboardingVC {
         
         /// ADDING SUBVIEWS
         view?.addSubview(mockImageView)
-        view?.addSubview(appNameLabel)
+        view?.addSubview(welcomeLabel)
+        view?.addSubview(commentLabel)
         view?.addSubview(dotView1)
         view?.addSubview(dotView2)
         view?.addSubview(dotView3)
@@ -115,7 +130,8 @@ extension FourthScreenOnboardingVC {
 
         /// TAMIC
         mockImageView.translatesAutoresizingMaskIntoConstraints = false
-        appNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
+        commentLabel.translatesAutoresizingMaskIntoConstraints = false
         dotView1.translatesAutoresizingMaskIntoConstraints = false
         dotView2.translatesAutoresizingMaskIntoConstraints = false
         dotView3.translatesAutoresizingMaskIntoConstraints = false
@@ -132,10 +148,15 @@ extension FourthScreenOnboardingVC {
             mockImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             mockImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
-            appNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            appNameLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            appNameLabel.widthAnchor.constraint(equalToConstant: 200),
-            appNameLabel.heightAnchor.constraint(equalToConstant: 75),
+            welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            welcomeLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            welcomeLabel.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, multiplier: 0.75),
+            welcomeLabel.heightAnchor.constraint(equalToConstant: 70),
+            
+            commentLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 10),
+            commentLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            commentLabel.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, multiplier: 0.75),
+            commentLabel.heightAnchor.constraint(equalToConstant: 120),
             
             dotView1.centerYAnchor.constraint(equalTo: dotView2.centerYAnchor),
             dotView1.trailingAnchor.constraint(equalTo: dotView2.leadingAnchor, constant: -5),

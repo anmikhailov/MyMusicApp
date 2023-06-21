@@ -9,7 +9,7 @@ import UIKit
 
 class SongCollectionViewCell: UICollectionViewCell {
     // MARK: - numberSongLabel
-    private let numberSongLabel: UILabel = {
+    let numberSongLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "01"
@@ -29,7 +29,7 @@ class SongCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     // MARK: - nameSongLabel
-    private let nameSongLabel: UILabel = {
+    let nameSongLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Nice For What"
@@ -39,7 +39,7 @@ class SongCollectionViewCell: UICollectionViewCell {
         return label
     }()
     // MARK: - singerNameLabel
-    private let singerNameLabel: UILabel = {
+    let singerNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Avinci John"
