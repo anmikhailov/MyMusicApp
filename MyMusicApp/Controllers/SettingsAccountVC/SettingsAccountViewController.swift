@@ -21,6 +21,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
     var dateOfBirthDatePicker = UIDatePicker()
     var changePasswordButton = UIButton(type: .system)
     var genderPicker = UIPickerView()
+    let backButton = UIButton(type: .system)
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "person.fill")
@@ -47,6 +48,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         setUserNameTextField()
         setEmailTextField()
         setDateOfBirthDatePicker()
+        setBackButton()
     }
     
     func setBacground(){
@@ -250,6 +252,17 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         }
     }
     
+    func setBackButton(){
+        view.addSubview(backButton)
+        backButton.setTitle("Назад", for: .normal)
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        
+        backButton.snp.makeConstraints { make in
+            make.top.equalTo(editTitle.snp.top)
+            make.leading.equalTo(view.safeAreaLayoutGuide).inset(16)
+        }
+    }
+    
     func setFont(nameFont:String, sizeFont:CGFloat) -> UIFont {
         if let customFont = UIFont(name: nameFont, size: sizeFont){
             return customFont
@@ -277,6 +290,11 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         let changePasswordVC = ChangePasswordViewController()
         changePasswordVC.modalPresentationStyle = .fullScreen
         self.present(changePasswordVC, animated: true)
+    }
+    
+    @objc func backButtonTapped() {
+        // Выполняем выход назад с экрана .modalPresentationStyle = .fullScreen
+        dismiss(animated: true, completion: nil)
     }
 }
 
