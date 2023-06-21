@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		04BB25F92A42D56000B4FD64 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB25F82A42D56000B4FD64 /* Delegate.swift */; };
+		04BB25FE2A43025100B4FD64 /* AlbumInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB25FD2A43025100B4FD64 /* AlbumInfo.swift */; };
 		324894552A39D1770031A7AD /* (null) in Sources */ = {isa = PBXBuildFile; };
 		4E615DE32A3E2A3C00B9F793 /* RecentlyTracks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E615DE12A3E2A3C00B9F793 /* RecentlyTracks.swift */; };
 		4E615DE42A3E2A3C00B9F793 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E615DE22A3E2A3C00B9F793 /* UserProfile.swift */; };
@@ -98,6 +99,7 @@
 
 /* Begin PBXFileReference section */
 		04BB25F82A42D56000B4FD64 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
+		04BB25FD2A43025100B4FD64 /* AlbumInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumInfo.swift; sourceTree = "<group>"; };
 		4E615DE12A3E2A3C00B9F793 /* RecentlyTracks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentlyTracks.swift; sourceTree = "<group>"; };
 		4E615DE22A3E2A3C00B9F793 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		4E615DE62A3E2A4D00B9F793 /* APICaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
@@ -198,6 +200,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04BB25FA2A42EC1300B4FD64 /* ViewAllController */ = {
+			isa = PBXGroup;
+			children = (
+				841725312A41B46C00B42B51 /* TableNewSongViewController.swift */,
+			);
+			path = ViewAllController;
+			sourceTree = "<group>";
+		};
 		4E615DE02A3E2A3C00B9F793 /* Spotify Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -376,7 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				8417252D2A41B46C00B42B51 /* Cells */,
-				841725312A41B46C00B42B51 /* TableNewSongViewController.swift */,
+				04BB25FA2A42EC1300B4FD64 /* ViewAllController */,
 				841725322A41B46C00B42B51 /* HomeViewController.swift */,
 				04BB25F82A42D56000B4FD64 /* Delegate.swift */,
 				841725332A41B46C00B42B51 /* Model */,
@@ -454,6 +464,7 @@
 			children = (
 				841725442A41B46D00B42B51 /* AlbumViewController.swift */,
 				841725452A41B46D00B42B51 /* PlayViewController.swift */,
+				04BB25FD2A43025100B4FD64 /* AlbumInfo.swift */,
 				841725462A41B46D00B42B51 /* Cell */,
 			);
 			path = PlayVC;
@@ -707,6 +718,7 @@
 				8417255A2A41B46D00B42B51 /* ForgetPasswordView.swift in Sources */,
 				4ED59D7B2A3F15E4002F3632 /* ErrorResponse.swift in Sources */,
 				841725682A41B46D00B42B51 /* Extention+CompositionLayout.swift in Sources */,
+				04BB25FE2A43025100B4FD64 /* AlbumInfo.swift in Sources */,
 				8417255B2A41B46D00B42B51 /* SignInUpViewController.swift in Sources */,
 				84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */,
 				8417254F2A41B46D00B42B51 /* CustomView.swift in Sources */,

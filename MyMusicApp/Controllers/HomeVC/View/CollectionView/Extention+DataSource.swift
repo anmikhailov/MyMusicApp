@@ -22,7 +22,7 @@ extension HomeViewController: UICollectionViewDataSource {
         case .popularAlbum:
             return 1
         case .recentlyMusic:
-            return recentlyPlayedTracks.count
+            return recentlyTracks.count
         }
     }
     
@@ -47,6 +47,8 @@ extension HomeViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath) as? PopularAlbumCell else {
                 return UICollectionViewCell()
             }
+            cell.delegate = self
+            cell.indexPath = indexPath
             cell.configureCell()
             return cell
             
@@ -55,8 +57,11 @@ extension HomeViewController: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             
-            let track = recentlyPlayedTracks[indexPath.item]
+            let track = recentlyTracks[indexPath.item]
             cell.configure(recentlyMusic: track)
+            print(track)
+//            let image = recentlyTracks.first?.track.artists.first?.images.first
+//            cell.setupImage(imageAlbum: image!)
             cell.backgroundColor = Resources.Colors.TabBarColors.background
             return cell
         }

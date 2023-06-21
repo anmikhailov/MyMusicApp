@@ -52,7 +52,7 @@ class HeaderSeeAllView: UICollectionReusableView {
     
     func configure(title: String,delegate: HomeViewController) {
         headerLabel.text = title
-        self.delegate = delegate //as? GoToSeeAllProtocol
+        self.delegate = delegate 
     }
     
 }

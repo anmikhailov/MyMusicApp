@@ -9,7 +9,7 @@ import UIKit
 
 class TableNewSongViewController: UICollectionViewController {
     
-    var album: [NewAlbum] = []
+    var newAlbom: [NewAlbum] = []
         
         init() {
                 let layout = UICollectionViewFlowLayout()
@@ -24,9 +24,10 @@ class TableNewSongViewController: UICollectionViewController {
 
         override func viewDidLoad() {
             super.viewDidLoad()
-            collectionView.backgroundColor = Resources.Colors.TabBarColors.background
+            fetchNewSongs()
+            //collectionView.backgroundColor = Resources.Colors.TabBarColors.background
 
-            self.collectionView!.register(NewSongCell.self, forCellWithReuseIdentifier: "cell1")
+            collectionView.register(NewSongCell.self, forCellWithReuseIdentifier: "cell1")
             
             collectionView.collectionViewLayout = createFlowLayout()
 
@@ -34,7 +35,7 @@ class TableNewSongViewController: UICollectionViewController {
         
         func createFlowLayout() -> UICollectionViewFlowLayout {
             let flowLayout = UICollectionViewFlowLayout()
-            flowLayout.itemSize = CGSize(width: 155, height: 155)
+            flowLayout.itemSize = CGSize(width: 155, height: 200)
             flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 20, bottom: 20, right: 20)
             flowLayout.minimumInteritemSpacing = 20
             flowLayout.minimumLineSpacing = 20
@@ -45,7 +46,7 @@ class TableNewSongViewController: UICollectionViewController {
 
         override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             
-            return album.count
+            return newAlbom.count
         }
 
         override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -53,10 +54,27 @@ class TableNewSongViewController: UICollectionViewController {
                 return UICollectionViewCell()
             }
 
-            let newAlbum = album[indexPath.item]
+            let newAlbum = newAlbom[indexPath.item]
             cell.configure(newAlbum: newAlbum)
+            let image = newAlbum.images.first!
+            cell.setupImage(imageAlbum: image)
             return cell
         }
+    
+    func fetchNewSongs() {
+        APICaller.shared.getNewReleasesAlbums(country: "US", limit: 40) { [weak self] result in
+            switch result {
+            case .success(let albums):
+                self?.newAlbom = albums.albums.items
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadData()
+                }
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 
         // MARK: UICollectionViewDelegate
 

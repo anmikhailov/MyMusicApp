@@ -48,6 +48,7 @@ class NewSongCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupConstraints()
+        loadingActivityIndicator.startAnimating()
     }
     
     required init?(coder: NSCoder) {
@@ -101,6 +102,7 @@ extension NewSongCell {
         addSubview(loadingActivityIndicator)
         
         songImage.snp.makeConstraints { make in
+            make.top.equalToSuperview()
             make.centerX.equalToSuperview()
             make.bottom.equalTo(songNamelabel.snp.top).offset(-10)
             make.width.height.equalTo(150)

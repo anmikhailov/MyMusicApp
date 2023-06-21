@@ -36,7 +36,7 @@ extension ExploreViewController: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             
-            let track = recentlyPlayedTracks[indexPath.item]
+            let track = recentlyTracks[indexPath.item]
             cell.configure(recentlyMusic: track)
             cell.backgroundColor = Resources.Colors.TabBarColors.backgraundCell
             return cell

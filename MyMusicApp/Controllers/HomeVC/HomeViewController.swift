@@ -15,7 +15,7 @@ protocol GoToSeeAllProtocol: AnyObject {
 final class HomeViewController: UIViewController {
     
     var album: [NewAlbum] = []
-    var recentlyPlayedTracks: [PlayHistoryObject] = []
+    var recentlyTracks: [PlayHistoryObject] = []
     
     // MARK: - Properties
     
@@ -39,7 +39,7 @@ final class HomeViewController: UIViewController {
         constraints()
         setupCollectionView()
         fetchMusic()
-        //fetchRecentlyPlayedTracks()
+        fetchrecentlyTrack()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,11 +53,24 @@ final class HomeViewController: UIViewController {
             switch result {
             case .success(let albums):
                 self.album = albums.albums.items
-                print(albums)
                 DispatchQueue.main.async {
                     self.collectionView.reloadSections(IndexSet(integer: 0))
                 }
                 
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func fetchrecentlyTrack() {
+        APICaller.shared.getFiveRecentlyPlayedTracks { [weak self] result in
+            switch result {
+            case .success(let track):
+                self?.recentlyTracks = track.items
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadSections(IndexSet(integer: 2))
+                }
             case .failure(let error):
                 print(error)
             }
@@ -122,7 +135,18 @@ extension HomeViewController: GoToSeeAllProtocol {
     func goToSeeAll() {
         let tableViewController = TableNewSongViewController()
         
+        
         navigationController?.pushViewController(tableViewController, animated: true)
     }
+}
+
+extension HomeViewController: ButtonTapDelegate {
+    func didTapButton(at indexPath: IndexPath) {
+        let nextVC = ExploreViewController()
+        nextVC.modalPresentationStyle = .fullScreen
+        present(nextVC, animated: true)
+    }
+    
+    
 }
 
