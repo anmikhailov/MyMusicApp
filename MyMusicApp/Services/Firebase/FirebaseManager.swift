@@ -53,6 +53,17 @@ final class FirebaseManager {
         }
     }
     
+    func changeProfileInfo(email: String, name: String, completion: @escaping (Error?) -> ()) {
+        if !userUid.isEmpty {
+            let ref = Database.database().reference().child("users")
+            ref.child(userUid).updateChildValues(["name" : name])
+            ref.child(userUid).updateChildValues(["email" : email])
+            
+            self.saveInUserDefaults(userInfo: UserInfo(name: name, email: email))
+        }
+        
+    }
+    
     func signIn(email: String,
                 password: String,
                 completion: @escaping (Error?) -> ()) {
