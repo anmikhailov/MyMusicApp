@@ -87,6 +87,52 @@ final class APICaller {
         }
     }
     
+    // MARK: - Get Artist's tracks
+    public func getArtistsTracks(with id: String, completion: @escaping (Result<ArtistsTracks, Error>) -> Void) {
+        createRequest(with: URL(string: Constants.baseAPIURL + "/artists/" + id + "/top-tracks?market=ES"), type: .GET) { baseRequest in
+            print(baseRequest.url?.absoluteString ?? "none")
+            let task = URLSession.shared.dataTask(with: baseRequest) { data, _, error in
+                guard let data = data, error == nil else {
+                    completion(.failure(APIError.failedToGetData))
+                    return
+                }
+
+                do {
+                    let result = try JSONDecoder().decode(ArtistsTracks.self, from: data)
+                    completion(.success(result))
+
+                } catch {
+                    completion(.failure(error))
+                }
+            }
+
+            task.resume()
+        }
+    }
+    
+    // MARK: - Get Playlist's tracks
+    public func getPlaylistTracks(with id: String, completion: @escaping (Result<PlaylistsTracks, Error>) -> Void) {
+        createRequest(with: URL(string: Constants.baseAPIURL + "/playlists/" + id + "/tracks"), type: .GET) { baseRequest in
+            print(baseRequest.url?.absoluteString ?? "none")
+            let task = URLSession.shared.dataTask(with: baseRequest) { data, _, error in
+                guard let data = data, error == nil else {
+                    completion(.failure(APIError.failedToGetData))
+                    return
+                }
+
+                do {
+                    let result = try JSONDecoder().decode(PlaylistsTracks.self, from: data)
+                    completion(.success(result))
+
+                } catch {
+                    completion(.failure(error))
+                }
+            }
+
+            task.resume()
+        }
+    }
+    
     // MARK: - Get track
     public func getTrack(with id: String, completion: @escaping (Result<SpotifyTrack, Error>) -> Void) {
         createRequest(with: URL(string: Constants.baseAPIURL + "/tracks/" + id), type: .GET) { baseRequest in

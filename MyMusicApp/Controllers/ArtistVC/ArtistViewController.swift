@@ -1,16 +1,16 @@
 //
-//  SuggestionViewController.swift
+//  ArtistViewController.swift
 //  MyMusicApp
 //
-//  Created by Sergey Medvedev on 14.06.2023.
+//  Created by Andrey on 21.06.2023.
 //
 
 import UIKit
 
-class AlbumOnlyViewController: UIViewController {
+class ArtistOnlyViewController: UIViewController {
     // MARK: - let/var
     private var tracks: [SpotifySimplifiedTrack] = []
-    private var currentAlbum: Album?
+    private var currentArtist: SpotifySimplifiedArtist?
     
     private let idSongCell = "idSongCell"
 
@@ -81,14 +81,14 @@ class AlbumOnlyViewController: UIViewController {
         return collectionView
     }()
     
-    init(album: Album?) {
+    init(artist: SpotifySimplifiedArtist?, artistsTracks: ArtistsTracks) {
         super.init(nibName: nil, bundle: nil)
         
-        if let album = album {
-            self.titleLabel.text = album.name
-            self.subtitleLabel.text = album.artists.first?.name
-            self.tracks = album.tracks.items
-            self.currentAlbum = album
+        if let artist = artist {
+            self.titleLabel.text = artist.name
+            self.subtitleLabel.text = ""
+            self.tracks = artistsTracks.tracks
+            self.currentArtist = artist
         }
     }
     
@@ -114,13 +114,13 @@ class AlbumOnlyViewController: UIViewController {
     }
 }
 // MARK: - UICollectionViewDelegateFlowLayout
-extension AlbumOnlyViewController: UICollectionViewDelegateFlowLayout {
+extension ArtistOnlyViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: collectionView.bounds.width, height: 60)
     }
 }
 // MARK: - UICollectionViewDataSource & UICollectionViewDelegate
-extension AlbumOnlyViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ArtistOnlyViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         tracks.count
     }
@@ -138,7 +138,7 @@ extension AlbumOnlyViewController: UICollectionViewDelegate, UICollectionViewDat
         PlaybackManager.shared.startPlayback(from: self, track: track)
     }
 }
-extension AlbumOnlyViewController {
+extension ArtistOnlyViewController {
     // MARK: - setDelegates
     private func setDelegates() {
         songCollectionView.delegate = self
