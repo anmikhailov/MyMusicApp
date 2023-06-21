@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-protocol SeeAllProtocol: AnyObject {
+protocol ViewAllProtocol: AnyObject {
     func goToSeeAll()
 }
 
@@ -100,5 +100,14 @@ extension ExploreViewController {
         }
     }
     
+}
+
+extension ExploreViewController: ViewAllProtocol {
+    func goToSeeAll() {
+        let viewAllVC = ViewAllCategoryViewController()
+        
+        
+        navigationController?.pushViewController(viewAllVC, animated: true)
+    }
 }
 

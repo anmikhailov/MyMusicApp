@@ -142,11 +142,28 @@ extension HomeViewController: GoToSeeAllProtocol {
 
 extension HomeViewController: ButtonTapDelegate {
     func didTapButton(at indexPath: IndexPath) {
-        let nextVC = ExploreViewController()
-        nextVC.modalPresentationStyle = .fullScreen
-        present(nextVC, animated: true)
+        
+        guard let tabBarController = tabBarController as? TabBarController else {
+            return
+        }
+        tabBarController.selectedIndex = Tabs.explore.rawValue
     }
+}
+
+// MARK: - Play View
+extension HomeViewController {
     
+    func showPlaybackBar(with trackName: String) {
+        let playbackBarHeight: CGFloat = 70
+        let frame = CGRect(x: 0, y: (view.bounds.height - playbackBarHeight), width: view.bounds.width, height: playbackBarHeight)
+        let playBack = PlayView(frame: frame)
+        
+        playBack.songNameLabel.text = trackName
+        
+        // прописать addTarget для каждой кнопки
+        
+        view.addSubview(playBack)
+    }
     
 }
 

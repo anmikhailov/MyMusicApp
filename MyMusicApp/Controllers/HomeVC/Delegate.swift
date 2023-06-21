@@ -33,6 +33,8 @@ extension HomeViewController: UICollectionViewDelegate {
 //            image: "")
         
         let albumVC = AlbumOnlyViewController(album: nil)
-        navigationController?.pushViewController(albumVC, animated: true)
+        albumVC.modalPresentationStyle = .fullScreen
+        present(albumVC, animated: true)
+        //navigationController?.pushViewController(albumVC, animated: true)
     }
 }
