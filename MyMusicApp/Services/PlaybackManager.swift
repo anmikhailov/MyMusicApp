@@ -47,16 +47,16 @@ class PlaybackManager {
         let playerItem: AVPlayerItem = AVPlayerItem(url: url)
         let duration : CMTime = playerItem.asset.duration
         let seconds : Float64 = CMTimeGetSeconds(duration)
-//        playerViewController.songEndLabel.text = self.stringFromTimeInterval(interval: seconds)
+        playerViewController.songEndLabel.text = self.stringFromTimeInterval(interval: seconds)
         
         // Set up slider maximum value
-//        playerViewController.songTimeSlider.maximumValue = Float(seconds)
-//        playerViewController.songTimeSlider.isContinuous = true
+        playerViewController.songTimeSlider.maximumValue = Float(seconds)
+        playerViewController.songTimeSlider.isContinuous = true
         
         // Calculate and set current time
         let currentDuration : CMTime = playerItem.currentTime()
         let currentSeconds : Float64 = CMTimeGetSeconds(currentDuration)
-//        playerViewController.songStartLabel.text = self.stringFromTimeInterval(interval: currentSeconds)
+        playerViewController.songStartLabel.text = self.stringFromTimeInterval(interval: currentSeconds)
            
         // Add observer for update slider in realtime
         player!.addPeriodicTimeObserver(
@@ -65,8 +65,8 @@ class PlaybackManager {
         ) { (CMTime) -> Void in
             if self.player!.currentItem?.status == .readyToPlay {
                 let time : Float64 = CMTimeGetSeconds(self.player!.currentTime());
-//                self.playerViewController.songTimeSlider.value = Float ( time );
-//                self.playerViewController.songStartLabel.text = self.stringFromTimeInterval(interval: time)
+                self.playerViewController.songTimeSlider.value = Float ( time );
+                self.playerViewController.songStartLabel.text = self.stringFromTimeInterval(interval: time)
             }
         }
         
@@ -75,6 +75,7 @@ class PlaybackManager {
 
         viewController.present(playerViewController, animated: true) { [weak self] in
             self?.player?.play()
+            self?.playerViewController.isPlay = true
         }
     }
     

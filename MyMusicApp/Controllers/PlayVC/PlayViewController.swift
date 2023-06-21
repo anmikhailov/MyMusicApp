@@ -11,7 +11,16 @@ class PlayViewController: UIViewController {
     // MARK: - let/var
     private var isFavorite = true
     private var isDownload = true
-    private var isPlay = true
+    var isPlay = true {
+        didSet {
+            if isPlay {
+                playButton.setBackgroundImage(UIImage(systemName: "pause"), for: .normal)
+            } else {
+                playButton.setBackgroundImage(UIImage(systemName: "play"), for: .normal)
+                playButton.backgroundColor = .none
+            }
+        }
+    }
     // MARK: - pageController
     private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
@@ -129,7 +138,7 @@ class PlayViewController: UIViewController {
         return stackView
     }()
     // MARK: - songTimeSlider
-    private lazy var songTimeSlider: UISlider = {
+    lazy var songTimeSlider: UISlider = {
         let slider = UISlider()
         slider.translatesAutoresizingMaskIntoConstraints = false
         slider.minimumValue = 0
@@ -143,7 +152,7 @@ class PlayViewController: UIViewController {
         return slider
     }()
     // MARK: - songStart
-    private let songStartLabel: UILabel = {
+    let songStartLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "Roboto-Regular", size: 14)
@@ -153,7 +162,7 @@ class PlayViewController: UIViewController {
         return label
     }()
     // MARK: - songEndLabel
-    private let songEndLabel: UILabel = {
+    let songEndLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "Roboto-Regular", size: 14)
@@ -287,14 +296,8 @@ class PlayViewController: UIViewController {
     }
     // MARK: - playButtonTapped
     @objc private func playButtonTapped() {
-        if isPlay {
-            playButton.setBackgroundImage(UIImage(systemName: "pause"), for: .normal)
-            isPlay = false
-        } else {
-            playButton.setBackgroundImage(UIImage(systemName: "play"), for: .normal)
-            playButton.backgroundColor = .none
-            isPlay = true
-        }
+        isPlay.toggle()
+        PlaybackManager.shared.playPausePlayback()
     }
     // MARK: - nextButtonTapped
     @objc private func nextButtonTapped() {
