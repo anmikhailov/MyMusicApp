@@ -164,6 +164,8 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
             make.leading.equalTo(view.safeAreaLayoutGuide).inset(131)
         }
         
+        changePasswordButton.addTarget(self, action: #selector(changePasswordTapped), for: .touchUpInside)
+        
     }
     
     func setUserNameTextField(){
@@ -235,6 +237,11 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
         let selectedDate = dateFormatter.string(from: dateOfBirthDatePicker.date)
+    }
+    @objc func changePasswordTapped(){
+        let changePasswordVC = ChangePasswordViewController()
+        changePasswordVC.modalPresentationStyle = .fullScreen
+        self.present(changePasswordVC, animated: true)
     }
 }
 

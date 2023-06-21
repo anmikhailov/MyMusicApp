@@ -145,6 +145,8 @@ class AccountViewController: UIViewController {
             make.width.equalTo(195)
             make.height.equalTo(46)
         }
+        
+        singOutButton.addTarget(self, action: #selector(singOutTapped), for: .touchUpInside)
     }
     
     func setFont(nameFont:String, sizeFont:CGFloat) -> UIFont {
@@ -168,6 +170,11 @@ class AccountViewController: UIViewController {
         settingsViewController.modalPresentationStyle = .fullScreen
         self.present(settingsViewController, animated: true)
         }
+    @objc func singOutTapped(){
+        FirebaseManager.shared.signOut {
+            print("Sing Out")
+        }
+    }
     
 }
 

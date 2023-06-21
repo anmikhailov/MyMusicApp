@@ -92,6 +92,8 @@
 		84D78D7E2A37A9F300D3B464 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84D78D772A37A9F300D3B464 /* Montserrat-Medium.ttf */; };
 		84D78D7F2A37A9F300D3B464 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84D78D782A37A9F300D3B464 /* Roboto-Medium.ttf */; };
 		84F026962A38F51E001DCEFE /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 84F026952A38F51E001DCEFE /* SnapKit */; };
+		84F78E1F2A42113500C3F216 /* SettingsAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F78E1E2A42113500C3F216 /* SettingsAccountViewController.swift */; };
+		84F78E212A42114D00C3F216 /* AccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F78E202A42114D00C3F216 /* AccountButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -175,8 +177,8 @@
 		84D78D762A37A9F300D3B464 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		84D78D772A37A9F300D3B464 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		84D78D782A37A9F300D3B464 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
-		84D78D822A38F35600D3B464 /* AccountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountButton.swift; sourceTree = "<group>"; };
-		84D78D852A3B6A3000D3B464 /* SettingsAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAccountViewController.swift; sourceTree = "<group>"; };
+		84F78E1E2A42113500C3F216 /* SettingsAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAccountViewController.swift; sourceTree = "<group>"; };
+		84F78E202A42114D00C3F216 /* AccountButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -358,6 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				841725292A41B46C00B42B51 /* AccountViewController.swift */,
+				84F78E202A42114D00C3F216 /* AccountButton.swift */,
 			);
 			path = AccountVC;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 			isa = PBXGroup;
 			children = (
 				841725282A41B46C00B42B51 /* AccountVC */,
+				84F78E1D2A42113500C3F216 /* SettingsAccountVC */,
 				841725212A41B46C00B42B51 /* AuthorizationVC */,
 				841725412A41B46C00B42B51 /* AuthVC */,
 				8417250C2A41B46B00B42B51 /* Common */,
@@ -587,10 +591,10 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		84D78D842A3B69AF00D3B464 /* SettingsAccountVC */ = {
+		84F78E1D2A42113500C3F216 /* SettingsAccountVC */ = {
 			isa = PBXGroup;
 			children = (
-				84D78D852A3B6A3000D3B464 /* SettingsAccountViewController.swift */,
+				84F78E1E2A42113500C3F216 /* SettingsAccountViewController.swift */,
 			);
 			path = SettingsAccountVC;
 			sourceTree = "<group>";
@@ -705,6 +709,7 @@
 				84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */,
 				8417254F2A41B46D00B42B51 /* CustomView.swift in Sources */,
 				841725712A41B46D00B42B51 /* AlbumViewController.swift in Sources */,
+				84F78E1F2A42113500C3F216 /* SettingsAccountViewController.swift in Sources */,
 				8417256C2A41B46D00B42B51 /* SecondScreenOnboardingVC.swift in Sources */,
 				841725632A41B46D00B42B51 /* NewSongCell.swift in Sources */,
 				841725512A41B46D00B42B51 /* TopicCell.swift in Sources */,
@@ -742,6 +747,7 @@
 				84AE2F7E2A35F687006E87F1 /* Resources.swift in Sources */,
 				841725522A41B46D00B42B51 /* TopTrendingCell.swift in Sources */,
 				4E615DEB2A3E44C700B9F793 /* Album.swift in Sources */,
+				84F78E212A42114D00C3F216 /* AccountButton.swift in Sources */,
 				841725612A41B46D00B42B51 /* FavoritesViewController.swift in Sources */,
 				841725572A41B46D00B42B51 /* ExtentionDelegate.swift in Sources */,
 				84AE2F7C2A35F679006E87F1 /* UIColorExtension.swift in Sources */,
