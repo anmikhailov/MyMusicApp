@@ -29,19 +29,19 @@ struct Cursors: Codable {
 
 struct PlayHistoryObject: Codable {
     let track: Track
-    let played_at: String
-    let context: RPContext
+//    let played_at: String
+//    let context: RPContext
 }
 
-struct RPAlbum: Codable, Hashable {
-    let track: RPTrack
+//struct RPAlbum: Codable, Hashable {
+//    let track: RPTrack
 //    let played_at: String
    // let context: RPContext
-}
+//}
 
 struct RPTrack: Codable {
     //let album: RPAlbum
-    let artists: [ArtictObject]
+    let artists: [ArtistObject]
 //    let available_markets: [String] // A list of the countries in which the track can be played, identified by their ISO 3166-1 alpha-2 code.
 //    let disc_number: Int // usually 1 unless the album consists of more than one disc
 //    let duration_ms: Int
@@ -67,32 +67,32 @@ struct RPTrack: Codable {
 //    let is_local: Bool // Whether or not the track is from a local file.
 }
 
-struct RPAlbum: Codable {
+struct RPAlbum: Codable, Hashable {
     let album_type: String // "album", "single", "compilation"
     let total_tracks: Int
-    let available_markets: [String]
-    let external_urls: SpotifyExternalUrl
+//    let available_markets: [String]
+//    let external_urls: SpotifyExternalUrl
     let href: String
     let id: String // Example value: "2up3OPMp9Tb4dAKM2erWXQ"
     let images: [SpotifyImage]
     let name: String
     
-    let release_date: String //TODO: Example value: "1981-12"
+//    let release_date: String //TODO: Example value: "1981-12"
     
-    let release_date_precision: String // Allowed values: "year", "month", "day"
+//    let release_date_precision: String // Allowed values: "year", "month", "day"
     
-    let restrictions: SpotifyRestrictions // "market", "product", "explicit"
+//    let restrictions: SpotifyRestrictions // "market", "product", "explicit"
     
-    let type: String // Allowed values: "album"
+//    let type: String // Allowed values: "album"
     let uri: String // Example value: "spotify:album:2up3OPMp9Tb4dAKM2erWXQ"
-    let copyrights: [SpotifyCopyright]
-    let external_ids: SpotifyExternalIds
-    let genres: [String]
-    let label: String
-    let popularity: Int // from 0 to 100
+//    let copyrights: [SpotifyCopyright]
+//    let external_ids: SpotifyExternalIds
+//    let genres: [String]
+//    let label: String
+//    let popularity: Int // from 0 to 100
     
     // ---
-    let album_group: String?
+//    let album_group: String?
     // The field is present when getting an artist's albums. Compare to album_type this field represents relationship between the artist and the album.
     // Example value: "compilation"
     // Allowed values: "album", "single", "compilation", "appears_on"
