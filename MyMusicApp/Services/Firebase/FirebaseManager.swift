@@ -31,6 +31,7 @@ final class FirebaseManager {
         }
     }
     
+    // MARK: - Create account
     func createAccount(email: String,
                        password: String,
                        username: String,
@@ -53,6 +54,7 @@ final class FirebaseManager {
         }
     }
     
+    // MARK: - Change profile info
     func changeProfileInfo(email: String, name: String, completion: @escaping (Error?) -> ()) {
         if !userUid.isEmpty {
             let ref = Database.database().reference().child("users")
@@ -86,6 +88,7 @@ final class FirebaseManager {
         }
     }
     
+    // MARK: - Google auth
     func googleAuth(withPresenting: UIViewController, completion: @escaping (Error?) -> ()) {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
         
@@ -119,6 +122,7 @@ final class FirebaseManager {
         }
     }
     
+    // MARK: - reset and change password
     func resetPassword(email: String,
                        completion: @escaping (Error?) -> ()) {
         Auth.auth().sendPasswordReset(withEmail: email) {error in
@@ -133,6 +137,7 @@ final class FirebaseManager {
         }
     }
     
+    // MARK: - Sign out
     func signOut(completion: @escaping () -> ()) {
         do {
             try Auth.auth().signOut()
@@ -142,6 +147,7 @@ final class FirebaseManager {
         }
     }
     
+    // MARK: - get user info from UserDefaults
     func getFromUserDefaultsUserInfo() -> UserInfo? {
         guard let info = userDefaults.object(forKey: "userInfo") as? Data else {
             return nil
@@ -153,6 +159,7 @@ final class FirebaseManager {
         return decodedInfo
     }
     
+    // MARK: - fetch user info
     private func fetchUserInfo(for userId: String, complition: @escaping (UserInfo, Error?) -> ()) {
         var userInfo = UserInfo()
 
@@ -179,6 +186,8 @@ final class FirebaseManager {
             }
         }
     }
+    
+    // MARK: - Save UserDefaults
     private func saveInUserDefaults(userInfo: UserInfo) {
         guard let encoded = try? encoder.encode(userInfo) else { return }
         userDefaults.set(encoded, forKey: "userInfo")
