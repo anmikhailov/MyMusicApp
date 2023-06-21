@@ -16,6 +16,7 @@ final class HomeViewController: UIViewController {
     
     var album: [NewAlbum] = []
     var recentlyTracks: [PlayHistoryObject] = []
+    var genres: [String] = []
     
     // MARK: - Properties
     
@@ -40,6 +41,8 @@ final class HomeViewController: UIViewController {
         setupCollectionView()
         fetchMusic()
         fetchrecentlyTrack()
+        
+        fetchGenres()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,7 +52,8 @@ final class HomeViewController: UIViewController {
     // MARK: - Fetch Data
     
     func fetchMusic() {
-        APICaller.shared.getNewReleasesAlbums(country: "US", limit: 10) { result in
+        APICaller.shared.getNewReleasesAlbums(country: "US", limit: 10) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let albums):
                 self.album = albums.albums.items
@@ -65,11 +69,28 @@ final class HomeViewController: UIViewController {
     
     func fetchrecentlyTrack() {
         APICaller.shared.getFiveRecentlyPlayedTracks { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let track):
-                self?.recentlyTracks = track.items
+                self.recentlyTracks = track.items
                 DispatchQueue.main.async {
-                    self?.collectionView.reloadSections(IndexSet(integer: 2))
+                    self.collectionView.reloadSections(IndexSet(integer: 2))
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func fetchGenres() {
+        APICaller.shared.getGenres { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let genres):
+                self.genres = genres.genres
+                print(genres)
+                DispatchQueue.main.async {
+                    //TODO: reload cells for genres
                 }
             case .failure(let error):
                 print(error)

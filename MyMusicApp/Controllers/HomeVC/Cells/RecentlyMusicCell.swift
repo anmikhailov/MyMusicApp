@@ -62,6 +62,13 @@ class RecentlyMusicCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        artistNamelabel.text = nil
+        songNamelabel.text = nil
+        songImage.image = nil
+    }
+    
     // MARK: - Methods
     
     func configure(recentlyMusic: PlayHistoryObject) {

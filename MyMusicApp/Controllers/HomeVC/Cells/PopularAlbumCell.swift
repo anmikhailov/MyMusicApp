@@ -54,6 +54,11 @@ class PopularAlbumCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        albumImage.image = nil
+    }
+    
     // MARK: - Methods
     
     func configureCell() {
