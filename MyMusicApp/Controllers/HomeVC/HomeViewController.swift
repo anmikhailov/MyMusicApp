@@ -14,8 +14,11 @@ protocol GoToSeeAllProtocol: AnyObject {
 
 final class HomeViewController: UIViewController {
     
+    var album: [NewAlbum] = []
+    var recentlyPlayedTracks: [PlayHistoryObject] = []
+    
     // MARK: - Properties
-
+    
     private var collectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
@@ -27,45 +30,40 @@ final class HomeViewController: UIViewController {
     lazy var sections: [Section] = [.newSong, .popularAlbum, .recentlyMusic]
     
     // MARK: - Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Resources.Colors.TabBarColors.background
-        
-        // fetchNewReleasesAlbums()
-        APICaller.shared.getNewReleasesAlbums(country: "US", limit: 10) { result in
-            switch result {
-            case .success(let albums):
-                print(albums)
-            case .failure(let error):
-                print(error)
-            }
-        }
         configureNavBar(with: "Music", backgroundColor: .clear, rightButtonImage: Resources.Icons.Common.search)
         
         constraints()
         setupCollectionView()
+        fetchMusic()
+        //fetchRecentlyPlayedTracks()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
     }
     
-//    func fetchNewReleasesAlbums() {
-//        let networkService = DefaultNetworkService()
-//        let request = NewReleasesAlbumRequest(country: "DE", limit: 50, offset: 0)
-//        networkService.request(request) { [weak self] result in
-//            guard let self = self else { return }
-//            switch result {
-//            case .success(let albums):
-//                guard let albums = albums else { return }
-//                self.newAlbums = albums
-//            case .failure(let error):
-//                fatalError("\(error)")
-//            }
-//        }
-//
-//    }
+    // MARK: - Fetch Data
+    
+    func fetchMusic() {
+        APICaller.shared.getNewReleasesAlbums(country: "US", limit: 10) { result in
+            switch result {
+            case .success(let albums):
+                self.album = albums.albums.items
+                print(albums)
+                DispatchQueue.main.async {
+                    self.collectionView.reloadSections(IndexSet(integer: 0))
+                }
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
     
     // MARK: - Private methods
     private func setupCollectionView() {
@@ -74,7 +72,7 @@ final class HomeViewController: UIViewController {
         collectionView.dataSource = self
         setupCells()
         collectionView.collectionViewLayout = createCompositionLayout()
-        
+        collectionView.bounces = true
     }
     
     private func setupCells() {
@@ -89,26 +87,23 @@ final class HomeViewController: UIViewController {
     override func barButtonTapped() {
         navigationController?.pushViewController(SearchViewController(), animated: true)
     }
-    
+    /*
     private var isNavigationBarHidden = false
-
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         
         if offsetY > 0 && !isNavigationBarHidden {
-            // Scroll down, hide the navigation bar
             isNavigationBarHidden = true
             navigationController?.setNavigationBarHidden(true, animated: true)
         } else if offsetY <= 0 && isNavigationBarHidden {
-            // Scroll to top, show the navigation bar
             isNavigationBarHidden = false
             navigationController?.setNavigationBarHidden(false, animated: true)
         }
     }
-
-
-    
+    */
 }
+
 
 // MARK: - Constraints
 

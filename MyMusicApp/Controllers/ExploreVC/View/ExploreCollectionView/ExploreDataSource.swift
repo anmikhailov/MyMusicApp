@@ -35,7 +35,9 @@ extension ExploreViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell3", for: indexPath) as? RecentlyMusicCell else {
                 return UICollectionViewCell()
             }
-            cell.configure()
+            
+            let track = recentlyPlayedTracks[indexPath.item]
+            cell.configure(recentlyMusic: track)
             cell.backgroundColor = Resources.Colors.TabBarColors.backgraundCell
             return cell
             

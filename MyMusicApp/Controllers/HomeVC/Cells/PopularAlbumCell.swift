@@ -51,6 +51,11 @@ class PopularAlbumCell: UICollectionViewCell {
     func configureCell() {
         albumImage.image = image
     }
+    /*
+    private func buttonTapped() {
+        buttonExploreNow.addTarget(self, action: <#T##Selector#>, for: .touchUpInside)
+    }
+     */
     
 }
 

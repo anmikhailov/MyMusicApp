@@ -15,13 +15,16 @@ protocol SeeAllProtocol: AnyObject {
 class ExploreViewController: UIViewController {
     
     // MARK: - Properties
+    
+    var recentlyPlayedTracks: [PlayHistoryObject] = []
+    
     private let helperView = UIView()
     
     private var collectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collection.backgroundColor = nil
-        collection.bounces = false
+        collection.bounces = true
         return collection
     }()
     

@@ -51,7 +51,6 @@ class RecentlyMusicCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        //backgroundColor = Resources.Colors.TabBarColors.background
         layer.cornerRadius = 15
         layer.masksToBounds = true
         setupConstraints()
@@ -63,8 +62,10 @@ class RecentlyMusicCell: UICollectionViewCell {
     
     // MARK: - Methods
     
-    func configure() {
-        songImage.image = imageRecently
+    func configure(recentlyMusic: PlayHistoryObject) {
+        songNamelabel.text = recentlyMusic.track.name
+        artistNamelabel.text = recentlyMusic.track.artists.first?.name
+        
     }
     
 }
