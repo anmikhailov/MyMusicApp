@@ -18,6 +18,8 @@ class AccountViewController: UIViewController {
     let notificationButton = AccountUIButton(labelText: "Notification", imageAfterText: nil, imageBeforeText: UIImage(systemName: "bell"))
     let downloadButton = AccountUIButton(labelText: "Download", imageAfterText: UIImage(systemName: "chevron.right"), imageBeforeText: UIImage(systemName: "square.and.arrow.down"))
     let singOutButton = UIButton(type: .system)
+    var nameUserLabel = UILabel()
+    var emailUserLabel = UILabel()
     
 
     override func viewDidLoad() {
@@ -32,7 +34,8 @@ class AccountViewController: UIViewController {
         setDownloadButton()
         setSignOutButton()
         setTargetForButton()
-
+        setNameUserLabel()
+        setEmailUserLabel()
     }
     
     
@@ -47,7 +50,7 @@ class AccountViewController: UIViewController {
         accountLabel.textColor = .white
         
         accountLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(64) // Отступ от верха на 64 пункта
+            make.top.equalToSuperview().offset(64)
             make.left.equalToSuperview().offset(24)
         }
     }
@@ -59,7 +62,7 @@ class AccountViewController: UIViewController {
         setingsButton.imageView?.contentMode = .scaleAspectFit
         
         setingsButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(86) // Отступ от верха на 86 пункта
+            make.top.equalToSuperview().offset(86)
             make.right.equalToSuperview().inset(24)
         }
     }
@@ -91,8 +94,8 @@ class AccountViewController: UIViewController {
         libraryLabel.textColor = .white
         
         libraryLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(268)
-            make.left.equalToSuperview().offset(24)
+            make.top.equalTo(profileImageView.snp.bottom).offset(32)
+            make.leading.equalToSuperview().inset(24)
         }
     }
     
@@ -101,7 +104,7 @@ class AccountViewController: UIViewController {
         
         myPlayListButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(300)
+            make.top.equalTo(libraryLabel.snp.bottom).offset(20)
             make.height.equalTo(56)
             
         }
@@ -112,7 +115,7 @@ class AccountViewController: UIViewController {
         
         notificationButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(350)
+            make.top.equalTo(myPlayListButton.snp.bottom)
             make.height.width.equalTo(56)
             
         }
@@ -123,7 +126,7 @@ class AccountViewController: UIViewController {
         
         downloadButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(400)
+            make.top.equalTo(notificationButton.snp.bottom)
             make.height.equalTo(56)
         }
     }
@@ -147,6 +150,30 @@ class AccountViewController: UIViewController {
         }
         
         singOutButton.addTarget(self, action: #selector(singOutTapped), for: .touchUpInside)
+    }
+    
+    func setNameUserLabel(){
+        view.addSubview(nameUserLabel)
+        nameUserLabel.font = setFont(nameFont: "Roboto-Medium", sizeFont: 18)
+        nameUserLabel.text = "test"
+        nameUserLabel.textColor = .white
+        
+        nameUserLabel.snp.makeConstraints { make in
+            make.top.equalTo(profileImageView.snp.top).offset(10)
+            make.leading.equalTo(profileImageView.snp.trailing).offset(20)
+        }
+    }
+    
+    func setEmailUserLabel(){
+        view.addSubview(emailUserLabel)
+        emailUserLabel.font = setFont(nameFont: "Roboto-Medium", sizeFont: 14)
+        emailUserLabel.text = "test@test.ru"
+        emailUserLabel.textColor = .gray
+        
+        emailUserLabel.snp.makeConstraints { make in
+            make.top.equalTo(nameUserLabel.snp.bottom).offset(8)
+            make.leading.equalTo(nameUserLabel.snp.leading)
+        }
     }
     
     func setFont(nameFont:String, sizeFont:CGFloat) -> UIFont {

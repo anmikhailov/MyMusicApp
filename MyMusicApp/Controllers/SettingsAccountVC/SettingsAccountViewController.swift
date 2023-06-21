@@ -20,6 +20,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
     var emailTextField = UITextField()
     var dateOfBirthDatePicker = UIDatePicker()
     var changePasswordButton = UIButton(type: .system)
+    var genderPicker = UIPickerView()
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "person.fill")
@@ -44,6 +45,8 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         setLabel()
         setChangePasswordButton()
         setUserNameTextField()
+        setEmailTextField()
+        setDateOfBirthDatePicker()
     }
     
     func setBacground(){
@@ -161,12 +164,14 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         
         changePasswordButton.snp.makeConstraints { make in
             make.top.equalTo(bacgroundForSettingsView.snp.bottom).offset(45)
-            make.leading.equalTo(view.safeAreaLayoutGuide).inset(131)
+            make.centerX.equalToSuperview()
         }
         
         changePasswordButton.addTarget(self, action: #selector(changePasswordTapped), for: .touchUpInside)
         
     }
+    
+    
     
     func setUserNameTextField(){
         view.addSubview(userNameTextField)
@@ -174,14 +179,14 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         userNameTextField.autocapitalizationType = .words
         userNameTextField.autocorrectionType = .no
         userNameTextField.resignFirstResponder()
+        userNameTextField.textAlignment = .right
+        userNameTextField.delegate = self
         userNameTextField.font = setFont(nameFont: "Roboto-Medium", sizeFont: 15)
         
         userNameTextField.snp.makeConstraints { make in
-            make.top.equalTo(bacgroundForSettingsView.snp.top).inset(165)
-            make.leading.equalTo(userNameTextField.snp.trailing).offset(162)
+            make.top.equalTo(usernanameLabel.snp.top)
+            make.leading.equalTo(usernanameLabel.snp.trailing).offset(10)
             make.trailing.equalTo(bacgroundForSettingsView.snp.trailing).inset(16)
-            make.width.equalToSuperview().inset(162)
-            make.height.equalToSuperview().inset(16)
         }
     }
     
@@ -191,14 +196,14 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         emailTextField.autocapitalizationType = .words
         emailTextField.autocorrectionType = .no
         emailTextField.resignFirstResponder()
+        emailTextField.textAlignment = .right
+        emailTextField.delegate = self
         emailTextField.font = setFont(nameFont: "Roboto-Medium", sizeFont: 15)
         
         emailTextField.snp.makeConstraints { make in
             make.top.equalTo(emailLabel.snp.top)
-            make.leading.equalTo(userNameTextField.snp.trailing).offset(98)
+            make.leading.equalTo(emailLabel.snp.trailing).offset(10)
             make.trailing.equalTo(bacgroundForSettingsView.snp.trailing).inset(16)
-            make.width.equalToSuperview().inset(162)
-            make.height.equalToSuperview().inset(16)
         }
     }
     
@@ -208,10 +213,39 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         dateOfBirthDatePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
         
         dateOfBirthDatePicker.snp.makeConstraints { make in
-            make.top.equalTo(dateOfBirthLabel.snp.top)
-            make.leading.equalTo(dateOfBirthLabel.snp.leading).offset(131)
+            make.centerY.equalTo(dateOfBirthLabel.snp.top)
+            make.leading.equalTo(dateOfBirthLabel.snp.trailing).offset(130)
             make.trailing.equalTo(bacgroundForSettingsView.snp.trailing).inset(16)
-            make.width.equalToSuperview().inset(86)
+        }
+    }
+    
+    func setGenderPicker(){
+        genderPicker.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(genderPicker)
+
+        func numberOfComponents(in pickerView: UIPickerView) -> Int {
+            return 2
+        }
+
+        func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+            if component == 0 {
+                return 10
+            } else {
+                return 100
+            }
+        }
+
+        func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+            if component == 0 {
+                return "First \(row)"
+            } else {
+                return "Second \(row)"
+            }
+        }
+        
+        genderPicker.snp.makeConstraints { make in
+            make.top.equalTo(genderLabel.snp.top)
+            make.trailing.equalTo(bacgroundForSettingsView.snp.trailing).inset(16)
             make.height.equalToSuperview().inset(19)
         }
     }
@@ -238,6 +272,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         dateFormatter.dateFormat = "dd.MM.yyyy"
         let selectedDate = dateFormatter.string(from: dateOfBirthDatePicker.date)
     }
+    
     @objc func changePasswordTapped(){
         let changePasswordVC = ChangePasswordViewController()
         changePasswordVC.modalPresentationStyle = .fullScreen
@@ -245,7 +280,15 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
     }
 }
 
-
+extension SettingsViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        let text = textField.text
+        print("\(text)")
+        return true
+    }
+}
 
 
 #if DEBUG
