@@ -264,7 +264,7 @@ class PlayViewController: UIViewController {
     @objc private func favoriteButtonTapped() {
         if isFavorite {
             favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            favoriteButton.tintColor = UIColor(named: "green")
+            favoriteButton.tintColor = Resources.Colors.brand1
             isFavorite = false
         } else {
             favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
@@ -275,7 +275,7 @@ class PlayViewController: UIViewController {
     // MARK: - downloadButtonTapped
     @objc private func downloadButtonTapped() {
         if isDownload {
-            downloadButton.tintColor = UIColor(named: "green")
+            downloadButton.tintColor = Resources.Colors.brand1
             isDownload = false
         } else {
             downloadButton.tintColor = .white
