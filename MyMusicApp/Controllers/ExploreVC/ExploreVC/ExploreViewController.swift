@@ -21,7 +21,7 @@ class ExploreViewController: UIViewController {
         let collectionViewLayout = UICollectionViewLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collection.backgroundColor = nil
-        collection.bounces = false
+        collection.bounces = true
         return collection
     }()
     

@@ -24,3 +24,8 @@ enum ErrorResponse: String {
         }
     }
 }
+
+enum FavoriteError: String, Error {
+    case unableToFavorite = "There was an error favoriting this track. Please try again"
+    case alreadyFavorited = "You've already favorited this track!"
+}

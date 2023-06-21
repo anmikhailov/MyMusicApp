@@ -17,29 +17,29 @@ final class APICaller {
     }
     
     // MARK: - Recently played tracks
-//    public func getFiveRecentlyPlayedTracks(completion: @escaping (Result<RecentlyTracks, Error>) -> Void) {
-//        createRequest(with: URL(string: Constants.baseAPIURL + "/me/player/recently-played?limit=5"),
-//                      type: .GET) { baseRequest in
-//            let task = URLSession.shared.dataTask(with: baseRequest) { data, _, error in
-//                guard let data = data, error == nil else {
-//                    completion(.failure(APIError.failedToGetData))
-//                    return
-//                }
-//
-//                do {
-//                    let result = try JSONDecoder().decode(RecentlyTracks.self, from: data)
-//
-//                    print(result)
-//                    completion(.success(result))
-//
-//                } catch {
-//                    completion(.failure(error))
-//                }
-//            }
-//
-//            task.resume()
-//        }
-//    }
+    public func getFiveRecentlyPlayedTracks(completion: @escaping (Result<RecentlyTracks, Error>) -> Void) {
+        createRequest(with: URL(string: Constants.baseAPIURL + "/me/player/recently-played?limit=5"),
+                      type: .GET) { baseRequest in
+            let task = URLSession.shared.dataTask(with: baseRequest) { data, _, error in
+                guard let data = data, error == nil else {
+                    completion(.failure(APIError.failedToGetData))
+                    return
+                }
+
+                do {
+                    let result = try JSONDecoder().decode(RecentlyTracks.self, from: data)
+
+                    print(result)
+                    completion(.success(result))
+
+                } catch {
+                    completion(.failure(error))
+                }
+            }
+
+            task.resume()
+        }
+    }
     
     // MARK: - New releases
     public func getNewReleasesAlbums(country: String, limit: Int, completion: @escaping (Result<AlbumsResponse, Error>) -> Void) {
@@ -81,6 +81,30 @@ final class APICaller {
 //                    let result = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
 
                     print(result)
+                    completion(.success(result))
+
+                } catch {
+                    completion(.failure(error))
+                }
+            }
+
+            task.resume()
+        }
+    }
+    
+    // MARK: - Get track
+    public func getTrack(with id: String, completion: @escaping (Result<SpotifyTrack, Error>) -> Void) {
+        createRequest(with: URL(string: Constants.baseAPIURL + "/tracks/" + id), type: .GET) { baseRequest in
+            let task = URLSession.shared.dataTask(with: baseRequest) { data, _, error in
+                guard let data = data, error == nil else {
+                    completion(.failure(APIError.failedToGetData))
+                    return
+                }
+
+                do {
+                    let result = try JSONDecoder().decode(SpotifyTrack.self, from: data)
+
+                    print("YOUR TRACK: \(result)")
                     completion(.success(result))
 
                 } catch {
