@@ -38,6 +38,7 @@ enum Resources {
         static var neutral1 = UIColor(hex: 0xEEEEEE)
         static var neutral2 = UIColor(hex: 0x7A7C81)
         static var neutral3 = UIColor(hex: 0x20242F)
+        static var bacgroundSettings = UIColor(hex: 0x363942)
     }
     
     enum Icons {
