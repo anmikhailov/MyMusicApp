@@ -153,7 +153,6 @@ extension AlbumOnlyViewController {
         view.addSubview(separatorLine)
         view.addSubview(suggestionLabel)
         view.addSubview(songCollectionView)
-        view.addGestureRecognizer(leftSwipe)
     }
     // MARK: - setConstrains
     private func setConstrains() {
