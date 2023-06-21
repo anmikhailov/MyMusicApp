@@ -11,6 +11,7 @@ class PlayViewController: UIViewController {
     // MARK: - let/var
     private var isFavorite = true
     private var isDownload = true
+    private var isPlay = true
     // MARK: - pageController
     private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
@@ -194,8 +195,9 @@ class PlayViewController: UIViewController {
     private lazy var playButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "play"), for: .normal)
+        button.setBackgroundImage(UIImage(systemName: "play"), for: .normal)
         button.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
+        button.tintColor = .black
         
         return button
     }()
@@ -283,9 +285,16 @@ class PlayViewController: UIViewController {
     @objc private func previousButtonTapped() {
         print("previousButtonTapped")
     }
-    // MARK: - playingButtonTapped
+    // MARK: - playButtonTapped
     @objc private func playButtonTapped() {
-        print("playButtonTapped")
+        if isPlay {
+            playButton.setBackgroundImage(UIImage(systemName: "pause"), for: .normal)
+            isPlay = false
+        } else {
+            playButton.setBackgroundImage(UIImage(systemName: "play"), for: .normal)
+            playButton.backgroundColor = .none
+            isPlay = true
+        }
     }
     // MARK: - nextButtonTapped
     @objc private func nextButtonTapped() {
@@ -314,7 +323,7 @@ class PlayViewController: UIViewController {
 extension PlayViewController {
     // MARK: - setupViews
     private func setupViews() {
-        view.backgroundColor = .black
+        view.backgroundColor = Resources.Colors.TabBarColors.background
                 
         view.addSubview(backButton)
         view.addSubview(pageControl)
@@ -398,12 +407,15 @@ extension PlayViewController {
         NSLayoutConstraint.activate([
             circleView.topAnchor.constraint(equalTo: songStartLabel.bottomAnchor, constant: 22),
             circleView.leadingAnchor.constraint(equalTo: previousButton.trailingAnchor, constant: 45),
-            circleView.widthAnchor.constraint(equalToConstant: 73),
-            circleView.heightAnchor.constraint(equalToConstant: 73),
+            circleView.widthAnchor.constraint(equalToConstant: 70),
+            circleView.heightAnchor.constraint(equalToConstant: 70),
         ])
         NSLayoutConstraint.activate([
             playButton.topAnchor.constraint(equalTo: circleView.topAnchor, constant: 20),
-            playButton.leadingAnchor.constraint(equalTo: circleView.leadingAnchor, constant: 22),
+            playButton.centerXAnchor.constraint(equalTo: circleView.centerXAnchor),
+            playButton.centerYAnchor.constraint(equalTo: circleView.centerYAnchor),
+            playButton.widthAnchor.constraint(equalToConstant: 25),
+            playButton.heightAnchor.constraint(equalToConstant: 25),
         ])
         NSLayoutConstraint.activate([
             nextButton.topAnchor.constraint(equalTo: songStartLabel.bottomAnchor, constant: 46),
