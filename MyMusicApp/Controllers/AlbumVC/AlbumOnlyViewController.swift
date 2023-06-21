@@ -81,15 +81,6 @@ class AlbumOnlyViewController: UIViewController {
         return collectionView
     }()
     
-    // MARK: - leftSwipe
-    private lazy var leftSwipe: UISwipeGestureRecognizer = {
-        let swipe = UISwipeGestureRecognizer()
-        swipe.direction = .left
-        swipe.addTarget(self, action: #selector(goToPlayVC))
-        
-        return swipe
-    }()
-    
     init(album: Album?) {
         super.init(nibName: nil, bundle: nil)
         
@@ -120,17 +111,6 @@ class AlbumOnlyViewController: UIViewController {
     @objc private func backButtonTapped() {
         navigationController?.popViewController(animated: true)
         self.dismiss(animated: true)
-    }
-    // MARK: - pageControlValueChanged
-    @objc private func pageControlValueChanged() {
-        print("pageControlValueChanged")
-    }
-    // MARK: - goToPlayVC
-    @objc private func goToPlayVC() {
-        let playVC = PlayViewController()
-        playVC.modalPresentationStyle = .fullScreen
-        playVC.modalTransitionStyle = .crossDissolve
-        present(playVC, animated: true)
     }
 }
 // MARK: - UICollectionViewDelegateFlowLayout
