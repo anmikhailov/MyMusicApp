@@ -78,6 +78,9 @@ class ExploreViewController: UIViewController {
         collectionView.register(ExploreCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ExploreCollectionReusableView.identifier)
     }
     
+    override func barButtonTapped() {
+        navigationController?.pushViewController(SearchViewController(), animated: true)
+    }
 }
 
 extension ExploreViewController {
