@@ -56,8 +56,8 @@ class TableNewSongViewController: UICollectionViewController {
 
             let newAlbum = newAlbom[indexPath.item]
             cell.configure(newAlbum: newAlbum)
-            let image = newAlbum.images.first!
-            cell.setupImage(imageAlbum: image)
+//            let image = newAlbum.images.first!
+//            cell.setupImage(imageAlbum: image)
             return cell
         }
     

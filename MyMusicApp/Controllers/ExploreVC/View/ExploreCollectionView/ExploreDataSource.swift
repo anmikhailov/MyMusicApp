@@ -17,7 +17,7 @@ extension ExploreViewController: UICollectionViewDataSource {
         switch sections[section] {
             
         case .recentlyMusic:
-            return 5
+            return recentlyTracks.count
         case .topTrending:
             return 3
         case .topic:

@@ -20,19 +20,19 @@ extension HomeViewController: UICollectionViewDelegate {
         case .popularAlbum:
             return
         case .recentlyMusic:
-            let selectedSong = recentlyTracks[indexPath.item]
+           // let selectedSong = recentlyTracks[indexPath.item]
             navigationController?.pushViewController(PlayViewController(), animated: true)
         }
     }
     
     func navigationToDetail(with album: NewAlbum) {
-        let newAlbum = albumInfo(
-            albumName: album.name,
-            singerName: album.artists?.first?.name ?? "",
-            description: "",
-            image: "")
+//       let newAlbum = albumInfo(
+//            albumName: album.name,
+//            singerName: album.artists?.first?.name ?? "",
+//            description: "",
+//            image: "")
         
-        let albumVC = AlbumViewController()
+        let albumVC = AlbumOnlyViewController(album: nil)
         navigationController?.pushViewController(albumVC, animated: true)
     }
 }
