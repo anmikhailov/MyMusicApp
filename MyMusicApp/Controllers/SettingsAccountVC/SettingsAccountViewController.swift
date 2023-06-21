@@ -22,6 +22,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
     var changePasswordButton = UIButton(type: .system)
     var genderPicker = UIPickerView()
     let backButton = UIButton(type: .system)
+    var userInfo:UserInfo?
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "person.fill")
@@ -38,6 +39,8 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        userInfo = FirebaseManager.shared.getFromUserDefaultsUserInfo()
+        
         setBacground()
         setEditTitle()
         setBackgroundForSettingsView()
@@ -49,8 +52,9 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         setEmailTextField()
         setDateOfBirthDatePicker()
         setBackButton()
+        
     }
-    
+//MARK: - Func
     func setBacground(){
         view.backgroundColor = Resources.Colors.TabBarColors.background
     }
@@ -183,6 +187,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         userNameTextField.resignFirstResponder()
         userNameTextField.textAlignment = .right
         userNameTextField.delegate = self
+        userNameTextField.text = userInfo?.name
         userNameTextField.font = setFont(nameFont: "Roboto-Medium", sizeFont: 15)
         
         userNameTextField.snp.makeConstraints { make in
@@ -200,6 +205,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         emailTextField.resignFirstResponder()
         emailTextField.textAlignment = .right
         emailTextField.delegate = self
+        emailTextField.text = userInfo?.email
         emailTextField.font = setFont(nameFont: "Roboto-Medium", sizeFont: 15)
         
         emailTextField.snp.makeConstraints { make in
@@ -210,6 +216,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
     }
     
     func setDateOfBirthDatePicker(){
+        dateOfBirthDatePicker.tintColor = Resources.Colors.TabBarColors.background
         view.addSubview(dateOfBirthDatePicker)
         dateOfBirthDatePicker.datePickerMode = .date
         dateOfBirthDatePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
@@ -293,7 +300,12 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
     }
     
     @objc func backButtonTapped() {
-        // Выполняем выход назад с экрана .modalPresentationStyle = .fullScreen
+        let email = emailTextField.text ?? ""
+        let nameUser = userNameTextField.text ?? ""
+        
+        FirebaseManager.shared.changeProfileInfo(email: email, name: nameUser) { _ in
+            
+        }
         dismiss(animated: true, completion: nil)
     }
 }

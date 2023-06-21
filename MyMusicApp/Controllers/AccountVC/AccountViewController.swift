@@ -20,6 +20,7 @@ class AccountViewController: UIViewController {
     let singOutButton = UIButton(type: .system)
     var nameUserLabel = UILabel()
     var emailUserLabel = UILabel()
+    var userInfo:UserInfo?
     
 
     override func viewDidLoad() {
@@ -34,6 +35,10 @@ class AccountViewController: UIViewController {
         setDownloadButton()
         setSignOutButton()
         setTargetForButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        userInfo = FirebaseManager.shared.getFromUserDefaultsUserInfo()
         setNameUserLabel()
         setEmailUserLabel()
     }
@@ -155,7 +160,7 @@ class AccountViewController: UIViewController {
     func setNameUserLabel(){
         view.addSubview(nameUserLabel)
         nameUserLabel.font = setFont(nameFont: "Roboto-Medium", sizeFont: 18)
-        nameUserLabel.text = "test"
+        nameUserLabel.text = userInfo?.name
         nameUserLabel.textColor = .white
         
         nameUserLabel.snp.makeConstraints { make in
@@ -167,7 +172,7 @@ class AccountViewController: UIViewController {
     func setEmailUserLabel(){
         view.addSubview(emailUserLabel)
         emailUserLabel.font = setFont(nameFont: "Roboto-Medium", sizeFont: 14)
-        emailUserLabel.text = "test@test.ru"
+        emailUserLabel.text = userInfo?.email
         emailUserLabel.textColor = .gray
         
         emailUserLabel.snp.makeConstraints { make in
