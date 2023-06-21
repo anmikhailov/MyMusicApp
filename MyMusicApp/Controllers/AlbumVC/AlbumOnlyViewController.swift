@@ -65,7 +65,7 @@ class AlbumOnlyViewController: UIViewController {
     private let suggestionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Suggestion"
+        label.text = "Tracks"
         label.font = UIFont(name: "Roboto-Bold", size: 20)
         label.textColor = UIColor(red: 238, green: 238, blue: 238)
         
@@ -109,6 +109,7 @@ class AlbumOnlyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.navigationBar.isHidden = true
         setupViews()
         setConstrains()
         setDelegates()
@@ -117,8 +118,7 @@ class AlbumOnlyViewController: UIViewController {
     
     // MARK: - backButtonTapped
     @objc private func backButtonTapped() {
-        let homeVC = HomeViewController()
-           //   navigationController?.popViewController(homeVC, animated: true)
+        navigationController?.popViewController(animated: true)
         self.dismiss(animated: true)
     }
     // MARK: - pageControlValueChanged
@@ -147,7 +147,7 @@ extension AlbumOnlyViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: idSongCell, for: indexPath) as! SongCollectionViewCell
-        cell.numberSongLabel.text = String(indexPath.row)
+        cell.numberSongLabel.text = String(indexPath.row + 1)
         cell.nameSongLabel.text = tracks[indexPath.row].name
         cell.singerNameLabel.text = tracks[indexPath.row].artists.first?.name
         return cell
