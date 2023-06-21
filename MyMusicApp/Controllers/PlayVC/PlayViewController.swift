@@ -21,7 +21,7 @@ class PlayViewController: UIViewController {
             }
         }
     }
-    // MARK: - pageController
+
     private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +35,7 @@ class PlayViewController: UIViewController {
         
         return pageControl
     }()
-    // MARK: - backButton
+
     private lazy var backButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -45,7 +45,7 @@ class PlayViewController: UIViewController {
         
         return button
     }()
-    // MARK: - albumImageView
+
     private let albumImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -55,8 +55,8 @@ class PlayViewController: UIViewController {
         
         return imageView
     }()
-    // MARK: - nameSongLabel
-    private let songNameLabel: UILabel = {
+
+    let songNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Come to me"
@@ -66,29 +66,29 @@ class PlayViewController: UIViewController {
         
         return label
     }()
-    // MARK: - groupNameLabel
-    private let groupNameLabel: UILabel = {
+
+    let groupNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "One Republic"
         label.textAlignment = .center
-        label.textColor = UIColor(red: 238, green: 238, blue: 238)
+        label.textColor = .white
         label.font = UIFont(name: "Roboto-Regular", size: 18)
         
         return label
     }()
-    // MARK: - textLabel
+
     private let textLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "It is a long established fact that a reader"
+        label.text = ""
         label.textAlignment = .center
-        label.textColor = UIColor(named: "green")
+        label.textColor = Resources.Colors.brand1
         label.font = UIFont(name: "Roboto-Regular", size: 14)
         
         return label
     }()
-    // MARK: - sharedButton
+
     private lazy var sharedButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -98,7 +98,7 @@ class PlayViewController: UIViewController {
         
         return button
     }()
-    // MARK: - playlistAddButton
+
     private lazy var playlistAddButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -108,7 +108,7 @@ class PlayViewController: UIViewController {
         
         return button
     }()
-    // MARK: - favoriteButton
+    
     private lazy var favoriteButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -118,7 +118,7 @@ class PlayViewController: UIViewController {
         
         return button
     }()
-    // MARK: - downloadButton
+
     private lazy var downloadButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -128,7 +128,7 @@ class PlayViewController: UIViewController {
         
         return button
     }()
-    // MARK: - mainStackView
+
     private var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -137,21 +137,21 @@ class PlayViewController: UIViewController {
         
         return stackView
     }()
-    // MARK: - songTimeSlider
+
     lazy var songTimeSlider: UISlider = {
         let slider = UISlider()
         slider.translatesAutoresizingMaskIntoConstraints = false
         slider.minimumValue = 0
         slider.maximumValue = 100
         slider.value = 50
-        slider.minimumTrackTintColor = UIColor(named: "green")
-        slider.maximumTrackTintColor = UIColor(named: "gray")
+        slider.minimumTrackTintColor = Resources.Colors.brand1
+        slider.maximumTrackTintColor = Resources.Colors.neutral2
         slider.setThumbImage(UIImage(named: "Circle"), for: .normal)
-        slider.addTarget(self, action: #selector(songTimeSliderTapped), for: .valueChanged)
+        slider.addTarget(self, action: #selector(songTimeSliderValueChanged(_:)), for: .valueChanged)
         
         return slider
     }()
-    // MARK: - songStart
+
     let songStartLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -161,7 +161,7 @@ class PlayViewController: UIViewController {
         
         return label
     }()
-    // MARK: - songEndLabel
+
     let songEndLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -171,7 +171,7 @@ class PlayViewController: UIViewController {
         
         return label
     }()
-    // MARK: - shuffleButton
+
     private lazy var shuffleButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -181,7 +181,7 @@ class PlayViewController: UIViewController {
         
         return button
     }()
-    // MARK: - previousButton
+
     private lazy var previousButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -191,7 +191,7 @@ class PlayViewController: UIViewController {
         
         return button
     }()
-    // MARK: - circleView
+
     private lazy var circleView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -200,7 +200,7 @@ class PlayViewController: UIViewController {
         
         return view
     }()
-    // MARK: - playButton
+
     private lazy var playButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -210,7 +210,7 @@ class PlayViewController: UIViewController {
         
         return button
     }()
-    // MARK: - nextButton
+
     private lazy var nextButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -220,7 +220,7 @@ class PlayViewController: UIViewController {
         
         return button
     }()
-    // MARK: - repeatButton
+
     private lazy var repeatButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -230,7 +230,7 @@ class PlayViewController: UIViewController {
         
         return button
     }()
-    // MARK: - rightSwipe
+
     private lazy var rightSwipe: UISwipeGestureRecognizer = {
         let swipe = UISwipeGestureRecognizer()
         swipe.direction = .right
@@ -238,6 +238,7 @@ class PlayViewController: UIViewController {
         
         return swipe
     }()
+    
     // MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -282,9 +283,10 @@ class PlayViewController: UIViewController {
             isDownload = true
         }
     }
-    // MARK: - songTimeSliderTapped
-    @objc private func songTimeSliderTapped() {
-        print("songTimeSliderTapped")
+    // MARK: - songTimeSliderValueChanged
+    @objc private func songTimeSliderValueChanged(_ sender: UISlider) {
+        let timeStamp = Int64(sender.value)
+        PlaybackManager.shared.seekTrack(to: timeStamp)
     }
     // MARK: - shuffleButtonTapped
     @objc private func shuffleButtonTapped() {
@@ -292,7 +294,7 @@ class PlayViewController: UIViewController {
     }
     // MARK: - previousButtonTapped
     @objc private func previousButtonTapped() {
-        print("previousButtonTapped")
+        PlaybackManager.shared.backwardPlayback()
     }
     // MARK: - playButtonTapped
     @objc private func playButtonTapped() {
@@ -301,7 +303,7 @@ class PlayViewController: UIViewController {
     }
     // MARK: - nextButtonTapped
     @objc private func nextButtonTapped() {
-        print("nextButtonTapped")
+        PlaybackManager.shared.forwardPlayback()
     }
     // MARK: - repeatButtonTapped
     @objc private func repeatButtonTapped() {

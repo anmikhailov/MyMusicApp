@@ -57,6 +57,10 @@ class PlaybackManager {
         let currentDuration : CMTime = playerItem.currentTime()
         let currentSeconds : Float64 = CMTimeGetSeconds(currentDuration)
         playerViewController.songStartLabel.text = self.stringFromTimeInterval(interval: currentSeconds)
+        
+        //Configure labels
+        playerViewController.songNameLabel.text = track.name
+        playerViewController.groupNameLabel.text = track.artists.first?.name
            
         // Add observer for update slider in realtime
         player!.addPeriodicTimeObserver(
@@ -103,7 +107,7 @@ class PlaybackManager {
     func forwardPlayback() {
         if let player = player {
             if tracks.isEmpty {
-                player.pause()
+//                player.pause()
             } else {
                 // Next track in playlist
             }

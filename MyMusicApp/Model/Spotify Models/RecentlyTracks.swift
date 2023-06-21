@@ -28,7 +28,7 @@ struct Cursors: Codable {
 }
 
 struct PlayHistoryObject: Codable {
-    let track: RPTrack
+    let track: SpotifySimplifiedTrack
 //    let played_at: String
    // let context: RPContext
 }
