@@ -141,3 +141,11 @@ struct SpotifySimplifiedTrackObject: Codable {
 struct ArtistsTracks: Codable {
     let tracks: [SpotifySimplifiedTrack]
 }
+
+struct PlaylistsTracks: Codable {
+    let items: [OneOfTrack]
+}
+
+struct OneOfTrack: Codable {
+    let track: SpotifySimplifiedTrack
+}
