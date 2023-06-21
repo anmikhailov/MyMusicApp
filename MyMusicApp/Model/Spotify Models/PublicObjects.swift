@@ -137,3 +137,7 @@ struct SpotifySimplifiedTrackObject: Codable {
     let uri: String
 //    let is_local: Bool
 }
+
+struct ArtistsTracks: Codable {
+    let tracks: [SpotifySimplifiedTrack]
+}
