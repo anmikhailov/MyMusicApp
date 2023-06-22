@@ -15,9 +15,8 @@ extension ExploreViewController: UICollectionViewDelegate {
         switch section {
             
         case .recentlyMusic:
-            let tableViewController = TableNewSongViewController()
-            
-            navigationController?.pushViewController(tableViewController, animated: true)
+            let track = recentlyTracks[indexPath.row].track
+            PlaybackManager.shared.startPlayback(from: self, track: track)
         case .topTrending:
             let tableViewController = TableNewSongViewController()
             

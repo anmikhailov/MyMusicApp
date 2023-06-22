@@ -20,19 +20,25 @@ extension HomeViewController: UICollectionViewDelegate {
         case .popularAlbum:
             return
         case .recentlyMusic:
-           // let selectedSong = recentlyTracks[indexPath.item]
-            navigationController?.pushViewController(PlayViewController(), animated: true)
+            let track = recentlyTracks[indexPath.row].track
+            PlaybackManager.shared.startPlayback(from: self, track: track)
         }
     }
     
     func navigationToDetail(with album: NewAlbum) {
-//       let newAlbum = albumInfo(
-//            albumName: album.name,
-//            singerName: album.artists?.first?.name ?? "",
-//            description: "",
-//            image: "")
-        
-        let albumVC = AlbumOnlyViewController(album: nil)
-        navigationController?.pushViewController(albumVC, animated: true)
+        let albumId = album.id
+        APICaller.shared.getAlbum(with: albumId) { result in
+            switch result {
+            case .success(let album):
+                DispatchQueue.main.async {
+                    let targetVC = AlbumOnlyViewController(album: album)
+                    targetVC.modalPresentationStyle = .fullScreen
+                    self.navigationController?.pushViewController(targetVC, animated: true)
+                }
+                break
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }

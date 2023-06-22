@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-protocol SeeAllProtocol: AnyObject {
+protocol ViewAllProtocol: AnyObject {
     func goToSeeAll()
 }
 
@@ -78,6 +78,9 @@ class ExploreViewController: UIViewController {
         collectionView.register(ExploreCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ExploreCollectionReusableView.identifier)
     }
     
+    override func barButtonTapped() {
+        navigationController?.pushViewController(SearchViewController(), animated: true)
+    }
 }
 
 extension ExploreViewController {
@@ -100,5 +103,14 @@ extension ExploreViewController {
         }
     }
     
+}
+
+extension ExploreViewController: ViewAllProtocol {
+    func goToSeeAll() {
+        let viewAllVC = ViewAllCategoryViewController()
+        
+        
+        navigationController?.pushViewController(viewAllVC, animated: true)
+    }
 }
 

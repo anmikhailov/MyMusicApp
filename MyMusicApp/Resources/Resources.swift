@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+enum Keys {
+    static let favorites = "favorites"
+}
+
 enum Web {
     static let clientID = "bf130a2999604796a93c9fca3f16cc1f"
     static let secretID = "38ad284a59114f8997ec8e254e68641e"
@@ -34,6 +38,7 @@ enum Resources {
         static var neutral1 = UIColor(hex: 0xEEEEEE)
         static var neutral2 = UIColor(hex: 0x7A7C81)
         static var neutral3 = UIColor(hex: 0x20242F)
+        static var bacgroundSettings = UIColor(hex: 0x363942)
     }
     
     enum Icons {

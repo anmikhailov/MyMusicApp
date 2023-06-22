@@ -236,6 +236,20 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         
         switch result {
         case .artist(let model):
+            let artistId = model.id
+            APICaller.shared.getArtistsTracks(with: artistId) { result in
+                switch result {
+                case .success(let artistsTracks):
+                    DispatchQueue.main.async {
+                        let targetVC = ArtistOnlyViewController(artist: model, artistsTracks: artistsTracks)
+                        targetVC.modalPresentationStyle = .fullScreen
+                        self.navigationController?.pushViewController(targetVC, animated: true)
+                    }
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
             break
         case .album(let model):
             let albumId = model.id
@@ -258,6 +272,20 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
             PlaybackManager.shared.startPlayback(from: self, track: track)
             break
         case .playlist(let model):
+            let playlistId = model.id
+            APICaller.shared.getPlaylistTracks(with: playlistId) { result in
+                switch result {
+                case .success(let playlistsTracks):
+                    DispatchQueue.main.async {
+                        let targetVC = PlaylistOnlyViewController(playlist: model, playlistsTracks: playlistsTracks)
+                        targetVC.modalPresentationStyle = .fullScreen
+                        self.navigationController?.pushViewController(targetVC, animated: true)
+                    }
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
             break
         }
     }

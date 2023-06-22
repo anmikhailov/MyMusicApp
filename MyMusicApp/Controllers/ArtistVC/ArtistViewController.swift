@@ -1,16 +1,19 @@
 //
-//  SuggestionViewController.swift
+//  ArtistViewController.swift
 //  MyMusicApp
 //
-//  Created by Sergey Medvedev on 14.06.2023.
+//  Created by Andrey on 21.06.2023.
 //
 
 import UIKit
 
-class AlbumViewController: UIViewController {
+class ArtistOnlyViewController: UIViewController {
     // MARK: - let/var
- static let idSongCell = "idSongCell"
-    // MARK: - backgroundImageView
+    private var tracks: [SpotifySimplifiedTrack] = []
+    private var currentArtist: SpotifySimplifiedArtist?
+    
+    private let idSongCell = "idSongCell"
+
     private let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -19,7 +22,7 @@ class AlbumViewController: UIViewController {
         
         return imageView
     }()
-    // MARK: - backButton
+
     private lazy var backButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -29,21 +32,7 @@ class AlbumViewController: UIViewController {
         
         return button
     }()
-    // MARK: - pageController
-    private lazy var pageControl: UIPageControl = {
-        let pageControl = UIPageControl()
-        pageControl.translatesAutoresizingMaskIntoConstraints = false
-        pageControl.pageIndicatorTintColor = .lightGray
-        pageControl.currentPageIndicatorTintColor = .white
-        pageControl.tintColor = .red
-        pageControl.numberOfPages = 2
-        pageControl.currentPage = 0
-        pageControl.isUserInteractionEnabled = false
-        pageControl.addTarget(self, action: #selector(pageControlValueChanged), for: .valueChanged)
-        
-        return pageControl
-    }()
-    // MARK: - titleLabel
+
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -53,7 +42,7 @@ class AlbumViewController: UIViewController {
         
         return label
     }()
-    // MARK: - subtitleLabel
+
     private let subtitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -64,19 +53,7 @@ class AlbumViewController: UIViewController {
         
         return label
     }()
-    // MARK: - textView
-    private var textView: UITextView = {
-        let textView = UITextView()
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.text = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it"
-        textView.textColor = UIColor(red: 238, green: 238, blue: 238)
-        textView.backgroundColor = .clear
-        textView.showsVerticalScrollIndicator = false
-        textView.font = UIFont(name: "Roboto-Regular", size: 16)
-        
-        return textView
-    }()
-    // MARK: - separatorLine
+
     private let separatorLine: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -84,18 +61,18 @@ class AlbumViewController: UIViewController {
         
         return view
     }()
-    // MARK: - suggestionLabel
+
     private let suggestionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Suggestion"
+        label.text = "Tracks"
         label.font = UIFont(name: "Roboto-Bold", size: 20)
         label.textColor = UIColor(red: 238, green: 238, blue: 238)
         
         return label
     }()
-    // MARK: - songCollectionView
-     let songCollectionView: UICollectionView = {
+
+    private let songCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -103,80 +80,82 @@ class AlbumViewController: UIViewController {
         
         return collectionView
     }()
-    // MARK: - leftSwipe
-    private lazy var leftSwipe: UISwipeGestureRecognizer = {
-        let swipe = UISwipeGestureRecognizer()
-        swipe.direction = .left
-        swipe.addTarget(self, action: #selector(goToPlayVC))
+    
+    init(artist: SpotifySimplifiedArtist?, artistsTracks: ArtistsTracks) {
+        super.init(nibName: nil, bundle: nil)
         
-        return swipe
-    }()
+        if let artist = artist {
+            self.titleLabel.text = artist.name
+            self.subtitleLabel.text = ""
+            self.tracks = artistsTracks.tracks
+            self.currentArtist = artist
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - lifecicle
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.navigationBar.isHidden = true
         setupViews()
         setConstrains()
         setDelegates()
-        songCollectionView.register(SongCollectionViewCell.self, forCellWithReuseIdentifier: AlbumViewController.idSongCell)
+        songCollectionView.register(SongCollectionViewCell.self, forCellWithReuseIdentifier: idSongCell)
     }
     
     // MARK: - backButtonTapped
     @objc private func backButtonTapped() {
-        dismiss(animated: true)
-    }
-    // MARK: - pageControlValueChanged
-    @objc private func pageControlValueChanged() {
-        print("pageControlValueChanged")
-    }
-    // MARK: - goToPlayVC
-    @objc private func goToPlayVC() {
-//        let playVC = PlayViewController()
-//        playVC.modalPresentationStyle = .fullScreen
-//        playVC.modalTransitionStyle = .crossDissolve
-//        present(playVC, animated: true)
-        dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true)
     }
 }
 // MARK: - UICollectionViewDelegateFlowLayout
-extension AlbumViewController: UICollectionViewDelegateFlowLayout {
+extension ArtistOnlyViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: collectionView.bounds.width, height: 60)
     }
 }
 // MARK: - UICollectionViewDataSource & UICollectionViewDelegate
-extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ArtistOnlyViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
+        tracks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AlbumViewController.idSongCell, for: indexPath) as! SongCollectionViewCell
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: idSongCell, for: indexPath) as! SongCollectionViewCell
+        cell.numberSongLabel.text = String(indexPath.row + 1)
+        cell.nameSongLabel.text = tracks[indexPath.row].name
+        cell.singerNameLabel.text = tracks[indexPath.row].artists.first?.name
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let track = tracks[indexPath.row]
+        PlaybackManager.shared.startPlayback(from: self, track: track)
+    }
 }
-extension AlbumViewController {
+extension ArtistOnlyViewController {
     // MARK: - setDelegates
-     func setDelegates() {
+    private func setDelegates() {
         songCollectionView.delegate = self
         songCollectionView.dataSource = self
     }
     // MARK: - setupViews
-     func setupViews() {
+    private func setupViews() {
         view.addSubview(backgroundImageView)
         view.addSubview(backButton)
         view.addSubview(titleLabel)
         view.addSubview(subtitleLabel)
-        view.addSubview(textView)
         view.addSubview(separatorLine)
         view.addSubview(suggestionLabel)
         view.addSubview(songCollectionView)
-        view.addSubview(pageControl)
-        view.addGestureRecognizer(leftSwipe)
     }
     // MARK: - setConstrains
-     func setConstrains() {
+    private func setConstrains() {
         NSLayoutConstraint.activate([
             backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -188,10 +167,6 @@ extension AlbumViewController {
             backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 28),
         ])
         NSLayoutConstraint.activate([
-            pageControl.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 32),
-            pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        ])
-        NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 242),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
         ])
@@ -200,13 +175,7 @@ extension AlbumViewController {
             subtitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
         ])
         NSLayoutConstraint.activate([
-            textView.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 28),
-            textView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21),
-            textView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -64),
-            textView.heightAnchor.constraint(equalToConstant: 72)
-        ])
-        NSLayoutConstraint.activate([
-            separatorLine.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: 36),
+            separatorLine.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 36),
             separatorLine.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
             separatorLine.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             separatorLine.heightAnchor.constraint(equalToConstant: 1)

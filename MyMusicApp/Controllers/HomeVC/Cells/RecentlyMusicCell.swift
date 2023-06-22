@@ -62,6 +62,13 @@ class RecentlyMusicCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        artistNamelabel.text = nil
+        songNamelabel.text = nil
+        songImage.image = nil
+    }
+    
     // MARK: - Methods
     
     func configure(recentlyMusic: PlayHistoryObject) {
@@ -105,9 +112,8 @@ extension RecentlyMusicCell {
         
         addSubview(songImage)
         songImage.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-10)
+            make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(10)
-            make.top.equalToSuperview().offset(10)
             make.width.height.equalTo(60)
         }
         

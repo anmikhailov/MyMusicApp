@@ -7,17 +7,17 @@
 
 import Foundation
 
-struct SpotifyImage: Codable {
+struct SpotifyImage: Codable, Hashable {
     let url: String? // Example value: "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228"
     let height: Int?
     let width: Int?
 }
 
-struct SpotifyExternalUrl: Codable {
+struct SpotifyExternalUrl: Codable, Hashable {
     let spotify: String
 }
 
-struct SpotifyRestrictions: Codable {
+struct SpotifyRestrictions: Codable, Hashable {
     let reason: String
     /*
      The reason for the restriction. Supported values:
@@ -29,12 +29,12 @@ struct SpotifyRestrictions: Codable {
      */
 }
 
-struct SpotifyCopyright: Codable {
+struct SpotifyCopyright: Codable, Hashable {
     let text: String // The copyright text for this content.
     let type: String // The type of copyright: C = the copyright, P = the sound recording (performance) copyright.
 }
 
-struct SpotifyLinkedFrom: Codable {
+struct SpotifyLinkedFrom: Codable, Hashable {
     let external_urls: SpotifyExternalUrl
     let href: String
     let id: String
@@ -42,13 +42,13 @@ struct SpotifyLinkedFrom: Codable {
     let uri: String
 }
 
-struct SpotifyExternalIds: Codable {
+struct SpotifyExternalIds: Codable, Hashable {
     let isrc: String
     let ean: String
     let upc: String
 }
 
-struct SpotifySimplifiedArtist: Codable {
+struct SpotifySimplifiedArtist: Codable, Hashable {
     let external_urls: SpotifyExternalUrl
     let href: String
     let id: String
@@ -90,7 +90,7 @@ struct SpotifyTracksInPlaylist: Codable {
     let total: Int
 }
 
-struct SpotifySimplifiedTrack: Codable {
+struct SpotifySimplifiedTrack: Codable, Hashable {
 //    let album: SpotifySimplifiedAlbum
     let artists: [SpotifySimplifiedArtist]
 //    let available_markets: [String]
@@ -136,4 +136,20 @@ struct SpotifySimplifiedTrackObject: Codable {
 //    let type: String // "track"
     let uri: String
 //    let is_local: Bool
+}
+
+struct ArtistsTracks: Codable {
+    let tracks: [SpotifySimplifiedTrack]
+}
+
+struct PlaylistsTracks: Codable {
+    let items: [OneOfTrack]
+}
+
+struct OneOfTrack: Codable {
+    let track: SpotifySimplifiedTrack
+}
+
+struct RecommendedTrack: Codable {
+    let tracks: [SpotifySimplifiedTrack]
 }

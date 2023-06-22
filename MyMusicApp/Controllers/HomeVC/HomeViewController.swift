@@ -16,6 +16,7 @@ final class HomeViewController: UIViewController {
     
     var album: [NewAlbum] = []
     var recentlyTracks: [PlayHistoryObject] = []
+    var genres: [String] = []
     
     // MARK: - Properties
     
@@ -23,7 +24,7 @@ final class HomeViewController: UIViewController {
         let collectionViewLayout = UICollectionViewLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collection.backgroundColor = nil
-        collection.bounces = false
+        collection.bounces = true
         return collection
     }()
     
@@ -40,6 +41,8 @@ final class HomeViewController: UIViewController {
         setupCollectionView()
         fetchMusic()
         fetchrecentlyTrack()
+        
+        fetchGenres()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,7 +52,8 @@ final class HomeViewController: UIViewController {
     // MARK: - Fetch Data
     
     func fetchMusic() {
-        APICaller.shared.getNewReleasesAlbums(country: "US", limit: 10) { result in
+        APICaller.shared.getNewReleasesAlbums(country: "US", limit: 10) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let albums):
                 self.album = albums.albums.items
@@ -65,18 +69,34 @@ final class HomeViewController: UIViewController {
     
     func fetchrecentlyTrack() {
         APICaller.shared.getFiveRecentlyPlayedTracks { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let track):
-                self?.recentlyTracks = track.items
+                self.recentlyTracks = track.items
                 DispatchQueue.main.async {
-                    self?.collectionView.reloadSections(IndexSet(integer: 2))
+                    self.collectionView.reloadSections(IndexSet(integer: 2))
                 }
             case .failure(let error):
                 print(error)
             }
         }
     }
-
+    
+    func fetchGenres() {
+        APICaller.shared.getGenres { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let genres):
+                self.genres = genres.genres
+                print(genres)
+                DispatchQueue.main.async {
+                    //TODO: reload cells for genres
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
     
     // MARK: - Private methods
     private func setupCollectionView() {
@@ -142,11 +162,28 @@ extension HomeViewController: GoToSeeAllProtocol {
 
 extension HomeViewController: ButtonTapDelegate {
     func didTapButton(at indexPath: IndexPath) {
-        let nextVC = ExploreViewController()
-        nextVC.modalPresentationStyle = .fullScreen
-        present(nextVC, animated: true)
+        
+        guard let tabBarController = tabBarController as? TabBarController else {
+            return
+        }
+        tabBarController.selectedIndex = Tabs.explore.rawValue
     }
+}
+
+// MARK: - Play View
+extension HomeViewController {
     
+    func showPlaybackBar(with trackName: String) {
+        let playbackBarHeight: CGFloat = 70
+        let frame = CGRect(x: 0, y: (view.bounds.height - playbackBarHeight), width: view.bounds.width, height: playbackBarHeight)
+        let playBack = PlayView(frame: frame)
+        
+        playBack.songNameLabel.text = trackName
+        
+        // прописать addTarget для каждой кнопки
+        
+        view.addSubview(playBack)
+    }
     
 }
 

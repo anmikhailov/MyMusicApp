@@ -65,7 +65,7 @@ class AlbumOnlyViewController: UIViewController {
     private let suggestionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Suggestion"
+        label.text = "Tracks"
         label.font = UIFont(name: "Roboto-Bold", size: 20)
         label.textColor = UIColor(red: 238, green: 238, blue: 238)
         
@@ -79,15 +79,6 @@ class AlbumOnlyViewController: UIViewController {
         collectionView.backgroundColor = .clear
         
         return collectionView
-    }()
-    
-    // MARK: - leftSwipe
-    private lazy var leftSwipe: UISwipeGestureRecognizer = {
-        let swipe = UISwipeGestureRecognizer()
-        swipe.direction = .left
-        swipe.addTarget(self, action: #selector(goToPlayVC))
-        
-        return swipe
     }()
     
     init(album: Album?) {
@@ -109,6 +100,7 @@ class AlbumOnlyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.navigationBar.isHidden = true
         setupViews()
         setConstrains()
         setDelegates()
@@ -118,18 +110,7 @@ class AlbumOnlyViewController: UIViewController {
     // MARK: - backButtonTapped
     @objc private func backButtonTapped() {
         navigationController?.popViewController(animated: true)
-//        dismiss(animated: true)
-    }
-    // MARK: - pageControlValueChanged
-    @objc private func pageControlValueChanged() {
-        print("pageControlValueChanged")
-    }
-    // MARK: - goToPlayVC
-    @objc private func goToPlayVC() {
-        let playVC = PlayViewController()
-        playVC.modalPresentationStyle = .fullScreen
-        playVC.modalTransitionStyle = .crossDissolve
-        present(playVC, animated: true)
+        self.dismiss(animated: true)
     }
 }
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -146,7 +127,7 @@ extension AlbumOnlyViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: idSongCell, for: indexPath) as! SongCollectionViewCell
-        cell.numberSongLabel.text = String(indexPath.row)
+        cell.numberSongLabel.text = String(indexPath.row + 1)
         cell.nameSongLabel.text = tracks[indexPath.row].name
         cell.singerNameLabel.text = tracks[indexPath.row].artists.first?.name
         return cell
@@ -172,7 +153,6 @@ extension AlbumOnlyViewController {
         view.addSubview(separatorLine)
         view.addSubview(suggestionLabel)
         view.addSubview(songCollectionView)
-        view.addGestureRecognizer(leftSwipe)
     }
     // MARK: - setConstrains
     private func setConstrains() {
