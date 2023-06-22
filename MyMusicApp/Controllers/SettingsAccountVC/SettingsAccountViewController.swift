@@ -14,13 +14,11 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
     var cameraImageView = UIImageView()
     var usernanameLabel = UILabel()
     var emailLabel = UILabel()
-    var genderLabel = UILabel()
     var dateOfBirthLabel = UILabel()
     var userNameTextField = UITextField()
     var emailTextField = UITextField()
     var dateOfBirthDatePicker = UIDatePicker()
     var changePasswordButton = UIButton(type: .system)
-    var genderPicker = UIPickerView()
     let backButton = UIButton(type: .system)
     var userInfo:UserInfo?
     let profileImageView: UIImageView = {
@@ -124,22 +122,18 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
     func setLabel(){
         view.addSubview(usernanameLabel)
         view.addSubview(emailLabel)
-        view.addSubview(genderLabel)
         view.addSubview(dateOfBirthLabel)
         
         usernanameLabel.text = "Username"
         emailLabel.text = "Email"
-        genderLabel.text = "Gender"
         dateOfBirthLabel.text = "Date of birth"
         
         usernanameLabel.font = setFont(nameFont: "Roboto-Medium", sizeFont: 14)
         emailLabel.font = setFont(nameFont: "Roboto-Medium", sizeFont: 14)
-        genderLabel.font = setFont(nameFont: "Roboto-Medium", sizeFont: 14)
         dateOfBirthLabel.font = setFont(nameFont: "Roboto-Medium", sizeFont: 14)
         
         usernanameLabel.textColor = Resources.Colors.TabBarColors.inactive
         emailLabel.textColor = Resources.Colors.TabBarColors.inactive
-        genderLabel.textColor = Resources.Colors.TabBarColors.inactive
         dateOfBirthLabel.textColor = Resources.Colors.TabBarColors.inactive
         
         usernanameLabel.snp.makeConstraints { make in
@@ -152,13 +146,8 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
             make.leading.equalTo(bacgroundForSettingsView.snp.leading).inset(16)
         }
         
-        genderLabel.snp.makeConstraints { make in
-            make.top.equalTo(emailLabel.snp.bottom).offset(52)
-            make.leading.equalTo(bacgroundForSettingsView.snp.leading).inset(16)
-        }
-        
         dateOfBirthLabel.snp.makeConstraints { make in
-            make.top.equalTo(genderLabel.snp.bottom).offset(52)
+            make.top.equalTo(emailLabel.snp.bottom).offset(52)
             make.leading.equalTo(bacgroundForSettingsView.snp.leading).inset(16)
         }
     }
@@ -228,40 +217,10 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         }
     }
     
-    func setGenderPicker(){
-        genderPicker.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(genderPicker)
-
-        func numberOfComponents(in pickerView: UIPickerView) -> Int {
-            return 2
-        }
-
-        func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-            if component == 0 {
-                return 10
-            } else {
-                return 100
-            }
-        }
-
-        func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-            if component == 0 {
-                return "First \(row)"
-            } else {
-                return "Second \(row)"
-            }
-        }
-        
-        genderPicker.snp.makeConstraints { make in
-            make.top.equalTo(genderLabel.snp.top)
-            make.trailing.equalTo(bacgroundForSettingsView.snp.trailing).inset(16)
-            make.height.equalToSuperview().inset(19)
-        }
-    }
-    
     func setBackButton(){
         view.addSubview(backButton)
-        backButton.setTitle("Назад", for: .normal)
+        backButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        backButton.tintColor = .white
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         
         backButton.snp.makeConstraints { make in
@@ -279,6 +238,8 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
             fatalError("Eror Font")
         }
     }
+    
+//MARK: - @OBJC Func
     
     @objc func changeProfileImage() {
         let imagePickerController = UIImagePickerController()
@@ -310,6 +271,8 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
     }
 }
 
+//MARK: - Extension
+
 extension SettingsViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -320,6 +283,8 @@ extension SettingsViewController: UITextFieldDelegate {
     }
 }
 
+
+//MARK: - Preview
 
 #if DEBUG
 
