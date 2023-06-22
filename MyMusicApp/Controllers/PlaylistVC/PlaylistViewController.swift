@@ -87,12 +87,14 @@ class PlaylistOnlyViewController: UIViewController {
         if let playlist = playlist {
             self.titleLabel.text = playlist.name
             self.subtitleLabel.text = ""
-
-            for track in playlistsTracks.items {
-                self.tracks.append(track.track)
-            }
-            
             self.currentPlaylist = playlist
+        } else {
+            self.titleLabel.text = "Tracks for you"
+            self.subtitleLabel.text = ""
+        }
+        
+        for track in playlistsTracks.items {
+            self.tracks.append(track.track)
         }
     }
     

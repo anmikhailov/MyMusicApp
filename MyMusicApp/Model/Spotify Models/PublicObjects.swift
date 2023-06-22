@@ -149,3 +149,7 @@ struct PlaylistsTracks: Codable {
 struct OneOfTrack: Codable {
     let track: SpotifySimplifiedTrack
 }
+
+struct RecommendedTrack: Codable {
+    let tracks: [SpotifySimplifiedTrack]
+}
