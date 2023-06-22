@@ -9,7 +9,7 @@ import UIKit
 
 class PlayViewController: UIViewController {
     // MARK: - let/var
-    private var isFavorite = true
+    var isFavorite = false
     private var isDownload = true
     private var isPlay = true
     // MARK: - pageController
@@ -100,7 +100,7 @@ class PlayViewController: UIViewController {
         return button
     }()
     // MARK: - favoriteButton
-    private lazy var favoriteButton: UIButton = {
+    lazy var favoriteButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "heart"), for: .normal)
@@ -257,14 +257,16 @@ class PlayViewController: UIViewController {
     }
     // MARK: - favoriteButtonTapped
     @objc private func favoriteButtonTapped() {
-        if isFavorite {
+        if !isFavorite {
             favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             favoriteButton.tintColor = UIColor(named: "green")
-            isFavorite = false
+            PlaybackManager.shared.saveCurrentTrack()
+            isFavorite = true
         } else {
             favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
             favoriteButton.tintColor = .white
-            isFavorite = true
+            PlaybackManager.shared.deleteCurrentTrack()
+            isFavorite = false
         }
     }
     // MARK: - downloadButtonTapped

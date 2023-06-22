@@ -36,6 +36,7 @@ class PlaybackManager {
     ) {
         playerViewController.modalPresentationStyle = .fullScreen
         
+        
         guard let url = URL(string: track.preview_url ?? "") else {
             print("Track without preview")
             return
@@ -72,6 +73,11 @@ class PlaybackManager {
         
         self.track = track
         self.tracks = []
+        
+        playerViewController.isFavorite = hasCurrentTrackInStorange()
+        if hasCurrentTrackInStorange() {
+            playerViewController.favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        }
 
         viewController.present(playerViewController, animated: true) { [weak self] in
             self?.player?.play()
@@ -128,6 +134,15 @@ class PlaybackManager {
         if player!.rate == 0 {
             player?.play()
         }
+    }
+    func saveCurrentTrack() {
+        StorageManager.shared.save(track: track! )
+    }
+    func deleteCurrentTrack() {
+        StorageManager.shared.deleteItem(by: track!.id)
+    }
+    func hasCurrentTrackInStorange() -> Bool {
+        StorageManager.shared.hasObjectInStorage(with: track!.id)
     }
 }
 
