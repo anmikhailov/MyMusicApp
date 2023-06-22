@@ -96,26 +96,23 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
     }
     
     func setCameraImageViev(){
-        view.addSubview(cameraImageView)
-        var cameraView = UIView()
+        let cameraView = UIView()
         view.addSubview(cameraView)
         cameraView.backgroundColor = Resources.Colors.brand1
-        cameraView.layer.cornerRadius = 70
-        cameraView.contentMode = .scaleAspectFit
+        cameraView.layer.cornerRadius = 20
         
+        view.addSubview(cameraImageView)
         cameraImageView.image = UIImage(systemName: "camera.fill")
         cameraImageView.tintColor = .black
-        cameraImageView.contentMode = .scaleAspectFit
-        cameraImageView.layer.cornerRadius = 70
-        cameraImageView.backgroundColor = Resources.Colors.brand1
         
-        cameraImageView.snp.makeConstraints { make in
-            make.top.equalTo(profileImageView.snp.top).inset(102)
-            make.leading.equalTo(profileImageView.snp.leading).inset(102)
-        }
         cameraView.snp.makeConstraints { make in
             make.top.equalTo(profileImageView.snp.top).inset(102)
             make.leading.equalTo(profileImageView.snp.leading).inset(102)
+            make.size.equalTo(CGSize(width: 40, height: 40))
+        }
+        
+        cameraImageView.snp.makeConstraints { make in
+            make.center.equalTo(cameraView)
         }
     }
     
@@ -252,6 +249,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
         let selectedDate = dateFormatter.string(from: dateOfBirthDatePicker.date)
+        print("\(selectedDate)")
     }
     
     @objc func changePasswordTapped(){
