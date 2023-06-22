@@ -9,7 +9,7 @@ import UIKit
 
 class PlayViewController: UIViewController {
     // MARK: - let/var
-    private var isFavorite = true
+    var isFavorite = false
     private var isDownload = true
     var isPlay = true {
         didSet {
@@ -251,7 +251,11 @@ class PlayViewController: UIViewController {
     }
     // MARK: - sharedButtonTapped
     @objc private func sharedButtonTapped() {
-        print("sharedButtonTapped")
+        let items:[Any] = [URL(string: "https://apple.com")!]
+        let avc = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        
+        guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else { return }
+        rootViewController.present(avc, animated: true)
     }
     // MARK: - backButtonTapped
     @objc private func backButtonTapped() {
@@ -263,14 +267,17 @@ class PlayViewController: UIViewController {
     }
     // MARK: - favoriteButtonTapped
     @objc private func favoriteButtonTapped() {
-        if isFavorite {
+        if !isFavorite {
             favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             favoriteButton.tintColor = Resources.Colors.brand1
             isFavorite = false
+            PlaybackManager.shared.saveCurrentTrack()
+            isFavorite = true
         } else {
             favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
             favoriteButton.tintColor = .white
-            isFavorite = true
+            PlaybackManager.shared.deleteCurrentTrack()
+            isFavorite = false
         }
     }
     // MARK: - downloadButtonTapped

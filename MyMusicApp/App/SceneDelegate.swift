@@ -30,7 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     public func checkAuthentication() {
-        if Auth.auth().currentUser == nil {
+        if Auth.auth().currentUser != nil {
             let vc = TabBarController()
             self.window?.rootViewController = vc
         } else {

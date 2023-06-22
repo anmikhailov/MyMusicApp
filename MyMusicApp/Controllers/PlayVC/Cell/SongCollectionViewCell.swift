@@ -80,6 +80,10 @@ class SongCollectionViewCell: UICollectionViewCell {
         addSubview(singerNameLabel)
         addSubview(ellipsisButton)
     }
+    func cellConfigure(model: SpotifySimplifiedTrack) {
+        nameSongLabel.text = model.name
+        singerNameLabel.text = model.artists.first?.name
+    }
     // MARK: - setConstrains
     private func setConstrains() {
         NSLayoutConstraint.activate([

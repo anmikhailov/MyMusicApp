@@ -14,6 +14,8 @@
 		324894552A39D1770031A7AD /* (null) in Sources */ = {isa = PBXBuildFile; };
 		4E03A6E32A423672006BD5DB /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E03A6E22A423672006BD5DB /* PersistenceManager.swift */; };
 		4E03A6E72A423D3C006BD5DB /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E03A6E62A423D3C006BD5DB /* Track.swift */; };
+		3263BDF92A4438BC0046B5EC /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3263BDF82A4438BC0046B5EC /* FavoriteModel.swift */; };
+		3263BDFC2A4467840046B5EC /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3263BDFB2A4467840046B5EC /* StorageManager.swift */; };
 		4E615DE32A3E2A3C00B9F793 /* RecentlyTracks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E615DE12A3E2A3C00B9F793 /* RecentlyTracks.swift */; };
 		4E615DE42A3E2A3C00B9F793 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E615DE22A3E2A3C00B9F793 /* UserProfile.swift */; };
 		4E615DE82A3E2A4D00B9F793 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E615DE62A3E2A4D00B9F793 /* APICaller.swift */; };
@@ -115,6 +117,8 @@
 		04EF352E2A431D4E00B76943 /* ViewAllCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllCategoryViewController.swift; sourceTree = "<group>"; };
 		4E03A6E22A423672006BD5DB /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		4E03A6E62A423D3C006BD5DB /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		3263BDF82A4438BC0046B5EC /* FavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
+		3263BDFB2A4467840046B5EC /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		4E615DE12A3E2A3C00B9F793 /* RecentlyTracks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentlyTracks.swift; sourceTree = "<group>"; };
 		4E615DE22A3E2A3C00B9F793 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		4E615DE62A3E2A4D00B9F793 /* APICaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
@@ -228,6 +232,22 @@
 				841725312A41B46C00B42B51 /* TableNewSongViewController.swift */,
 			);
 			path = ViewAllController;
+			sourceTree = "<group>";
+		};
+		3263BDF72A4438950046B5EC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3263BDF82A4438BC0046B5EC /* FavoriteModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3263BDFA2A44675A0046B5EC /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				3263BDFB2A4467840046B5EC /* StorageManager.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		4E615DE02A3E2A3C00B9F793 /* Spotify Models */ = {
@@ -403,6 +423,7 @@
 		8417252A2A41B46C00B42B51 /* FavoritesVC */ = {
 			isa = PBXGroup;
 			children = (
+				3263BDF72A4438950046B5EC /* Model */,
 				8417252B2A41B46C00B42B51 /* FavoritesViewController.swift */,
 			);
 			path = FavoritesVC;
@@ -574,6 +595,7 @@
 			isa = PBXGroup;
 			children = (
 				4E03A6E22A423672006BD5DB /* PersistenceManager.swift */,
+				3263BDFA2A44675A0046B5EC /* Realm */,
 				8429C9D12A401D9D00BAE4D4 /* PlaybackManager.swift */,
 				4E615DE52A3E2A4D00B9F793 /* Spotify */,
 				84C420AC2A378AA700727691 /* Firebase */,
@@ -782,6 +804,7 @@
 				8417255B2A41B46D00B42B51 /* SignInUpViewController.swift in Sources */,
 				84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */,
 				8417254F2A41B46D00B42B51 /* CustomView.swift in Sources */,
+				3263BDF92A4438BC0046B5EC /* FavoriteModel.swift in Sources */,
 				841725712A41B46D00B42B51 /* AlbumViewController.swift in Sources */,
 				84F78E1F2A42113500C3F216 /* SettingsAccountViewController.swift in Sources */,
 				8417256C2A41B46D00B42B51 /* SecondScreenOnboardingVC.swift in Sources */,
@@ -810,6 +833,7 @@
 				4E615DE92A3E2A4D00B9F793 /* AuthManager.swift in Sources */,
 				4E03A6E32A423672006BD5DB /* PersistenceManager.swift in Sources */,
 				841725482A41B46D00B42B51 /* SearchCell.swift in Sources */,
+				3263BDFC2A4467840046B5EC /* StorageManager.swift in Sources */,
 				4E6C55992A3C5FA60039E66C /* AuthResponse.swift in Sources */,
 				841725562A41B46D00B42B51 /* ExploreCompositionLayout.swift in Sources */,
 				4ED59D862A3F603A002F3632 /* ImageClient.swift in Sources */,
