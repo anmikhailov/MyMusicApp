@@ -10,7 +10,7 @@ import UIKit
 class PlayViewController: UIViewController {
     // MARK: - let/var
     private var isFavorite = true
-    private var isDownload = true
+    private var isDownload = false
     var isPlay = true {
         didSet {
             if isPlay {
@@ -275,12 +275,14 @@ class PlayViewController: UIViewController {
     }
     // MARK: - downloadButtonTapped
     @objc private func downloadButtonTapped() {
-        if isDownload {
+        if !isDownload {
+            PlaybackManager.shared.downloadTrack()
             downloadButton.tintColor = Resources.Colors.brand1
-            isDownload = false
-        } else {
-            downloadButton.tintColor = .white
             isDownload = true
+        } else {
+            
+            downloadButton.tintColor = .white
+            isDownload = false
         }
     }
     // MARK: - songTimeSliderValueChanged
