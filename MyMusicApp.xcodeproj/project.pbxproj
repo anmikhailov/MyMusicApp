@@ -20,6 +20,7 @@
 		4E615DE92A3E2A4D00B9F793 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E615DE72A3E2A4D00B9F793 /* AuthManager.swift */; };
 		4E615DEB2A3E44C700B9F793 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E615DEA2A3E44C700B9F793 /* Album.swift */; };
 		4E6C55992A3C5FA60039E66C /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6C55982A3C5FA60039E66C /* AuthResponse.swift */; };
+		4EAF5F1E2A443261003AFFED /* TopResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAF5F1D2A443261003AFFED /* TopResponse.swift */; };
 		4ED59D752A3F0C9C002F3632 /* PublicObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED59D742A3F0C9C002F3632 /* PublicObjects.swift */; };
 		4ED59D772A3F10BC002F3632 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED59D762A3F10BC002F3632 /* DataRequest.swift */; };
 		4ED59D792A3F158E002F3632 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED59D782A3F158E002F3632 /* NetworkService.swift */; };
@@ -121,6 +122,7 @@
 		4E615DE72A3E2A4D00B9F793 /* AuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		4E615DEA2A3E44C700B9F793 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		4E6C55982A3C5FA60039E66C /* AuthResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
+		4EAF5F1D2A443261003AFFED /* TopResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopResponse.swift; sourceTree = "<group>"; };
 		4ED59D742A3F0C9C002F3632 /* PublicObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicObjects.swift; sourceTree = "<group>"; };
 		4ED59D762A3F10BC002F3632 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
 		4ED59D782A3F158E002F3632 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			children = (
 				4E615DE12A3E2A3C00B9F793 /* RecentlyTracks.swift */,
 				4E615DE22A3E2A3C00B9F793 /* UserProfile.swift */,
+				4EAF5F1D2A443261003AFFED /* TopResponse.swift */,
 				4E615DEA2A3E44C700B9F793 /* Album.swift */,
 				4E03A6E62A423D3C006BD5DB /* Track.swift */,
 				4ED59D742A3F0C9C002F3632 /* PublicObjects.swift */,
@@ -805,6 +808,7 @@
 				8417254C2A41B46D00B42B51 /* HorizontalMenuCollectionView.swift in Sources */,
 				4ED59D802A3F21F9002F3632 /* RecentlyPlayedTracks.swift in Sources */,
 				8417256A2A41B46D00B42B51 /* HeaderSeeAllView.swift in Sources */,
+				4EAF5F1E2A443261003AFFED /* TopResponse.swift in Sources */,
 				4E615DE42A3E2A3C00B9F793 /* UserProfile.swift in Sources */,
 				841725532A41B46D00B42B51 /* TopicViewController.swift in Sources */,
 				4E615DE92A3E2A4D00B9F793 /* AuthManager.swift in Sources */,
