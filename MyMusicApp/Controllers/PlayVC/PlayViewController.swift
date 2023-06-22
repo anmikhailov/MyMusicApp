@@ -241,7 +241,11 @@ class PlayViewController: UIViewController {
     }
     // MARK: - sharedButtonTapped
     @objc private func sharedButtonTapped() {
-        print("sharedButtonTapped")
+        let items:[Any] = [URL(string: "https://apple.com")!]
+        let avc = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        
+        guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else { return }
+        rootViewController.present(avc, animated: true)
     }
     // MARK: - backButtonTapped
     @objc private func backButtonTapped() {
