@@ -21,6 +21,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
     var changePasswordButton = UIButton(type: .system)
     let backButton = UIButton(type: .system)
     var userInfo:UserInfo?
+    let userDefaults = UserDefaults.standard
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "person.fill")
@@ -202,14 +203,24 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
     }
     
     func setDateOfBirthDatePicker(){
-        dateOfBirthDatePicker.tintColor = Resources.Colors.TabBarColors.background
         view.addSubview(dateOfBirthDatePicker)
+        dateOfBirthDatePicker.tintColor = Resources.Colors.brand1
         dateOfBirthDatePicker.datePickerMode = .date
         dateOfBirthDatePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
+        let currentDate = Date()
+        let fourteenYearsAgo = Calendar.current.date(byAdding: .year, value: -14, to: currentDate)
+        let hundredYearsAgo = Calendar.current.date(byAdding: .year, value: -100, to: currentDate)
+        dateOfBirthDatePicker.minimumDate = hundredYearsAgo
+        dateOfBirthDatePicker.maximumDate = fourteenYearsAgo
+                
+        if let savedDate = userDefaults.object(forKey: "selectedDate") as? Date {
+            dateOfBirthDatePicker.date = savedDate
+            dateChanged()
+        }
+
         
         dateOfBirthDatePicker.snp.makeConstraints { make in
-            make.centerY.equalTo(dateOfBirthLabel.snp.top)
-            make.leading.equalTo(dateOfBirthLabel.snp.trailing).offset(130)
+            make.top.equalTo(dateOfBirthLabel.snp.top).inset(-9)
             make.trailing.equalTo(bacgroundForSettingsView.snp.trailing).inset(16)
         }
     }
@@ -248,8 +259,10 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
     @objc func dateChanged() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
-        let selectedDate = dateFormatter.string(from: dateOfBirthDatePicker.date)
-        print("\(selectedDate)")
+        let selectedDate = dateOfBirthDatePicker.date
+        let formattedDate = dateFormatter.string(from: selectedDate)
+        userDefaults.set(selectedDate, forKey: "selectedDate")
+        
     }
     
     @objc func changePasswordTapped(){
