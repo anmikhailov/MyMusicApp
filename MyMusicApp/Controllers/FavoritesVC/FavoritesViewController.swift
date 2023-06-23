@@ -6,8 +6,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FavoritesViewController: UIViewController {
+    // MARK: - let/var
+    let realm = try! Realm()
+    var favoritesSongsArray: [SpotifySimplifiedTrack] = []
+//    var storageManager: StorageManagerProtocol = StorageManager()
+
     // MARK: - songLabel
     private let songLabel: UILabel = {
         let label = UILabel()
@@ -47,11 +53,10 @@ class FavoritesViewController: UIViewController {
         setupViews()
         setConstrains()
         setDelegates()
-        
     }
-    // MARK: - backButtonTapped
-    @objc private func backButtonTapped() {
-        print("backButtonTapped")
+    override func viewWillAppear(_ animated: Bool) {
+        favoritesSongsArray =  StorageManager.shared.retrieveAll()
+        favoritesSongsCollectionView.reloadData()
     }
 }
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -63,12 +68,13 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UICollectionViewDataSource & UICollectionViewDelegate
 extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        6
+        favoritesSongsArray.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "idSongCell", for: indexPath) as! SongCollectionViewCell
-
+        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "idSongCell", for: indexPath) as! SongCollectionViewCell
+        let model = favoritesSongsArray[indexPath.row]
+        cell.cellConfigure(model: model)
         return cell
     }
 }

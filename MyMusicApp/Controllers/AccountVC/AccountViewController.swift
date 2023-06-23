@@ -43,7 +43,7 @@ class AccountViewController: UIViewController {
         setEmailUserLabel()
     }
     
-    
+//MARK: - Func
     func SetBacgroundColors(){
         view.backgroundColor = Resources.Colors.TabBarColors.background
     }
@@ -192,20 +192,39 @@ class AccountViewController: UIViewController {
     }
     
     func setTargetForButton(){
-        setingsButton.addTarget(self, action: #selector(settingsButtonTupped), for: .touchUpInside)
+        setingsButton.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
+        
+        myPlayListButton.addTarget(self, action: #selector(myPlayListTapped), for: .touchUpInside)
+        
+        notificationButton.addTarget(self, action: #selector(notificationTapped), for: .touchUpInside)
+        
+        downloadButton.addTarget(self, action: #selector(downloadTapped), for: .touchUpInside)
     }
-    
-    @objc func settingsButtonTupped() {
+//MARK: - @OBJC Func
+    @objc func settingsButtonTapped() {
         let settingsViewController = SettingsViewController()
         print("tupped")
 //        navigationController?.pushViewController(settingsViewController, animated: true)
         settingsViewController.modalPresentationStyle = .fullScreen
         self.present(settingsViewController, animated: true)
         }
+    
     @objc func singOutTapped(){
         FirebaseManager.shared.signOut {
             print("Sing Out")
         }
+    }
+    
+    @objc func myPlayListTapped(){
+        print("My Playlist open ")
+    }
+    
+    @objc func notificationTapped(){
+        print("Notification open")
+    }
+    
+    @objc func downloadTapped(){
+        print("Download open")
     }
     
 }

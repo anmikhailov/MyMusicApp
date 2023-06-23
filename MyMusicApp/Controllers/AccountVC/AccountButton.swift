@@ -36,7 +36,7 @@ class AccountUIButton: UIButton {
     }
     
     private func setupButton() {
-        self.backgroundColor = Resources.Colors.TabBarColors.background
+        self.backgroundColor = .clear
         buttonAfteTextImageView.contentMode = .scaleAspectFit
         buttonBeforTextImageView.contentMode = .scaleAspectFit
     }
