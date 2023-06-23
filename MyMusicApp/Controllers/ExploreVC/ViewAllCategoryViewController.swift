@@ -8,12 +8,16 @@
 import UIKit
 
 class ViewAllCategoryViewController: UICollectionViewController {
+    
+    var genres: [String] = []
+    let image = UIImage(named: "rap")
 
     init() {
             let layout = UICollectionViewFlowLayout()
             layout.itemSize = CGSize(width: 155, height: 155)
             
             super.init(collectionViewLayout: layout)
+        fetchGenres()
         }
         
         required init?(coder aDecoder: NSCoder) {
@@ -27,7 +31,7 @@ class ViewAllCategoryViewController: UICollectionViewController {
         self.collectionView!.register(TopicCell.self, forCellWithReuseIdentifier: "cell5")
         
         collectionView.collectionViewLayout = createFlowLayout()
-
+        fetchGenres()
     }
     
     func createFlowLayout() -> UICollectionViewFlowLayout {
@@ -38,24 +42,43 @@ class ViewAllCategoryViewController: UICollectionViewController {
         flowLayout.minimumLineSpacing = 20
         return flowLayout
     }
+    
+    func fetchGenres() {
+        APICaller.shared.getGenres { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let genres):
+                self.genres = genres.genres
+                print(genres)
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 10
+        return genres.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell5", for: indexPath) as? TopicCell else {
             return UICollectionViewCell()
         }
-
-        cell.backgroundColor = .red
-        cell.configureCell()
+        let genre = genres[indexPath.row]
+        cell.categoryName.text = genre
+        cell.image2.image = image
+        //cell.configureCell(image: image!, title: genre)
         return cell
     }
 
     // MARK: UICollectionViewDelegate
+    
+    
 
 }
