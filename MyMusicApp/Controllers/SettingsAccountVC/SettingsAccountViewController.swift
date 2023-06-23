@@ -66,7 +66,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         
         editTitle.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(17)
-            make.leading.equalToSuperview().inset(173)
+            make.centerX.equalToSuperview()
         }
     }
     
@@ -77,9 +77,10 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         
         bacgroundForSettingsView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(146)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(133)
             make.leading.trailing.equalToSuperview().inset(24)
             make.width.equalTo(327)
-            make.height.equalTo(496)
+//            make.height.equalTo(496)
         }
     }
     
@@ -88,8 +89,8 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         
         profileImageView.snp.makeConstraints { make in
             make.width.height.equalTo(142)
-            make.bottom.equalTo(bacgroundForSettingsView.snp.bottom).inset(421)
-            make.left.equalTo(bacgroundForSettingsView.snp.left).offset(93)
+            make.top.equalTo(bacgroundForSettingsView.snp.top).offset(-72)
+            make.centerX.equalTo(bacgroundForSettingsView)
         }
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(changeProfileImage))
@@ -294,29 +295,3 @@ extension SettingsViewController: UITextFieldDelegate {
     }
 }
 
-
-//MARK: - Preview
-
-#if DEBUG
-
-import SwiftUI
-
-struct SettingsViewControllerRepresentable: UIViewControllerRepresentable {
-    typealias UIViewControllerType = SettingsViewController
-
-    func makeUIViewController(context: Context) -> UIViewControllerType {
-        SettingsViewController(nibName: nil, bundle: nil)
-    }
-
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-
-    }
-}
-
-struct SettingsViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsViewControllerRepresentable()
-    }
-}
-
-#endif
