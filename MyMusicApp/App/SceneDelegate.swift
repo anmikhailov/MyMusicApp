@@ -29,24 +29,45 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.makeKeyAndVisible()
     }
     
+//    public func checkAuthentication() {
+//        if Auth.auth().currentUser != nil {
+//            let vc = TabBarController()
+//            self.window?.rootViewController = vc
+//        } else {
+//            if UserDefaults.standard.value(forKey: "onboarding") as? String == "ok" {
+//                if AuthManager.shared.isSignedIn {
+//                    let tabBarController = TabBarController()
+//                    window?.rootViewController = tabBarController
+//                } else {
+//                    let welcome = SignInUpViewController()
+//                    let navView = UINavigationController(rootViewController: welcome)
+//                    window?.rootViewController = navView
+//                }
+//            } else {
+//                let vc = FirstScreenOnboardingVC()
+//                self.window?.rootViewController = UINavigationController(rootViewController: vc)
+//            }
+//        }
+//    }
+    
     public func checkAuthentication() {
-        if Auth.auth().currentUser != nil {
-            let vc = TabBarController()
-            self.window?.rootViewController = vc
-        } else {
-            if UserDefaults.standard.value(forKey: "onboarding") as? String == "ok" {
-                if AuthManager.shared.isSignedIn {
-                    let tabBarController = TabBarController()
-                    window?.rootViewController = tabBarController
-                } else {
+        if UserDefaults.standard.value(forKey: "onboarding") as? String == "ok" {
+            Auth.auth().addStateDidChangeListener { (auth, user) in
+                if user == nil || !AuthManager.shared.isSignedIn {
+                    // If not signed in
                     let welcome = SignInUpViewController()
                     let navView = UINavigationController(rootViewController: welcome)
-                    window?.rootViewController = navView
+                    self.window?.rootViewController = navView
+                } else {
+                    // If signed in before
+                    let tabBarController = TabBarController()
+                    self.window?.rootViewController = tabBarController
                 }
-            } else {
-                let vc = FirstScreenOnboardingVC()
-                self.window?.rootViewController = UINavigationController(rootViewController: vc)
             }
+        } else {
+            // If onboarding not completed
+            let vc = FirstScreenOnboardingVC()
+            self.window?.rootViewController = UINavigationController(rootViewController: vc)
         }
     }
 

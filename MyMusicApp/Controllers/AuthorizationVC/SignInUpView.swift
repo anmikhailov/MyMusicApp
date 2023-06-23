@@ -78,6 +78,7 @@ class SignInUpView: CustomView {
         element.leftViewMode = .always
 
         element.placeholder = "E-Mail"
+        element.text = "test@test.ru"
         element.keyboardType = .emailAddress
         element.autocorrectionType = .no
         element.returnKeyType = .done
@@ -110,6 +111,7 @@ class SignInUpView: CustomView {
         element.rightViewMode = .always
         
         element.placeholder = "Password"
+        element.text = "1234567"
         element.autocorrectionType = .no
         element.isSecureTextEntry = true
         element.returnKeyType = .done

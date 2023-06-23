@@ -210,6 +210,7 @@ class AccountViewController: UIViewController {
         }
     
     @objc func singOutTapped(){
+        UserDefaults.standard.setValue(nil, forKey: "access_token")
         FirebaseManager.shared.signOut {
             print("Sing Out")
         }
