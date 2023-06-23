@@ -115,9 +115,9 @@ class FirstScreenOnboardingVC: UIViewController {
 }
 
 // MARK: - Notification
-let notificationCenter = UNUserNotificationCenter.current()
+public let notificationCenter = UNUserNotificationCenter.current()
 
-func userNotificationPermission() {
+public func userNotificationPermission() {
     //ask the permission from user
     notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
         guard granted else { return }
@@ -128,7 +128,7 @@ func userNotificationPermission() {
     }
 }
 
-func sendNotification() {
+public func sendNotification() {
     //create notification content
     let content = UNMutableNotificationContent()
     content.title = "Greetings! 🥰"
