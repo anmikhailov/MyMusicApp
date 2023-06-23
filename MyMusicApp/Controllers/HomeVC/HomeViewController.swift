@@ -14,6 +14,15 @@ protocol GoToSeeAllProtocol: AnyObject {
 
 final class HomeViewController: UIViewController {
     
+    private var playback: PlayView?
+    var isPlaying = false {
+        didSet {
+            if isPlaying {
+                addPlayView()
+            }
+        }
+    }
+    
     var album: [NewAlbum] = []
     var recentlyTracks: [PlayHistoryObject] = []
     var genres: [String] = []
@@ -43,6 +52,7 @@ final class HomeViewController: UIViewController {
         fetchrecentlyTrack()
         
         fetchGenres()
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,6 +108,8 @@ final class HomeViewController: UIViewController {
         }
     }
     
+    
+    
     // MARK: - Private methods
     private func setupCollectionView() {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -118,6 +130,8 @@ final class HomeViewController: UIViewController {
     }
     
     override func barButtonTapped() {
+        
+        //PlaybackManager.shared.playPausePlayback()
         navigationController?.pushViewController(SearchViewController(), animated: true)
     }
     /*
@@ -147,6 +161,7 @@ extension HomeViewController {
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
     }
     
 }
@@ -173,17 +188,17 @@ extension HomeViewController: ButtonTapDelegate {
 // MARK: - Play View
 extension HomeViewController {
     
-    func showPlaybackBar(with trackName: String) {
-        let playbackBarHeight: CGFloat = 70
-        let frame = CGRect(x: 0, y: (view.bounds.height - playbackBarHeight), width: view.bounds.width, height: playbackBarHeight)
-        let playBack = PlayView(frame: frame)
+    private func addPlayView() {
+        playback = PlayView()
+        playback?.backgroundColor = Resources.Colors.brand1
         
-        playBack.songNameLabel.text = trackName
+        view.addSubview(playback!)
+        playback?.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-85)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(80)
+        }
         
-        // прописать addTarget для каждой кнопки
-        
-        view.addSubview(playBack)
     }
-    
 }
 

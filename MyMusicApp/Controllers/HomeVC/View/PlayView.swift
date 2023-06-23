@@ -8,22 +8,35 @@
 import UIKit
 import SnapKit
 
-class PlayView: UIView {
 
-    let backButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
-        button.tintColor = .white
-        
-        return button
-    }()
+class PlayView: UIView {
+    
+    // MARK: - Properties
+    
+    var isPlay = true {
+        didSet {
+            if isPlay {
+                playButton.setBackgroundImage(UIImage(systemName: "play.circle"), for: .normal)
+            } else {
+                playButton.setBackgroundImage(UIImage(systemName: "pause.circle"), for: .normal)
+                //playButton.backgroundColor = .none
+            }
+        }
+    }
+
+    lazy var previousButton: UIButton = {
+            let button = UIButton(type: .system)
+            button.setImage(UIImage(systemName: "backward.end"), for: .normal)
+            button.tintColor = .black
+            return button
+        }()
     
     let songNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Come to me"
         label.textAlignment = .center
-        label.textColor = .white
-        label.font = UIFont(name: "Roboto-Bold", size: 36)
+        label.textColor = .black
+        label.font = UIFont(name: "Roboto-Bold", size: 14)
         
         return label
     }()
@@ -38,48 +51,59 @@ class PlayView: UIView {
         return label
     }()
     
-    var nextButton: UIButton = {
+    lazy var nextButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "previous"), for: .normal)
-        button.tintColor = .white
+        button.setImage(UIImage(systemName: "forward.end"), for: .normal)
+        button.tintColor = .black
         
         return button
     }()
     
-    var playButton: UIButton = {
+    lazy var playButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "play"), for: .normal)
-        
+        button.setBackgroundImage(UIImage(systemName: "play.circle"), for: .normal)
+        button.tintColor = .black
         return button
     }()
     
     let albumImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.layer.masksToBounds = true
-        
+        imageView.layer.masksToBounds = false
+        imageView.layer.cornerRadius = imageView.frame.width / 2
+        imageView.backgroundColor = .gray
         return imageView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupButton()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setupButton() {
+        playButton.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
+    }
     
+    @objc private func playButtonTapped() {
+        isPlay.toggle()
+        PlaybackManager.shared.playPausePlayback()
+    }
     
 }
 
 extension PlayView {
     func setupConstraints() {
+        self.backgroundColor = .green
         addSubview(songNameLabel)
         addSubview(groupNameLabel)
         addSubview(albumImageView)
         addSubview(nextButton)
-        addSubview(backButton)
+        addSubview(previousButton)
         addSubview(playButton)
         
         albumImageView.snp.makeConstraints { make in
@@ -89,27 +113,29 @@ extension PlayView {
         }
         
         songNameLabel.snp.makeConstraints { make in
-            make.leading.equalTo(albumImageView.snp.trailing).offset(8)
+            make.leading.equalToSuperview()
             make.centerY.equalToSuperview()
         }
         
-        backButton.snp.makeConstraints { make in
-            make.leading.equalTo(songNameLabel.snp.trailing).offset(8)
+        previousButton.snp.makeConstraints { make in
+            //make.leading.equalTo(songNameLabel.snp.trailing).offset(5)
+            make.trailing.equalTo(playButton.snp.leading).offset(-10)
             make.centerY.equalToSuperview()
-            make.width.height.equalTo(24)
+            make.width.height.equalTo(35)
         }
         
         playButton.snp.makeConstraints { make in
-            make.leading.equalTo(backButton.snp.trailing).offset(8)
+            //make.leading.equalTo(backButton.snp.trailing).offset(5)
+            make.trailing.equalTo(nextButton.snp.leading).offset(-10)
             make.centerY.equalToSuperview()
-            make.width.height.equalTo(32)
+            make.width.height.equalTo(35)
         }
         
         nextButton.snp.makeConstraints { make in
-            make.leading.equalTo(songNameLabel.snp.trailing).offset(8)
+            make.leading.equalTo(songNameLabel.snp.trailing).offset(10)
             make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().offset(-8)
-            make.width.height.equalTo(24)
+            make.trailing.equalToSuperview().offset(-10)
+            make.width.height.equalTo(35)
         }
     }
 }

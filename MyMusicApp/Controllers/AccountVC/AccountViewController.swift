@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import UserNotifications
 
 class AccountViewController: UIViewController {
     
@@ -22,6 +23,47 @@ class AccountViewController: UIViewController {
     var emailUserLabel = UILabel()
     var userInfo:UserInfo?
     
+    #warning("Не знаю как переделать на snp")
+    private lazy var notificationSwitch: UISwitch = {
+        let uiSwitch = UISwitch()
+        uiSwitch.isOn = true
+        uiSwitch.onTintColor = Resources.Colors.brand1
+        uiSwitch.backgroundColor = .gray
+        uiSwitch.thumbTintColor = .white
+        uiSwitch.layer.cornerRadius = 16
+        uiSwitch.addTarget(self, action: #selector(changeNotificationsMode), for: .valueChanged)
+        return uiSwitch
+    }()
+    
+    @objc private func changeNotificationsMode(sender: UISwitch) {
+        if sender.isOn {
+            //notifications enable
+            sendNotification()
+        } else {
+            //notifications disable
+            notificationCenter.removeAllPendingNotificationRequests()
+        }
+    }
+    
+    #warning("Не знаю как переделать на snp")
+    // MARK: - UI Setup
+    func setupUI() {
+        
+        /// ADDING SUBVIEWS
+        view?.addSubview(notificationSwitch)
+        
+        /// TAMIC
+        notificationSwitch.translatesAutoresizingMaskIntoConstraints = false
+        
+        /// SETUP CONSTRAINTS
+        NSLayoutConstraint.activate([
+            notificationSwitch.leadingAnchor.constraint(equalTo: notificationButton.trailingAnchor, constant: -50),
+            notificationSwitch.centerYAnchor.constraint(equalTo: notificationButton.centerYAnchor),
+            
+            notificationSwitch.widthAnchor.constraint(equalToConstant: 10),
+        ])
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +77,8 @@ class AccountViewController: UIViewController {
         setDownloadButton()
         setSignOutButton()
         setTargetForButton()
+        
+        setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -210,6 +254,7 @@ class AccountViewController: UIViewController {
         }
     
     @objc func singOutTapped(){
+        UserDefaults.standard.setValue(nil, forKey: "access_token")
         FirebaseManager.shared.signOut {
             print("Sing Out")
         }
@@ -234,32 +279,32 @@ class AccountViewController: UIViewController {
 
 #if DEBUG
 
-import SwiftUI
-
-struct AccountViewControllerRepresentable: UIViewControllerRepresentable {
-    typealias UIViewControllerType = AccountViewController
-
-    func makeUIViewController(context: Context) -> UIViewControllerType {
-        AccountViewController(nibName: nil, bundle: nil)
-    }
-
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-
-        APICaller.shared.getCurrentUserProfile { result in
-            switch result {
-            case .success(let model):
-                break
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-}
-
-struct AccountViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        AccountViewControllerRepresentable()
-    }
-}
+//import SwiftUI
+//
+//struct AccountViewControllerRepresentable: UIViewControllerRepresentable {
+//    typealias UIViewControllerType = AccountViewController
+//
+//    func makeUIViewController(context: Context) -> UIViewControllerType {
+//        AccountViewController(nibName: nil, bundle: nil)
+//    }
+//
+//    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+//
+//        APICaller.shared.getCurrentUserProfile { result in
+//            switch result {
+//            case .success(let model):
+//                break
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
+//    }
+//}
+//
+//struct AccountViewController_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AccountViewControllerRepresentable()
+//    }
+//}
 
 #endif

@@ -22,7 +22,6 @@ extension ExploreViewController: UICollectionViewDelegate {
             
             navigationController?.pushViewController(tableViewController, animated: true)
         case .topic:
-            
             let topicVC = TopicViewController()
             navigationController?.pushViewController(topicVC, animated: true)
         }

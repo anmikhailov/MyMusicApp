@@ -11,9 +11,10 @@ class TopicCell: UICollectionViewCell {
     
     let imageCategory = UIImage(named: "hip-hop")
     
+    
     // MARK: - Properties
     
-    private let categoryImage: UIImageView = {
+    let categoryImage: UIImageView = {
         let image = UIImageView()
         image.layer.cornerRadius = 3
         image.layer.masksToBounds = true
@@ -21,7 +22,15 @@ class TopicCell: UICollectionViewCell {
         return image
     }()
     
-    private let categoryName: UILabel = {
+    let image2: UIImageView = {
+        let image = UIImageView()
+        image.layer.cornerRadius = 3
+        image.layer.masksToBounds = true
+        image.contentMode = .scaleAspectFill
+        return image
+    }()
+    
+    let categoryName: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.textAlignment = .center
@@ -43,8 +52,9 @@ class TopicCell: UICollectionViewCell {
     
     // MARK: - Methods
     
-    func configureCell() {
-        categoryImage.image = imageCategory
+    func configureCell(image: UIImage, title: String) {
+        categoryImage.image = image
+        categoryName.text = title
     }
     
     
@@ -53,18 +63,23 @@ class TopicCell: UICollectionViewCell {
 extension TopicCell {
     private func setupConstraints() {
         addSubview(categoryImage)
+        addSubview(image2)
         addSubview(categoryName)
+        
+        categoryName.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.centerX.equalToSuperview()
+        }
+        
+        image2.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         
         categoryImage.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.centerX.equalToSuperview()
             make.width.equalTo(100)
             make.height.equalTo(60)
-        }
-        
-        categoryName.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.centerX.equalToSuperview()
         }
     }
 }

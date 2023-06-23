@@ -493,9 +493,9 @@
 		8417253C2A41B46C00B42B51 /* OnboardingVC */ = {
 			isa = PBXGroup;
 			children = (
+				8417253F2A41B46C00B42B51 /* FirstScreenOnboardingVC.swift */,
 				8417253D2A41B46C00B42B51 /* SecondScreenOnboardingVC.swift */,
 				8417253E2A41B46C00B42B51 /* ThirdScreenOnboardingVC.swift */,
-				8417253F2A41B46C00B42B51 /* FirstScreenOnboardingVC.swift */,
 				841725402A41B46C00B42B51 /* FourthScreenOnboardingVC.swift */,
 			);
 			path = OnboardingVC;

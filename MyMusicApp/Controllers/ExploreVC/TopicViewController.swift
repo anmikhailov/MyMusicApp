@@ -51,8 +51,8 @@ class TopicViewController: UICollectionViewController {
             return UICollectionViewCell()
         }
 
-        cell.backgroundColor = .red
-        cell.configureCell()
+//        cell.backgroundColor = .red
+//        cell.configureCell(genre: <#Genres#>)
         return cell
     }
 
