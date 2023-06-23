@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class FirstScreenOnboardingVC: UIViewController {
     
@@ -101,6 +102,10 @@ class FirstScreenOnboardingVC: UIViewController {
         view.backgroundColor = .black
         
         setupUI()
+        userNotificationPermission()
+        sendNotification()
+        
+        notificationCenter.delegate = self
     }
     
     // MARK: - Methods
@@ -109,7 +114,41 @@ class FirstScreenOnboardingVC: UIViewController {
     }
 }
 
-extension FirstScreenOnboardingVC {
+// MARK: - Notification
+let notificationCenter = UNUserNotificationCenter.current()
+
+func userNotificationPermission() {
+    //ask the permission from user
+    notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
+        guard granted else { return }
+        notificationCenter.getNotificationSettings { (settings) in
+            print(settings)
+            guard settings.authorizationStatus == .authorized else { return }
+        }
+    }
+}
+
+func sendNotification() {
+    //create notification content
+    let content = UNMutableNotificationContent()
+    content.title = "Greetings! 🥰"
+    content.body = " You can turn on/off notifications in app settings"
+    content.sound = UNNotificationSound.default
+    
+    //create the notification trigger
+    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+    
+    //create the request
+    let request = UNNotificationRequest(identifier: "notification", content: content, trigger: trigger)
+    
+    //register the notification request
+    notificationCenter.add(request) { (error) in
+        print(error?.localizedDescription as Any)
+    }
+}
+
+
+extension FirstScreenOnboardingVC: UNUserNotificationCenterDelegate {
     
     // MARK: - UI Setup
     func setupUI() {
@@ -124,7 +163,7 @@ extension FirstScreenOnboardingVC {
         view?.addSubview(welcomeLabel)
         view?.addSubview(commentLabel)
         view?.addSubview(getStartedButton)
-
+        
         /// TAMIC
         mockImageView.translatesAutoresizingMaskIntoConstraints = false
         dotView1.translatesAutoresizingMaskIntoConstraints = false
@@ -135,7 +174,7 @@ extension FirstScreenOnboardingVC {
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         commentLabel.translatesAutoresizingMaskIntoConstraints = false
         getStartedButton.translatesAutoresizingMaskIntoConstraints = false
-
+        
         /// SETUP CONSTRAINTS
         NSLayoutConstraint.activate([
             mockImageView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -184,6 +223,19 @@ extension FirstScreenOnboardingVC {
             getStartedButton.widthAnchor.constraint(equalToConstant: 280),
             getStartedButton.heightAnchor.constraint(equalToConstant: 50),
         ])
-
+    }
+    
+    // MARK: - Notifications delegate
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound, .badge])
+        print(#function)
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print(#function)
+        //user tap on badge and go to the screen we need
+        let vc = AccountViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
 }
