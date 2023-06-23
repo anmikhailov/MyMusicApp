@@ -158,17 +158,8 @@ class PlaybackManager {
                     return
                 }
                 // Save url in Realm
-                
-                //Example:
-//                guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-//                    // Обработка ошибки, если не удалось получить путь к папке "Documents"
-//                    return
-//                }
-//
-//                let filePath = documentsDirectory.appendingPathComponent("f9fb3d998c6d0b7c889b563cdc6c0206a3765c70.mp3")
-//                let url = URL(fileURLWithPath: filePath.path)
-//                let urlString = url.absoluteString
-//                PlaybackManager.shared.startPlayback(from: self, track: SpotifySimplifiedTrack(artists: [SpotifySimplifiedArtist(external_urls: SpotifyExternalUrl(spotify: ""), href: "", id: "", name: "Artist", type: "", uri: "")], duration_ms: 0, href: "", id: "", name: "Song", preview_url: urlString, uri: ""))
+                StorageManager.shared.save(track: self.track!)
+                StorageManager.shared.updateitem(with: self.track!.id, value: downloadedURL.absoluteString)
             }
         }
     }
