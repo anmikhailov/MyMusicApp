@@ -35,6 +35,12 @@ class PlaybackManager {
         track: SpotifySimplifiedTrack
     ) {
         playerViewController.modalPresentationStyle = .fullScreen
+//          guard let exploreVC = viewController as? ExploreViewController else { return }
+//            exploreVC.isPlaying = true
+        
+        guard let homeVC = viewController as? HomeViewController else {
+            return }
+        homeVC.isPlaying = true
         
         
         guard let url = URL(string: track.preview_url ?? "") else {

@@ -21,7 +21,7 @@ extension ExploreViewController: UICollectionViewDataSource {
         case .topTrending:
             return 3
         case .topic:
-            return 6
+            return genres.count
         }
     }
     
@@ -53,7 +53,9 @@ extension ExploreViewController: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
     
-            cell.configureCell()
+            let genre = genres[indexPath.row]
+            //cell.categoryName.text = genre
+            cell.configureCell(image: imageCategory!, title: genre)
             return cell
         }
         

@@ -9,9 +9,10 @@ import UIKit
 
 class PlayViewController: UIViewController {
     // MARK: - let/var
+    
     var isFavorite = false
     private var isDownload = true
-    var isPlay = true {
+    var isPlay = false {
         didSet {
             if isPlay {
                 playButton.setBackgroundImage(UIImage(systemName: "pause"), for: .normal)
