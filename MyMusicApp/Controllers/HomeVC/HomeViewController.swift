@@ -15,14 +15,7 @@ protocol GoToSeeAllProtocol: AnyObject {
 final class HomeViewController: UIViewController {
     
     private var playback: PlayView?
-    var isPlaying = false {
-        didSet {
-            if isPlaying {
-                addPlayView()
-            }
-        }
-    }
-    
+
     var album: [NewAlbum] = []
     var recentlyTracks: [PlayHistoryObject] = []
     var genres: [String] = []
@@ -56,6 +49,9 @@ final class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if PlaybackManager.shared.isPlaying {
+            addPlayView()
+        }
         navigationController?.navigationBar.isHidden = false
     }
     

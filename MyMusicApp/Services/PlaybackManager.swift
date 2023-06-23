@@ -11,6 +11,8 @@ import AVFoundation
 
 class PlaybackManager {
     
+    var isPlaying: Bool = false
+    
     static let shared  = PlaybackManager()
     
     private var track: SpotifySimplifiedTrack?
@@ -35,12 +37,17 @@ class PlaybackManager {
         track: SpotifySimplifiedTrack
     ) {
         playerViewController.modalPresentationStyle = .fullScreen
+        isPlaying = true
 //          guard let exploreVC = viewController as? ExploreViewController else { return }
-//            exploreVC.isPlaying = true
-        
-        guard let homeVC = viewController as? HomeViewController else {
-            return }
-        homeVC.isPlaying = true
+//        exploreVC.isPlaying = true
+////        guard let homeVC = viewController as? HomeViewController else {
+////            return }
+////
+////        if viewController == exploreVC {
+////            exploreVC.isPlaying = true
+////        } else if viewController == homeVC {
+////            homeVC.isPlaying = true
+////        }
         
         
         guard let url = URL(string: track.preview_url ?? "") else {
