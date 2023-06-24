@@ -38,17 +38,6 @@ class PlaybackManager {
     ) {
         playerViewController.modalPresentationStyle = .fullScreen
         isPlaying = true
-//          guard let exploreVC = viewController as? ExploreViewController else { return }
-//        exploreVC.isPlaying = true
-////        guard let homeVC = viewController as? HomeViewController else {
-////            return }
-////
-////        if viewController == exploreVC {
-////            exploreVC.isPlaying = true
-////        } else if viewController == homeVC {
-////            homeVC.isPlaying = true
-////        }
-        
         
         guard let url = URL(string: track.preview_url ?? "") else {
             print("Track without preview")
@@ -91,11 +80,6 @@ class PlaybackManager {
         self.track = track
         self.tracks = []
         
-        playerViewController.isFavorite = hasCurrentTrackInStorange()
-        if hasCurrentTrackInStorange() {
-            playerViewController.favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        }
-
         viewController.present(playerViewController, animated: true) { [weak self] in
             self?.player?.play()
             self?.playerViewController.isPlay = true

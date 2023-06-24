@@ -251,6 +251,19 @@ class PlayViewController: UIViewController {
         notificationManager.userNotificationPermission()
         notificationManager.notificationCenter.delegate = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        isFavorite = PlaybackManager.shared.hasCurrentTrackInStorange()
+        if isFavorite {
+            favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            favoriteButton.tintColor = Resources.Colors.brand1
+            
+        } else {
+            favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            favoriteButton.tintColor = .white
+        }
+    }
+    
     override func viewDidLayoutSubviews() {
         circleView.layer.cornerRadius = circleView.frame.width / 2
     }
@@ -457,9 +470,6 @@ extension PlayViewController: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         print(#function)
         //user tap on badge and go to the screen we need using TabBarController
-//        let vc = AccountViewController()
-//        vc.modalPresentationStyle = .fullScreen
-//        present(vc, animated: true)
     }
     
 }
