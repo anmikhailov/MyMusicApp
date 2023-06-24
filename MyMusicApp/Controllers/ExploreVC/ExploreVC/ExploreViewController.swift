@@ -92,10 +92,14 @@ class ExploreViewController: UIViewController {
     
     func TopTrndinTrack() {
         APICaller.shared.getPlaylistTracks(with: "37i9dQZF1DXcBWIGoYBM5M") { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let track):
                 for track in track.items {
-                    self?.track.append(track.track)
+                    self.track.append(track.track)
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
                 }
             case .failure(let error):
                 print(error)
