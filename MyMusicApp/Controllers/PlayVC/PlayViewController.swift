@@ -248,7 +248,6 @@ class PlayViewController: UIViewController {
         setupViews()
         setConstrains()
         
-        notificationManager.userNotificationPermission()
         notificationManager.notificationCenter.delegate = self
     }
     
@@ -464,13 +463,23 @@ extension PlayViewController {
 // MARK: - Notifications delegate
 extension PlayViewController: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert, .sound, .badge])
+        completionHandler([.banner, .sound, .badge])
         print(#function)
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        print(#function)
-        //user tap on badge and go to the screen we need using TabBarController
+        
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let tabBarController = windowScene.windows.first?.rootViewController as? TabBarController else {
+            completionHandler()
+            return
+        }
+        // Получение индекса экрана, на который вы хотите перейти
+        let desiredTabIndex = Tabs.account.rawValue // Здесь используется "Account" экран
+        
+        // Переключение на целевой экран
+        tabBarController.selectedIndex = desiredTabIndex
+        completionHandler()
     }
     
 }

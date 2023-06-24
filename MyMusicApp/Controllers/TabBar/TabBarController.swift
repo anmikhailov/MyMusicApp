@@ -45,56 +45,65 @@ final class TabBarController: UITabBarController {
         
         UITabBarItem.appearance().setTitleTextAttributes(
             [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)], for: .normal)
-
+        
         let homeController = HomeViewController()
         let exploreController = ExploreViewController()
         let favoritesController = FavoritesViewController()
         let accountController = AccountViewController()
-
+        
         let homeNavigationController = UINavigationController(rootViewController: homeController)
         let exploreNavigationController = UINavigationController(rootViewController: exploreController)
         let favoritesNavigationController = UINavigationController(rootViewController: favoritesController)
         let accountNavigationController = UINavigationController(rootViewController: accountController)
-
-
+        
+        
         homeNavigationController.tabBarItem = UITabBarItem(title: Resources.Strings.TabBar.home,
-                                                 image: Resources.Icons.TabBar.home,
-                                                 tag: Tabs.home.rawValue)
+                                                           image: Resources.Icons.TabBar.home,
+                                                           tag: Tabs.home.rawValue)
         exploreNavigationController.tabBarItem = UITabBarItem(title: Resources.Strings.TabBar.explore,
-                                                 image: Resources.Icons.TabBar.explore,
-                                                 tag: Tabs.explore.rawValue)
+                                                              image: Resources.Icons.TabBar.explore,
+                                                              tag: Tabs.explore.rawValue)
         favoritesNavigationController.tabBarItem = UITabBarItem(title: Resources.Strings.TabBar.favorites,
-                                                 image: Resources.Icons.TabBar.favorites,
-                                                 tag: Tabs.favorites.rawValue)
+                                                                image: Resources.Icons.TabBar.favorites,
+                                                                tag: Tabs.favorites.rawValue)
         accountNavigationController.tabBarItem = UITabBarItem(title: Resources.Strings.TabBar.account,
-                                                 image: Resources.Icons.TabBar.account,
-                                                 tag: Tabs.account.rawValue)
-
+                                                              image: Resources.Icons.TabBar.account,
+                                                              tag: Tabs.account.rawValue)
+        
         setViewControllers([
             homeNavigationController,
             exploreNavigationController,
             favoritesNavigationController,
             accountNavigationController,
         ], animated: false)
-
-
+        
+        
     }
 }
 
 
 // MARK: - Notifications delegate
 extension TabBarController: UNUserNotificationCenterDelegate {
+    
+    //method that shows notification badge at any time we need it
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert, .sound, .badge])
-        print(#function)
+        completionHandler([.banner, .sound, .badge])
     }
     
+    //user tap on badge and go to the screen we need using TabBarController
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        print(#function)
-        //user tap on badge and go to the screen we need using TabBarController
-//        let vc = AccountViewController()
-//        vc.modalPresentationStyle = .fullScreen
-//        present(vc, animated: true)
+        
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let tabBarController = windowScene.windows.first?.rootViewController as? TabBarController else {
+            completionHandler()
+            return
+        }
+        // Получение индекса экрана, на который вы хотите перейти
+        let desiredTabIndex = Tabs.account.rawValue // Здесь используется "Account" экран
+        
+        // Переключение на целевой экран
+        tabBarController.selectedIndex = desiredTabIndex
+        completionHandler()
     }
     
 }
