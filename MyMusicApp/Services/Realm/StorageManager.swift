@@ -39,7 +39,7 @@ class StorageManager {
 
         let bookmarks = realm.objects(FavoriteModel.self)
         for bookmark in bookmarks {
-            bookmarkAny.append(SpotifySimplifiedTrack(artists: [SpotifySimplifiedArtist(external_urls: SpotifyExternalUrl(spotify: ""), href: "", id: "", name: bookmark.nameSinger, type: "", uri: "")], duration_ms: 0, href: "", id: bookmark.id, name: bookmark.nameSong, preview_url: bookmark.previewUrl, uri: ""))
+            bookmarkAny.append(SpotifySimplifiedTrack(album: nil, artists: [SpotifySimplifiedArtist(external_urls: SpotifyExternalUrl(spotify: ""), href: "", id: "", name: bookmark.nameSinger, type: "", uri: "")], duration_ms: 0, href: "", id: bookmark.id, name: bookmark.nameSong, preview_url: bookmark.previewUrl, uri: ""))
         }
         return bookmarkAny
     }
@@ -50,7 +50,7 @@ class StorageManager {
         let bookmarks = realm.objects(FavoriteModel.self)
         for bookmark in bookmarks {
             if bookmark.localUrl != nil {
-                bookmarkAny.append(SpotifySimplifiedTrack(artists: [SpotifySimplifiedArtist(external_urls: SpotifyExternalUrl(spotify: ""), href: "", id: "", name: bookmark.nameSinger, type: "", uri: "")], duration_ms: 0, href: "", id: bookmark.id, name: bookmark.nameSong, preview_url: bookmark.localUrl, uri: ""))
+                bookmarkAny.append(SpotifySimplifiedTrack(album: nil, artists: [SpotifySimplifiedArtist(external_urls: SpotifyExternalUrl(spotify: ""), href: "", id: "", name: bookmark.nameSinger, type: "", uri: "")], duration_ms: 0, href: "", id: bookmark.id, name: bookmark.nameSong, preview_url: bookmark.localUrl, uri: ""))
             }
         }
         return bookmarkAny

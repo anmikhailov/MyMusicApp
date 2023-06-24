@@ -23,6 +23,7 @@ class PlayViewController: UIViewController {
             }
         }
     }
+    let image1 = UIImage(named: "Album")
 
     private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
@@ -48,7 +49,7 @@ class PlayViewController: UIViewController {
         return button
     }()
 
-    private let albumImageView: UIImageView = {
+    let albumImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "Album")
@@ -350,6 +351,26 @@ class PlayViewController: UIViewController {
         albumVC.modalPresentationStyle = .fullScreen
         albumVC.modalTransitionStyle = .crossDissolve
         present(albumVC, animated: true)
+    }
+    
+    func setupImage(imageAlbum: SpotifyImage) {
+        guard let urlToImage = imageAlbum.url else {
+            albumImageView.image = image1
+            return
+        }
+
+        ImageClient.shared.setImage(
+            from: urlToImage,
+            placeholderImage: image1) { [weak self] image in
+                guard let self = self else { return }
+
+                guard let image else {
+                    self.albumImageView.image = image
+                    return
+                }
+
+                self.albumImageView.image = image
+            }
     }
 }
 extension PlayViewController {

@@ -57,14 +57,14 @@ struct SpotifySimplifiedArtist: Codable, Hashable {
     let uri: String
 }
 
-struct SpotifySimplifiedAlbum: Codable {
+struct SpotifySimplifiedAlbum: Codable, Hashable {
     let album_type: String
     let total_tracks: Int
     let available_markets: [String]
     let external_urls: SpotifyExternalUrl
     let href: String
     let id: String
-    let images: [SpotifyImage]
+    let images: [SpotifyImage]?
     let name: String
     let release_date: String
     let release_date_precision: String
@@ -91,7 +91,7 @@ struct SpotifyTracksInPlaylist: Codable {
 }
 
 struct SpotifySimplifiedTrack: Codable, Hashable {
-//    let album: SpotifySimplifiedAlbum
+    let album: SpotifySimplifiedAlbum?
     let artists: [SpotifySimplifiedArtist]
 //    let available_markets: [String]
 //    let disc_number: Int
