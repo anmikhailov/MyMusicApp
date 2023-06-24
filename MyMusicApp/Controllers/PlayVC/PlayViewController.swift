@@ -9,6 +9,7 @@ import UIKit
 
 class PlayViewController: UIViewController {
     // MARK: - let/var
+    let notificationManager = NotificationManager()
     
     var isFavorite = false
     private var isDownload = false
@@ -246,6 +247,9 @@ class PlayViewController: UIViewController {
 
         setupViews()
         setConstrains()
+        
+        notificationManager.userNotificationPermission()
+        notificationManager.notificationCenter.delegate = self
     }
     override func viewDidLayoutSubviews() {
         circleView.layer.cornerRadius = circleView.frame.width / 2
@@ -284,6 +288,7 @@ class PlayViewController: UIViewController {
     @objc private func downloadButtonTapped() {
         if !isDownload {
             PlaybackManager.shared.downloadTrack()
+            notificationManager.sendNotification(title: "Track has been downloaded!", body: "You can listen it from Account -> Downloaded Tracks")
             downloadButton.tintColor = Resources.Colors.brand1
             isDownload = true
         } else {
@@ -440,4 +445,21 @@ extension PlayViewController {
             repeatButton.leadingAnchor.constraint(equalTo: nextButton.trailingAnchor, constant: 46)
         ])
     }
+}
+
+// MARK: - Notifications delegate
+extension PlayViewController: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound, .badge])
+        print(#function)
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print(#function)
+        //user tap on badge and go to the screen we need using TabBarController
+//        let vc = AccountViewController()
+//        vc.modalPresentationStyle = .fullScreen
+//        present(vc, animated: true)
+    }
+    
 }

@@ -92,9 +92,9 @@ extension TabBarController: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         print(#function)
         //user tap on badge and go to the screen we need using TabBarController
-        let vc = AccountViewController()
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
+//        let vc = AccountViewController()
+//        vc.modalPresentationStyle = .fullScreen
+//        present(vc, animated: true)
     }
     
 }
