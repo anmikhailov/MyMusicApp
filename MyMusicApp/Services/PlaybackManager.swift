@@ -9,6 +9,12 @@ import Foundation
 import UIKit
 import AVFoundation
 
+protocol PlayerDataSource {
+    var songName: String? { get }
+    var subtitle: String? { get }
+    var imageURL: URL? { get }
+}
+
 class PlaybackManager {
     
     var isPlaying: Bool = false
@@ -68,6 +74,8 @@ class PlaybackManager {
         //Configure labels
         playerViewController.songNameLabel.text = track.name
         playerViewController.groupNameLabel.text = track.artists.first?.name
+        let image = track.album?.images?.first ?? SpotifyImage(url: nil, height: nil, width: nil)
+        playerViewController.setupImage(imageAlbum: image)
            
         // Add observer for update slider in realtime
         player!.addPeriodicTimeObserver(
@@ -215,16 +223,16 @@ extension PlaybackManager {
     }
 }
 
-//extension PlaybackManager: PlayerDataSource {
-//    var songName: String? {
-//        return currentTrack?.name
-//    }
-//
-//    var subtitle: String? {
-//        return currentTrack?.artists.first?.name
-//    }
-//
-//    var imageURL: URL? {
-//        return URL(string: currentTrack?.album?.first?.url ?? "")
-//    }
-//}
+extension PlaybackManager: PlayerDataSource {
+    var songName: String? {
+        return currentTrack?.name
+    }
+
+    var subtitle: String? {
+        return currentTrack?.artists.first?.name
+    }
+
+    var imageURL: URL? {
+        return URL(string: currentTrack?.album?.images?.first?.url ?? "")
+    }
+}

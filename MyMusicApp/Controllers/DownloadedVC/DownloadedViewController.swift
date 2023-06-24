@@ -93,7 +93,7 @@ extension DownloadedViewController: UICollectionViewDelegate, UICollectionViewDa
         let filePath = documentsDirectory.appendingPathComponent(fileName)
         let url = URL(fileURLWithPath: filePath.path)
         let urlString = url.absoluteString
-        PlaybackManager.shared.startPlayback(from: self, track: SpotifySimplifiedTrack(artists: [SpotifySimplifiedArtist(external_urls: SpotifyExternalUrl(spotify: ""), href: "", id: "", name: track.artists.first!.name, type: "", uri: "")], duration_ms: 0, href: "", id: track.id, name: track.name, preview_url: urlString, uri: ""))
+        PlaybackManager.shared.startPlayback(from: self, track: SpotifySimplifiedTrack(album: nil, artists: [SpotifySimplifiedArtist(external_urls: SpotifyExternalUrl(spotify: ""), href: "", id: "", name: track.artists.first!.name, type: "", uri: "")], duration_ms: 0, href: "", id: track.id, name: track.name, preview_url: urlString, uri: ""))
     }
 }
 extension DownloadedViewController {
