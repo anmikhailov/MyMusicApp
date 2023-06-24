@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol SongCollectionViewCellDelegate: AnyObject {
+    func songCollectionViewCellDelegate(_ view: SongCollectionViewCell, didTapDotsButton button: UIButton)
+}
+
 class SongCollectionViewCell: UICollectionViewCell {
+    weak var delegate: SongCollectionViewCellDelegate?
+    
     // MARK: - numberSongLabel
     let numberSongLabel: UILabel = {
         let label = UILabel()
@@ -69,8 +75,8 @@ class SongCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     // MARK: - ellipsisButtonTapped
-    @objc private func ellipsisButtonTapped() {
-        print("ellipsisButtonTapped")
+    @objc private func ellipsisButtonTapped(_ sender: UIButton) {
+        delegate?.songCollectionViewCellDelegate(self, didTapDotsButton: sender)
     }
     // MARK: - setupViews
     private func setupViews() {
