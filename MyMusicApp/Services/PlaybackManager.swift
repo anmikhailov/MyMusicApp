@@ -120,7 +120,7 @@ class PlaybackManager {
     }
     
     func forwardPlayback() {
-        if let player = player {
+        if let _ = player {
             if tracks.isEmpty {
 //                player.pause()
             } else {
