@@ -56,9 +56,38 @@ class TopTrendingCell: UICollectionViewCell {
     
     // MARK: - Methods
     
-    func configureCell() {
-        songImage.image = post
+    func configureCell(title: String, name: String, image: UIImage) {
+        songImage.image = image
+        songName.text = title
+        artistNamelabel.text = name
     }
+    
+    func setupImage(imageAlbum: SpotifyImage) {
+        guard let urlToImage = imageAlbum.url else {
+            songImage.image = post
+            songImage.contentMode = .scaleAspectFill
+            //loadingActivityIndicator.stopAnimating()
+            return
+        }
+
+        ImageClient.shared.setImage(
+            from: urlToImage,
+            placeholderImage: post) { [weak self] image in
+                guard let self = self else { return }
+
+                guard let image else {
+                    self.songImage.image = image
+                    self.songImage.contentMode = .scaleAspectFill
+                   // self.loadingActivityIndicator.stopAnimating()
+                    return
+                }
+
+                self.songImage.image = image
+                self.songImage.contentMode = .scaleAspectFill
+                //self.loadingActivityIndicator.stopAnimating()
+            }
+    }
+    
     
 }
 

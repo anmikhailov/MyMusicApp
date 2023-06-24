@@ -61,12 +61,11 @@ extension ExploreViewController: UICollectionViewDelegateFlowLayout {
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: .init(widthDimension: .absolute(340), heightDimension: .absolute(193)),
             subitems: [item])
-        group.contentInsets.trailing = 20
         
         let section = createSection(
             group: group,
             behavior: .continuous,
-            interGroupSpacing: 16,
+            interGroupSpacing: 30,
             supplementaryItems: [supplementaryHeaderItem()],
             contentInsets: false)
         section.contentInsets = .init(top: 5, leading: 20, bottom: 10, trailing: 5)

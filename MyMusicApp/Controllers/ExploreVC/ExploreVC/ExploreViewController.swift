@@ -17,17 +17,12 @@ class ExploreViewController: UIViewController {
     // MARK: - Properties
     
     let imageCategory = UIImage(named: "hip-hop")
+    let post = UIImage(named: "top")
     
     private var playback: PlayView?
-    var isPlaying = false {
-        didSet {
-            if isPlaying {
-                addPlayView()
-            }
-        }
-    }
     
     var recentlyTracks: [PlayHistoryObject] = []
+    var track: [SpotifySimplifiedTrack] = []
     var genres: [String] = []
     
     private let helperView = UIView()
@@ -53,7 +48,16 @@ class ExploreViewController: UIViewController {
         configureNavBar(with: "Explore", backgroundColor: .clear, rightButtonImage: Resources.Icons.Common.search)
         fetchRecentlyTrack()
         fetchGenres()
+        TopTrndinTrack()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if PlaybackManager.shared.isPlaying {
+            addPlayView()
+        }
+    }
+    
+    // MARK: - Fetch Data methods
     
     func fetchRecentlyTrack() {
         APICaller.shared.getFiveRecentlyPlayedTracks { [weak self] result in
@@ -76,10 +80,21 @@ class ExploreViewController: UIViewController {
             case .success(let genres):
                 let limitedGenres = Array(genres.genres.prefix(6))
                 self.genres = limitedGenres
-//                self.genres = genres.genres
-//                print(genres)
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func TopTrndinTrack() {
+        APICaller.shared.getPlaylistTracks(with: "37i9dQZF1DXcBWIGoYBM5M") { [weak self] result in
+            switch result {
+            case .success(let track):
+                for track in track.items {
+                    self?.track.append(track.track)
                 }
             case .failure(let error):
                 print(error)
@@ -158,22 +173,6 @@ extension ExploreViewController {
             make.height.equalTo(80)
         }
         
-        let button = playback?.playButton
-        button?.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
-        
     }
-    
-    @objc func playButtonTapped() {
-        isPlaying.toggle()
-        if let playerVC = presentedViewController as? PlayViewController {
-            playerVC.isPlay = isPlaying
-        }
-        
-        let buttonTitle = isPlaying ? "Stop" : "Play"
-        if let playButton = playback?.subviews.compactMap({ $0 as? UIButton}).first {
-            playButton.setTitle(buttonTitle, for: .normal)
-        }
-    }
-    
     
 }

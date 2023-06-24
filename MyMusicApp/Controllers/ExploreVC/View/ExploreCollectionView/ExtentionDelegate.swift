@@ -18,9 +18,8 @@ extension ExploreViewController: UICollectionViewDelegate {
             let track = recentlyTracks[indexPath.row].track
             PlaybackManager.shared.startPlayback(from: self, track: track)
         case .topTrending:
-            let tableViewController = TableNewSongViewController()
-            
-            navigationController?.pushViewController(tableViewController, animated: true)
+            let track = track[indexPath.row]
+            PlaybackManager.shared.startPlayback(from: self, track: track)
         case .topic:
             let topicVC = TopicViewController()
             navigationController?.pushViewController(topicVC, animated: true)
