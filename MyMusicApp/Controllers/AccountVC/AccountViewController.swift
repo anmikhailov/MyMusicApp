@@ -33,6 +33,7 @@ class AccountViewController: UIViewController {
         setProfileLabel()
         setSetingsButton()
         setProfileImage()
+        loadProfileImage()
         setLibraryLabel()
         setMyPlatListButton()
         setNotificationButton()
@@ -89,6 +90,13 @@ class AccountViewController: UIViewController {
             make.height.equalTo(80)
         }
         
+    }
+    
+    func loadProfileImage() {
+        if let profileImageData = UserDefaults.standard.data(forKey: "profileImage"),
+            let profileImage = UIImage(data: profileImageData) {
+            profileImageView.image = profileImage
+        }
     }
     
     func setLibraryLabel(){

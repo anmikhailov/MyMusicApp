@@ -54,6 +54,13 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate{
         setBackButton()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        loadProfileImage()
+    }
+    
 //MARK: - Func
     func setBacground(){
         view.backgroundColor = Resources.Colors.TabBarColors.background
@@ -96,6 +103,19 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate{
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(changeProfileImage))
         profileImageView.addGestureRecognizer(tapGesture)
+    }
+    
+    func loadProfileImage() {
+        if let profileImageData = UserDefaults.standard.data(forKey: "profileImage"),
+           let profileImage = UIImage(data: profileImageData) {
+            profileImageView.image = profileImage
+        }
+    }
+    
+    func saveProfileImage(_ image: UIImage) {
+        if let imageData = image.jpegData(compressionQuality: 1.0) {
+            UserDefaults.standard.set(imageData, forKey: "profileImage")
+        }
     }
     
     func setCameraImageViev(){
@@ -299,8 +319,8 @@ extension SettingsViewController: UITextFieldDelegate {
 extension SettingsViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            AccountViewController.userImage = editedImage
-            profileImageView.image = AccountViewController.userImage
+            profileImageView.image = editedImage
+            saveProfileImage(editedImage)
         } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             profileImageView.image = originalImage
         }
