@@ -109,25 +109,33 @@ extension ExploreViewController: UICollectionViewDelegateFlowLayout {
         
         let headerView: UICollectionReusableView
         
-        if indexPath.section == 0 || indexPath.section == 2 {
+        if indexPath.section == 0 {
             headerView = collectionView.dequeueReusableSupplementaryView(
                 ofKind: kind,
-                withReuseIdentifier: "HeaderSeeAll",
-                for: indexPath) as! ExploreCollectionReusableView
+                withReuseIdentifier: "HeaderList",
+                for: indexPath) as! TrackListReusableView
             
-        } else {
-            headerView = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: "Header",
-                for: indexPath) as! HeaderReusableView
-        }
+            } else if indexPath.section == 2 {
+                        headerView = collectionView.dequeueReusableSupplementaryView(
+                            ofKind: kind,
+                            withReuseIdentifier: "HeaderSeeAll",
+                            for: indexPath) as! CategoryReusableView
+                        
+                    } else {
+                        headerView = collectionView.dequeueReusableSupplementaryView(
+                            ofKind: kind,
+                            withReuseIdentifier: "Header",
+                            for: indexPath) as! HeaderReusableView
+                    }
         
         let explore = sections[indexPath.section]
         
-        if let headerSeeAllView = headerView as? ExploreCollectionReusableView {
+        if let headerSeeAllView = headerView as? CategoryReusableView {
             headerSeeAllView.configure(title: explore.title, delegate: self)
         } else if let headerReusebleView = headerView as? HeaderReusableView {
             headerReusebleView.configure(title: explore.title)
+        } else if let headerRecentlyMusic = headerView as? TrackListReusableView {
+            headerRecentlyMusic.configure(title: explore.title, delegate: self)
         }
         
         return headerView

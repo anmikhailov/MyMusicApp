@@ -18,6 +18,7 @@ class ViewAllCategoryViewController: UICollectionViewController {
             
             super.init(collectionViewLayout: layout)
         fetchGenres()
+  
         }
         
         required init?(coder aDecoder: NSCoder) {

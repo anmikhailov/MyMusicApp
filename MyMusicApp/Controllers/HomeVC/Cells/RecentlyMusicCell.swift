@@ -52,8 +52,6 @@ class RecentlyMusicCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        layer.cornerRadius = 15
-        layer.masksToBounds = true
         setupConstraints()
         //loadingActivityIndicator.startAnimating()
     }
@@ -114,7 +112,7 @@ extension RecentlyMusicCell {
         songImage.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(10)
-            make.width.height.equalTo(60)
+            make.width.height.equalTo(50)
         }
         
         addSubview(songNamelabel)

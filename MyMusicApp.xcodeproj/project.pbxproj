@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		04BB25F92A42D56000B4FD64 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB25F82A42D56000B4FD64 /* Delegate.swift */; };
 		04BB25FE2A43025100B4FD64 /* AlbumInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB25FD2A43025100B4FD64 /* AlbumInfo.swift */; };
+		04EC99262A470CF900969FC1 /* ViewAllRecentlyMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC99252A470CF900969FC1 /* ViewAllRecentlyMusicViewController.swift */; };
+		04EC99282A477F0100969FC1 /* TrackListReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC99272A477F0100969FC1 /* TrackListReusableView.swift */; };
 		04EF352D2A4312CE00B76943 /* PlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF352C2A4312CE00B76943 /* PlayView.swift */; };
 		04EF352F2A431D4E00B76943 /* ViewAllCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF352E2A431D4E00B76943 /* ViewAllCategoryViewController.swift */; };
 		324894552A39D1770031A7AD /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -49,7 +51,7 @@
 		841725562A41B46D00B42B51 /* ExploreCompositionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8417251C2A41B46C00B42B51 /* ExploreCompositionLayout.swift */; };
 		841725572A41B46D00B42B51 /* ExtentionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8417251D2A41B46C00B42B51 /* ExtentionDelegate.swift */; };
 		841725582A41B46D00B42B51 /* ExploreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8417251E2A41B46C00B42B51 /* ExploreDataSource.swift */; };
-		841725592A41B46D00B42B51 /* ExploreCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841725202A41B46C00B42B51 /* ExploreCollectionReusableView.swift */; };
+		841725592A41B46D00B42B51 /* CategoryReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841725202A41B46C00B42B51 /* CategoryReusableView.swift */; };
 		8417255A2A41B46D00B42B51 /* ForgetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841725222A41B46C00B42B51 /* ForgetPasswordView.swift */; };
 		8417255B2A41B46D00B42B51 /* SignInUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841725232A41B46C00B42B51 /* SignInUpViewController.swift */; };
 		8417255C2A41B46D00B42B51 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841725242A41B46C00B42B51 /* ChangePasswordView.swift */; };
@@ -113,6 +115,8 @@
 /* Begin PBXFileReference section */
 		04BB25F82A42D56000B4FD64 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
 		04BB25FD2A43025100B4FD64 /* AlbumInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumInfo.swift; sourceTree = "<group>"; };
+		04EC99252A470CF900969FC1 /* ViewAllRecentlyMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllRecentlyMusicViewController.swift; sourceTree = "<group>"; };
+		04EC99272A477F0100969FC1 /* TrackListReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListReusableView.swift; sourceTree = "<group>"; };
 		04EF352C2A4312CE00B76943 /* PlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayView.swift; sourceTree = "<group>"; };
 		04EF352E2A431D4E00B76943 /* ViewAllCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllCategoryViewController.swift; sourceTree = "<group>"; };
 		3263BDF82A4438BC0046B5EC /* FavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
@@ -152,7 +156,7 @@
 		8417251C2A41B46C00B42B51 /* ExploreCompositionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreCompositionLayout.swift; sourceTree = "<group>"; };
 		8417251D2A41B46C00B42B51 /* ExtentionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtentionDelegate.swift; sourceTree = "<group>"; };
 		8417251E2A41B46C00B42B51 /* ExploreDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreDataSource.swift; sourceTree = "<group>"; };
-		841725202A41B46C00B42B51 /* ExploreCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreCollectionReusableView.swift; sourceTree = "<group>"; };
+		841725202A41B46C00B42B51 /* CategoryReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryReusableView.swift; sourceTree = "<group>"; };
 		841725222A41B46C00B42B51 /* ForgetPasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordView.swift; sourceTree = "<group>"; };
 		841725232A41B46C00B42B51 /* SignInUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInUpViewController.swift; sourceTree = "<group>"; };
 		841725242A41B46C00B42B51 /* ChangePasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
@@ -338,6 +342,7 @@
 			children = (
 				841725152A41B46C00B42B51 /* TopicViewController.swift */,
 				04EF352E2A431D4E00B76943 /* ViewAllCategoryViewController.swift */,
+				04EC99252A470CF900969FC1 /* ViewAllRecentlyMusicViewController.swift */,
 				841725162A41B46C00B42B51 /* ExploreVC */,
 				841725182A41B46C00B42B51 /* Model */,
 				8417251A2A41B46C00B42B51 /* View */,
@@ -393,7 +398,8 @@
 		8417251F2A41B46C00B42B51 /* Header */ = {
 			isa = PBXGroup;
 			children = (
-				841725202A41B46C00B42B51 /* ExploreCollectionReusableView.swift */,
+				841725202A41B46C00B42B51 /* CategoryReusableView.swift */,
+				04EC99272A477F0100969FC1 /* TrackListReusableView.swift */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -799,6 +805,7 @@
 				8417255A2A41B46D00B42B51 /* ForgetPasswordView.swift in Sources */,
 				4ED59D7B2A3F15E4002F3632 /* ErrorResponse.swift in Sources */,
 				841725682A41B46D00B42B51 /* Extention+CompositionLayout.swift in Sources */,
+				04EC99282A477F0100969FC1 /* TrackListReusableView.swift in Sources */,
 				04BB25FE2A43025100B4FD64 /* AlbumInfo.swift in Sources */,
 				04EF352D2A4312CE00B76943 /* PlayView.swift in Sources */,
 				8417255B2A41B46D00B42B51 /* SignInUpViewController.swift in Sources */,
@@ -856,7 +863,7 @@
 				8429C9CC2A3F46AD00BAE4D4 /* SearchResultsResponse.swift in Sources */,
 				8417255F2A41B46D00B42B51 /* ForgetPasswordViewController.swift in Sources */,
 				8417255E2A41B46D00B42B51 /* SignInUpView.swift in Sources */,
-				841725592A41B46D00B42B51 /* ExploreCollectionReusableView.swift in Sources */,
+				841725592A41B46D00B42B51 /* CategoryReusableView.swift in Sources */,
 				841725702A41B46D00B42B51 /* AuthViewController.swift in Sources */,
 				84AE2F7C2A35F679006E87F1 /* UIColorExtension.swift in Sources */,
 				4ED59D792A3F158E002F3632 /* NetworkService.swift in Sources */,
@@ -866,6 +873,7 @@
 				8417255D2A41B46D00B42B51 /* ChangePasswordViewController.swift in Sources */,
 				8417256F2A41B46D00B42B51 /* FourthScreenOnboardingVC.swift in Sources */,
 				04EF352F2A431D4E00B76943 /* ViewAllCategoryViewController.swift in Sources */,
+				04EC99262A470CF900969FC1 /* ViewAllRecentlyMusicViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

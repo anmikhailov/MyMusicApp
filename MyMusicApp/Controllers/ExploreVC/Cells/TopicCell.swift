@@ -16,7 +16,7 @@ class TopicCell: UICollectionViewCell {
     
     let categoryImage: UIImageView = {
         let image = UIImageView()
-        image.layer.cornerRadius = 3
+        image.layer.cornerRadius = 5
         image.layer.masksToBounds = true
         image.contentMode = .scaleAspectFill
         return image

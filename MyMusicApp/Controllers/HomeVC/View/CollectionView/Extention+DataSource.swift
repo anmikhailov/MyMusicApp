@@ -60,6 +60,8 @@ extension HomeViewController: UICollectionViewDataSource {
             let track = recentlyTracks[indexPath.item]
             cell.configure(recentlyMusic: track)
             print(track)
+            cell.layer.cornerRadius = 15
+            cell.layer.masksToBounds = true
 //            let image = recentlyTracks.first?.track.artists.first?.images.first
 //            cell.setupImage(imageAlbum: image!)
             cell.backgroundColor = Resources.Colors.TabBarColors.background

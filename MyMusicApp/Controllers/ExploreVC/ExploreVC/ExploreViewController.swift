@@ -9,7 +9,11 @@ import UIKit
 import SnapKit
 
 protocol ViewAllProtocol: AnyObject {
-    func goToSeeAll()
+    func goToSeeAllCategory()
+}
+
+protocol TrackListProtocol: AnyObject {
+    func goToSeeAllMusic()
 }
 
 class ExploreViewController: UIViewController {
@@ -29,6 +33,7 @@ class ExploreViewController: UIViewController {
     
     var recentlyTracks: [PlayHistoryObject] = []
     var genres: [String] = []
+    var recommendTrack: [SpotifySimplifiedTrack] = []
     
     private let helperView = UIView()
     
@@ -53,7 +58,10 @@ class ExploreViewController: UIViewController {
         configureNavBar(with: "Explore", backgroundColor: .clear, rightButtonImage: Resources.Icons.Common.search)
         fetchRecentlyTrack()
         fetchGenres()
+        fetchGenreTracks()
     }
+    
+    // MARK: - Fetch Data
     
     func fetchRecentlyTrack() {
         APICaller.shared.getFiveRecentlyPlayedTracks { [weak self] result in
@@ -87,6 +95,17 @@ class ExploreViewController: UIViewController {
         }
     }
     
+    func fetchGenreTracks() {
+        APICaller.shared.getGenreTracks(for: genres.first ?? "") { [weak self] result in
+            switch result {
+            case .success(let track):
+                self?.recommendTrack = track.tracks
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     
     
     // MARK: - Private methods
@@ -106,7 +125,8 @@ class ExploreViewController: UIViewController {
         collectionView.register(TopicCell.self, forCellWithReuseIdentifier: "cell5")
         
         collectionView.register(HeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Header")
-        collectionView.register(ExploreCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ExploreCollectionReusableView.identifier)
+        collectionView.register(CategoryReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CategoryReusableView.identifier)
+        collectionView.register(TrackListReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TrackListReusableView.identifier)
     }
     
     override func barButtonTapped() {
@@ -136,13 +156,20 @@ extension ExploreViewController {
     
 }
 
-extension ExploreViewController: ViewAllProtocol {
-    func goToSeeAll() {
-        let viewAllVC = ViewAllCategoryViewController()
-        
-        
+extension ExploreViewController: ViewAllProtocol, TrackListProtocol {
+    
+    func goToSeeAllMusic() {
+        let viewAllVC = ViewAllRecentlyMusicViewController()
         navigationController?.pushViewController(viewAllVC, animated: true)
     }
+    
+    func goToSeeAllCategory() {
+        
+        let viewAllVC = ViewAllCategoryViewController()
+        navigationController?.pushViewController(viewAllVC, animated: true)
+    }
+    
+    
 }
 
 extension ExploreViewController {
@@ -158,21 +185,6 @@ extension ExploreViewController {
             make.height.equalTo(80)
         }
         
-        let button = playback?.playButton
-        button?.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
-        
-    }
-    
-    @objc func playButtonTapped() {
-        isPlaying.toggle()
-        if let playerVC = presentedViewController as? PlayViewController {
-            playerVC.isPlay = isPlaying
-        }
-        
-        let buttonTitle = isPlaying ? "Stop" : "Play"
-        if let playButton = playback?.subviews.compactMap({ $0 as? UIButton}).first {
-            playButton.setTitle(buttonTitle, for: .normal)
-        }
     }
     
     

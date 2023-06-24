@@ -24,6 +24,8 @@ class TopTrendingCell: UICollectionViewCell {
         label.textColor = .white
         label.textAlignment = .left
         label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.numberOfLines = 2
+        label.lineBreakMode = .byWordWrapping
         label.text = "Do it"
         return label
     }()
@@ -56,8 +58,11 @@ class TopTrendingCell: UICollectionViewCell {
     
     // MARK: - Methods
     
-    func configureCell() {
+    func configureCell(track: SpotifySimplifiedTrack) {
         songImage.image = post
+        songName.text = track.name
+        artistNamelabel.text = track.artists.first?.name
+        
     }
     
 }
@@ -78,6 +83,7 @@ extension TopTrendingCell {
         
         songName.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(100)
             make.top.equalToSuperview().offset(140)
         }
         

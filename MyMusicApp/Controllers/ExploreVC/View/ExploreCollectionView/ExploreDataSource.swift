@@ -19,7 +19,7 @@ extension ExploreViewController: UICollectionViewDataSource {
         case .recentlyMusic:
             return recentlyTracks.count
         case .topTrending:
-            return 3
+            return recommendTrack.count
         case .topic:
             return genres.count
         }
@@ -45,7 +45,9 @@ extension ExploreViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell4", for: indexPath) as? TopTrendingCell else {
                 return UICollectionViewCell()
             }
-            cell.configureCell()
+            
+            let track = recommendTrack[indexPath.item]
+           // cell.configureCell(track: recommendTrack)
             return cell
             
         case .topic:
@@ -54,7 +56,6 @@ extension ExploreViewController: UICollectionViewDataSource {
             }
     
             let genre = genres[indexPath.row]
-            //cell.categoryName.text = genre
             cell.configureCell(image: imageCategory!, title: genre)
             return cell
         }

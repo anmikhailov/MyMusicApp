@@ -134,21 +134,6 @@ final class HomeViewController: UIViewController {
         //PlaybackManager.shared.playPausePlayback()
         navigationController?.pushViewController(SearchViewController(), animated: true)
     }
-    /*
-    private var isNavigationBarHidden = false
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsetY = scrollView.contentOffset.y
-        
-        if offsetY > 0 && !isNavigationBarHidden {
-            isNavigationBarHidden = true
-            navigationController?.setNavigationBarHidden(true, animated: true)
-        } else if offsetY <= 0 && isNavigationBarHidden {
-            isNavigationBarHidden = false
-            navigationController?.setNavigationBarHidden(false, animated: true)
-        }
-    }
-    */
 }
 
 

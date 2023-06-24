@@ -7,11 +7,13 @@
 
 import UIKit
 
-class ExploreCollectionReusableView: UICollectionReusableView {
+class CategoryReusableView: UICollectionReusableView {
         
         // MARK: - Properties
         
         var delegate: ViewAllProtocol?
+        private var section: Int = 0
+
             
         static var identifier = "HeaderSeeAll"
         
@@ -31,6 +33,15 @@ class ExploreCollectionReusableView: UICollectionReusableView {
             button.addTarget(self, action: #selector(seeAllTapped), for: .touchUpInside)
             return button
         }()
+    
+    lazy var seeAllButtonMusic: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("View All", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(seeAllTapped), for: .touchUpInside)
+        return button
+    }()
         
         // MARK: - Init
         
@@ -46,7 +57,7 @@ class ExploreCollectionReusableView: UICollectionReusableView {
         // MARK: - Methods
         
         @objc func seeAllTapped() {
-            delegate?.goToSeeAll()
+            delegate?.goToSeeAllCategory()
         }
         
         func configure(title: String,delegate: ExploreViewController) {
@@ -56,7 +67,7 @@ class ExploreCollectionReusableView: UICollectionReusableView {
         
     }
 
-    extension ExploreCollectionReusableView {
+    extension CategoryReusableView {
         private func setupConstraints() {
             addSubview(seeAllButton)
             addSubview(headerLabel)
@@ -73,6 +84,8 @@ class ExploreCollectionReusableView: UICollectionReusableView {
                 make.top.equalToSuperview().offset(50)
                 make.bottom.equalToSuperview().offset(-5)
             }
+            
+            
         }
     }
 
