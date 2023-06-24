@@ -349,6 +349,8 @@ class PlayViewController: UIViewController {
         let albumVC = AlbumViewController()
         albumVC.modalPresentationStyle = .fullScreen
         albumVC.modalTransitionStyle = .crossDissolve
+        albumVC.titleLabel.text = PlaybackManager.shared.track?.album?.name
+        albumVC.subtitleLabel.text = PlaybackManager.shared.track?.album?.artists.first?.name
         present(albumVC, animated: true)
     }
     

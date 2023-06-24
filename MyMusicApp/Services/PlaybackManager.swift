@@ -21,7 +21,7 @@ class PlaybackManager {
     
     static let shared  = PlaybackManager()
     
-    private var track: SpotifySimplifiedTrack?
+    var track: SpotifySimplifiedTrack?
     private var tracks = [SpotifySimplifiedTrack]()
     
     var currentTrack: SpotifySimplifiedTrack? {
