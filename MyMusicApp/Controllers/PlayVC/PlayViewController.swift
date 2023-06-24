@@ -401,7 +401,8 @@ extension PlayViewController {
         ])
         NSLayoutConstraint.activate([
             songNameLabel.topAnchor.constraint(equalTo: albumImageView.bottomAnchor, constant: 22),
-            songNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            songNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            songNameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
         NSLayoutConstraint.activate([
             groupNameLabel.topAnchor.constraint(equalTo: songNameLabel.bottomAnchor, constant: 4),
