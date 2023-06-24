@@ -162,6 +162,20 @@ class PlaybackManager {
     func hasCurrentTrackInStorange() -> Bool {
         StorageManager.shared.hasObjectInStorage(with: track!.id)
     }
+    
+    func downloadTrack() {
+        if let currentItem = player?.currentItem, let asset = currentItem.asset as? AVURLAsset {
+            let url = asset.url
+            checkBookFileExists(withLink: url){ [weak self] downloadedURL in
+                guard let self = self else{
+                    return
+                }
+                // Save url in Realm
+                StorageManager.shared.save(track: self.track!)
+                StorageManager.shared.updateitem(with: self.track!.id, value: downloadedURL.absoluteString)
+            }
+        }
+    }
 }
 
 //MARK: - Helper functions
@@ -171,6 +185,45 @@ extension PlaybackManager {
         let seconds = interval % 60
         let minutes = (interval / 60) % 60
         return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    func checkBookFileExists(withLink link: URL, completion: @escaping ((_ filePath: URL)->Void)){
+        let fileManager = FileManager.default
+        if let documentDirectory = try? fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create: false){
+            
+            let filePath = documentDirectory.appendingPathComponent(link.lastPathComponent + ".mp3", isDirectory: false)
+            
+            do {
+                if try filePath.checkResourceIsReachable() {
+                    print("file exist")
+                    completion(filePath)
+                    
+                } else {
+                    print("file doesnt exist")
+                    downloadFile(withUrl: link, andFilePath: filePath, completion: completion)
+                }
+            } catch {
+                print("file doesnt exist")
+                downloadFile(withUrl: link, andFilePath: filePath, completion: completion)
+            }
+        }else{
+            print("file doesnt exist")
+        }
+    }
+    
+    func downloadFile(withUrl url: URL, andFilePath filePath: URL, completion: @escaping ((_ filePath: URL)->Void)){
+        DispatchQueue.global(qos: .background).async {
+            do {
+                let data = try Data.init(contentsOf: url)
+                try data.write(to: filePath, options: .atomic)
+                print("saved at \(filePath.absoluteString)")
+                DispatchQueue.main.async {
+                    completion(filePath)
+                }
+            } catch {
+                print("an error happened while downloading or saving the file")
+            }
+        }
     }
 }
 

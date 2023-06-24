@@ -269,7 +269,9 @@ class AccountViewController: UIViewController {
     }
     
     @objc func downloadTapped(){
-        print("Download open")
+        let targetVc = DownloadedViewController()
+        targetVc.modalPresentationStyle = .fullScreen
+        self.present(targetVc, animated: true)
     }
     
 }
