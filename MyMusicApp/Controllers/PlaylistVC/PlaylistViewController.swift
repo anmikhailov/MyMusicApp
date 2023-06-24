@@ -81,7 +81,10 @@ class PlaylistOnlyViewController: UIViewController {
         return collectionView
     }()
     
-    init(playlist: SpotifySimplifiedPlaylist?, playlistsTracks: PlaylistsTracks) {
+    init(playlist: SpotifySimplifiedPlaylist?,
+         playlistsTracks: PlaylistsTracks?,
+         recommendedTracks: RecommendedTrack? = nil) {
+        
         super.init(nibName: nil, bundle: nil)
         
         if let playlist = playlist {
@@ -93,8 +96,14 @@ class PlaylistOnlyViewController: UIViewController {
             self.subtitleLabel.text = ""
         }
         
-        for track in playlistsTracks.items {
-            self.tracks.append(track.track)
+        if playlistsTracks != nil {
+            for track in playlistsTracks!.items {
+                self.tracks.append(track.track)
+            }
+        }
+        
+        if recommendedTracks != nil {
+            self.tracks = recommendedTracks!.tracks
         }
     }
     
