@@ -53,7 +53,7 @@ extension NotificationManager: UNUserNotificationCenterDelegate {
     
     // MARK: - Notifications delegate
     public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert, .sound, .badge])
+        completionHandler([.banner, .sound, .badge])
         print(#function)
     }
     
