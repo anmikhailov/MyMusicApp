@@ -34,6 +34,10 @@ class ViewAllCategoryViewController: UICollectionViewController {
         fetchGenres()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+    }
+    
     func createFlowLayout() -> UICollectionViewFlowLayout {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: 155, height: 155)
@@ -77,7 +81,24 @@ class ViewAllCategoryViewController: UICollectionViewController {
     }
 
     // MARK: UICollectionViewDelegate
-    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let genre = genres[indexPath.row]
+        APICaller.shared.getGenreTracks(for: genre) { result in
+            switch result {
+            case .success(let genresTracks):
+                DispatchQueue.main.async {
+                    let targetVC = PlaylistOnlyViewController(playlist: nil,
+                                                              playlistsTracks: nil,
+                                                              recommendedTracks: genresTracks)
+                    targetVC.modalPresentationStyle = .fullScreen
+                    self.navigationController?.pushViewController(targetVC, animated: true)
+                }
+                break
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
     
 
 }
