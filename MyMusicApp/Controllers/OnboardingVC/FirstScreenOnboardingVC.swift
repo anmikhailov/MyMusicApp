@@ -10,6 +10,9 @@ import UserNotifications
 
 class FirstScreenOnboardingVC: UIViewController {
     
+    // MARK: - Properties
+    let notificationManager = NotificationManager()
+    
     // MARK: - UI Components
     /// mock image
     private let mockImageView: UIImageView = {
@@ -102,6 +105,7 @@ class FirstScreenOnboardingVC: UIViewController {
         view.backgroundColor = .black
         
         setupUI()
+        notificationManager.userNotificationPermission()
     }
     
     // MARK: - Methods
