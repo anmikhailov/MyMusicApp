@@ -11,6 +11,10 @@ import UserNotifications
 
 class AccountViewController: UIViewController {
     
+    // MARK: - Properties
+    let notificationManager = NotificationManager()
+    
+    // MARK: - UI Components
     var accountLabel = UILabel()
     var libraryLabel = UILabel()
     var setingsButton = UIButton(type: .system)
@@ -38,10 +42,10 @@ class AccountViewController: UIViewController {
     @objc private func changeNotificationsMode(sender: UISwitch) {
         if sender.isOn {
             //notifications enable
-            sendNotification()
+            notificationManager.sendNotification()
         } else {
             //notifications disable
-            notificationCenter.removeAllPendingNotificationRequests()
+            notificationManager.notificationCenter.removeAllPendingNotificationRequests()
         }
     }
     
