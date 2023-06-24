@@ -12,8 +12,7 @@ class FavoritesViewController: UIViewController {
     // MARK: - let/var
     let realm = try! Realm()
     var favoritesSongsArray: [SpotifySimplifiedTrack] = []
-//    var storageManager: StorageManagerProtocol = StorageManager()
-
+    var filteredArray: [SpotifySimplifiedTrack] = []
     // MARK: - songLabel
     private let songLabel: UILabel = {
         let label = UILabel()
@@ -56,6 +55,7 @@ class FavoritesViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         favoritesSongsArray =  StorageManager.shared.retrieveAll()
+        filteredArray = favoritesSongsArray
         favoritesSongsCollectionView.reloadData()
     }
 }
@@ -68,14 +68,62 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UICollectionViewDataSource & UICollectionViewDelegate
 extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        favoritesSongsArray.count
+        filteredArray.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "idSongCell", for: indexPath) as! SongCollectionViewCell
-        let model = favoritesSongsArray[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "idSongCell", for: indexPath) as! SongCollectionViewCell
+        let model = filteredArray[indexPath.row]
         cell.cellConfigure(model: model)
+        cell.numberSongLabel.text = String(indexPath.row + 1)
+        cell.delegate = self
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let track = filteredArray[indexPath.row]
+        PlaybackManager.shared.startPlayback(from: self, track: track)
+    }
+}
+extension FavoritesViewController: SongCollectionViewCellDelegate {
+    func songCollectionViewCellDelegate(_ view: SongCollectionViewCell, didTapDotsButton button: UIButton) {
+        // Alert controller for delete item
+        let alertController = UIAlertController(title: "Delete track",
+                                                message: "Do you want to delete this track?",
+                                                preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Yes", style: .destructive){ (action) in
+            // Delete item
+            guard let indexPath = self.favoritesSongsCollectionView.indexPath(for: view) else { return }
+            StorageManager.shared.deleteItem(by: self.filteredArray[indexPath.row].id)
+            self.filteredArray.remove(at: indexPath.item)
+            self.favoritesSongsCollectionView.reloadData()
+          }
+        
+        )
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(alertController, animated: true)
+    }
+}
+extension FavoritesViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let query = searchBar.text
+        filteredArray = []
+        
+        for track in favoritesSongsArray {
+            if track.name.contains(query!) {
+                filteredArray.append(track)
+            }
+        }
+        favoritesSongsCollectionView.reloadData()
+    }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+        if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
+            cancelButton.addTarget(self, action: #selector(cancelButtonClicked), for: .touchUpInside)
+        }
+    }
+    @objc func cancelButtonClicked() {
+        filteredArray = favoritesSongsArray
+        favoritesSongsCollectionView.reloadData()
     }
 }
 extension FavoritesViewController {
@@ -83,6 +131,7 @@ extension FavoritesViewController {
     private func setDelegates() {
         favoritesSongsCollectionView.delegate = self
         favoritesSongsCollectionView.dataSource = self
+        searchBar.delegate = self
     }
     // MARK: - setConstrains
     private func setupViews() {
