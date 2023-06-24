@@ -44,10 +44,10 @@ extension HeaderReusableView {
    private func setupConstraints() {
         addSubview(headerLabel)
         headerLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview()
+            make.leading.equalToSuperview().offset(10)
             make.top.equalToSuperview().offset(50)
             make.bottom.equalToSuperview().offset(-5)
-            make.trailing.equalToSuperview().offset(-50)
+//            make.trailing.equalToSuperview().offset(-50)
         }
     }
 }

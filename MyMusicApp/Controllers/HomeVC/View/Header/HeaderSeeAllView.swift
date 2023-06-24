@@ -63,7 +63,7 @@ extension HeaderSeeAllView {
         addSubview(headerLabel)
         
         headerLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview()
+            make.leading.equalToSuperview().offset(10)
             make.top.equalToSuperview().offset(50)
             make.bottom.equalToSuperview().offset(-5)
             make.width.greaterThanOrEqualTo(100)
