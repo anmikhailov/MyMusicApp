@@ -23,7 +23,6 @@ final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        notificationManager.userNotificationPermission()
         notificationManager.sendNotification(title: "Greetings! 🥰", body: "You can turn off notifications in Account settings ⚙️")
         notificationManager.notificationCenter.delegate = self
     }
@@ -93,11 +92,19 @@ extension TabBarController: UNUserNotificationCenterDelegate {
     //user tap on badge and go to the screen we need using TabBarController
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let tabBarController = windowScene.windows.first?.rootViewController as? TabBarController else {
-            completionHandler()
-            return
-        }
+        guard let desiredScene = UIApplication.shared.connectedScenes.first(where: { scene in
+                // Здесь можно указать условия для поиска нужной сцены, например, по идентификатору сцены
+                return scene.activationConditions.canActivateForTargetContentIdentifierPredicate.evaluate(with: "TabBarController")
+            }) as? UIWindowScene else {
+                completionHandler()
+                return
+            }
+            
+            guard let tabBarController = desiredScene.windows.first?.rootViewController as? TabBarController else {
+                completionHandler()
+                return
+            }
+        
         // Получение индекса экрана, на который вы хотите перейти
         let desiredTabIndex = Tabs.account.rawValue // Здесь используется "Account" экран
         
