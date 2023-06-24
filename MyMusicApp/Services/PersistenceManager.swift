@@ -22,7 +22,7 @@ class PersistenceManager: PersistenceManagerProtocol {
     
     static let shared = PersistenceManager()
     
-    // MARK: - Добавление или удаление избранного, принимает в функцию новость, выбирается случай, либо add либо remove
+    // MARK: - Добавление или удаление избранного, принимает в функцию трек, выбирается случай, либо add либо remove
     func updateWith(favorite: Track, actionType: PersistenceActionType, completed: @escaping (FavoriteError?) -> Void) {
         retreiveTrack { result in
             switch result {

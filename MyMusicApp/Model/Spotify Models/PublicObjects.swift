@@ -153,3 +153,38 @@ struct OneOfTrack: Codable {
 struct RecommendedTrack: Codable {
     let tracks: [SpotifySimplifiedTrack]
 }
+
+struct SimplifiedPlaylistObject: Codable {
+    let collaborative: Bool
+    let description: String?
+    let external_urls: SpotifyExternalUrl
+    let href: String
+    let id: String
+    let images: [SpotifyImage]
+    let name: String
+    let owner: SpotifyOwner
+    let `public`: Bool
+    let snapshot_id: String
+    let tracks: SpotifyPlaylistTrack
+    let type: String
+    let uri: String
+}
+
+struct SpotifyPlaylistTrack: Codable {
+    let href: String
+    let total: Int
+}
+
+struct SpotifyOwner: Codable {
+    let external_urls: SpotifyExternalUrl
+    let followers: SpotifyFollower
+    let href: String
+    let id: String
+    let type: String
+    let display_name: String
+}
+
+struct SpotifyFollower: Codable {
+//    let href: String?
+    let total: Int
+}
