@@ -82,16 +82,18 @@ extension DownloadedViewController: UICollectionViewDelegate, UICollectionViewDa
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let track = downloadedSongsArray[indexPath.row]
-        PlaybackManager.shared.startPlayback(from: self, track: track)
-//        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-//            print("Documents directory not found")
-//            return
-//        }
-//
-//        let filePath = documentsDirectory.appendingPathComponent("7b5d54ffb3c4e5c28adafe19532de22508d62851.mp3")
-//        let url = URL(fileURLWithPath: filePath.path)
-//        let urlString = url.absoluteString
-//        PlaybackManager.shared.startPlayback(from: self, track: SpotifySimplifiedTrack(artists: [SpotifySimplifiedArtist(external_urls: SpotifyExternalUrl(spotify: ""), href: "", id: "", name: track.artists.first!.name, type: "", uri: "")], duration_ms: 0, href: "", id: track.id, name: track.name, preview_url: urlString, uri: ""))
+        let fileURL = URL(fileURLWithPath: track.preview_url ?? "")
+        let fileName = fileURL.lastPathComponent
+
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            print("Documents directory not found")
+            return
+        }
+
+        let filePath = documentsDirectory.appendingPathComponent(fileName)
+        let url = URL(fileURLWithPath: filePath.path)
+        let urlString = url.absoluteString
+        PlaybackManager.shared.startPlayback(from: self, track: SpotifySimplifiedTrack(artists: [SpotifySimplifiedArtist(external_urls: SpotifyExternalUrl(spotify: ""), href: "", id: "", name: track.artists.first!.name, type: "", uri: "")], duration_ms: 0, href: "", id: track.id, name: track.name, preview_url: urlString, uri: ""))
     }
 }
 extension DownloadedViewController {
