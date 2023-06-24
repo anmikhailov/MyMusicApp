@@ -40,7 +40,11 @@ class PlaybackManager {
         isPlaying = true
         
         guard let url = URL(string: track.preview_url ?? "") else {
-            print("Track without preview")
+            let alertController = UIAlertController(title: "Ooops",
+                                                    message: "Track without preview. We're working on it.",
+                                                    preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
+            viewController.present(alertController, animated: true)
             return
         }
         player = AVPlayer(url: url)
