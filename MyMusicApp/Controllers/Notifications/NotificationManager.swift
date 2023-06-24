@@ -29,15 +29,15 @@ open class NotificationManager: UIViewController {
         }
     }
 
-    public func sendNotification() {
+    public func sendNotification(title: String, body: String) {
         //create notification content
         let content = UNMutableNotificationContent()
-        content.title = "Greetings! 🥰"
-        content.body = " You can turn off notifications in Account settings ⚙️"
+        content.title = title //"Greetings! 🥰"
+        content.body = body //"You can turn off notifications in Account settings ⚙️"
         content.sound = UNNotificationSound.default
         
         //create the notification trigger
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
         
         //create the request
         let request = UNNotificationRequest(identifier: "notification", content: content, trigger: trigger)

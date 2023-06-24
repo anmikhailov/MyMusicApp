@@ -42,7 +42,7 @@ class AccountViewController: UIViewController {
     @objc private func changeNotificationsMode(sender: UISwitch) {
         if sender.isOn {
             //notifications enable
-            notificationManager.sendNotification()
+            notificationManager.sendNotification(title: "Notifications", body: "Are on")
         } else {
             //notifications disable
             notificationManager.notificationCenter.removeAllPendingNotificationRequests()

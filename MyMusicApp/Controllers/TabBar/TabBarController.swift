@@ -24,7 +24,7 @@ final class TabBarController: UITabBarController {
         super.viewDidLoad()
         
         notificationManager.userNotificationPermission()
-        notificationManager.sendNotification()
+        notificationManager.sendNotification(title: "Greetings! 🥰", body: "You can turn off notifications in Account settings ⚙️")
         notificationManager.notificationCenter.delegate = self
     }
     
