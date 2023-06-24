@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class SettingsViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate{
+class SettingsViewController: UIViewController, UINavigationControllerDelegate{
     var editTitle = UILabel()
     var bacgroundForSettingsView = UIView()
     var cameraImageView = UIImageView()
@@ -22,6 +22,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
     let backButton = UIButton(type: .system)
     var userInfo:UserInfo?
     let userDefaults = UserDefaults.standard
+    let imageData = Data()
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "person.fill")
@@ -292,6 +293,18 @@ extension SettingsViewController: UITextFieldDelegate {
         let text = textField.text
         print("\(text)")
         return true
+    }
+}
+
+extension SettingsViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            AccountViewController.userImage = editedImage
+            profileImageView.image = AccountViewController.userImage
+        } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            profileImageView.image = originalImage
+        }
+        dismiss(animated: true, completion: nil)
     }
 }
 

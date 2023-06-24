@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class AccountViewController: UIViewController {
-    
+    static var userImage = UIImage(systemName: "person")
     var accountLabel = UILabel()
     var libraryLabel = UILabel()
     var setingsButton = UIButton(type: .system)
@@ -25,6 +25,10 @@ class AccountViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        userInfo = FirebaseManager.shared.getFromUserDefaultsUserInfo()
         SetBacgroundColors()
         setProfileLabel()
         setSetingsButton()
@@ -35,10 +39,6 @@ class AccountViewController: UIViewController {
         setDownloadButton()
         setSignOutButton()
         setTargetForButton()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        userInfo = FirebaseManager.shared.getFromUserDefaultsUserInfo()
         setNameUserLabel()
         setEmailUserLabel()
     }
@@ -78,7 +78,7 @@ class AccountViewController: UIViewController {
         profileImageView.clipsToBounds = true
 //        profileImageView.layer.borderWidth = 2
 //        profileImageView.layer.borderColor = UIColor.white.cgColor
-        profileImageView.image = UIImage(systemName: "person")
+        profileImageView.image = AccountViewController.userImage
         profileImageView.tintColor = .white
         
         view.addSubview(profileImageView)
@@ -229,36 +229,3 @@ class AccountViewController: UIViewController {
     }
     
 }
-
-
-#if DEBUG
-
-import SwiftUI
-
-struct AccountViewControllerRepresentable: UIViewControllerRepresentable {
-    typealias UIViewControllerType = AccountViewController
-
-    func makeUIViewController(context: Context) -> UIViewControllerType {
-        AccountViewController(nibName: nil, bundle: nil)
-    }
-
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-
-        APICaller.shared.getCurrentUserProfile { result in
-            switch result {
-            case .success(let model):
-                break
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-}
-
-struct AccountViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        AccountViewControllerRepresentable()
-    }
-}
-
-#endif
