@@ -12,14 +12,14 @@ import SnapKit
 class PlayView: UIView {
     
     // MARK: - Properties
-    
     var isPlay = true {
         didSet {
             if isPlay {
-                playButton.setBackgroundImage(UIImage(systemName: "play.circle"), for: .normal)
-            } else {
                 playButton.setBackgroundImage(UIImage(systemName: "pause.circle"), for: .normal)
-                //playButton.backgroundColor = .none
+                songNameLabel.text = "Playing now"
+            } else {
+                playButton.setBackgroundImage(UIImage(systemName: "play.circle"), for: .normal)
+                songNameLabel.text = "Paused"
             }
         }
     }
@@ -33,14 +33,14 @@ class PlayView: UIView {
     
     let songNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Come to me"
+        label.text = "Playing now"
         label.textAlignment = .center
         label.textColor = .black
         label.font = UIFont(name: "Roboto-Bold", size: 14)
         
         return label
     }()
-    // MARK: - groupNameLabel
+
     let groupNameLabel: UILabel = {
         let label = UILabel()
         label.text = "One Republic"
@@ -61,7 +61,7 @@ class PlayView: UIView {
     
     lazy var playButton: UIButton = {
         let button = UIButton()
-        button.setBackgroundImage(UIImage(systemName: "play.circle"), for: .normal)
+        button.setBackgroundImage(UIImage(systemName: "pause.circle"), for: .normal)
         button.tintColor = .black
         return button
     }()
@@ -69,12 +69,14 @@ class PlayView: UIView {
     let albumImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.layer.masksToBounds = false
-        imageView.layer.cornerRadius = imageView.frame.width / 2
-        imageView.backgroundColor = .gray
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 25
+        imageView.backgroundColor = .none
+        imageView.image = UIImage(named: "gangz")
         return imageView
     }()
     
+    //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupButton()
@@ -85,6 +87,7 @@ class PlayView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Methods
     func setupButton() {
         playButton.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
     }
@@ -96,6 +99,7 @@ class PlayView: UIView {
     
 }
 
+//MARK: - Setup Constraints
 extension PlayView {
     func setupConstraints() {
         self.backgroundColor = .green
@@ -113,28 +117,25 @@ extension PlayView {
         }
         
         songNameLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview()
+            make.leading.equalTo(albumImageView.snp.trailing).offset(30)
             make.centerY.equalToSuperview()
         }
         
         previousButton.snp.makeConstraints { make in
-            //make.leading.equalTo(songNameLabel.snp.trailing).offset(5)
             make.trailing.equalTo(playButton.snp.leading).offset(-10)
             make.centerY.equalToSuperview()
             make.width.height.equalTo(35)
         }
         
         playButton.snp.makeConstraints { make in
-            //make.leading.equalTo(backButton.snp.trailing).offset(5)
             make.trailing.equalTo(nextButton.snp.leading).offset(-10)
             make.centerY.equalToSuperview()
             make.width.height.equalTo(35)
         }
         
         nextButton.snp.makeConstraints { make in
-            make.leading.equalTo(songNameLabel.snp.trailing).offset(10)
             make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().offset(-10)
+            make.trailing.equalToSuperview().offset(-30)
             make.width.height.equalTo(35)
         }
     }

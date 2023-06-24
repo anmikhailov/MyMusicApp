@@ -52,6 +52,7 @@ class ExploreViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
         if PlaybackManager.shared.isPlaying {
             addPlayView()
         }
