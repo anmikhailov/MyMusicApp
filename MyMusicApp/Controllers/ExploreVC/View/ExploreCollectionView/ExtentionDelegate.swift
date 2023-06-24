@@ -21,8 +21,23 @@ extension ExploreViewController: UICollectionViewDelegate {
             let track = track[indexPath.row]
             PlaybackManager.shared.startPlayback(from: self, track: track)
         case .topic:
-            let topicVC = TopicViewController()
-            navigationController?.pushViewController(topicVC, animated: true)
+            // Transition to playlist with selected genre
+            let genre = genres[indexPath.row]
+            APICaller.shared.getGenreTracks(for: genre) { result in
+                switch result {
+                case .success(let genresTracks):
+                    DispatchQueue.main.async {
+                        let targetVC = PlaylistOnlyViewController(playlist: nil,
+                                                                  playlistsTracks: nil,
+                                                                  recommendedTracks: genresTracks)
+                        targetVC.modalPresentationStyle = .fullScreen
+                        self.navigationController?.pushViewController(targetVC, animated: true)
+                    }
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
         }
     }
     
