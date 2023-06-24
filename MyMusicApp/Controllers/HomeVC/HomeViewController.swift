@@ -94,7 +94,6 @@ final class HomeViewController: UIViewController {
             switch result {
             case .success(let genres):
                 self.genres = genres.genres
-                print(genres)
                 DispatchQueue.main.async {
                     //TODO: reload cells for genres
                 }

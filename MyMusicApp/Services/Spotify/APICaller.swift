@@ -28,8 +28,6 @@ final class APICaller {
 
                 do {
                     let result = try JSONDecoder().decode(RecentlyTracks.self, from: data)
-
-                    print(result)
                     completion(.success(result))
 
                 } catch {

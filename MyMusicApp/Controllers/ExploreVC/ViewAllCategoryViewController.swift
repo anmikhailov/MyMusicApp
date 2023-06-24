@@ -49,7 +49,6 @@ class ViewAllCategoryViewController: UICollectionViewController {
             switch result {
             case .success(let genres):
                 self.genres = genres.genres
-                print(genres)
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
