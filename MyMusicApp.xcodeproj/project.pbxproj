@@ -109,6 +109,7 @@
 		84F026962A38F51E001DCEFE /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 84F026952A38F51E001DCEFE /* SnapKit */; };
 		84F78E1F2A42113500C3F216 /* SettingsAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F78E1E2A42113500C3F216 /* SettingsAccountViewController.swift */; };
 		84F78E212A42114D00C3F216 /* AccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F78E202A42114D00C3F216 /* AccountButton.swift */; };
+		A2BA6FA82A46EBEC0057EFF4 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BA6FA72A46EBEB0057EFF4 /* NotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -207,6 +208,7 @@
 		84D78D782A37A9F300D3B464 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		84F78E1E2A42113500C3F216 /* SettingsAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAccountViewController.swift; sourceTree = "<group>"; };
 		84F78E202A42114D00C3F216 /* AccountButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountButton.swift; sourceTree = "<group>"; };
+		A2BA6FA72A46EBEB0057EFF4 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -655,6 +657,7 @@
 				841725432A41B46D00B42B51 /* PlayVC */,
 				841725042A41B46B00B42B51 /* SearchVC */,
 				8417250A2A41B46B00B42B51 /* TabBar */,
+				A2BA6FA62A46EBD20057EFF4 /* Notifications */,
 			);
 			name = Controllers;
 			path = MyMusicApp/Controllers;
@@ -696,6 +699,14 @@
 				84F78E1E2A42113500C3F216 /* SettingsAccountViewController.swift */,
 			);
 			path = SettingsAccountVC;
+			sourceTree = "<group>";
+		};
+		A2BA6FA62A46EBD20057EFF4 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				A2BA6FA72A46EBEB0057EFF4 /* NotificationManager.swift */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -853,6 +864,7 @@
 				8417254E2A41B46D00B42B51 /* UIViewController + ext.swift in Sources */,
 				8417254B2A41B46D00B42B51 /* HorizontalCollectionViewCell.swift in Sources */,
 				84C420A22A3750B800727691 /* FirebaseManager.swift in Sources */,
+				A2BA6FA82A46EBEC0057EFF4 /* NotificationManager.swift in Sources */,
 				8417254D2A41B46D00B42B51 /* TabBarController.swift in Sources */,
 				841725582A41B46D00B42B51 /* ExploreDataSource.swift in Sources */,
 				841725502A41B46D00B42B51 /* CustomViewController.swift in Sources */,

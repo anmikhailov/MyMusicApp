@@ -15,11 +15,17 @@ enum Tabs: Int {
 }
 
 final class TabBarController: UITabBarController {
+    
+    // MARK: - Properties
+    let notificationManager = NotificationManager()
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sendNotification()
-        notificationCenter.delegate = self
+        notificationManager.userNotificationPermission()
+        notificationManager.sendNotification(title: "Greetings! 🥰", body: "You can turn off notifications in Account settings ⚙️")
+        notificationManager.notificationCenter.delegate = self
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -75,9 +81,9 @@ final class TabBarController: UITabBarController {
     }
 }
 
+
+// MARK: - Notifications delegate
 extension TabBarController: UNUserNotificationCenterDelegate {
-    
-    // MARK: - Notifications delegate
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound, .badge])
         print(#function)
@@ -85,7 +91,7 @@ extension TabBarController: UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         print(#function)
-        //user tap on badge and go to the screen we need
+        //user tap on badge and go to the screen we need using TabBarController
         let vc = AccountViewController()
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
