@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import SnapKit
 
 class TopTrendingCell: UICollectionViewCell {
     
-    let post = UIImage(named: "top")
+    //let post = UIImage(named: "top")
     
     private let songImage: UIImageView = {
         let image = UIImageView()
@@ -24,6 +25,8 @@ class TopTrendingCell: UICollectionViewCell {
         label.textColor = .white
         label.textAlignment = .left
         label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.numberOfLines = 2
+        label.lineBreakMode = .byWordWrapping
         label.text = "Do it"
         return label
     }()
@@ -62,31 +65,31 @@ class TopTrendingCell: UICollectionViewCell {
         artistNamelabel.text = name
     }
     
-    func setupImage(imageAlbum: SpotifyImage) {
-        guard let urlToImage = imageAlbum.url else {
-            songImage.image = post
-            songImage.contentMode = .scaleAspectFill
-            //loadingActivityIndicator.stopAnimating()
-            return
-        }
-
-        ImageClient.shared.setImage(
-            from: urlToImage,
-            placeholderImage: post) { [weak self] image in
-                guard let self = self else { return }
-
-                guard let image else {
-                    self.songImage.image = image
-                    self.songImage.contentMode = .scaleAspectFill
-                   // self.loadingActivityIndicator.stopAnimating()
-                    return
-                }
-
-                self.songImage.image = image
-                self.songImage.contentMode = .scaleAspectFill
-                //self.loadingActivityIndicator.stopAnimating()
-            }
-    }
+//    func setupImage(imageAlbum: SpotifyImage) {
+//        guard let urlToImage = imageAlbum.url else {
+//            songImage.image = post
+//            songImage.contentMode = .scaleAspectFill
+//            //loadingActivityIndicator.stopAnimating()
+//            return
+//        }
+//
+//        ImageClient.shared.setImage(
+//            from: urlToImage,
+//            placeholderImage: post) { [weak self] image in
+//                guard let self = self else { return }
+//
+//                guard let image else {
+//                    self.songImage.image = image
+//                    self.songImage.contentMode = .scaleAspectFill
+//                   // self.loadingActivityIndicator.stopAnimating()
+//                    return
+//                }
+//
+//                self.songImage.image = image
+//                self.songImage.contentMode = .scaleAspectFill
+//                //self.loadingActivityIndicator.stopAnimating()
+//            }
+//    }
     
     
 }
@@ -107,7 +110,8 @@ extension TopTrendingCell {
         
         songName.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
-            make.top.equalToSuperview().offset(140)
+            make.trailing.equalToSuperview().offset(-100)
+            make.top.equalToSuperview().offset(120)
         }
         
         artistNamelabel.snp.makeConstraints { make in

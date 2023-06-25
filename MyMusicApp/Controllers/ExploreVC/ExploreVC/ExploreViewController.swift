@@ -9,14 +9,27 @@ import UIKit
 import SnapKit
 
 protocol ViewAllProtocol: AnyObject {
-    func goToSeeAll()
+    func goToSeeAllCategory()
 }
+
+protocol TrackListProtocol: AnyObject {
+    func goToSeeAllMusic()
+}
+
 
 class ExploreViewController: UIViewController {
     
     // MARK: - Properties
     
-    let imageCategory = UIImage(named: "hip-hop")
+    let imageCategory: [UIImage] = [
+            UIImage(named: "hip-hop")!,
+            UIImage(named: "pop")!,
+            UIImage(named: "hipnow")!,
+            UIImage(named: "jazz")!,
+            UIImage(named: "rb")!,
+            UIImage(named: "topHits")!
+        ]
+    
     let post = UIImage(named: "top")
     
     private var playback: PlayView?
@@ -127,7 +140,9 @@ class ExploreViewController: UIViewController {
         
         collectionView.register(HeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Header")
         collectionView.register(ExploreCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ExploreCollectionReusableView.identifier)
+        collectionView.register(TrackListReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TrackListReusableView.identifier)
     }
+
     
     override func barButtonTapped() {
         navigationController?.pushViewController(SearchViewController(), animated: true)
@@ -156,11 +171,16 @@ extension ExploreViewController {
     
 }
 
-extension ExploreViewController: ViewAllProtocol {
-    func goToSeeAll() {
+extension ExploreViewController: ViewAllProtocol, TrackListProtocol {
+    
+    func goToSeeAllMusic() {
+        let viewAllVC = ViewAllRecentlyMusicViewController()
+        navigationController?.pushViewController(viewAllVC, animated: true)
+    }
+    
+    func goToSeeAllCategory() {
+        
         let viewAllVC = ViewAllCategoryViewController()
-        
-        
         navigationController?.pushViewController(viewAllVC, animated: true)
     }
 }

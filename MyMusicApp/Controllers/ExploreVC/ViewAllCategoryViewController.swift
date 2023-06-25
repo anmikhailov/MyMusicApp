@@ -11,6 +11,18 @@ class ViewAllCategoryViewController: UICollectionViewController {
     
     var genres: [String] = []
     let image = UIImage(named: "rap")
+    
+    let imageCategory: [UIImage] = [
+            UIImage(named: "hip-hop")!,
+            UIImage(named: "gangz")!,
+            UIImage(named: "hipnow")!,
+            UIImage(named: "rap")!,
+            UIImage(named: "rapSoul")!,
+            UIImage(named: "topHits")!,
+            UIImage(named: "hits")!
+        ]
+    
+    private var section: Int = 0
 
     init() {
             let layout = UICollectionViewFlowLayout()
@@ -75,6 +87,8 @@ class ViewAllCategoryViewController: UICollectionViewController {
         }
         let genre = genres[indexPath.row]
         cell.categoryName.text = genre
+        //let randomIndex = imageCategory[indexPath.item % imageCategory.count]//Int.random(in: 0..<imageCategory.count)
+        let image = imageCategory[indexPath.item % imageCategory.count]//imageCategory[randomIndex]
         cell.image2.image = image
         //cell.configureCell(image: image!, title: genre)
         return cell
