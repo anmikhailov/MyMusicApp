@@ -85,9 +85,7 @@ class AccountViewController: UIViewController {
         setupUI()
         
         notificationManager.notificationCenter.delegate = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+        
         userInfo = FirebaseManager.shared.getFromUserDefaultsUserInfo()
         setNameUserLabel()
         setEmailUserLabel()
