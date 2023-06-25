@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class SettingsViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate{
+class SettingsViewController: UIViewController, UINavigationControllerDelegate{
     var editTitle = UILabel()
     var bacgroundForSettingsView = UIView()
     var cameraImageView = UIImageView()
@@ -21,6 +21,8 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
     var changePasswordButton = UIButton(type: .system)
     let backButton = UIButton(type: .system)
     var userInfo:UserInfo?
+    let userDefaults = UserDefaults.standard
+    let imageData = Data()
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "person.fill")
@@ -52,6 +54,13 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         setBackButton()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        loadProfileImage()
+    }
+    
 //MARK: - Func
     func setBacground(){
         view.backgroundColor = Resources.Colors.TabBarColors.background
@@ -65,7 +74,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         
         editTitle.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(17)
-            make.leading.equalToSuperview().inset(173)
+            make.centerX.equalToSuperview()
         }
     }
     
@@ -76,9 +85,10 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         
         bacgroundForSettingsView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(146)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(133)
             make.leading.trailing.equalToSuperview().inset(24)
             make.width.equalTo(327)
-            make.height.equalTo(496)
+//            make.height.equalTo(496)
         }
     }
     
@@ -87,12 +97,25 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
         
         profileImageView.snp.makeConstraints { make in
             make.width.height.equalTo(142)
-            make.bottom.equalTo(bacgroundForSettingsView.snp.bottom).inset(421)
-            make.left.equalTo(bacgroundForSettingsView.snp.left).offset(93)
+            make.top.equalTo(bacgroundForSettingsView.snp.top).offset(-72)
+            make.centerX.equalTo(bacgroundForSettingsView)
         }
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(changeProfileImage))
         profileImageView.addGestureRecognizer(tapGesture)
+    }
+    
+    func loadProfileImage() {
+        if let profileImageData = UserDefaults.standard.data(forKey: "profileImage"),
+           let profileImage = UIImage(data: profileImageData) {
+            profileImageView.image = profileImage
+        }
+    }
+    
+    func saveProfileImage(_ image: UIImage) {
+        if let imageData = image.jpegData(compressionQuality: 1.0) {
+            UserDefaults.standard.set(imageData, forKey: "profileImage")
+        }
     }
     
     func setCameraImageViev(){
@@ -202,14 +225,24 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
     }
     
     func setDateOfBirthDatePicker(){
-        dateOfBirthDatePicker.tintColor = Resources.Colors.TabBarColors.background
         view.addSubview(dateOfBirthDatePicker)
+        dateOfBirthDatePicker.tintColor = Resources.Colors.brand1
         dateOfBirthDatePicker.datePickerMode = .date
         dateOfBirthDatePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
+        let currentDate = Date()
+        let fourteenYearsAgo = Calendar.current.date(byAdding: .year, value: -14, to: currentDate)
+        let hundredYearsAgo = Calendar.current.date(byAdding: .year, value: -100, to: currentDate)
+        dateOfBirthDatePicker.minimumDate = hundredYearsAgo
+        dateOfBirthDatePicker.maximumDate = fourteenYearsAgo
+                
+        if let savedDate = userDefaults.object(forKey: "selectedDate") as? Date {
+            dateOfBirthDatePicker.date = savedDate
+            dateChanged()
+        }
+
         
         dateOfBirthDatePicker.snp.makeConstraints { make in
-            make.centerY.equalTo(dateOfBirthLabel.snp.top)
-            make.leading.equalTo(dateOfBirthLabel.snp.trailing).offset(130)
+            make.top.equalTo(dateOfBirthLabel.snp.top).inset(-9)
             make.trailing.equalTo(bacgroundForSettingsView.snp.trailing).inset(16)
         }
     }
@@ -248,8 +281,10 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
     @objc func dateChanged() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
-        let selectedDate = dateFormatter.string(from: dateOfBirthDatePicker.date)
-        print("\(selectedDate)")
+        let selectedDate = dateOfBirthDatePicker.date
+        let formattedDate = dateFormatter.string(from: selectedDate)
+        userDefaults.set(selectedDate, forKey: "selectedDate")
+        
     }
     
     @objc func changePasswordTapped(){
@@ -280,29 +315,15 @@ extension SettingsViewController: UITextFieldDelegate {
     }
 }
 
-
-//MARK: - Preview
-
-#if DEBUG
-
-import SwiftUI
-
-struct SettingsViewControllerRepresentable: UIViewControllerRepresentable {
-    typealias UIViewControllerType = SettingsViewController
-
-    func makeUIViewController(context: Context) -> UIViewControllerType {
-        SettingsViewController(nibName: nil, bundle: nil)
-    }
-
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-
+extension SettingsViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            profileImageView.image = editedImage
+            saveProfileImage(editedImage)
+        } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            profileImageView.image = originalImage
+        }
+        dismiss(animated: true, completion: nil)
     }
 }
 
-struct SettingsViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsViewControllerRepresentable()
-    }
-}
-
-#endif
