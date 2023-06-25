@@ -14,8 +14,8 @@
 <img src="https://github.com/anmikhailov/MyMusicApp/assets/81427166/f1a05b02-9cb6-4e02-9020-6ba8789c3766" height="500" title="Экран треков из альбома">
 <img src="https://github.com/anmikhailov/MyMusicApp/assets/81427166/d0f46658-e355-4725-b8e5-61bbc17bcf78" height="500" title="Экран плеера">
 <img src="https://github.com/anmikhailov/MyMusicApp/assets/81427166/70abed4a-4a47-4f42-a8b2-9efda096dd09" height="500" title="Экран поиска">
-<img src="https://github.com/anmikhailov/MyMusicApp/assets/81427166/1b538355-2afe-49a9-b81a-df7bc41ae48a" height="500" title="Экран Explore">
-<img src="https://github.com/anmikhailov/MyMusicApp/assets/81427166/7642be34-9dc2-4df8-9541-d75647cc87b1" height="500" title="Экран с жанрами">
+<img src="https://github.com/anmikhailov/MyMusicApp/assets/81427166/9f668175-9027-48cb-95ae-fe5beb70896e" height="500" title="Экран Explore">
+<img src="https://github.com/anmikhailov/MyMusicApp/assets/81427166/21b7857a-e61b-42cb-b119-024c56615bea" height="500" title="Экран с жанрами">
 <img src="https://github.com/anmikhailov/MyMusicApp/assets/81427166/61008e91-752c-475a-985e-03f7b21bdf64" height="500" title="Экран Избранное">
 <img src="https://github.com/anmikhailov/MyMusicApp/assets/81427166/52ce45ca-f087-484d-9c5a-7e09cc1e27ea" height="500" title="Экран аккаунта">
 <img src="https://github.com/anmikhailov/MyMusicApp/assets/81427166/9391d6f4-154e-48ac-86be-73a3eea2fbbb" height="500" title="Экран редактирования профиля">
