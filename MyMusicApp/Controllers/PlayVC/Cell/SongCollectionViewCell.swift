@@ -95,6 +95,7 @@ class SongCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             numberSongLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             numberSongLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            numberSongLabel.widthAnchor.constraint(equalToConstant: 10)
         ])
         NSLayoutConstraint.activate([
             photoImageView.topAnchor.constraint(equalTo: topAnchor),
@@ -104,15 +105,18 @@ class SongCollectionViewCell: UICollectionViewCell {
         ])
         NSLayoutConstraint.activate([
             nameSongLabel.topAnchor.constraint(equalTo: topAnchor),
-            nameSongLabel.leadingAnchor.constraint(equalTo: photoImageView.trailingAnchor, constant: 20)
+            nameSongLabel.leadingAnchor.constraint(equalTo: photoImageView.trailingAnchor, constant: 20),
+            nameSongLabel.trailingAnchor.constraint(equalTo: ellipsisButton.leadingAnchor, constant: -20)
         ])
         NSLayoutConstraint.activate([
             singerNameLabel.topAnchor.constraint(equalTo: nameSongLabel.bottomAnchor, constant: 3),
-            singerNameLabel.leadingAnchor.constraint(equalTo: photoImageView.trailingAnchor, constant: 20)
+            singerNameLabel.leadingAnchor.constraint(equalTo: photoImageView.trailingAnchor, constant: 20),
+            singerNameLabel.trailingAnchor.constraint(equalTo: ellipsisButton.leadingAnchor, constant: -20)
         ])
         NSLayoutConstraint.activate([
             ellipsisButton.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            ellipsisButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24)
+            ellipsisButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            ellipsisButton.widthAnchor.constraint(equalToConstant: 20)
         ])
     }
 }

@@ -169,6 +169,7 @@ extension AlbumOnlyViewController {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 242),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
         ])
         NSLayoutConstraint.activate([
             subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
