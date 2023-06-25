@@ -84,6 +84,7 @@
 		841725812A4414B800B42B51 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 841725802A4414B800B42B51 /* Realm */; };
 		841725832A4414B800B42B51 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 841725822A4414B800B42B51 /* RealmSwift */; };
 		8417258A2A4604C600B42B51 /* DownloadedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841725892A4604C600B42B51 /* DownloadedViewController.swift */; };
+		8417258C2A481BF600B42B51 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8417258B2A481BF600B42B51 /* FirebaseStorage */; };
 		8429C9CC2A3F46AD00BAE4D4 /* SearchResultsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429C9CB2A3F46AD00BAE4D4 /* SearchResultsResponse.swift */; };
 		8429C9CE2A3F52E100BAE4D4 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429C9CD2A3F52E100BAE4D4 /* SearchResult.swift */; };
 		8429C9D22A401D9D00BAE4D4 /* PlaybackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429C9D12A401D9D00BAE4D4 /* PlaybackManager.swift */; };
@@ -222,6 +223,7 @@
 			files = (
 				841725832A4414B800B42B51 /* RealmSwift in Frameworks */,
 				841725812A4414B800B42B51 /* Realm in Frameworks */,
+				8417258C2A481BF600B42B51 /* FirebaseStorage in Frameworks */,
 				84C420C12A37979E00727691 /* FirebaseDatabaseSwift in Frameworks */,
 				84C420BD2A3795B600727691 /* GoogleSignIn in Frameworks */,
 				84C420B62A37920B00727691 /* FirebaseDatabase in Frameworks */,
@@ -748,6 +750,7 @@
 				84F026952A38F51E001DCEFE /* SnapKit */,
 				841725802A4414B800B42B51 /* Realm */,
 				841725822A4414B800B42B51 /* RealmSwift */,
+				8417258B2A481BF600B42B51 /* FirebaseStorage */,
 			);
 			productName = MyMusicApp;
 			productReference = 84AE2F592A35F2C7006E87F1 /* MyMusicApp.app */;
@@ -1167,6 +1170,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8417257F2A4414B800B42B51 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		8417258B2A481BF600B42B51 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84C420AF2A378BCE00727691 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 		84C420B02A378BCE00727691 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
