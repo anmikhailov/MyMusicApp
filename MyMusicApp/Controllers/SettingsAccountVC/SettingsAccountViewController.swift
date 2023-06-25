@@ -7,8 +7,20 @@
 
 import UIKit
 import SnapKit
+import FirebaseAuth
+import FirebaseStorage
+import FirebaseFirestore
 
 class SettingsViewController: UIViewController, UINavigationControllerDelegate{
+    
+    // MARK: - Properties
+    //create a reference to user id
+    let uid = FirebaseManager.shared.userUid
+    
+    //create a reference to Firestore db
+    let db = Firestore.firestore()
+    
+    //MARK: - UI Components
     var editTitle = UILabel()
     var bacgroundForSettingsView = UIView()
     var cameraImageView = UIImageView()
@@ -53,12 +65,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate{
         setDateOfBirthDatePicker()
         setBackButton()
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        loadProfileImage()
+        retrievePhoto()
     }
     
 //MARK: - Func
@@ -101,22 +108,26 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate{
             make.centerX.equalTo(bacgroundForSettingsView)
         }
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(changeProfileImage))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(profileImageButtonTapped))
         profileImageView.addGestureRecognizer(tapGesture)
     }
     
-    func loadProfileImage() {
-        if let profileImageData = UserDefaults.standard.data(forKey: "profileImage"),
-           let profileImage = UIImage(data: profileImageData) {
-            profileImageView.image = profileImage
-        }
+    @objc private func profileImageButtonTapped() {
+        showImagePickerControllerActionSheets()
     }
     
-    func saveProfileImage(_ image: UIImage) {
-        if let imageData = image.jpegData(compressionQuality: 1.0) {
-            UserDefaults.standard.set(imageData, forKey: "profileImage")
-        }
-    }
+//    func loadProfileImage() {
+//        if let profileImageData = UserDefaults.standard.data(forKey: "profileImage"),
+//           let profileImage = UIImage(data: profileImageData) {
+//            profileImageView.image = profileImage
+//        }
+//    }
+//
+//    func saveProfileImage(_ image: UIImage) {
+//        if let imageData = image.jpegData(compressionQuality: 1.0) {
+//            UserDefaults.standard.set(imageData, forKey: "profileImage")
+//        }
+//    }
     
     func setCameraImageViev(){
         let cameraView = UIView()
@@ -185,8 +196,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate{
         changePasswordButton.addTarget(self, action: #selector(changePasswordTapped), for: .touchUpInside)
         
     }
-    
-    
     
     func setUserNameTextField(){
         view.addSubview(userNameTextField)
@@ -269,6 +278,72 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate{
         }
     }
     
+    private func uploadPhoto(with selectedImage: UIImage?) {
+        
+        //make sure that image property isn't nill
+        guard selectedImage != nil else { return }
+        
+        //create storage reference
+        let storageRef = Storage.storage().reference()
+        
+        //turn our image into data
+        let imageData = selectedImage!.jpegData(compressionQuality: 0.8)
+        
+        //check that we were able to convert it to data
+        guard imageData != nil else { return }
+        
+        //specify the file path and name
+        let path = "images/\(UUID().uuidString).jpg"
+        let fileRef = storageRef.child(path)
+        
+        //upload the data to dt
+        let uploadTask = fileRef.putData(imageData!, metadata: nil) { metadata, error in
+            
+            //check fore errors
+            if error == nil && metadata != nil {
+                
+                //save a reference to the file in Firestore db
+                self.db.collection("users").document(self.uid).setData(["url" : path], merge: true)
+                
+                //            db.collection("users").document(uid).setData([ "userImage": "\(editedImage)" ], merge: true)
+            }
+        }
+    }
+    
+    private func retrievePhoto() {
+        //get the data from db
+        db.collection("users").getDocuments { snapshot, error in
+            if error == nil && snapshot != nil {
+                var paths = [String]()
+                
+                //loop through all the returned docs
+                for doc in snapshot!.documents {
+                    
+                    //extract file path and add to array
+                    paths.append(doc["url"] as? String ?? "")
+                    
+                    for path in paths {
+                        
+                        let storageRef = Storage.storage().reference()
+                        
+                        let fileRef = storageRef.child(path)
+                        
+                        fileRef.getData(maxSize: 5*1024*1024) { data, error in
+                            if error == nil && data != nil {
+                                
+                                let image = UIImage(data: data!)
+                                
+                                DispatchQueue.main.async {
+                                    self.profileImageView.image = image
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
 //MARK: - @OBJC Func
     
     @objc func changeProfileImage() {
@@ -315,15 +390,48 @@ extension SettingsViewController: UITextFieldDelegate {
     }
 }
 
+//extension SettingsViewController: UIImagePickerControllerDelegate {
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+//            profileImageView.image = editedImage
+//            saveProfileImage(editedImage)
+//        } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+//            profileImageView.image = originalImage
+//        }
+//        dismiss(animated: true, completion: nil)
+//    }
+//}
+
 extension SettingsViewController: UIImagePickerControllerDelegate {
+    
+    func showImagePickerControllerActionSheets() {
+        let photoLibraryAction = UIAlertAction(title: "Choose from Library", style: .default) { (action) in
+            self.showImagePickerController(sourceType: .photoLibrary)
+        }
+        let cameraAction = UIAlertAction(title: "Take a Photo", style: .default) { (action) in
+            self.showImagePickerController(sourceType: .camera)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        AlertService.showAlert(style: .actionSheet, title: "Choose your image", message: nil, actions: [photoLibraryAction, cameraAction, cancelAction], completion: nil)
+    }
+    
+    func showImagePickerController(sourceType: UIImagePickerController.SourceType) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
+        imagePickerController.sourceType = sourceType
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             profileImageView.image = editedImage
-            saveProfileImage(editedImage)
+            uploadPhoto(with: profileImageView.image)
         } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             profileImageView.image = originalImage
+            uploadPhoto(with: profileImageView.image)
         }
         dismiss(animated: true, completion: nil)
     }
 }
-

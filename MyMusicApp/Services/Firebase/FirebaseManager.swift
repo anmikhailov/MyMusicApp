@@ -18,7 +18,7 @@ final class FirebaseManager {
     let encoder = JSONEncoder()
     let decoder = JSONDecoder()
     
-    private var userUid: String {
+    var userUid: String {
         get {
             if let uid = userDefaults.string(forKey: "UserUID") {
                 return uid

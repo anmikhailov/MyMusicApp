@@ -8,14 +8,23 @@
 import UIKit
 import SnapKit
 import UserNotifications
+import FirebaseAuth
+import FirebaseStorage
+import FirebaseFirestore
 
 class AccountViewController: UIViewController {
-    static var userImage = UIImage(systemName: "person")
     
     // MARK: - Properties
     let notificationManager = NotificationManager()
     
+    //create a reference to user id
+    let uid = FirebaseManager.shared.userUid
+    
+    //create a reference to Firestore db
+    let db = Firestore.firestore()
+    
     // MARK: - UI Components
+//    var userImage = UIImage(systemName: "person")
     var accountLabel = UILabel()
     var libraryLabel = UILabel()
     var setingsButton = UIButton(type: .system)
@@ -74,7 +83,7 @@ class AccountViewController: UIViewController {
         setProfileLabel()
         setSetingsButton()
         setProfileImage()
-        loadProfileImage()
+//        loadProfileImage()
         setLibraryLabel()
         setMyPlatListButton()
         setNotificationButton()
@@ -89,6 +98,8 @@ class AccountViewController: UIViewController {
         userInfo = FirebaseManager.shared.getFromUserDefaultsUserInfo()
         setNameUserLabel()
         setEmailUserLabel()
+        
+        retrievePhoto()
     }
     
 //MARK: - Func
@@ -126,7 +137,7 @@ class AccountViewController: UIViewController {
         profileImageView.clipsToBounds = true
 //        profileImageView.layer.borderWidth = 2
 //        profileImageView.layer.borderColor = UIColor.white.cgColor
-        profileImageView.image = AccountViewController.userImage
+//        profileImageView.image = AccountViewController.userImage
         profileImageView.tintColor = .white
         
         view.addSubview(profileImageView)
@@ -254,6 +265,40 @@ class AccountViewController: UIViewController {
         notificationButton.addTarget(self, action: #selector(notificationTapped), for: .touchUpInside)
         
         downloadButton.addTarget(self, action: #selector(downloadTapped), for: .touchUpInside)
+    }
+    
+    private func retrievePhoto() {
+        //get the data from db
+        db.collection("users").getDocuments { snapshot, error in
+            if error == nil && snapshot != nil {
+                var paths = [String]()
+                
+                //loop through all the returned docs
+                for doc in snapshot!.documents {
+                    
+                    //extract file path and add to array
+                    paths.append(doc["url"] as? String ?? "")
+                    
+                    for path in paths {
+                        
+                        let storageRef = Storage.storage().reference()
+                        
+                        let fileRef = storageRef.child(path)
+                        
+                        fileRef.getData(maxSize: 5*1024*1024) { data, error in
+                            if error == nil && data != nil {
+                                
+                                let image = UIImage(data: data!)
+                                
+                                DispatchQueue.main.async {
+                                    self.profileImageView.image = image
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 //MARK: - @OBJC Func
     @objc func settingsButtonTapped() {
