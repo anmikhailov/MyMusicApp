@@ -274,8 +274,8 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate 
 extension SettingsViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        let text = textField.text
+//        textField.resignFirstResponder()
+//        let text = textField.text
         return true
     }
 }

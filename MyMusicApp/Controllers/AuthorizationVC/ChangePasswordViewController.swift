@@ -35,7 +35,7 @@ extension ChangePasswordViewController: ChangePasswordViewDelegate {
                 print("Change Password ...")
                 FirebaseManager.shared.changePassword(password: password) { error in
                     if error == nil {
-                        print("Password changed successfully")
+                        self.showAlert(title: "Password changed", message: "")
                     } else {
                         guard let error = error else {return}
                         let errString = String(error.localizedDescription)
