@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import UserNotifications
 
 class FirstScreenOnboardingVC: UIViewController {
+    
+    // MARK: - Properties
+    let notificationManager = NotificationManager()
     
     // MARK: - UI Components
     /// mock image
@@ -101,6 +105,7 @@ class FirstScreenOnboardingVC: UIViewController {
         view.backgroundColor = .black
         
         setupUI()
+        notificationManager.userNotificationPermission()
     }
     
     // MARK: - Methods
@@ -124,7 +129,7 @@ extension FirstScreenOnboardingVC {
         view?.addSubview(welcomeLabel)
         view?.addSubview(commentLabel)
         view?.addSubview(getStartedButton)
-
+        
         /// TAMIC
         mockImageView.translatesAutoresizingMaskIntoConstraints = false
         dotView1.translatesAutoresizingMaskIntoConstraints = false
@@ -135,7 +140,7 @@ extension FirstScreenOnboardingVC {
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         commentLabel.translatesAutoresizingMaskIntoConstraints = false
         getStartedButton.translatesAutoresizingMaskIntoConstraints = false
-
+        
         /// SETUP CONSTRAINTS
         NSLayoutConstraint.activate([
             mockImageView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -184,6 +189,5 @@ extension FirstScreenOnboardingVC {
             getStartedButton.widthAnchor.constraint(equalToConstant: 280),
             getStartedButton.heightAnchor.constraint(equalToConstant: 50),
         ])
-
     }
 }

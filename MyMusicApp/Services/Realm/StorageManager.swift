@@ -39,7 +39,19 @@ class StorageManager {
 
         let bookmarks = realm.objects(FavoriteModel.self)
         for bookmark in bookmarks {
-            bookmarkAny.append(SpotifySimplifiedTrack(artists: [SpotifySimplifiedArtist(external_urls: SpotifyExternalUrl(spotify: ""), href: "", id: "", name: bookmark.nameSinger, type: "", uri: "")], duration_ms: 0, href: "", id: bookmark.id, name: bookmark.nameSong, preview_url: bookmark.previewUrl, uri: ""))
+            bookmarkAny.append(SpotifySimplifiedTrack(album: nil, artists: [SpotifySimplifiedArtist(external_urls: SpotifyExternalUrl(spotify: ""), href: "", id: "", name: bookmark.nameSinger, type: "", uri: "")], duration_ms: 0, href: "", id: bookmark.id, name: bookmark.nameSong, preview_url: bookmark.previewUrl, uri: ""))
+        }
+        return bookmarkAny
+    }
+    
+    func retrieveDownloaded() -> [SpotifySimplifiedTrack] {
+        var bookmarkAny: [SpotifySimplifiedTrack] = []
+
+        let bookmarks = realm.objects(FavoriteModel.self)
+        for bookmark in bookmarks {
+            if bookmark.localUrl != nil {
+                bookmarkAny.append(SpotifySimplifiedTrack(album: nil, artists: [SpotifySimplifiedArtist(external_urls: SpotifyExternalUrl(spotify: ""), href: "", id: "", name: bookmark.nameSinger, type: "", uri: "")], duration_ms: 0, href: "", id: bookmark.id, name: bookmark.nameSong, preview_url: bookmark.localUrl, uri: ""))
+            }
         }
         return bookmarkAny
     }
@@ -50,6 +62,14 @@ class StorageManager {
         } else {
             return false
         }
+    }
+    
+    func updateitem(with key: String, value: String) {
+        let object = realm.object(ofType: FavoriteModel.self, forPrimaryKey: key)
+        
+        realm.beginWrite()
+        object?.localUrl = value
+        try! realm.commitWrite()
     }
     
     func deleteItem(by key: String) {

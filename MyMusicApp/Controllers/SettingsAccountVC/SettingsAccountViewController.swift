@@ -311,7 +311,6 @@ extension SettingsViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         let text = textField.text
-        print("\(text)")
         return true
     }
 }

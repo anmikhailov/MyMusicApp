@@ -44,7 +44,7 @@ class AlbumViewController: UIViewController {
         return pageControl
     }()
     // MARK: - titleLabel
-    private let titleLabel: UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Come to me"
@@ -54,7 +54,7 @@ class AlbumViewController: UIViewController {
         return label
     }()
     // MARK: - subtitleLabel
-    private let subtitleLabel: UILabel = {
+    let subtitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Shawn Mendes"
@@ -68,7 +68,7 @@ class AlbumViewController: UIViewController {
     private var textView: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.text = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it"
+        textView.text = ""
         textView.textColor = UIColor(red: 238, green: 238, blue: 238)
         textView.backgroundColor = .clear
         textView.showsVerticalScrollIndicator = false

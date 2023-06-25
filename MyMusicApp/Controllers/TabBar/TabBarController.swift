@@ -16,6 +16,17 @@ enum Tabs: Int {
 
 final class TabBarController: UITabBarController {
     
+    // MARK: - Properties
+    let notificationManager = NotificationManager()
+    
+    // MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        notificationManager.sendNotification(title: "Greetings! 🥰", body: "You can turn off notifications in Account settings ⚙️")
+        notificationManager.notificationCenter.delegate = self
+    }
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
@@ -33,38 +44,73 @@ final class TabBarController: UITabBarController {
         
         UITabBarItem.appearance().setTitleTextAttributes(
             [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)], for: .normal)
-
+        
         let homeController = HomeViewController()
         let exploreController = ExploreViewController()
         let favoritesController = FavoritesViewController()
         let accountController = AccountViewController()
-
+        
         let homeNavigationController = UINavigationController(rootViewController: homeController)
         let exploreNavigationController = UINavigationController(rootViewController: exploreController)
         let favoritesNavigationController = UINavigationController(rootViewController: favoritesController)
         let accountNavigationController = UINavigationController(rootViewController: accountController)
-
-
+        
+        
         homeNavigationController.tabBarItem = UITabBarItem(title: Resources.Strings.TabBar.home,
-                                                 image: Resources.Icons.TabBar.home,
-                                                 tag: Tabs.home.rawValue)
+                                                           image: Resources.Icons.TabBar.home,
+                                                           tag: Tabs.home.rawValue)
         exploreNavigationController.tabBarItem = UITabBarItem(title: Resources.Strings.TabBar.explore,
-                                                 image: Resources.Icons.TabBar.explore,
-                                                 tag: Tabs.explore.rawValue)
+                                                              image: Resources.Icons.TabBar.explore,
+                                                              tag: Tabs.explore.rawValue)
         favoritesNavigationController.tabBarItem = UITabBarItem(title: Resources.Strings.TabBar.favorites,
-                                                 image: Resources.Icons.TabBar.favorites,
-                                                 tag: Tabs.favorites.rawValue)
+                                                                image: Resources.Icons.TabBar.favorites,
+                                                                tag: Tabs.favorites.rawValue)
         accountNavigationController.tabBarItem = UITabBarItem(title: Resources.Strings.TabBar.account,
-                                                 image: Resources.Icons.TabBar.account,
-                                                 tag: Tabs.account.rawValue)
-
+                                                              image: Resources.Icons.TabBar.account,
+                                                              tag: Tabs.account.rawValue)
+        
         setViewControllers([
             homeNavigationController,
             exploreNavigationController,
             favoritesNavigationController,
             accountNavigationController,
         ], animated: false)
-
-
+        
+        
     }
+}
+
+
+// MARK: - Notifications delegate
+extension TabBarController: UNUserNotificationCenterDelegate {
+    
+    //method that shows notification badge at any time we need it
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.banner, .sound, .badge])
+    }
+    
+    //user tap on badge and go to the screen we need using TabBarController
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        guard let desiredScene = UIApplication.shared.connectedScenes.first(where: { scene in
+                // Здесь можно указать условия для поиска нужной сцены, например, по идентификатору сцены
+                return scene.activationConditions.canActivateForTargetContentIdentifierPredicate.evaluate(with: "TabBarController")
+            }) as? UIWindowScene else {
+                completionHandler()
+                return
+            }
+            
+            guard let tabBarController = desiredScene.windows.first?.rootViewController as? TabBarController else {
+                completionHandler()
+                return
+            }
+        
+        // Получение индекса экрана, на который вы хотите перейти
+        let desiredTabIndex = Tabs.account.rawValue // Здесь используется "Account" экран
+        
+        // Переключение на целевой экран
+        tabBarController.selectedIndex = desiredTabIndex
+        completionHandler()
+    }
+    
 }

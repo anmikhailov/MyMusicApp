@@ -9,11 +9,19 @@ import Foundation
 import UIKit
 import AVFoundation
 
+protocol PlayerDataSource {
+    var songName: String? { get }
+    var subtitle: String? { get }
+    var imageURL: URL? { get }
+}
+
 class PlaybackManager {
+    
+    var isPlaying: Bool = false
     
     static let shared  = PlaybackManager()
     
-    private var track: SpotifySimplifiedTrack?
+    var track: SpotifySimplifiedTrack?
     private var tracks = [SpotifySimplifiedTrack]()
     
     var currentTrack: SpotifySimplifiedTrack? {
@@ -35,16 +43,14 @@ class PlaybackManager {
         track: SpotifySimplifiedTrack
     ) {
         playerViewController.modalPresentationStyle = .fullScreen
-//          guard let exploreVC = viewController as? ExploreViewController else { return }
-//            exploreVC.isPlaying = true
-        
-        guard let homeVC = viewController as? HomeViewController else {
-            return }
-        homeVC.isPlaying = true
-        
+        isPlaying = true
         
         guard let url = URL(string: track.preview_url ?? "") else {
-            print("Track without preview")
+            let alertController = UIAlertController(title: "Ooops",
+                                                    message: "Track without preview. We're working on it.",
+                                                    preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
+            viewController.present(alertController, animated: true)
             return
         }
         player = AVPlayer(url: url)
@@ -68,6 +74,8 @@ class PlaybackManager {
         //Configure labels
         playerViewController.songNameLabel.text = track.name
         playerViewController.groupNameLabel.text = track.artists.first?.name
+        let image = track.album?.images?.first ?? SpotifyImage(url: nil, height: nil, width: nil)
+        playerViewController.setupImage(imageAlbum: image)
            
         // Add observer for update slider in realtime
         player!.addPeriodicTimeObserver(
@@ -84,11 +92,6 @@ class PlaybackManager {
         self.track = track
         self.tracks = []
         
-        playerViewController.isFavorite = hasCurrentTrackInStorange()
-        if hasCurrentTrackInStorange() {
-            playerViewController.favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        }
-
         viewController.present(playerViewController, animated: true) { [weak self] in
             self?.player?.play()
             self?.playerViewController.isPlay = true
@@ -117,7 +120,7 @@ class PlaybackManager {
     }
     
     func forwardPlayback() {
-        if let player = player {
+        if let _ = player {
             if tracks.isEmpty {
 //                player.pause()
             } else {
@@ -155,6 +158,20 @@ class PlaybackManager {
     func hasCurrentTrackInStorange() -> Bool {
         StorageManager.shared.hasObjectInStorage(with: track!.id)
     }
+    
+    func downloadTrack() {
+        if let currentItem = player?.currentItem, let asset = currentItem.asset as? AVURLAsset {
+            let url = asset.url
+            checkBookFileExists(withLink: url){ [weak self] downloadedURL in
+                guard let self = self else{
+                    return
+                }
+                // Save url in Realm
+                StorageManager.shared.save(track: self.track!)
+                StorageManager.shared.updateitem(with: self.track!.id, value: downloadedURL.absoluteString)
+            }
+        }
+    }
 }
 
 //MARK: - Helper functions
@@ -165,18 +182,57 @@ extension PlaybackManager {
         let minutes = (interval / 60) % 60
         return String(format: "%02d:%02d", minutes, seconds)
     }
+    
+    func checkBookFileExists(withLink link: URL, completion: @escaping ((_ filePath: URL)->Void)){
+        let fileManager = FileManager.default
+        if let documentDirectory = try? fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create: false){
+            
+            let filePath = documentDirectory.appendingPathComponent(link.lastPathComponent + ".mp3", isDirectory: false)
+            
+            do {
+                if try filePath.checkResourceIsReachable() {
+                    print("file exist")
+                    completion(filePath)
+                    
+                } else {
+                    print("file doesnt exist")
+                    downloadFile(withUrl: link, andFilePath: filePath, completion: completion)
+                }
+            } catch {
+                print("file doesnt exist")
+                downloadFile(withUrl: link, andFilePath: filePath, completion: completion)
+            }
+        }else{
+            print("file doesnt exist")
+        }
+    }
+    
+    func downloadFile(withUrl url: URL, andFilePath filePath: URL, completion: @escaping ((_ filePath: URL)->Void)){
+        DispatchQueue.global(qos: .background).async {
+            do {
+                let data = try Data.init(contentsOf: url)
+                try data.write(to: filePath, options: .atomic)
+                print("saved at \(filePath.absoluteString)")
+                DispatchQueue.main.async {
+                    completion(filePath)
+                }
+            } catch {
+                print("an error happened while downloading or saving the file")
+            }
+        }
+    }
 }
 
-//extension PlaybackManager: PlayerDataSource {
-//    var songName: String? {
-//        return currentTrack?.name
-//    }
-//
-//    var subtitle: String? {
-//        return currentTrack?.artists.first?.name
-//    }
-//
-//    var imageURL: URL? {
-//        return URL(string: currentTrack?.album?.first?.url ?? "")
-//    }
-//}
+extension PlaybackManager: PlayerDataSource {
+    var songName: String? {
+        return currentTrack?.name
+    }
+
+    var subtitle: String? {
+        return currentTrack?.artists.first?.name
+    }
+
+    var imageURL: URL? {
+        return URL(string: currentTrack?.album?.images?.first?.url ?? "")
+    }
+}

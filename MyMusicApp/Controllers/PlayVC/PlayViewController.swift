@@ -9,9 +9,10 @@ import UIKit
 
 class PlayViewController: UIViewController {
     // MARK: - let/var
+    let notificationManager = NotificationManager()
     
     var isFavorite = false
-    private var isDownload = true
+    private var isDownload = false
     var isPlay = false {
         didSet {
             if isPlay {
@@ -22,6 +23,7 @@ class PlayViewController: UIViewController {
             }
         }
     }
+    let image1 = UIImage(named: "Album")
 
     private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
@@ -47,7 +49,7 @@ class PlayViewController: UIViewController {
         return button
     }()
 
-    private let albumImageView: UIImageView = {
+    let albumImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "Album")
@@ -246,7 +248,22 @@ class PlayViewController: UIViewController {
 
         setupViews()
         setConstrains()
+        
+        notificationManager.notificationCenter.delegate = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        isFavorite = PlaybackManager.shared.hasCurrentTrackInStorange()
+        if isFavorite {
+            favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            favoriteButton.tintColor = Resources.Colors.brand1
+            
+        } else {
+            favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            favoriteButton.tintColor = .white
+        }
+    }
+    
     override func viewDidLayoutSubviews() {
         circleView.layer.cornerRadius = circleView.frame.width / 2
     }
@@ -255,8 +272,7 @@ class PlayViewController: UIViewController {
         let items:[Any] = [URL(string: "https://apple.com")!]
         let avc = UIActivityViewController(activityItems: items, applicationActivities: nil)
         
-        guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else { return }
-        rootViewController.present(avc, animated: true)
+        self.present(avc, animated: true)
     }
     // MARK: - backButtonTapped
     @objc private func backButtonTapped() {
@@ -283,12 +299,15 @@ class PlayViewController: UIViewController {
     }
     // MARK: - downloadButtonTapped
     @objc private func downloadButtonTapped() {
-        if isDownload {
+        if !isDownload {
+            PlaybackManager.shared.downloadTrack()
+            notificationManager.sendNotification(title: "Track has been downloaded!", body: "You can listen it from Account -> Downloaded Tracks")
             downloadButton.tintColor = Resources.Colors.brand1
-            isDownload = false
-        } else {
-            downloadButton.tintColor = .white
             isDownload = true
+        } else {
+            
+            downloadButton.tintColor = .white
+            isDownload = false
         }
     }
     // MARK: - songTimeSliderValueChanged
@@ -330,7 +349,29 @@ class PlayViewController: UIViewController {
         let albumVC = AlbumViewController()
         albumVC.modalPresentationStyle = .fullScreen
         albumVC.modalTransitionStyle = .crossDissolve
+        albumVC.titleLabel.text = PlaybackManager.shared.track?.album?.name
+        albumVC.subtitleLabel.text = PlaybackManager.shared.track?.album?.artists.first?.name
         present(albumVC, animated: true)
+    }
+    
+    func setupImage(imageAlbum: SpotifyImage) {
+        guard let urlToImage = imageAlbum.url else {
+            albumImageView.image = image1
+            return
+        }
+
+        ImageClient.shared.setImage(
+            from: urlToImage,
+            placeholderImage: image1) { [weak self] image in
+                guard let self = self else { return }
+
+                guard let image else {
+                    self.albumImageView.image = image
+                    return
+                }
+
+                self.albumImageView.image = image
+            }
     }
 }
 extension PlayViewController {
@@ -382,7 +423,8 @@ extension PlayViewController {
         ])
         NSLayoutConstraint.activate([
             songNameLabel.topAnchor.constraint(equalTo: albumImageView.bottomAnchor, constant: 22),
-            songNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            songNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            songNameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
         NSLayoutConstraint.activate([
             groupNameLabel.topAnchor.constraint(equalTo: songNameLabel.bottomAnchor, constant: 4),
@@ -439,4 +481,28 @@ extension PlayViewController {
             repeatButton.leadingAnchor.constraint(equalTo: nextButton.trailingAnchor, constant: 46)
         ])
     }
+}
+
+// MARK: - Notifications delegate
+extension PlayViewController: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.banner, .sound, .badge])
+        print(#function)
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let tabBarController = windowScene.windows.first?.rootViewController as? TabBarController else {
+            completionHandler()
+            return
+        }
+        // Получение индекса экрана, на который вы хотите перейти
+        let desiredTabIndex = Tabs.account.rawValue // Здесь используется "Account" экран
+        
+        // Переключение на целевой экран
+        tabBarController.selectedIndex = desiredTabIndex
+        completionHandler()
+    }
+    
 }

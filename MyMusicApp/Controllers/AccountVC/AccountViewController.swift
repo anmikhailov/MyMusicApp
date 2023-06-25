@@ -7,9 +7,15 @@
 
 import UIKit
 import SnapKit
+import UserNotifications
 
 class AccountViewController: UIViewController {
     static var userImage = UIImage(systemName: "person")
+    
+    // MARK: - Properties
+    let notificationManager = NotificationManager()
+    
+    // MARK: - UI Components
     var accountLabel = UILabel()
     var libraryLabel = UILabel()
     var setingsButton = UIButton(type: .system)
@@ -22,6 +28,41 @@ class AccountViewController: UIViewController {
     var emailUserLabel = UILabel()
     var userInfo:UserInfo?
     
+    #warning("Не знаю как переделать на snp")
+    private lazy var notificationSwitch: UISwitch = {
+        let uiSwitch = UISwitch()
+        uiSwitch.isOn = true
+        uiSwitch.onTintColor = Resources.Colors.brand1
+        uiSwitch.backgroundColor = .gray
+        uiSwitch.thumbTintColor = .white
+        uiSwitch.layer.cornerRadius = 16
+        uiSwitch.addTarget(self, action: #selector(changeNotificationsMode), for: .valueChanged)
+        return uiSwitch
+    }()
+    
+    @objc private func changeNotificationsMode(sender: UISwitch) {
+        if sender.isOn {
+            //notifications enabled
+            notificationManager.sendNotification(title: "Notifications", body: "Are on")
+        } else {
+            //notifications disabled
+            notificationManager.sendNotification(title: "Notifications", body: "Are off")
+            notificationManager.notificationCenter.removeAllPendingNotificationRequests()
+            notificationManager.notificationCenter.removeAllDeliveredNotifications()
+        }
+    }
+    
+    #warning("Не знаю как переделать на snp")
+    // MARK: - UI Setup
+    func setupUI() {
+        view.addSubview(notificationSwitch)
+        
+        notificationSwitch.snp.makeConstraints { make in
+            make.leading.equalTo(notificationButton.snp.trailing).offset(-50)
+            make.centerY.equalTo(notificationButton)
+            make.width.equalTo(10)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +81,14 @@ class AccountViewController: UIViewController {
         setDownloadButton()
         setSignOutButton()
         setTargetForButton()
+
+        setupUI()
+        
+        notificationManager.notificationCenter.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        userInfo = FirebaseManager.shared.getFromUserDefaultsUserInfo()
         setNameUserLabel()
         setEmailUserLabel()
     }
@@ -228,12 +277,45 @@ class AccountViewController: UIViewController {
         print("My Playlist open ")
     }
     
-    @objc func notificationTapped(){
+    @objc func notificationTapped() {
+        guard notificationSwitch.isOn else {
+            return
+        }
+        
         print("Notification open")
+        notificationManager.sendNotification(title: "Hello there!", body: "You can turn this off 😃")
     }
     
     @objc func downloadTapped(){
-        print("Download open")
+        let targetVc = DownloadedViewController()
+        targetVc.modalPresentationStyle = .fullScreen
+        self.present(targetVc, animated: true)
+    }
+    
+}
+
+// MARK: - Notifications delegate
+extension AccountViewController: UNUserNotificationCenterDelegate {
+    
+    //method that shows notification badge at any time we need it
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.banner, .sound, .badge])
+    }
+    
+    //user tap on badge and go to the screen we need using TabBarController
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let tabBarController = windowScene.windows.first?.rootViewController as? TabBarController else {
+            completionHandler()
+            return
+        }
+        // Получение индекса экрана, на который вы хотите перейти
+        let desiredTabIndex = Tabs.account.rawValue // Здесь используется "Account" экран
+        
+        // Переключение на целевой экран
+        tabBarController.selectedIndex = desiredTabIndex
+        completionHandler()
     }
     
 }

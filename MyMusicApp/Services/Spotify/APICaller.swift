@@ -28,8 +28,6 @@ final class APICaller {
 
                 do {
                     let result = try JSONDecoder().decode(RecentlyTracks.self, from: data)
-
-                    print(result)
                     completion(.success(result))
 
                 } catch {
@@ -52,6 +50,51 @@ final class APICaller {
 
                 do {
                     let result = try JSONDecoder().decode(AlbumsResponse.self, from: data)
+                    completion(.success(result))
+
+                } catch {
+                    completion(.failure(error))
+                }
+            }
+
+            task.resume()
+        }
+    }
+    
+    // MARK: - User's recommendations (MAX LIMIT - 50)
+    public func getUsersRecommendations(with id: String, limit: Int, completion: @escaping (Result<TopResponse, Error>) -> Void) {
+        createRequest(with: URL(string: Constants.baseAPIURL + "/me/top/tracks?limit=" + String(limit)), type: .GET) { baseRequest in
+            let task = URLSession.shared.dataTask(with: baseRequest) { data, _, error in
+                guard let data = data, error == nil else {
+                    completion(.failure(APIError.failedToGetData))
+                    return
+                }
+
+                do {
+                    let result = try JSONDecoder().decode(TopResponse.self, from: data)
+//                    let result = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
+                    completion(.success(result))
+
+                } catch {
+                    completion(.failure(error))
+                }
+            }
+
+            task.resume()
+        }
+    }
+    
+    // MARK: - Get user's playlists (max: 50)
+    public func getUsersPlaylists(limit: Int, completion: @escaping (Result<UsersPlaylistsResponse, Error>) -> Void) {
+        createRequest(with: URL(string: Constants.baseAPIURL + "/me/top/playlists" + "?limit=" + String(limit)), type: .GET) { baseRequest in
+            let task = URLSession.shared.dataTask(with: baseRequest) { data, _, error in
+                guard let data = data, error == nil else {
+                    completion(.failure(APIError.failedToGetData))
+                    return
+                }
+
+                do {
+                    let result = try JSONDecoder().decode(UsersPlaylistsResponse.self, from: data)
                     completion(.success(result))
 
                 } catch {
@@ -212,6 +255,7 @@ final class APICaller {
                 
                 do {
                     let result = try JSONDecoder().decode(UserProfile.self, from: data)
+                    completion(.success(result))
                 } catch {
                     print(error.localizedDescription)
                     completion(.failure(error))
