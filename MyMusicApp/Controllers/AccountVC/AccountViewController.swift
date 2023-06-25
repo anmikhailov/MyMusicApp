@@ -37,7 +37,6 @@ class AccountViewController: UIViewController {
     var emailUserLabel = UILabel()
     var userInfo:UserInfo?
     
-    #warning("Не знаю как переделать на snp")
     private lazy var notificationSwitch: UISwitch = {
         let uiSwitch = UISwitch()
         uiSwitch.isOn = true
@@ -61,7 +60,6 @@ class AccountViewController: UIViewController {
         }
     }
     
-    #warning("Не знаю как переделать на snp")
     // MARK: - UI Setup
     func setupUI() {
         view.addSubview(notificationSwitch)

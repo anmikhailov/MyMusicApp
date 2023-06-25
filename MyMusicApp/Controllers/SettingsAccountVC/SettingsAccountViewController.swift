@@ -357,7 +357,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
         let selectedDate = dateOfBirthDatePicker.date
-        let formattedDate = dateFormatter.string(from: selectedDate)
+//        let formattedDate = dateFormatter.string(from: selectedDate)
         userDefaults.set(selectedDate, forKey: "selectedDate")
         
     }
