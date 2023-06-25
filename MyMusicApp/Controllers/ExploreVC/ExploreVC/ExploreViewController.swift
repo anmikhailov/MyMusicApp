@@ -22,15 +22,24 @@ class ExploreViewController: UIViewController {
     // MARK: - Properties
     
     let imageCategory: [UIImage] = [
-            UIImage(named: "hip-hop")!,
-            UIImage(named: "pop")!,
-            UIImage(named: "hipnow")!,
-            UIImage(named: "jazz")!,
-            UIImage(named: "rb")!,
-            UIImage(named: "topHits")!
+            UIImage(named: "hip-hop") ?? UIImage(),
+            UIImage(named: "rb") ?? UIImage(),
+            UIImage(named: "pop") ?? UIImage(),
+            UIImage(named: "jazz") ?? UIImage(),
+            UIImage(named: "rap") ?? UIImage(),
+            UIImage(named: "hits") ?? UIImage()
         ]
-    
-    let post = UIImage(named: "top")
+                    
+    let post: [UIImage] = [
+            UIImage(named: "group8") ?? UIImage(),
+            UIImage(named: "group1") ?? UIImage(),
+            UIImage(named: "group2") ?? UIImage(),
+            UIImage(named: "group3") ?? UIImage(),
+            UIImage(named: "group4") ?? UIImage(),
+            UIImage(named: "group5") ?? UIImage(),
+            UIImage(named: "group6") ?? UIImage(),
+            UIImage(named: "group7") ?? UIImage()
+        ]
     
     private var playback: PlayView?
     

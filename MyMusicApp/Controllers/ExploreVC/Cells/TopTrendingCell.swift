@@ -90,7 +90,7 @@ class TopTrendingCell: UICollectionViewCell {
 //                //self.loadingActivityIndicator.stopAnimating()
 //            }
 //    }
-    
+//    
     
 }
 

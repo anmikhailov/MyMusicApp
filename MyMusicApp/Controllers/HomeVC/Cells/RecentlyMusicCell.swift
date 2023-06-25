@@ -52,8 +52,6 @@ class RecentlyMusicCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        layer.cornerRadius = 15
-        layer.masksToBounds = true
         setupConstraints()
         //loadingActivityIndicator.startAnimating()
     }
@@ -67,6 +65,11 @@ class RecentlyMusicCell: UICollectionViewCell {
         artistNamelabel.text = nil
         songNamelabel.text = nil
         songImage.image = nil
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        songImage.layer.cornerRadius = songImage.frame.width / 2
     }
     
     // MARK: - Methods
@@ -114,18 +117,18 @@ extension RecentlyMusicCell {
         songImage.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(10)
-            make.width.height.equalTo(60)
+            make.width.height.equalTo(50)
         }
         
         addSubview(songNamelabel)
         songNamelabel.snp.makeConstraints { make in
-            make.leading.equalTo(songImage.snp.trailing).offset(8)
+            make.leading.equalTo(songImage.snp.trailing).offset(16)
             make.top.equalToSuperview().offset(10)
         }
         
         addSubview(artistNamelabel)
         artistNamelabel.snp.makeConstraints { make in
-            make.leading.equalTo(songImage.snp.trailing).offset(8)
+            make.leading.equalTo(songImage.snp.trailing).offset(16)
             make.top.equalTo(songNamelabel.snp.bottom).offset(10)
         }
         

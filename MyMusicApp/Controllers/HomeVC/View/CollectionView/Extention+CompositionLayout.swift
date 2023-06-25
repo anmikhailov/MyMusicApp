@@ -55,7 +55,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
             interGroupSpacing: 16,
             supplementaryItems: [supplementaryHeaderItem()],
             contentInsets: false)
-        section.contentInsets = .init(top: 8, leading: 10, bottom: 10, trailing: 0)
+        section.contentInsets = .init(top: 13, leading: 10, bottom: 10, trailing: 0)
         return section
     }
     
@@ -73,7 +73,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
             interGroupSpacing: 16,
             supplementaryItems: [supplementaryHeaderItem()],
             contentInsets: false)
-        section.contentInsets = .init(top: 5, leading: 20, bottom: 10, trailing: 0)
+        section.contentInsets = .init(top: 13, leading: 20, bottom: 10, trailing: 0)
         return section
     }
 
@@ -86,7 +86,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0)
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 5, leading: 16, bottom: 20, trailing: 0)
+        section.contentInsets = .init(top: 13, leading: 16, bottom: 20, trailing: 0)
         section.boundarySupplementaryItems = [supplementaryHeaderItem()]
         return section
          }

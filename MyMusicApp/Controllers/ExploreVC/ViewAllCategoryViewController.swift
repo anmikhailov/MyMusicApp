@@ -10,7 +10,7 @@ import UIKit
 class ViewAllCategoryViewController: UICollectionViewController {
     
     var genres: [String] = []
-    let image = UIImage(named: "rap")
+    //let image = UIImage(named: "rap")
     
     let imageCategory: [UIImage] = [
             UIImage(named: "hip-hop")!,
@@ -19,7 +19,8 @@ class ViewAllCategoryViewController: UICollectionViewController {
             UIImage(named: "rap")!,
             UIImage(named: "rapSoul")!,
             UIImage(named: "topHits")!,
-            UIImage(named: "hits")!
+            UIImage(named: "pop")!,
+            UIImage(named: "topHits")!
         ]
     
     private var section: Int = 0
@@ -85,12 +86,10 @@ class ViewAllCategoryViewController: UICollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell5", for: indexPath) as? TopicCell else {
             return UICollectionViewCell()
         }
-        let genre = genres[indexPath.row]
+        let genre = genres[indexPath.item]
         cell.categoryName.text = genre
-        //let randomIndex = imageCategory[indexPath.item % imageCategory.count]//Int.random(in: 0..<imageCategory.count)
-        let image = imageCategory[indexPath.item % imageCategory.count]//imageCategory[randomIndex]
+        let image = imageCategory[indexPath.item % imageCategory.count]
         cell.image2.image = image
-        //cell.configureCell(image: image!, title: genre)
         return cell
     }
 

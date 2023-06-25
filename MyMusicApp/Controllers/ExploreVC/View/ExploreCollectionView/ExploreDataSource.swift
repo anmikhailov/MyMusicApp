@@ -47,9 +47,10 @@ extension ExploreViewController: UICollectionViewDataSource {
             }
             
             let track = track[indexPath.row]
+            let image = post[indexPath.item % post.count]
             cell.configureCell(
                 title: track.name,
-                name: track.artists.first?.name ?? "", image: post!)
+                name: track.artists.first?.name ?? "", image: image)
             return cell
             
         case .topic:
@@ -58,7 +59,7 @@ extension ExploreViewController: UICollectionViewDataSource {
             }
     
             let genre = genres[indexPath.item]
-            let image = imageCategory[indexPath.item]
+            let image = imageCategory[indexPath.item % imageCategory.count]
             cell.configureCell(image: image, title: genre)
             return cell
         }
