@@ -30,6 +30,11 @@ class TableNewSongViewController: UICollectionViewController {
             collectionView.collectionViewLayout = createFlowLayout()
 
         }
+    
+
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+    }
         
         func createFlowLayout() -> UICollectionViewFlowLayout {
             let flowLayout = UICollectionViewFlowLayout()

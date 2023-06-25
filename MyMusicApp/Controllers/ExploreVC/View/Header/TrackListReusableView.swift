@@ -1,21 +1,21 @@
 //
-//  CollectionReusableView.swift
+//  TrackListReusableView.swift
 //  MyMusicApp
 //
-//  Created by mac on 6/16/23.
+//  Created by mac on 6/25/23.
 //
 
 import UIKit
 
-class ExploreCollectionReusableView: UICollectionReusableView {
-        
-        // MARK: - Properties
-        
-    var delegate: ViewAllProtocol?
+class TrackListReusableView: UICollectionReusableView {
     
+    // MARK: - Properties
+    
+    var delegate: TrackListProtocol?
     private var section: Int = 0
     
-    static var identifier = "HeaderSeeAll"
+    
+    static var identifier = "HeaderList"
     
     private let headerLabel: UILabel = {
         let label = UILabel()
@@ -48,7 +48,7 @@ class ExploreCollectionReusableView: UICollectionReusableView {
     // MARK: - Methods
     
     @objc func seeAllTapped() {
-        delegate?.goToSeeAllCategory()
+        delegate?.goToSeeAllMusic()
     }
     
     func configure(title: String,delegate: ExploreViewController) {
@@ -58,13 +58,13 @@ class ExploreCollectionReusableView: UICollectionReusableView {
     
 }
 
-extension ExploreCollectionReusableView {
+extension TrackListReusableView {
     private func setupConstraints() {
         addSubview(seeAllButton)
         addSubview(headerLabel)
         
         headerLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(10)
+            make.leading.equalToSuperview()
             make.top.equalToSuperview().offset(50)
             make.bottom.equalToSuperview().offset(-5)
             
@@ -75,6 +75,8 @@ extension ExploreCollectionReusableView {
             make.top.equalToSuperview().offset(50)
             make.bottom.equalToSuperview().offset(-5)
         }
+        
+        
     }
 }
 

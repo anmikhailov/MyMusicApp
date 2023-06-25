@@ -57,8 +57,9 @@ extension ExploreViewController: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
     
-            let genre = genres[indexPath.row]
-            cell.configureCell(image: imageCategory!, title: genre)
+            let genre = genres[indexPath.item]
+            let image = imageCategory[indexPath.item]
+            cell.configureCell(image: image, title: genre)
             return cell
         }
         

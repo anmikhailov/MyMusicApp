@@ -9,6 +9,15 @@ import UIKit
 
 class TopicViewController: UICollectionViewController {
     
+    let imageCategory: [UIImage] = [
+            UIImage(named: "hip-hop")!,
+            UIImage(named: "gangz")!,
+            UIImage(named: "hipnow")!,
+            UIImage(named: "rap")!,
+            UIImage(named: "rapSoul")!,
+            UIImage(named: "topHits")!
+        ]
+    
     init() {
             let layout = UICollectionViewFlowLayout()
             layout.itemSize = CGSize(width: 155, height: 155)
@@ -51,40 +60,7 @@ class TopicViewController: UICollectionViewController {
             return UICollectionViewCell()
         }
 
-//        cell.backgroundColor = .red
-//        cell.configureCell(genre: <#Genres#>)
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
 
 }
