@@ -48,6 +48,7 @@ class FavoritesViewController: UIViewController {
     // MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavBar(with: "Favorites", backgroundColor: Resources.Colors.TabBarColors.background, rightButtonImage: nil)
         
         setupViews()
         setConstrains()
@@ -137,7 +138,6 @@ extension FavoritesViewController {
     private func setupViews() {
         view.backgroundColor = Resources.Colors.TabBarColors.background
             
-        view.addSubview(songLabel)
         view.addSubview(searchBar)
         view.addSubview(favoritesSongsCollectionView)
         favoritesSongsCollectionView.register(SongCollectionViewCell.self, forCellWithReuseIdentifier: "idSongCell")
@@ -146,11 +146,7 @@ extension FavoritesViewController {
     // MARK: - setConstrains
     private func setConstrains() {
         NSLayoutConstraint.activate([
-            songLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
-            songLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 190)
-        ])
-        NSLayoutConstraint.activate([
-            searchBar.topAnchor.constraint(equalTo: songLabel.bottomAnchor, constant: 32),
+            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24)
         ])

@@ -12,7 +12,7 @@ extension UIViewController {
         let labelItem = UILabel()
         labelItem.textColor = .white
         labelItem.text = title
-        labelItem.font = Resources.Fonts.RobotoBold(with: 48)
+        labelItem.font = Resources.Fonts.RobotoBold(with: 40)
         labelItem.textAlignment = .center
         
         let button = UIBarButtonItem(image: rightButtonImage,
@@ -24,7 +24,7 @@ extension UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: labelItem)
         navigationItem.rightBarButtonItem = button
         
-        view?.backgroundColor = backgroundColor
+        navigationController?.navigationBar.backgroundColor = backgroundColor
         navigationController?.navigationBar.isTranslucent = false
     }
     
