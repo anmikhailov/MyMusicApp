@@ -309,8 +309,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate{
 extension SettingsViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        let text = textField.text
+//        textField.resignFirstResponder()
+//        let text = textField.text
         return true
     }
 }
