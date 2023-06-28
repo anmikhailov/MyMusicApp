@@ -40,4 +40,19 @@ enum Resources {
             static var account = "Account"
         }
     }
+    
+    enum Fonts {
+        static func MontserratMedium(with size: CGFloat) -> UIFont {
+            UIFont(name: "Montserrat-Medium", size: size) ?? UIFont() }
+        static func MontserratRegular(with size: CGFloat) -> UIFont {
+            UIFont(name: "Montserrat-Regular", size: size) ?? UIFont() }
+        static func RobotoBlack(with size: CGFloat) -> UIFont {
+            UIFont(name: "Roboto-Black", size: size) ?? UIFont() }
+        static func RobotoMedium(with size: CGFloat) -> UIFont {
+            UIFont(name: "Roboto-Mediuam", size: size) ?? UIFont() }
+        static func RobotoRegular(with size: CGFloat) -> UIFont {
+            UIFont(name: "Roboto-Regular", size: size) ?? UIFont() }
+        static func RobotoBold(with size: CGFloat) -> UIFont {
+            UIFont(name: "Roboto-Bold", size: size) ?? UIFont() }
+    }
 }
