@@ -11,13 +11,8 @@
 		84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */; };
 		84AE2F662A35F2CA006E87F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AE2F652A35F2CA006E87F1 /* Assets.xcassets */; };
 		84AE2F692A35F2CA006E87F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84AE2F672A35F2CA006E87F1 /* LaunchScreen.storyboard */; };
-		84AE2F7A2A35F5C0006E87F1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F792A35F5C0006E87F1 /* TabBarController.swift */; };
 		84AE2F7C2A35F679006E87F1 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F7B2A35F679006E87F1 /* UIColorExtension.swift */; };
 		84AE2F7E2A35F687006E87F1 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F7D2A35F687006E87F1 /* Resources.swift */; };
-		84AE2F892A35F996006E87F1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F882A35F996006E87F1 /* HomeViewController.swift */; };
-		84AE2F8B2A35F9F1006E87F1 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F8A2A35F9F1006E87F1 /* ExploreViewController.swift */; };
-		84AE2F8D2A35FA4A006E87F1 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F8C2A35FA4A006E87F1 /* FavoritesViewController.swift */; };
-		84AE2F8F2A35FA55006E87F1 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F8E2A35FA55006E87F1 /* AccountViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,13 +22,8 @@
 		84AE2F652A35F2CA006E87F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84AE2F682A35F2CA006E87F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84AE2F6A2A35F2CA006E87F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84AE2F792A35F5C0006E87F1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		84AE2F7B2A35F679006E87F1 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		84AE2F7D2A35F687006E87F1 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
-		84AE2F882A35F996006E87F1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		84AE2F8A2A35F9F1006E87F1 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
-		84AE2F8C2A35FA4A006E87F1 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		84AE2F8E2A35FA55006E87F1 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +37,141 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		844F8DA52A4B206100E7E34C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				844F8DA72A4B208700E7E34C /* Textfields */,
+				844F8DA62A4B207E00E7E34C /* Buttons */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		844F8DA62A4B207E00E7E34C /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		844F8DA72A4B208700E7E34C /* Textfields */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Textfields;
+			sourceTree = "<group>";
+		};
+		844F8DA82A4C1EA600E7E34C /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				844F8DB02A4C216800E7E34C /* Account */,
+				844F8DB22A4C218500E7E34C /* Authorization */,
+				844F8DB32A4C219700E7E34C /* Common */,
+				844F8DAD2A4C214B00E7E34C /* Explore */,
+				844F8DAF2A4C216200E7E34C /* Favorites */,
+				844F8DAC2A4C214600E7E34C /* Home */,
+				844F8DB12A4C217200E7E34C /* Onboarding */,
+				844F8DB52A4C21C500E7E34C /* Player */,
+				844F8DAE2A4C215C00E7E34C /* Search */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		844F8DA92A4C1F7700E7E34C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				844F8DAB2A4C1F8F00E7E34C /* Extensions */,
+				844F8DAA2A4C1F8900E7E34C /* Files */,
+				84AE2F742A35F384006E87F1 /* Resources */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		844F8DAA2A4C1F8900E7E34C /* Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
+		844F8DAB2A4C1F8F00E7E34C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				84AE2F7B2A35F679006E87F1 /* UIColorExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		844F8DAC2A4C214600E7E34C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		844F8DAD2A4C214B00E7E34C /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		844F8DAE2A4C215C00E7E34C /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		844F8DAF2A4C216200E7E34C /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		844F8DB02A4C216800E7E34C /* Account */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		844F8DB12A4C217200E7E34C /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		844F8DB22A4C218500E7E34C /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
+		844F8DB32A4C219700E7E34C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				844F8DB42A4C21A600E7E34C /* Tabbar */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		844F8DB42A4C21A600E7E34C /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		844F8DB52A4C21C500E7E34C /* Player */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
 		84AE2F502A35F2C7006E87F1 = {
 			isa = PBXGroup;
 			children = (
@@ -67,20 +192,13 @@
 			isa = PBXGroup;
 			children = (
 				84AE2F752A35F3AB006E87F1 /* App */,
-				84AE2F732A35F375006E87F1 /* Controllers */,
-				84AE2F702A35F34B006E87F1 /* Model */,
-				84AE2F742A35F384006E87F1 /* Resources */,
+				844F8DA92A4C1F7700E7E34C /* Common */,
+				844F8DA82A4C1EA600E7E34C /* Modules */,
 				84AE2F722A35F35E006E87F1 /* Services */,
+				844F8DA52A4B206100E7E34C /* UI */,
 				84AE2F672A35F2CA006E87F1 /* LaunchScreen.storyboard */,
 			);
 			path = MyMusicApp;
-			sourceTree = "<group>";
-		};
-		84AE2F702A35F34B006E87F1 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		84AE2F722A35F35E006E87F1 /* Services */ = {
@@ -90,27 +208,10 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		84AE2F732A35F375006E87F1 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				84AE2F842A35F909006E87F1 /* CustomVC */,
-				84AE2F852A35F923006E87F1 /* PlayVC */,
-				84AE2F832A35F900006E87F1 /* OnboardingVC */,
-				84AE2F822A35F8F6006E87F1 /* AccountVC */,
-				84AE2F812A35F8ED006E87F1 /* FavoritesVC */,
-				84AE2F802A35F8E2006E87F1 /* ExploreVC */,
-				84AE2F7F2A35F8CD006E87F1 /* HomeVC */,
-				84AE2F782A35F5B1006E87F1 /* TabBar */,
-			);
-			name = Controllers;
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		84AE2F742A35F384006E87F1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				84AE2F652A35F2CA006E87F1 /* Assets.xcassets */,
-				84AE2F7B2A35F679006E87F1 /* UIColorExtension.swift */,
 				84AE2F7D2A35F687006E87F1 /* Resources.swift */,
 			);
 			path = Resources;
@@ -124,67 +225,6 @@
 				84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		84AE2F782A35F5B1006E87F1 /* TabBar */ = {
-			isa = PBXGroup;
-			children = (
-				84AE2F792A35F5C0006E87F1 /* TabBarController.swift */,
-			);
-			path = TabBar;
-			sourceTree = "<group>";
-		};
-		84AE2F7F2A35F8CD006E87F1 /* HomeVC */ = {
-			isa = PBXGroup;
-			children = (
-				84AE2F882A35F996006E87F1 /* HomeViewController.swift */,
-			);
-			path = HomeVC;
-			sourceTree = "<group>";
-		};
-		84AE2F802A35F8E2006E87F1 /* ExploreVC */ = {
-			isa = PBXGroup;
-			children = (
-				84AE2F8A2A35F9F1006E87F1 /* ExploreViewController.swift */,
-			);
-			path = ExploreVC;
-			sourceTree = "<group>";
-		};
-		84AE2F812A35F8ED006E87F1 /* FavoritesVC */ = {
-			isa = PBXGroup;
-			children = (
-				84AE2F8C2A35FA4A006E87F1 /* FavoritesViewController.swift */,
-			);
-			path = FavoritesVC;
-			sourceTree = "<group>";
-		};
-		84AE2F822A35F8F6006E87F1 /* AccountVC */ = {
-			isa = PBXGroup;
-			children = (
-				84AE2F8E2A35FA55006E87F1 /* AccountViewController.swift */,
-			);
-			path = AccountVC;
-			sourceTree = "<group>";
-		};
-		84AE2F832A35F900006E87F1 /* OnboardingVC */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = OnboardingVC;
-			sourceTree = "<group>";
-		};
-		84AE2F842A35F909006E87F1 /* CustomVC */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomVC;
-			sourceTree = "<group>";
-		};
-		84AE2F852A35F923006E87F1 /* PlayVC */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = PlayVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,14 +298,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */,
-				84AE2F7A2A35F5C0006E87F1 /* TabBarController.swift in Sources */,
-				84AE2F8D2A35FA4A006E87F1 /* FavoritesViewController.swift in Sources */,
 				84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */,
 				84AE2F7E2A35F687006E87F1 /* Resources.swift in Sources */,
 				84AE2F7C2A35F679006E87F1 /* UIColorExtension.swift in Sources */,
-				84AE2F8B2A35F9F1006E87F1 /* ExploreViewController.swift in Sources */,
-				84AE2F892A35F996006E87F1 /* HomeViewController.swift in Sources */,
-				84AE2F8F2A35FA55006E87F1 /* AccountViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
