@@ -14,6 +14,7 @@
 		844F8DC32A4C8A6200E7E34C /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844F8DBC2A4C8A6200E7E34C /* Montserrat-Regular.ttf */; };
 		844F8DC42A4C8A6200E7E34C /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844F8DBD2A4C8A6200E7E34C /* Roboto-Bold.ttf */; };
 		844F8DC52A4C8A6200E7E34C /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844F8DBE2A4C8A6200E7E34C /* Roboto-Black.ttf */; };
+		8469598A2A4DFBD100A12459 /* CustomTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846959892A4DFBD100A12459 /* CustomTabbarController.swift */; };
 		84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */; };
 		84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */; };
 		84AE2F662A35F2CA006E87F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AE2F652A35F2CA006E87F1 /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 		844F8DBC2A4C8A6200E7E34C /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		844F8DBD2A4C8A6200E7E34C /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		844F8DBE2A4C8A6200E7E34C /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		846959892A4DFBD100A12459 /* CustomTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbarController.swift; sourceTree = "<group>"; };
 		84AE2F592A35F2C7006E87F1 /* MyMusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 		844F8DB42A4C21A600E7E34C /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
+				846959892A4DFBD100A12459 /* CustomTabbarController.swift */,
 			);
 			path = Tabbar;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8469598A2A4DFBD100A12459 /* CustomTabbarController.swift in Sources */,
 				84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */,
 				84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */,
 				84AE2F7E2A35F687006E87F1 /* Resources.swift in Sources */,
