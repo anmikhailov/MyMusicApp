@@ -15,6 +15,12 @@
 		844F8DC42A4C8A6200E7E34C /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844F8DBD2A4C8A6200E7E34C /* Roboto-Bold.ttf */; };
 		844F8DC52A4C8A6200E7E34C /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844F8DBE2A4C8A6200E7E34C /* Roboto-Black.ttf */; };
 		8469598A2A4DFBD100A12459 /* CustomTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846959892A4DFBD100A12459 /* CustomTabbarController.swift */; };
+		8469598C2A4F428B00A12459 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8469598B2A4F428B00A12459 /* BaseViewController.swift */; };
+		8469598E2A4F42FC00A12459 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8469598D2A4F42FC00A12459 /* BaseNavigationController.swift */; };
+		846959902A4F43BC00A12459 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8469598F2A4F43BC00A12459 /* ExploreViewController.swift */; };
+		846959922A4F440E00A12459 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846959912A4F440E00A12459 /* HomeViewController.swift */; };
+		846959942A4F442500A12459 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846959932A4F442500A12459 /* FavoritesViewController.swift */; };
+		846959962A4F443000A12459 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846959952A4F443000A12459 /* AccountViewController.swift */; };
 		84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */; };
 		84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */; };
 		84AE2F662A35F2CA006E87F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AE2F652A35F2CA006E87F1 /* Assets.xcassets */; };
@@ -32,6 +38,12 @@
 		844F8DBD2A4C8A6200E7E34C /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		844F8DBE2A4C8A6200E7E34C /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		846959892A4DFBD100A12459 /* CustomTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbarController.swift; sourceTree = "<group>"; };
+		8469598B2A4F428B00A12459 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		8469598D2A4F42FC00A12459 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		8469598F2A4F43BC00A12459 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		846959912A4F440E00A12459 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		846959932A4F442500A12459 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		846959952A4F443000A12459 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		84AE2F592A35F2C7006E87F1 /* MyMusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +132,7 @@
 		844F8DAC2A4C214600E7E34C /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				846959912A4F440E00A12459 /* HomeViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -127,6 +140,7 @@
 		844F8DAD2A4C214B00E7E34C /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				8469598F2A4F43BC00A12459 /* ExploreViewController.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -141,6 +155,7 @@
 		844F8DAF2A4C216200E7E34C /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				846959932A4F442500A12459 /* FavoritesViewController.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -148,6 +163,7 @@
 		844F8DB02A4C216800E7E34C /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				846959952A4F443000A12459 /* AccountViewController.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -169,17 +185,11 @@
 		844F8DB32A4C219700E7E34C /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				844F8DB42A4C21A600E7E34C /* Tabbar */,
+				846959892A4DFBD100A12459 /* CustomTabbarController.swift */,
+				8469598B2A4F428B00A12459 /* BaseViewController.swift */,
+				8469598D2A4F42FC00A12459 /* BaseNavigationController.swift */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		844F8DB42A4C21A600E7E34C /* Tabbar */ = {
-			isa = PBXGroup;
-			children = (
-				846959892A4DFBD100A12459 /* CustomTabbarController.swift */,
-			);
-			path = Tabbar;
 			sourceTree = "<group>";
 		};
 		844F8DB52A4C21C500E7E34C /* Player */ = {
@@ -337,10 +347,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8469598A2A4DFBD100A12459 /* CustomTabbarController.swift in Sources */,
+				8469598E2A4F42FC00A12459 /* BaseNavigationController.swift in Sources */,
 				84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */,
 				84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */,
+				846959902A4F43BC00A12459 /* ExploreViewController.swift in Sources */,
+				846959922A4F440E00A12459 /* HomeViewController.swift in Sources */,
 				84AE2F7E2A35F687006E87F1 /* Resources.swift in Sources */,
 				84AE2F7C2A35F679006E87F1 /* UIColorExtension.swift in Sources */,
+				846959942A4F442500A12459 /* FavoritesViewController.swift in Sources */,
+				8469598C2A4F428B00A12459 /* BaseViewController.swift in Sources */,
+				846959962A4F443000A12459 /* AccountViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

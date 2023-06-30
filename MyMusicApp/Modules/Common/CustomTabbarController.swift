@@ -33,10 +33,10 @@ final class CustomTabbarController: UITabBarController {
         let favoritesController = FavoritesViewController()
         let accountController = AccountViewController()
         
-        let homeNavigationController = UINavigationController(rootViewController: homeController)
-        let exploreNavigationController = UINavigationController(rootViewController: exploreController)
-        let favoritesNavigationController = UINavigationController(rootViewController: favoritesController)
-        let accountNavigationController = UINavigationController(rootViewController: accountController)
+        let homeNavigationController = BaseNavigationController(rootViewController: homeController)
+        let exploreNavigationController = BaseNavigationController(rootViewController: exploreController)
+        let favoritesNavigationController = BaseNavigationController(rootViewController: favoritesController)
+        let accountNavigationController = BaseNavigationController(rootViewController: accountController)
         
         
         homeNavigationController.tabBarItem = UITabBarItem(title: Resources.Strings.TabBar.home,
@@ -87,7 +87,7 @@ final class CustomTabbarController: UITabBarController {
         tabBar.itemWidth = width / 5
         tabBar.itemPositioning = .centered
         
-        roundLayer.fillColor = Resources.Colors.TabBarColors.background.cgColor
+        roundLayer.fillColor = UIColor.backgroundColor.cgColor
         
         tabBar.tintColor = Resources.Colors.TabBarColors.active
         tabBar.barTintColor = Resources.Colors.TabBarColors.inactive
