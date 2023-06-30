@@ -7,6 +7,7 @@
 
 import UIKit
 
+//MARK: - init HEX
 extension UIColor {
    convenience init(red: Int, green: Int, blue: Int, alpha: CGFloat = 1) {
        assert(red >= 0 && red <= 255, "Invalid red component")
@@ -22,4 +23,19 @@ extension UIColor {
       let b = CGFloat(hex & 0x0000ff) / 255
       self.init(red: r, green: g, blue: b, alpha: alpha)
   }
+}
+
+//MARK: - Custom colors
+extension UIColor {
+    class var backgroundColor: UIColor {
+        return UIColor(hex: 0x0E0B1F)
+    }
+    
+    class var brandGreen: UIColor {
+        return UIColor(hex: 0xCBFB5E)
+    }
+    
+    class var brandBlack: UIColor {
+        return UIColor(hex: 0x0E0B1F)
+    }
 }
