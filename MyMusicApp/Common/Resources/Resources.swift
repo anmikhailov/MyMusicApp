@@ -36,6 +36,13 @@ enum Resources {
             static var favorites = "Favorites"
             static var account = "Account"
         }
+        
+        enum NavBar {
+            static var home = "Music"
+            static var explore = "Explore"
+            static var favorites = "Favorites"
+            static var account = "Account"
+        }
     }
     
     enum Fonts {

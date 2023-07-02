@@ -20,7 +20,7 @@ final class BaseNavigationController: UINavigationController {
         navigationBar.isTranslucent = false
         navigationBar.prefersLargeTitles = true
         navigationBar.largeTitleTextAttributes = [
-            NSAttributedString.Key.font: Resources.Fonts.RobotoBold(with: 40)
+            NSAttributedString.Key.font: Resources.Fonts.MontserratSemiBold(with: 40)
         ]
 
     }

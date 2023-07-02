@@ -12,7 +12,7 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Music"
+        title = Resources.Strings.NavBar.home
         navigationController?.tabBarItem.title = Resources.Strings.TabBar.home
     }
 }

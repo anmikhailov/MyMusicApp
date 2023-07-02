@@ -12,6 +12,6 @@ class FavoritesViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Favorites"
+        title = Resources.Strings.NavBar.favorites
     }
 }

@@ -12,6 +12,6 @@ class ExploreViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Explore"
+        title = Resources.Strings.NavBar.explore
     }
 }

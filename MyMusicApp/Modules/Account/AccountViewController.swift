@@ -12,6 +12,6 @@ class AccountViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Account"
+        title = Resources.Strings.NavBar.account
     }
 }
