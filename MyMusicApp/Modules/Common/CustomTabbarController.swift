@@ -30,7 +30,7 @@ final class CustomTabbarController: UITabBarController {
     private func configure() {
         let homeController = HomeViewController()
         let exploreController = ExploreViewController()
-        let favoritesController = FavoritesViewController()
+        let favoritesController = FavoritesAssembly.configuredModule()
         let accountController = AccountViewController()
         
         let homeNavigationController = BaseNavigationController(rootViewController: homeController)
