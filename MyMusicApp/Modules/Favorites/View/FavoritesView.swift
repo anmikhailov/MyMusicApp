@@ -12,6 +12,7 @@ class FavoritesView: UIView {
     lazy var favoritesTableView: UITableView = {
         let element = UITableView()
         element.backgroundColor = .backgroundColor
+        element.register(MusicItemTableViewCell.self, forCellReuseIdentifier: "MusicItemTableViewCell")
         return element
     }()
     

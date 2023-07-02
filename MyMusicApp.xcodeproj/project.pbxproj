@@ -27,6 +27,7 @@
 		846959A02A5176E700A12459 /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8469599F2A5176E700A12459 /* FavoritesManager.swift */; };
 		846959A32A517E4700A12459 /* FavoritesProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846959A22A517E4700A12459 /* FavoritesProtocols.swift */; };
 		846959A52A5180B900A12459 /* FavoritesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846959A42A5180B900A12459 /* FavoritesAssembly.swift */; };
+		846959AC2A519EC700A12459 /* MusicItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846959AB2A519EC700A12459 /* MusicItemTableViewCell.swift */; };
 		84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */; };
 		84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */; };
 		84AE2F662A35F2CA006E87F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AE2F652A35F2CA006E87F1 /* Assets.xcassets */; };
@@ -56,6 +57,7 @@
 		8469599F2A5176E700A12459 /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		846959A22A517E4700A12459 /* FavoritesProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesProtocols.swift; sourceTree = "<group>"; };
 		846959A42A5180B900A12459 /* FavoritesAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesAssembly.swift; sourceTree = "<group>"; };
+		846959AB2A519EC700A12459 /* MusicItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicItemTableViewCell.swift; sourceTree = "<group>"; };
 		84AE2F592A35F2C7006E87F1 /* MyMusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 		844F8DA52A4B206100E7E34C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				846959AA2A519EA600A12459 /* Cells */,
 				844F8DA72A4B208700E7E34C /* Textfields */,
 				844F8DA62A4B207E00E7E34C /* Buttons */,
 			);
@@ -168,9 +171,8 @@
 		844F8DAF2A4C216200E7E34C /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
-				846959932A4F442500A12459 /* FavoritesViewController.swift */,
-				8469599B2A51741D00A12459 /* FavoritesViewPresenter.swift */,
-				8469599D2A51746900A12459 /* FavoritesView.swift */,
+				846959A82A519DBB00A12459 /* Presenter */,
+				846959A62A519D9A00A12459 /* View */,
 				846959A22A517E4700A12459 /* FavoritesProtocols.swift */,
 				846959A42A5180B900A12459 /* FavoritesAssembly.swift */,
 			);
@@ -236,6 +238,31 @@
 				8469599F2A5176E700A12459 /* FavoritesManager.swift */,
 			);
 			path = FavoritesManager;
+			sourceTree = "<group>";
+		};
+		846959A62A519D9A00A12459 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				846959932A4F442500A12459 /* FavoritesViewController.swift */,
+				8469599D2A51746900A12459 /* FavoritesView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		846959A82A519DBB00A12459 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8469599B2A51741D00A12459 /* FavoritesViewPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		846959AA2A519EA600A12459 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				846959AB2A519EC700A12459 /* MusicItemTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		84AE2F502A35F2C7006E87F1 = {
@@ -375,6 +402,7 @@
 				8469598A2A4DFBD100A12459 /* CustomTabbarController.swift in Sources */,
 				846959A52A5180B900A12459 /* FavoritesAssembly.swift in Sources */,
 				846959A02A5176E700A12459 /* FavoritesManager.swift in Sources */,
+				846959AC2A519EC700A12459 /* MusicItemTableViewCell.swift in Sources */,
 				8469599C2A51741D00A12459 /* FavoritesViewPresenter.swift in Sources */,
 				8469598E2A4F42FC00A12459 /* BaseNavigationController.swift in Sources */,
 				84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */,
