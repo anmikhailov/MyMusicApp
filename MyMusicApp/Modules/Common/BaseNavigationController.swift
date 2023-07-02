@@ -22,6 +22,8 @@ final class BaseNavigationController: UINavigationController {
         navigationBar.largeTitleTextAttributes = [
             NSAttributedString.Key.font: Resources.Fonts.MontserratSemiBold(with: 40)
         ]
-
+        navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.font: Resources.Fonts.MontserratSemiBold(with: 25)
+        ]
     }
 }
