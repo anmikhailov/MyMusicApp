@@ -12,7 +12,7 @@ enum Resources {
     enum Colors {
         enum TabBarColors{
             static var active = UIColor(hex: 0xCBFB5E)
-            static var inactive = UIColor(hex: 0x71737B)
+            static var inactive = UIColor.white
         }
         
         static var neutral1 = UIColor(hex: 0xEEEEEE)

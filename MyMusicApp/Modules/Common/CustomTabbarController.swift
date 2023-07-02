@@ -90,7 +90,7 @@ final class CustomTabbarController: UITabBarController {
         roundLayer.fillColor = UIColor.backgroundColor.cgColor
         
         tabBar.tintColor = Resources.Colors.TabBarColors.active
-        tabBar.barTintColor = Resources.Colors.TabBarColors.inactive
+        tabBar.unselectedItemTintColor = Resources.Colors.TabBarColors.inactive
         
         UITabBarItem.appearance().setTitleTextAttributes(
             [NSAttributedString.Key.font: Resources.Fonts.RobotoRegular(with: 16)], for: .normal)
