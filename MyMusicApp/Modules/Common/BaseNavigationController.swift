@@ -20,9 +20,11 @@ final class BaseNavigationController: UINavigationController {
         navigationBar.isTranslucent = false
         navigationBar.prefersLargeTitles = true
         navigationBar.largeTitleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.neutral1,
             NSAttributedString.Key.font: Resources.Fonts.MontserratSemiBold(with: 40)
         ]
         navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.neutral1,
             NSAttributedString.Key.font: Resources.Fonts.MontserratSemiBold(with: 25)
         ]
     }

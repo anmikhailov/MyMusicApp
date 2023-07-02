@@ -38,4 +38,16 @@ extension UIColor {
     class var brandBlack: UIColor {
         return UIColor(hex: 0x0E0B1F)
     }
+    
+    class var neutral1: UIColor {
+        return UIColor(hex: 0xEEEEEE)
+    }
+    
+    class var neutral2: UIColor {
+        return UIColor(hex: 0x7A7C81)
+    }
+    
+    class var neutral3: UIColor {
+        return UIColor(hex: 0x20242F)
+    }
 }

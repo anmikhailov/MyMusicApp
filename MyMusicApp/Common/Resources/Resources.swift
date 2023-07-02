@@ -10,14 +10,10 @@ import UIKit
 
 enum Resources {
     enum Colors {
-        enum TabBarColors{
-            static var active = UIColor(hex: 0xCBFB5E)
-            static var inactive = UIColor.white
+        enum TabBarColors {
+            static var active = UIColor.brandGreen
+            static var inactive = UIColor.neutral1
         }
-        
-        static var neutral1 = UIColor(hex: 0xEEEEEE)
-        static var neutral2 = UIColor(hex: 0x7A7C81)
-        static var neutral3 = UIColor(hex: 0x20242F)
     }
     
     enum Icons {
