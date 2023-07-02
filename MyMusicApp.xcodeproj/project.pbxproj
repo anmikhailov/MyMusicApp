@@ -21,6 +21,7 @@
 		846959922A4F440E00A12459 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846959912A4F440E00A12459 /* HomeViewController.swift */; };
 		846959942A4F442500A12459 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846959932A4F442500A12459 /* FavoritesViewController.swift */; };
 		846959962A4F443000A12459 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846959952A4F443000A12459 /* AccountViewController.swift */; };
+		846959982A516FE100A12459 /* UIView + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846959972A516FE100A12459 /* UIView + ext.swift */; };
 		84AE2F5D2A35F2C7006E87F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */; };
 		84AE2F5F2A35F2C7006E87F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */; };
 		84AE2F662A35F2CA006E87F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AE2F652A35F2CA006E87F1 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 		846959912A4F440E00A12459 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		846959932A4F442500A12459 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		846959952A4F443000A12459 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		846959972A516FE100A12459 /* UIView + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + ext.swift"; sourceTree = "<group>"; };
 		84AE2F592A35F2C7006E87F1 /* MyMusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AE2F5C2A35F2C7006E87F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AE2F5E2A35F2C7006E87F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				84AE2F7B2A35F679006E87F1 /* UIColorExtension.swift */,
+				846959972A516FE100A12459 /* UIView + ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				84AE2F7C2A35F679006E87F1 /* UIColorExtension.swift in Sources */,
 				846959942A4F442500A12459 /* FavoritesViewController.swift in Sources */,
 				8469598C2A4F428B00A12459 /* BaseViewController.swift in Sources */,
+				846959982A516FE100A12459 /* UIView + ext.swift in Sources */,
 				846959962A4F443000A12459 /* AccountViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
