@@ -13,5 +13,12 @@ class AccountViewController: BaseViewController {
         super.viewDidLoad()
         
         title = Resources.Strings.NavBar.account
+        
+        addNavBarButton(with: Resources.Icons.NavBar.accountSettings)
     }
+    
+    override func navBarButtonHandler() {
+        print("Nav bar tapped. Handler from AccountViewController")
+    }
+    
 }

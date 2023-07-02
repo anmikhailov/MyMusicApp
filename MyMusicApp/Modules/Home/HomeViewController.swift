@@ -14,5 +14,11 @@ class HomeViewController: BaseViewController {
         
         title = Resources.Strings.NavBar.home
         navigationController?.tabBarItem.title = Resources.Strings.TabBar.home
+        
+        addNavBarButton(with: Resources.Icons.NavBar.search)
+    }
+    
+    override func navBarButtonHandler() {
+        print("Nav bar tapped. Handler from HomeViewController")
     }
 }

@@ -27,6 +27,11 @@ enum Resources {
             static var favorites = UIImage(named: "favorite.svg")
             static var account = UIImage(named: "user.svg")
         }
+        
+        enum NavBar {
+            static var search = UIImage(systemName: "magnifyingglass")
+            static var accountSettings = UIImage(systemName: "gearshape")
+        }
     }
     
     enum Strings {

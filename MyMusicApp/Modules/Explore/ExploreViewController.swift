@@ -13,5 +13,11 @@ class ExploreViewController: BaseViewController {
         super.viewDidLoad()
         
         title = Resources.Strings.NavBar.explore
+        
+        addNavBarButton(with: Resources.Icons.NavBar.search)
+    }
+    
+    override func navBarButtonHandler() {
+        print("Nav bar tapped. Handler from ExploreViewController")
     }
 }
